@@ -1,0 +1,51 @@
+.navi-container{
+    
+    height: 9vh;
+    .header{
+        display: flex;
+        border-bottom: 1px solid black;
+        height: 5vh;
+        justify-content: space-between;
+        align-items: center;
+        background-color: aliceblue;
+        h3{
+            margin-left:15px ;
+            font-family: monospace;
+            font-size: 25px;
+        }
+        button{
+            margin-right: 15px;
+            width: 15vw;
+            height: 2.5vh;
+            border-radius: 8px;
+            border: none;
+            background-color:darkgrey;
+            color: white;
+            font-family: monospace;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+    nav ul{
+
+        height: 3.5vh;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: space-around;
+        gap: 5px;
+        li{
+            
+            width: 15vw;
+            background-color: lightslategray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 20px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+    }
+}
+

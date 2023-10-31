@@ -1,0 +1,21 @@
+.footer{
+    display: flex;
+
+    width: 100vw;
+    bottom: 0px;
+    border-top: 1px solid black;
+    height: 7vh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aliceblue;
+    h3{
+        margin-left:15px ;
+        font-family: monospace;
+        font-size: 25px;
+    }
+    h4{
+        margin-right:15px ;
+        font-family: monospace;
+        font-size: 15px;
+    }
+}
