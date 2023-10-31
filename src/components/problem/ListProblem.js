@@ -13,7 +13,8 @@ const ListProblem = () => {
         </div>
         <button>Problem Paylaş</button>
       </div>
-      <div className="list-problem">Liste</div>
+      <div className="list-problem">Liste
+      selam</div>
       <Sidebar/>
     </div>
 
