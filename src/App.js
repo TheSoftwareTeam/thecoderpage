@@ -10,10 +10,11 @@ import CreateProblem from "./components/problem/CreateProblem";
 import ListProblem from "./components/problem/ListProblem";
 import DetailProblem from "./components/problem/DetailProblem";
 import "./style.scss";
+import { DataProvider } from "./context/DataContext";
 
 function App() {
   return (
-    <>
+    <DataProvider>
       <Routes>
         <Route path="/*" element={<LoadingPage />} />
         <Route path="home" element={<Navi />}>
@@ -24,12 +25,10 @@ function App() {
           <Route path="createproblem" element={<CreateProblem />} />
           <Route path="listproblem" element={<ListProblem />} />
           <Route path="detailproblem" element={<DetailProblem />} />
-  
-
         </Route>
       </Routes>
       <Footer />
-    </>
+    </DataProvider>
   );
 }
 

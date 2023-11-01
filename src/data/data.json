@@ -1,0 +1,124 @@
+
+  {
+    "users": [
+      {
+        "id": 0,
+        "name": "Murat",
+        "surName": "OKUR",
+        "userName": "muratoku3",
+        "mail": "muratokur3@icloud.com",
+        "password": "123",
+        "userPicture": "",
+        "problemCount": 3
+      },
+      {
+        "id": 1,
+        "name": "Mahir",
+        "surName": "KURŞUN",
+        "userName": "mqhirkursun7",
+        "mail": "mqhir7@icloud.com",
+        "password": "123",
+        "userPicture": "",
+        "problemCount": 4
+      }
+    ],
+    
+    "problems": [
+      {
+          "id": 0,
+          "userId": 1,
+          "categoryId": 2,
+          "problemHead": "React proje derleme problemi",
+          "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+          "commentCount": 3,
+          "createDate": "23.11.2023"
+      },
+      {
+          "id": 1,
+          "userId": 2,
+          "categoryId": 1,
+          "problemHead": "Python syntax hatası",
+          "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
+          "commentCount": 4,
+          "createDate": "25.11.2023"
+      },
+      {
+          "id": 2,
+          "userId": 3,
+          "categoryId": 3,
+          "problemHead": "Database bağlantı sorunu",
+          "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
+          "commentCount": 2,
+          "createDate": "26.11.2023"
+      },
+      {
+          "id": 3,
+          "userId": 4,
+          "categoryId": 2,
+          "problemHead": "CSS hata veriyor",
+          "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
+          "commentCount": 5,
+          "createDate": "27.11.2023"
+      }
+  ]
+  ,
+
+    "comments": [
+      {
+        "id": 0,
+        "problemId": 1,
+        "userId": 1,
+        "commentContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+        "createDate": "23.11.2023"
+      },
+      {
+        "id": 1,
+        "problemId": 1,
+        "userId": 0,
+        "commentContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+        "createDate": "23.11.2023"
+      },
+      {
+        "id": 2,
+        "problemId": 2,
+        "userId": 1,
+        "commentContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+        "createDate": "23.11.2023"
+      }
+    ],
+
+    "categories": [
+      {
+        "id": 0,
+        "categoryName": "HTML",
+        "problemCount": 12
+      },
+      {
+        "id": 1,
+        "categoryName": "CSS",
+        "problemCount": 1
+      },
+      {
+        "id": 2,
+        "categoryName": "Javascript",
+        "problemCount": 67
+      },
+      {
+        "id": 3,
+        "categoryName": "c#",
+        "problemCount": 12
+      },
+      {
+        "id": 4,
+        "categoryName": "React",
+        "problemCount": 23
+      },
+      {
+        "id": 5,
+        "categoryName": "Java",
+        "problemCount": 12
+      }
+      
+    ]
+  }
+

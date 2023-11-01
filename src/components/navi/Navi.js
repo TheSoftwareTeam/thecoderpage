@@ -1,23 +1,23 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import DataContext from '../../context/DataContext'
 import "./nav.scss";
 
 const Navi = () => {
+  const {state}=useContext(DataContext)
   return (
     <>
       <div className="navi-container">
         <div className="header">
-          <h3>TheCoderPage</h3>
-          <button>Giriş Yap</button>
+          <h3><NavLink className="link" to="/home/main">TheCoderPage</NavLink></h3>
+          <button><NavLink className="link" to="login">Giriş Yap</NavLink></button>
         </div>
         <nav>
           <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>C#</li>
-            <li>React</li>
-            <li>Java</li>
+            {state.categories.map((category)=>
+            <li key={category.id}>{category.categoryName}</li>
+            )}
+            
           </ul>
         </nav>
       </div>

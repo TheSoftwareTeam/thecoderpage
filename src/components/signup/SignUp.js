@@ -1,5 +1,6 @@
 import React from 'react'
 import "./signup.scss"
+import { NavLink } from 'react-router-dom'
 
 const SignUp = () => {
   return (
@@ -13,7 +14,7 @@ const SignUp = () => {
         
         <input type="submit" value="Kaydol" />
         <button>
-          Giriş Yap
+        <NavLink id="login-link" to="/home/login">Giriş Yap</NavLink>
         </button>
        
       </form>

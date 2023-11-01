@@ -12,6 +12,10 @@
             margin-left:15px ;
             font-family: monospace;
             font-size: 25px;
+            .link{
+                text-decoration: none;
+                color: rgb(61, 58, 58);
+                }
         }
         button{
             margin-right: 15px;
@@ -20,10 +24,13 @@
             border-radius: 8px;
             border: none;
             background-color:darkgrey;
-            color: white;
             font-family: monospace;
             font-size: 15px;
             font-weight: bold;
+            .link{
+            text-decoration: none;
+            color: white;
+            }
         }
     }
     nav ul{

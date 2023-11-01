@@ -1,8 +1,16 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import './list-problem.scss'
+import { NavLink } from "react-router-dom";
+import DataContext from "../../context/DataContext";
+import axios from "axios";
 const ListProblem = () => {
+  const {state}=useContext(DataContext)
+  const getUserInfo=async(id)=>{
+    const response = await axios.get(`http://localhost:3005/users/${id}`);
+        console.log(response);
+  }
   return (
     <div id="container">
     <div id="content">
@@ -12,25 +20,25 @@ const ListProblem = () => {
           typesetting industry. Lorem Ipsum has been the industry's standard
           dummy
         </div>
-        <div className="share-button"><button>Problem Paylaş</button></div>
-        
+        <div className="share-button"><button><NavLink className="link" to="/home/createproblem">Problem Paylaş</NavLink></button></div>  
       </div>
-
-      <div className="list-problem">
+        {
+          state.problems.map((problem)=>
+          <div key={problem.id} className="list-problem">
         <div className="user-picture">
           <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h3>Muratokur3</h3>
+          <h3>{()=>getUserInfo(problem.userId)}{}</h3>
         </div>
         <div className="problem-detail">
         <div className="problem-head-text">
-            <h3>React Proje Başlatmadda Problem yaşıyorum</h3>
+            <h3>{problem.problemHead}</h3>
             <br/>
-            <p>Açıklama Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+            <p>{problem.problemContent}</p>
         </div>
           
           <div className="problem-comment-view">
             <button>❤️365</button>
-            <button>✉️18</button>
+            <button>✉️{problem.commentCount}</button>
           </div>
 
           <div className="write-comment">
@@ -38,121 +46,23 @@ const ListProblem = () => {
           <button>Gönder</button>
           </div>
 
-          <div className="user-comment">
+          {
+          state.comments.map((comment)=>
+         <div key={comment.id} className="user-comment">
             <div  className="comment-user-picture">
               <img  src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h4>Muratokur3</h4>
+          <h4>users-{comment.userId}</h4>
             </div>
           
-          <p>yapılan yorum</p>
+          <p>{comment.commentContent}</p>
         </div>
-
-
-        <div className="user-comment">
-            <div  className="comment-user-picture">
-              <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Pdnf4Ja68_ACkOLffIlGqcNjdCycQ_miFvt0S6Uy3A&s"/>
-          <h4>MqhirKursun7</h4>
-            </div>
+         )
+          }
           
-          <p>En son yapılan yorum</p>
         </div>
+      </div>)
+        }
 
-       
-        </div>
-      </div>
-     <hr/>
-
-     <div className="list-problem">
-        <div className="user-picture">
-          <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h3>Muratokur3</h3>
-        </div>
-        <div className="problem-detail">
-        <div className="problem-head-text">
-            <h3>React Proje Başlatmadda Problem yaşıyorum</h3>
-            <br/>
-            <p>Açıklama Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-        </div>
-          
-          <div className="problem-comment-view">
-            <button>❤️365</button>
-            <button>✉️18</button>
-          </div>
-
-          <div className="write-comment">
-              <textarea placeholder="Yorum yaz.."/>
-          <button>Gönder</button>
-          </div>
-
-          <div className="user-comment">
-            <div  className="comment-user-picture">
-              <img  src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h4>Muratokur3</h4>
-            </div>
-          
-          <p>Açıklama Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-        </div>
-
-
-        <div className="user-comment">
-            <div  className="comment-user-picture">
-              <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Pdnf4Ja68_ACkOLffIlGqcNjdCycQ_miFvt0S6Uy3A&s"/>
-          <h4>MqhirKursun7</h4>
-            </div>
-          
-          <p>En son yapılan yorum</p>
-        </div>
-
-       
-        </div>
-      </div>
-     <hr/>
-
-     <div className="list-problem">
-        <div className="user-picture">
-          <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h3>Muratokur3</h3>
-        </div>
-        <div className="problem-detail">
-        <div className="problem-head-text">
-            <h3>React Proje Başlatmadda Problem yaşıyorum</h3>
-            <br/>
-            <p>Açıklama Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-        </div>
-          
-          <div className="problem-comment-view">
-            <button>❤️365</button>
-            <button>✉️18</button>
-          </div>
-
-          <div className="write-comment">
-              <textarea placeholder="Yorum yaz.."/>
-          <button>Gönder</button>
-          </div>
-
-          <div className="user-comment">
-            <div  className="comment-user-picture">
-              <img  src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h4>Muratokur3</h4>
-            </div>
-          
-          <p>yapılan yorum</p>
-        </div>
-
-
-        <div className="user-comment">
-            <div  className="comment-user-picture">
-              <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Pdnf4Ja68_ACkOLffIlGqcNjdCycQ_miFvt0S6Uy3A&s"/>
-          <h4>MqhirKursun7</h4>
-            </div>
-          
-          <p>En son yapılan yorum</p>
-        </div>
-
-       
-        </div>
-      </div>
-     <hr/>
     </div>
      <Sidebar />
     </div>
