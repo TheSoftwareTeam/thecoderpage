@@ -1,11 +1,13 @@
 #container {
-    width: 100vw;
+
   display: flex;
   flex-direction: row;
   min-height: 95vh;
 
   #content {
-    width: 80vw;
+    
+    margin: 50px;
+    width: 70vw;
     display: flex;
     flex-direction: column;
     .aciklama {
@@ -15,6 +17,8 @@
       flex-direction: row;
       align-items: center;
       background-color: rgb(156, 153, 153);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
       .text {
         width: 50%;
         height: 100%;
@@ -26,19 +30,22 @@
       }
       .share-button {
         width: 50%;
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         button {
-          width: 100px;
-          height: 50px;
+          width: 120px;
+          border-radius: 12px;
+          box-shadow: 5px 10px 15px black;
+          border: none;
+          height: 40px;
         }
       }
     }
 
     hr{
       height: 2px;
+      margin-top: 15px;
       background-color: gray;
     }
 
@@ -49,7 +56,8 @@
       flex-direction: column;
       background-color: cornsilk;
       padding: 20px;
-
+      margin-top: 15px;
+      border-radius: 10px;
       .user-picture {
         width: 100%;
         height: 50px;
@@ -72,14 +80,15 @@
         height: auto;
         display: flex;
         flex-direction: column;
-
+       
         .problem-head-text {
+          padding: 10px;
           background-color: rgb(181, 171, 133);
         }
 
         .problem-comment-view {
           width: 100%;
-          height: 20px;
+          height: 32px;
           background-color: aliceblue;
           display: flex;
           flex-direction: row;

@@ -1,0 +1,151 @@
+#container {
+
+    display: flex;
+    flex-direction: row;
+    min-height: 95vh;
+  
+    #content {
+      
+      margin: 50px;
+      width: 70vw;
+      display: flex;
+      flex-direction: column;
+      .aciklama {
+        width: 100%;
+        height: 180px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: rgb(156, 153, 153);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        .text {
+          width: 50%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-right: 2px solid white;
+          padding: 30px;
+        }
+        .share-button {
+          width: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          button {
+            width: 120px;
+            border-radius: 12px;
+            box-shadow: 5px 10px 15px black;
+            border: none;
+            height: 40px;
+          }
+        }
+      }
+  
+      hr{
+        height: 2px;
+        margin-top: 15px;
+        background-color: gray;
+      }
+  
+      .list-problem {
+        width: 100%;
+        height: auto;
+       
+        display: flex;
+        flex-direction: column;
+        background-color: cornsilk;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 10px;
+        .user-picture {
+          width: 100%;
+          height: 50px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 25px;
+          }
+          h3 {
+            color: rgb(64, 121, 171);
+          }
+        }
+  
+        .problem-detail {
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+         
+          .problem-head-text {
+            padding: 10px;
+            background-color: rgb(181, 171, 133);
+            height: 300px;
+          }
+  
+          .problem-comment-view {
+            width: 100%;
+            height: 32px;
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            padding: 5px;
+          }
+          .write-comment {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+  
+            textarea {
+              width: 90%;
+              height: 90%;
+            }
+            button {
+              width: 20%;
+              height: 90%;
+              margin: 0 auto;
+            }
+          }
+  
+          .user-comment {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+  
+            .comment-user-picture {
+              width: 100%;
+              height: 40px;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 10px;
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 25px;
+              }
+              h4 {
+                color: rgb(83, 124, 160);
+              }
+            }
+  
+            p{
+              width: 100%;
+              padding: 10px;
+            }
+          }
+        }
+      }
+    }
+  
+  }
+  

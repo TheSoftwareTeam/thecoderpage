@@ -35,7 +35,7 @@
         justify-content: space-around;
         gap: 5px;
         li{
-            
+            box-shadow: 3px 6px 9px black;
             width: 15vw;
             background-color: lightslategray;
             display: flex;
@@ -47,5 +47,8 @@
             border-bottom-right-radius: 8px;
         }
     }
+}
+.outlet{
+    min-height: 84vh;
 }
 

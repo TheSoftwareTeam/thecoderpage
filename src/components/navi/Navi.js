@@ -21,7 +21,10 @@ const Navi = () => {
           </ul>
         </nav>
       </div>
-      <Outlet />
+      <div className="outlet">
+        <Outlet />
+      </div>
+      
     </>
   );
 };
