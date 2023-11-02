@@ -1,7 +1,8 @@
 export const initialState = {
   categories: [],
   problems:[],
-  comments:[]
+  comments:[],
+  users:[]
 };
 
 export const reducer = (state, action) => {
@@ -9,7 +10,7 @@ export const reducer = (state, action) => {
     case "getCategory":
       return {
         ...state,
-        categories: action.payload
+        categories: action.payload,
       };
     case "getProblems":
       return {
@@ -21,11 +22,25 @@ export const reducer = (state, action) => {
         ...state,
         comments: action.payload
       };
-      // case "getUserInfo":
-      // return {
-      //   ...state,
-      //   comments: action.payload
-      // };
+      case "getUsers":
+      return {
+        ...state,
+        users: action.payload
+      };
+      // case "getProblemsDetail":
+      // return  {
+      //     ...state,
+      //     problemsDetail:{
+      //       id: action.payload.problem.id,
+      //       userName: action.payload.userName,
+      //       categoryName: action.payload.categoryName,
+      //       problemHead: action.payload.problem.problemHead,
+      //       problemContent: action.payload.problem.problemContent,
+      //       commentCount: action.payload.problem.commentCount,
+      //       createDate: action.payload.problem.createDate
+      //     }
+      // }
+      
 
     default:
       return state;

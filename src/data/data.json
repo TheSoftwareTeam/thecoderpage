@@ -35,7 +35,7 @@
       },
       {
           "id": 1,
-          "userId": 2,
+          "userId": 1,
           "categoryId": 1,
           "problemHead": "Python syntax hatası",
           "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
@@ -44,7 +44,7 @@
       },
       {
           "id": 2,
-          "userId": 3,
+          "userId": 0,
           "categoryId": 3,
           "problemHead": "Database bağlantı sorunu",
           "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
@@ -53,21 +53,20 @@
       },
       {
           "id": 3,
-          "userId": 4,
+          "userId": 1,
           "categoryId": 2,
           "problemHead": "CSS hata veriyor",
           "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
           "commentCount": 5,
           "createDate": "27.11.2023"
       }
-  ]
-  ,
+  ],
 
     "comments": [
       {
         "id": 0,
         "problemId": 1,
-        "userId": 1,
+        "userId": 0,
         "commentContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
         "createDate": "23.11.2023"
       },

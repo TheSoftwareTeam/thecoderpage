@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { createContext, useEffect, useReducer } from 'react'
 import {reducer, initialState} from '../reducer/reducer';
 import axios from 'axios';
@@ -22,17 +23,38 @@ export const DataProvider = ({children}) => {
     dispatch({type:"getComments",payload:await response.data})
 }
 
-// const getUserInfo=async(id)=>{
-//   const response=await axios.get(`http://localhost:3005/users/${id}`);
-//   dispatch({type:"getUserInfo",payload:await response.data})
-// }
+const getUsers= async()=>{
+  const response=await axios.get("http://localhost:3005/users");
+  dispatch({type:"getUsers",payload:await response.data})
+}
 
-useEffect(()=>{
+// const getProblemDetail=()=>{
+//       state.problems.map(async(problem) => {
+//       const responseUser=await axios.get(`http://localhost:3005/users/${problem.userId}`);
+//       const responseCategory=await axios.get(`http://localhost:3005/categories/${problem.categoryId}`);
+//       dispatch(
+//         {type:"getProblemsDetail",
+//           payload:{
+//           problem:problem,
+//           userName:responseUser.data.userName,
+//           categoryName:responseCategory.data.categoryName
+//         }
+//       }
+//     )
+      
+       
+  
+//     })
+//   } 
+ 
+
+useEffect(()=>{ 
+   getProblem();
   getCategory();
-  getProblem();
   getComments();
-},[])
+  getUsers();
 
+},[])
 
   return (
     <DataContext.Provider value={{state,dispatch}}>
