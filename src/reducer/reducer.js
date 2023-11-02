@@ -39,6 +39,11 @@ export const reducer = (state, action) => {
           ...state,
           selectedCategory: action.payload
         };
+        case "createProblem":
+        return {
+          ...state,
+          problems: [...state.problems, action.payload]
+        };
        
       // case "getProblemsDetail":
       // return  {

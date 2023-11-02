@@ -1,9 +1,27 @@
-import React from 'react'
-import "./create-problem.scss"
+import React, { useContext, useState } from "react";
+import "./create-problem.scss";
+import DataContext from "../../context/DataContext";
 
 const CreateProblem = () => {
+  const { state, dispatch } = useContext(DataContext);
+  const [inputdata, setInputData] = useState({
+    id: state.problems.length,
+    userId: 0,
+    categoryId: 0,
+    problemHead: "",
+    problemContent: "",
+    commentCount: 0,
+    likeCount: 0,
+    createDate: "23.11.2023",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch({ type: "createProblem", payload: inputdata });
+    console.log(inputdata);
+  };
   return (
-    <div className='create-content'>
+    <div className="create-content">
       <h2>Problem oluştur</h2>
       <div className="aciklama">
         <div className="text">
@@ -11,24 +29,41 @@ const CreateProblem = () => {
           typesetting industry. Lorem Ipsum has been the industry's standard
           dummy
         </div>
-      
-        
       </div>
-      <form>
-        <select>
-          <option>HTML</option>
-          <option>CSS</option>
-          <option>JavaScript</option>
-          <option>C#</option>
-          <option>React</option>
-          <option>java</option>
+      <form onSubmit={handleSubmit}>
+        <select
+          onChange={(e) =>
+            setInputData({ ...inputdata, categoryId:Number (e.target.value) })
+          }
+          required
+        >
+          <option value="">Selected Category</option>
+          {state.categories.map((category) => (
+            <option key={category} value={category.id}>
+              {category.categoryName}
+            </option>
+          ))}{" "}
         </select>
-        <input type='text' placeholder='Başlık'/>
-        <textarea type='text' placeholder='İçerik'/>
-        <input type='submit' value='Kaydet'/>
+        <input
+          onChange={(e) =>
+            setInputData({ ...inputdata, problemHead: e.target.value })
+          }
+          type="text"
+          placeholder="Başlık"
+          required
+        />
+        <textarea
+          onChange={(e) =>
+            setInputData({ ...inputdata, problemContent: e.target.value })
+          }
+          type="text"
+          placeholder="İçerik"
+          required
+        />
+        <input type="submit" value="Kaydet" />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreateProblem
+export default CreateProblem;

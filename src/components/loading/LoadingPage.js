@@ -9,7 +9,7 @@ const LoadingPage = () => {
 
   useEffect(()=>{
     setTimeout(()=>{
-       navigate("home/listproblem") 
+       navigate("home/createproblem") 
     },100)
   })
   return (
