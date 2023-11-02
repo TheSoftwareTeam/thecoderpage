@@ -31,6 +31,7 @@
           "problemHead": "React proje derleme problemi",
           "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
           "commentCount": 3,
+          "likeCount": 55,
           "createDate": "23.11.2023"
       },
       {
@@ -40,6 +41,7 @@
           "problemHead": "Python syntax hatası",
           "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
           "commentCount": 4,
+          "likeCount": 95,
           "createDate": "25.11.2023"
       },
       {
@@ -49,6 +51,7 @@
           "problemHead": "Database bağlantı sorunu",
           "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
           "commentCount": 2,
+          "likeCount": 59,
           "createDate": "26.11.2023"
       },
       {
@@ -58,6 +61,7 @@
           "problemHead": "CSS hata veriyor",
           "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
           "commentCount": 5,
+          "likeCount": 444,
           "createDate": "27.11.2023"
       }
   ],
@@ -67,21 +71,35 @@
         "id": 0,
         "problemId": 1,
         "userId": 0,
-        "commentContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+        "commentContent": "ne la bu",
         "createDate": "23.11.2023"
       },
       {
         "id": 1,
-        "problemId": 1,
+        "problemId": 0,
         "userId": 0,
-        "commentContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+        "commentContent": "çözülemez vaka",
         "createDate": "23.11.2023"
       },
       {
         "id": 2,
         "problemId": 2,
         "userId": 1,
-        "commentContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+        "commentContent": "bu kodu yapıştır",
+        "createDate": "23.11.2023"
+      },
+      {
+        "id": 3,
+        "problemId": 0,
+        "userId": 1,
+        "commentContent": "bu kodu yapıştır",
+        "createDate": "23.11.2023"
+      },
+      {
+        "id": 4,
+        "problemId": 3,
+        "userId": 0,
+        "commentContent": "bu sorunu çözen var  mı",
         "createDate": "23.11.2023"
       }
     ],

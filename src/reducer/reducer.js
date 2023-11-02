@@ -2,7 +2,9 @@ export const initialState = {
   categories: [],
   problems:[],
   comments:[],
-  users:[]
+  users:[],
+  problemDetailPage:{},
+  selectedCategory:null
 };
 
 export const reducer = (state, action) => {
@@ -27,6 +29,17 @@ export const reducer = (state, action) => {
         ...state,
         users: action.payload
       };
+      case "newProblemDetail":
+        return {
+          ...state,
+          problemDetailPage: action.payload
+        };
+        case "selectedCategory":
+        return {
+          ...state,
+          selectedCategory: action.payload
+        };
+       
       // case "getProblemsDetail":
       // return  {
       //     ...state,

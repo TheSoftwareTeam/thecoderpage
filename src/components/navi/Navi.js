@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import DataContext from '../../context/DataContext'
 import "./nav.scss";
 
 const Navi = () => {
-  const {state}=useContext(DataContext)
+  const {state,dispatch}=useContext(DataContext)
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="navi-container">
@@ -15,7 +17,13 @@ const Navi = () => {
         <nav>
           <ul>
             {state.categories.map((category)=>
-            <li key={category.id}>{category.categoryName}</li>
+            <li onClick={()=>
+             { 
+              dispatch({type:"selectedCategory",payload:category.id});
+               navigate("/home/listProblem");
+            }
+            
+            } key={category.id}>{category.categoryName}</li>
             )}
             
           </ul>

@@ -2,11 +2,11 @@
 import React, { useContext} from "react";
 import Sidebar from "../sidebar/Sidebar";
 import './list-problem.scss'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 const ListProblem = () => {
-  const {state}=useContext(DataContext)
-
+  const {state,dispatch}=useContext(DataContext)
+  const navigate = useNavigate();
   return (
     <div id="container">
     <div id="content">
@@ -22,30 +22,30 @@ const ListProblem = () => {
          {
           state.problems.map((problem)=>
 
-           <div key={problem.id} className="list-problem">
+         problem.categoryId===state.selectedCategory?
+         <div key={problem.id} className="list-problem">
         <div className="user-picture">
           <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h3>{state.users.map((user)=>
-          {
-            if(user.id===problem.userId)
-            {
-              return user.userName
+          <h3>{
+          state.users.map( user=> user.id===problem.userId?user.userName:"")
             }
-          }
-            
-            )}
             </h3>
         </div>
         <div className="problem-detail">
         <div className="problem-head-text">
             <h3>{problem.problemHead}</h3>
-            <br/>
-            <p>data.problemContent</p>
+            <p>{problem.problemContent.slice(0,150)}
+            <a onClick={()=>
+              {
+              navigate("/home/detailproblem");
+              dispatch({type:"newProblemDetail",payload:problem});
+              } }>...Daha fazlası</a></p>
+            
         </div>
           
           <div className="problem-comment-view">
-            <button>❤️365</button>
-            <button>✉️data.commentCount</button>
+            <button>❤️{problem.likeCount}</button>
+            <button>✉️{problem.commentCount}</button>
           </div>
 
           <div className="write-comment">
@@ -54,20 +54,21 @@ const ListProblem = () => {
           </div>
 
           {
-        //   state.comments.map((comment)=>
-        //  <div key={comment.id} className="user-comment">
-        //     <div  className="comment-user-picture">
-        //       <img  src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-        //   <h4>users-{comment.userId}</h4>
-        //     </div>
+          state.comments.map((comment)=>
+          comment.problemId===problem.id?
+         <div key={comment.id} className="user-comment">
+            <div  className="comment-user-picture">
+              <img  src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
+          <h4>{state.users.map( user=> user.id===comment.userId?user.userName:"")}</h4>
+            </div>
           
-        //   <p>{comment.commentContent}</p>
-        // </div>
-        //  )
+          <p>{comment.commentContent}</p>
+        </div>:""
+         )
           }
           
         </div>
-    </div>
+            </div>:""
     )
          }
     

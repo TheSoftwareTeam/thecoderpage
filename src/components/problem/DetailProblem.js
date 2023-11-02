@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Sidebar from "../sidebar/Sidebar";
 import "./detail-problem.scss"
+import DataContext from '../../context/DataContext';
 const DetailProblem = () => {
+  const {state}=useContext(DataContext)
+ const veri=state.problemDetailPage;
   return (
     <div id="container">
     <div id="content">
@@ -15,7 +18,9 @@ const DetailProblem = () => {
         <div className="share-button"><button>Problem Paylaş</button></div>
         
       </div>
-
+{
+  
+}
       <div className="list-problem">
         <div className="user-picture">
           <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
@@ -23,14 +28,14 @@ const DetailProblem = () => {
         </div>
         <div className="problem-detail">
         <div className="problem-head-text">
-            <h3>React Proje Başlatmadda Problem yaşıyorum</h3>
+            <h3>{veri.problemHead}</h3>
             <br/>
-            <p>Açıklama Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+            <p>{veri.problemContent}</p>
         </div>
           
-          <div className="problem-comment-view">
-            <button>❤️365</button>
-            <button>✉️18</button>
+        <div className="problem-comment-view">
+            <button>❤️{veri.likeCount}</button>
+            <button>✉️{veri.commentCount}</button>
           </div>
 
           <div className="write-comment">
@@ -38,24 +43,19 @@ const DetailProblem = () => {
           <button>Gönder</button>
           </div>
 
-          <div className="user-comment">
+          {
+          state.comments.map((comment)=>
+          comment.problemId===veri.id?
+         <div key={comment.id} className="user-comment">
             <div  className="comment-user-picture">
               <img  src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"/>
-          <h4>Muratokur3</h4>
+          <h4>{state.users.map( user=> user.id===comment.userId?user.userName:"")}</h4>
             </div>
           
-          <p>yapılan yorum</p>
-        </div>
-
-
-        <div className="user-comment">
-            <div  className="comment-user-picture">
-              <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Pdnf4Ja68_ACkOLffIlGqcNjdCycQ_miFvt0S6Uy3A&s"/>
-          <h4>MqhirKursun7</h4>
-            </div>
-          
-          <p>En son yapılan yorum</p>
-        </div>
+          <p>{comment.commentContent}</p>
+        </div>:""
+         )
+          }
 
        
         </div>
