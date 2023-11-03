@@ -61,6 +61,26 @@
       "commentCount": 4,
       "likeCount": 444,
       "createDate": "27.11.2023"
+    },
+    {
+      "id": 4,
+      "userId": 0,
+      "categoryId": 0,
+      "problemHead": "html neden var",
+      "problemContent": "neden olamsın ki",
+      "commentCount": 0,
+      "likeCount": 0,
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 5,
+      "userId": 0,
+      "categoryId": 4,
+      "problemHead": "React Projesi, çalışmıyor",
+      "problemContent": "nedenini bilmiyorum ki",
+      "commentCount": 0,
+      "likeCount": 0,
+      "createDate": "25.11.2023"
     }
   ],
   "comments": [
@@ -110,42 +130,49 @@
       "id": 6,
       "problemId": 0,
       "userId": 1,
-      "commentContent": "csdsdcsdcsd",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 7,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "asdfghjklş",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 8,
-      "problemId": 2,
-      "userId": 1,
       "commentContent": "hangi kodu yapıştırayım",
       "createDate": "25.11.2023"
     },
     {
-      "id": 9,
-      "problemId": 2,
+      "id": 7,
+      "problemId": 4,
       "userId": 1,
-      "commentContent": "asdsdfsdfsdfsdf",
+      "commentContent": "nasıl yani",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 8,
+      "problemId": 4,
+      "userId": 1,
+      "commentContent": "öyle yani",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 9,
+      "problemId": 4,
+      "userId": 1,
+      "commentContent": "nerede",
       "createDate": "25.11.2023"
     },
     {
       "id": 10,
-      "problemId": 2,
+      "problemId": 4,
       "userId": 1,
-      "commentContent": "sdfsdfsdf",
+      "commentContent": "yeni bir yorum",
       "createDate": "25.11.2023"
     },
     {
       "id": 11,
-      "problemId": 1,
+      "problemId": 5,
       "userId": 1,
-      "commentContent": "csdcsdcsdcsd",
+      "commentContent": "selam",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 12,
+      "problemId": 5,
+      "userId": 1,
+      "commentContent": "yorum 2\n",
       "createDate": "25.11.2023"
     }
   ],
@@ -162,22 +189,22 @@
     },
     {
       "id": 2,
-      "categoryName": "Javascript",
+      "categoryName": "JAVASCRİPT",
       "problemCount": 67
     },
     {
       "id": 3,
-      "categoryName": "c#",
+      "categoryName": "CSHARP",
       "problemCount": 12
     },
     {
       "id": 4,
-      "categoryName": "React",
+      "categoryName": "REACT",
       "problemCount": 23
     },
     {
       "id": 5,
-      "categoryName": "Java",
+      "categoryName": "JAVA",
       "problemCount": 12
     }
   ]

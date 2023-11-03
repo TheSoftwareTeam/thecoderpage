@@ -11,13 +11,13 @@ const DetailProblem = () => {
   let url = "http://localhost:3005";
   const { id } = useParams();
 
-  const verigetir = async () => {
+  const getProblemDetail = async () => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: response.data });
   };
 
   useEffect(() => {
-    verigetir();
+    getProblemDetail();
   }, [id]);
 
   return (
@@ -73,7 +73,8 @@ const DetailProblem = () => {
               <button onClick={() => writeProblemComment(state.activeProblemDetail)}>Gönder</button>
             </div>
 
-            {state.comments.reverse().map((comment) =>
+
+      {state.comments.slice().reverse().map((comment) =>
               comment.problemId === state.activeProblemDetail.id ? (
                 <div key={comment.id} className="detail-user-comment">
                   <div className="detail-comment-user-picture">
@@ -91,6 +92,8 @@ const DetailProblem = () => {
                 ""
               )
             )}
+
+          
           </div>
         </div>
       </div>

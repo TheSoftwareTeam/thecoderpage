@@ -1,13 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./list-problem.scss";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import DataContext from "../../context/DataContext";
+import { useState } from "react";
+import axios from "axios";
 const ListProblem = () => {
+  let url = "http://localhost:3005";
+
   const { state } = useContext(DataContext);
   const navigate = useNavigate();
+
+  const {categoryName}=useParams();
+
+  const [kategori,setKategori]=useState([]);
+
+  const getCategory= async()=>{
+
+      const response1 = await axios.get(`${url}/categories?categoryName=${categoryName.toLowerCase()}`)
+    const response = await axios.get(`${url}/problems?categoryId=${response1.data[0].id}`)
+    setKategori(response.data)
+  }
+
+  useEffect(()=>{
+    getCategory()
+  },[categoryName])
+useState()
+
+
   return (
     <div id="list-container">
       <div id="list-content">
@@ -25,7 +47,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {state.problems.map((problem) =>
+        {kategori.map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
             <div key={problem.id} className="list-problem">

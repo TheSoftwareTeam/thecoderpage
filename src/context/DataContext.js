@@ -10,6 +10,7 @@ export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
   let url = "http://localhost:3005";
+
   const getCategory = async () => {
     const response = await axios.get(`${url}/categories`);
     dispatch({ type: "getCategory", payload: await response.data });
@@ -42,7 +43,7 @@ export const DataProvider = ({ children }) => {
       likeCount: 0,
       createDate: "25.11.2023",
     };
-
+    dispatch({type:"createProblem",payload:newProblem})
     await axios.post(`${url}/problems`, newProblem);
     navigate(`/home/detailproblem/${newProblem.id}`);
   };
@@ -55,13 +56,15 @@ export const DataProvider = ({ children }) => {
       commentContent: state.newProblemComment,
       createDate: "25.11.2023",
     };
-     dispatch({
+    
+    console.log(state.newProblemComment);
+    await axios.post(`${url}/comments`, newProblemComment);
+    dispatch({type:"createComment",payload:newProblemComment})
+    dispatch({
       type: "newProblemComment",
       payload:"",
     })
-    console.log(state.newProblemComment);
-    await axios.post(`${url}/comments`, newProblemComment);
-    navigate(`/home/detailproblem/${data.id}`);
+    // navigate(`/home/detailproblem/${data.id}`);
     // window.location.reload();
   };
 
@@ -72,7 +75,7 @@ export const DataProvider = ({ children }) => {
     getUsers();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.activeProblemDetail]);
+  }, []);
 
   return (
     <DataContext.Provider

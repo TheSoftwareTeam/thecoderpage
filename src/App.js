@@ -23,7 +23,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="createproblem" element={<CreateProblem />} />
-          <Route path="listproblem" element={<ListProblem />} />
+          <Route path="listproblem/:categoryName" element={<ListProblem />} />
           <Route path="detailproblem/:id" element={<DetailProblem />} />
         </Route>
       </Routes>

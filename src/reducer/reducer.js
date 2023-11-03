@@ -8,7 +8,7 @@ export const initialState = {
   categoryId: null,
   problemContent: "",
   problemHead: "",
-  newProblemComment:""
+  newProblemComment: "",
 };
 
 export const reducer = (state, action) => {
@@ -32,6 +32,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         users: action.payload,
+      };
+    case "createProblem":
+      return {
+        ...state,
+        problems: [...state.problems, action.payload],
+      };
+    case "createComment":
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
       };
     case "activeProblemDetail":
       return {
@@ -58,12 +68,12 @@ export const reducer = (state, action) => {
         ...state,
         problemContent: action.payload,
       };
-      case "newProblemComment":
-        return{
-          ...state,
-          newProblemComment:action.payload,
-        };
-        
+    case "newProblemComment":
+      return {
+        ...state,
+        newProblemComment: action.payload,
+      };
+
     default:
       return state;
   }
