@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react'
 import './sidebar.scss'
 import DataContext from '../../context/DataContext'
@@ -28,8 +30,8 @@ const Sidebar = () => {
           <p>{problem.problemContent.slice(0,50)}
           <a onClick={()=>
             {
-            navigate("/home/detailproblem");
-            dispatch({type:"newProblemDetail",payload:problem});
+              navigate(`/home/detailproblem/${problem.id}`);
+            dispatch({type:"viewProblemDetail",payload:problem});
             } }>...Daha fazlası</a></p>
           
       </div>

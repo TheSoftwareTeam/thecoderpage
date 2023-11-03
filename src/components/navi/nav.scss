@@ -1,7 +1,7 @@
 .navi-container{
     
     height: 9vh;
-    .header{
+    .navi-header{
         display: flex;
         border-bottom: 1px solid black;
         height: 5vh;
@@ -12,7 +12,7 @@
             margin-left:15px ;
             font-family: monospace;
             font-size: 25px;
-            .link{
+            .navi-link{
                 text-decoration: none;
                 color: rgb(61, 58, 58);
                 }
@@ -27,7 +27,7 @@
             font-family: monospace;
             font-size: 15px;
             font-weight: bold;
-            .link{
+            .navi-link{
             text-decoration: none;
             color: white;
             }
@@ -52,10 +52,28 @@
             font-size: 20px;
             border-bottom-left-radius: 8px;
             border-bottom-right-radius: 8px;
+            transition: 0.7s;
+            cursor: pointer;
+
+        }
+        .navi-active{
+            height: 4.5vh;
+            box-shadow: 5px 10px 15px black;
+            background-color: rgb(88, 100, 112);
+            color: aliceblue;
+            transition: 0.7s;
+            cursor: pointer;
+       
+            &:hover{
+                height: 4.5vh;
+            box-shadow: 5px 10px 15px black;
+            transition: 0.7s;
+            cursor: pointer;
+            }
         }
     }
 }
-.outlet{
+.navi-outlet{
     min-height: 84vh;
 }
 

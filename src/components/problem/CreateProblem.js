@@ -1,25 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./create-problem.scss";
 import DataContext from "../../context/DataContext";
 
-const CreateProblem = () => {
-  const { state, dispatch } = useContext(DataContext);
-  const [inputdata, setInputData] = useState({
-    id: state.problems.length,
-    userId: 0,
-    categoryId: 0,
-    problemHead: "",
-    problemContent: "",
-    commentCount: 0,
-    likeCount: 0,
-    createDate: "23.11.2023",
-  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch({ type: "createProblem", payload: inputdata });
-    console.log(inputdata);
-  };
+const CreateProblem = () => {
+  const { state, dispatch, createProblem } = useContext(DataContext);
+
+
   return (
     <div className="create-content">
       <h2>Problem oluştur</h2>
@@ -30,33 +17,39 @@ const CreateProblem = () => {
           dummy
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={createProblem}>
         <select
+        
           onChange={(e) =>
-            setInputData({ ...inputdata, categoryId:Number (e.target.value) })
+            
+            dispatch({ type: "categoryId", payload: Number(e.target.value) })
+          
+            
           }
           required
         >
-          <option value="">Selected Category</option>
+          <option >Selected Category</option>
           {state.categories.map((category) => (
-            <option key={category} value={category.id}>
+            <option value={category.id} key={category} >
               {category.categoryName}
             </option>
-          ))}{" "}
+          ))}
         </select>
         <input
           onChange={(e) =>
-            setInputData({ ...inputdata, problemHead: e.target.value })
+            dispatch({ type: "problemHead", payload: e.target.value })
           }
           type="text"
+          value={state.problemHead}
           placeholder="Başlık"
           required
         />
         <textarea
           onChange={(e) =>
-            setInputData({ ...inputdata, problemContent: e.target.value })
+            dispatch({ type: "problemContent", payload: e.target.value })
           }
           type="text"
+          value={state.problemContent}
           placeholder="İçerik"
           required
         />

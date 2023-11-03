@@ -1,10 +1,14 @@
 export const initialState = {
   categories: [],
-  problems:[],
-  comments:[],
-  users:[],
-  problemDetailPage:{},
-  selectedCategory:null
+  problems: [],
+  comments: [],
+  users: [],
+  problemDetailPage: {},
+  selectedCategory: null,
+  categoryId: null,
+  problemContent: "",
+  problemHead: "",
+  newProblemComment:""
 };
 
 export const reducer = (state, action) => {
@@ -17,48 +21,48 @@ export const reducer = (state, action) => {
     case "getProblems":
       return {
         ...state,
-        problems: action.payload
+        problems: action.payload,
       };
-      case "getComments":
+    case "getComments":
       return {
         ...state,
-        comments: action.payload
+        comments: action.payload,
       };
-      case "getUsers":
+    case "getUsers":
       return {
         ...state,
-        users: action.payload
+        users: action.payload,
       };
-      case "newProblemDetail":
-        return {
+    case "viewProblemDetail":
+      return {
+        ...state,
+        problemDetailPage: action.payload,
+      };
+    case "selectedCategory":
+      return {
+        ...state,
+        selectedCategory: action.payload,
+      };
+    case "categoryId":
+      return {
+        ...state,
+        categoryId: action.payload,
+      };
+    case "problemHead":
+      return {
+        ...state,
+        problemHead: action.payload,
+      };
+    case "problemContent":
+      return {
+        ...state,
+        problemContent: action.payload,
+      };
+      case "newProblemComment":
+        return{
           ...state,
-          problemDetailPage: action.payload
+          newProblemComment:action.payload,
         };
-        case "selectedCategory":
-        return {
-          ...state,
-          selectedCategory: action.payload
-        };
-        case "createProblem":
-        return {
-          ...state,
-          problems: [...state.problems, action.payload]
-        };
-       
-      // case "getProblemsDetail":
-      // return  {
-      //     ...state,
-      //     problemsDetail:{
-      //       id: action.payload.problem.id,
-      //       userName: action.payload.userName,
-      //       categoryName: action.payload.categoryName,
-      //       problemHead: action.payload.problem.problemHead,
-      //       problemContent: action.payload.problem.problemContent,
-      //       commentCount: action.payload.problem.commentCount,
-      //       createDate: action.payload.problem.createDate
-      //     }
-      // }
-      
 
     default:
       return state;

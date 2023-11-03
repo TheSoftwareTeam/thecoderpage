@@ -10,14 +10,16 @@ const Navi = () => {
   return (
     <>
       <div className="navi-container">
-        <div className="header">
-          <h3><NavLink className="link" to="/home/main">TheCoderPage</NavLink></h3>
-          <button><NavLink className="link" to="login">Giriş Yap</NavLink></button>
+        <div className="navi-header">
+          <h3><NavLink className="navi-link" to="/home/main">TheCoderPage</NavLink></h3>
+          <button><NavLink className="navi-link" to="login">Giriş Yap</NavLink></button>
         </div>
         <nav>
           <ul>
             {state.categories.map((category)=>
-            <li onClick={()=>
+            <li className={
+              state.selectedCategory === category.id ? "navi-active" : ""
+            } onClick={()=>
              { 
               dispatch({type:"selectedCategory",payload:category.id});
                navigate("/home/listProblem");
@@ -29,7 +31,7 @@ const Navi = () => {
           </ul>
         </nav>
       </div>
-      <div className="outlet">
+      <div className="navi-outlet">
         <Outlet />
       </div>
       

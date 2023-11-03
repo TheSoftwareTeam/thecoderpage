@@ -24,7 +24,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="createproblem" element={<CreateProblem />} />
           <Route path="listproblem" element={<ListProblem />} />
-          <Route path="detailproblem" element={<DetailProblem />} />
+          <Route path="detailproblem/:id" element={<DetailProblem />} />
         </Route>
       </Routes>
       <Footer />

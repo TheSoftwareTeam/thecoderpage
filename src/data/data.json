@@ -1,188 +1,215 @@
-
-  {
-    "users": [
-      {
-        "id": 0,
-        "name": "Murat",
-        "surName": "OKUR",
-        "userName": "muratoku3",
-        "mail": "muratokur3@icloud.com",
-        "password": "123",
-        "userPicture": "",
-        "problemCount": 3
-      },
-      {
-        "id": 1,
-        "name": "Mahir",
-        "surName": "KURŞUN",
-        "userName": "mqhirkursun7",
-        "mail": "mqhir7@icloud.com",
-        "password": "123",
-        "userPicture": "",
-        "problemCount": 4
-      }
-    ],
-    
-    "problems": [
-      {
-          "id": 0,
-          "userId": 1,
-          "categoryId": 2,
-          "problemHead": "React proje derleme problemi",
-          "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-          "commentCount": 3,
-          "likeCount": 55,
-          "createDate": "23.11.2023"
-      },
-      {
-          "id": 1,
-          "userId": 1,
-          "categoryId": 1,
-          "problemHead": "Python syntax hatası",
-          "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
-          "commentCount": 3,
-          "likeCount": 95,
-          "createDate": "25.11.2023"
-      },
-      {
-          "id": 2,
-          "userId": 0,
-          "categoryId": 3,
-          "problemHead": "Database bağlantı sorunu",
-          "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
-          "commentCount": 1,
-          "likeCount": 59,
-          "createDate": "26.11.2023"
-      },
-      {
-          "id": 3,
-          "userId": 1,
-          "categoryId": 2,
-          "problemHead": "CSS hata veriyor",
-          "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
-          "commentCount": 4,
-          "likeCount": 444,
-          "createDate": "27.11.2023"
-      }
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Murat",
+      "surName": "OKUR",
+      "userName": "muratoku3",
+      "mail": "muratokur3@icloud.com",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 3
+    },
+    {
+      "id": 1,
+      "name": "Mahir",
+      "surName": "KURŞUN",
+      "userName": "mqhirkursun7",
+      "mail": "mqhir7@icloud.com",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 4
+    }
   ],
-
-    "comments": [
-      {
-        "id": 0,
-        "problemId": 1,
-        "userId": 0,
-        "commentContent": "ne la bu",
-        "createDate": "23.11.2023"
-      },
-      {
-        "id": 1,
-        "problemId": 0,
-        "userId": 0,
-        "commentContent": "çözülemez vaka",
-        "createDate": "23.11.2023"
-      },
-      {
-        "id": 2,
-        "problemId": 1,
-        "userId": 1,
-        "commentContent": "bu kodu yapıştır",
-        "createDate": "23.11.2023"
-      },
-      {
-        "id": 3,
-        "problemId": 2,
-        "userId": 1,
-        "commentContent": "bu kodu yapıştır",
-        "createDate": "23.11.2023"
-      },
-      {
-        "id": 4,
-        "problemId": 3,
-        "userId": 0,
-        "commentContent": "bu sorunu çözen var  mı",
-        "createDate": "23.11.2023"
-      },
-      {
-        "id": 5,
-        "problemId": 3,
-        "userId": 0,
-        "commentContent": "bu sorunu çözen var  mı",
-        "createDate": "23.11.2023"
-      },
-      {
-        "id": 6,
-        "problemId": 0,
-        "userId": 0,
-        "commentContent": "noktali virgül eksik",
-        "createDate": "23.11.2023"
-      }
-      ,
-      {
-        "id": 7,
-        "problemId": 1,
-        "userId": 0,
-        "commentContent": "noktali virgül eksik",
-        "createDate": "23.11.2023"
-      }
-      ,
-      {
-        "id": 8,
-        "problemId": 0,
-        "userId": 0,
-        "commentContent": "noktali virgül eksik",
-        "createDate": "23.11.2023"
-      }
-      ,
-      {
-        "id": 9,
-        "problemId": 3,
-        "userId": 0,
-        "commentContent": "noktali virgül eksik",
-        "createDate": "23.11.2023"
-      }
-      ,
-      {
-        "id": 10,
-        "problemId": 3,
-        "userId": 0,
-        "commentContent": "noktali virgül eksik",
-        "createDate": "23.11.2023"
-      }
-
-    ],
-
-    "categories": [
-      {
-        "id": 0,
-        "categoryName": "HTML",
-        "problemCount": 12
-      },
-      {
-        "id": 1,
-        "categoryName": "CSS",
-        "problemCount": 1
-      },
-      {
-        "id": 2,
-        "categoryName": "Javascript",
-        "problemCount": 67
-      },
-      {
-        "id": 3,
-        "categoryName": "c#",
-        "problemCount": 12
-      },
-      {
-        "id": 4,
-        "categoryName": "React",
-        "problemCount": 23
-      },
-      {
-        "id": 5,
-        "categoryName": "Java",
-        "problemCount": 12
-      }
-      
-    ]
-  }
-
+  "problems": [
+    {
+      "id": 0,
+      "userId": 1,
+      "categoryId": 2,
+      "problemHead": "React proje derleme problemi",
+      "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
+      "commentCount": 3,
+      "likeCount": 55,
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "categoryId": 1,
+      "problemHead": "Python syntax hatası",
+      "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
+      "commentCount": 3,
+      "likeCount": 95,
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 2,
+      "userId": 0,
+      "categoryId": 3,
+      "problemHead": "Database bağlantı sorunu",
+      "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
+      "commentCount": 1,
+      "likeCount": 59,
+      "createDate": "26.11.2023"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "categoryId": 2,
+      "problemHead": "CSS hata veriyor",
+      "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
+      "commentCount": 4,
+      "likeCount": 444,
+      "createDate": "27.11.2023"
+    },
+    {
+      "id": 4,
+      "userId": 0,
+      "categoryId": 0,
+      "problemHead": "asdasd",
+      "problemContent": "asdada",
+      "commentCount": 0,
+      "likeCount": 0,
+      "createDate": "25.11.2023"
+    }
+  ],
+  "comments": [
+    {
+      "id": 0,
+      "problemId": 1,
+      "userId": 0,
+      "commentContent": "ne la bu",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 1,
+      "problemId": 0,
+      "userId": 0,
+      "commentContent": "çözülemez vaka",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 2,
+      "problemId": 1,
+      "userId": 1,
+      "commentContent": "bu kodu yapıştır",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 3,
+      "problemId": 2,
+      "userId": 1,
+      "commentContent": "bu kodu yapıştır",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 4,
+      "problemId": 3,
+      "userId": 0,
+      "commentContent": "bu sorunu çözen var  mı",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 5,
+      "problemId": 3,
+      "userId": 0,
+      "commentContent": "bu sorunu çözen var  mı",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 6,
+      "problemId": 0,
+      "userId": 0,
+      "commentContent": "noktali virgül eksik",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 7,
+      "problemId": 1,
+      "userId": 0,
+      "commentContent": "noktali virgül eksik",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 8,
+      "problemId": 0,
+      "userId": 0,
+      "commentContent": "noktali virgül eksik",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 9,
+      "problemId": 3,
+      "userId": 0,
+      "commentContent": "noktali virgül eksik",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 10,
+      "problemId": 3,
+      "userId": 0,
+      "commentContent": "noktali virgül eksik",
+      "createDate": "23.11.2023"
+    },
+    {
+      "id": 11,
+      "problemId": 2,
+      "userId": 1,
+      "commentContent": "Database query hatalı",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 12,
+      "problemId": 3,
+      "userId": 1,
+      "commentContent": "asdasdasd",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 13,
+      "problemId": 1,
+      "userId": 1,
+      "commentContent": "asdsadad",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 14,
+      "problemId": 2,
+      "userId": 1,
+      "commentContent": "asdasdasdasdasdasd",
+      "createDate": "25.11.2023"
+    }
+  ],
+  "categories": [
+    {
+      "id": 0,
+      "categoryName": "HTML",
+      "problemCount": 12
+    },
+    {
+      "id": 1,
+      "categoryName": "CSS",
+      "problemCount": 1
+    },
+    {
+      "id": 2,
+      "categoryName": "Javascript",
+      "problemCount": 67
+    },
+    {
+      "id": 3,
+      "categoryName": "c#",
+      "problemCount": 12
+    },
+    {
+      "id": 4,
+      "categoryName": "React",
+      "problemCount": 23
+    },
+    {
+      "id": 5,
+      "categoryName": "Java",
+      "problemCount": 12
+    }
+  ]
+}
