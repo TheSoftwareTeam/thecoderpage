@@ -3,7 +3,7 @@ export const initialState = {
   problems: [],
   comments: [],
   users: [],
-  problemDetailPage: {},
+  activeProblemDetail: {},
   selectedCategory: null,
   categoryId: null,
   problemContent: "",
@@ -33,10 +33,10 @@ export const reducer = (state, action) => {
         ...state,
         users: action.payload,
       };
-    case "viewProblemDetail":
+    case "activeProblemDetail":
       return {
         ...state,
-        problemDetailPage: action.payload,
+        activeProblemDetail: action.payload,
       };
     case "selectedCategory":
       return {
@@ -63,7 +63,7 @@ export const reducer = (state, action) => {
           ...state,
           newProblemComment:action.payload,
         };
-
+        
     default:
       return state;
   }

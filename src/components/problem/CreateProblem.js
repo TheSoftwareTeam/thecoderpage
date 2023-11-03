@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import "./create-problem.scss";
 import DataContext from "../../context/DataContext";
 
-
 const CreateProblem = () => {
   const { state, dispatch, createProblem } = useContext(DataContext);
-
 
   return (
     <div className="create-content">
@@ -19,18 +17,12 @@ const CreateProblem = () => {
       </div>
       <form onSubmit={createProblem}>
         <select
-        
-          onChange={(e) =>
-            
-            dispatch({ type: "categoryId", payload: Number(e.target.value) })
-          
-            
-          }
+          onChange={(e) =>dispatch({ type: "categoryId", payload: Number(e.target.value) })}
           required
         >
-          <option >Selected Category</option>
+          <option>Selected Category</option>
           {state.categories.map((category) => (
-            <option value={category.id} key={category} >
+            <option value={category.id} key={category}>
               {category.categoryName}
             </option>
           ))}

@@ -6,7 +6,7 @@ import "./list-problem.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 const ListProblem = () => {
-  const { state, dispatch } = useContext(DataContext);
+  const { state } = useContext(DataContext);
   const navigate = useNavigate();
   return (
     <div id="list-container">
@@ -45,10 +45,6 @@ const ListProblem = () => {
                     <a
                       onClick={() => {
                         navigate(`/home/detailproblem/${problem.id}`);
-                        dispatch({
-                          type: "viewProblemDetail",
-                          payload: problem,
-                        });
                       }}
                     >
                       ...Daha fazlası
@@ -60,8 +56,6 @@ const ListProblem = () => {
                   <button>❤️{problem.likeCount}</button>
                   <button>✉️{problem.commentCount}</button>
                 </div>
-
-                
 
                 {state.comments
                   .filter((comment) => comment.problemId === problem.id)
