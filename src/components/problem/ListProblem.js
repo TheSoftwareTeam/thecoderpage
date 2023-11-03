@@ -19,7 +19,7 @@ const ListProblem = () => {
 
   const getCategory= async()=>{
 
-      const response1 = await axios.get(`${url}/categories?categoryName=${categoryName.toLowerCase()}`)
+      const response1 = await axios.get(`${url}/categories?categoryName=${categoryName.toUpperCase()}`)
     const response = await axios.get(`${url}/problems?categoryId=${response1.data[0].id}`)
     setKategori(response.data)
   }
@@ -27,7 +27,6 @@ const ListProblem = () => {
   useEffect(()=>{
     getCategory()
   },[categoryName])
-useState()
 
 
   return (

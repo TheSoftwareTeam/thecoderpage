@@ -22,7 +22,7 @@ const Navi = () => {
             } onClick={()=>
              { 
               dispatch({type:"selectedCategory",payload:category.id});
-               navigate(`/home/listProblem/${category.categoryName}`);
+               navigate(`/home/listproblem/${category.categoryName}`);
             }
             
             } key={category.id}>{category.categoryName==="CSHARP"?"C#":category.categoryName}</li>
