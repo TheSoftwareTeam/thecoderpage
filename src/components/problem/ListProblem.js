@@ -25,7 +25,9 @@ const ListProblem = () => {
   }
 
   useEffect(()=>{
-    getCategory()
+    if (categoryName!=="hersey") {
+      getCategory()
+    }
   },[categoryName])
 
 
@@ -46,7 +48,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {kategori.map((problem) =>
+        {(categoryName==="hersey"?state.problems:kategori).map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
             <div key={problem.id} className="list-problem">
