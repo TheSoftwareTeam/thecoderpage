@@ -13,13 +13,14 @@ const DetailProblem = () => {
 
   const getProblemDetail = async () => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
-    dispatch({ type: "activeProblemDetail", payload: response.data });
+   await dispatch({ type: "activeProblemDetail", payload: response.data });
+
   };
 
   useEffect(() => {
     getProblemDetail();
+    
   }, [id]);
-
   return (
     <div id="detail-container">
       <div id="detail-content">
@@ -37,7 +38,9 @@ const DetailProblem = () => {
             </button>
           </div>
         </div>
-        {}
+        {
+
+        }
         <div className="detail-list-problem">
           <div className="detail-user-picture">
             <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
@@ -55,7 +58,9 @@ const DetailProblem = () => {
             </div>
 
             <div className="detail-problem-comment-view">
-              <button>❤️{state.activeProblemDetail.likeCount}</button>
+              <button>❤️{state.activeProblemDetail.likesUserId.length}</button>
+
+              
               <button>✉️{state.activeProblemDetail.commentCount}</button>
             </div>
 

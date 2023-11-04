@@ -3,7 +3,9 @@ export const initialState = {
   problems: [],
   comments: [],
   users: [],
-  activeProblemDetail: {},
+  activeProblemDetail: {
+      likesUserId: []
+  },
   selectedCategory: null,
   categoryId: null,
   problemContent: "",

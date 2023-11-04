@@ -25,7 +25,7 @@ const ListProblem = () => {
   }
 
   useEffect(()=>{
-    if (categoryName!=="hersey") {
+    if (categoryName!=="all") {
       getCategory()
     }
   },[categoryName])
@@ -48,7 +48,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {(categoryName==="hersey"?state.problems:kategori).map((problem) =>
+        {(categoryName==="all"?state.problems:kategori).map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
             <div key={problem.id} className="list-problem">
@@ -76,7 +76,7 @@ const ListProblem = () => {
                 </div>
 
                 <div className="list-problem-comment-view">
-                  <button>❤️{problem.likeCount}</button>
+                  <button>❤️{problem.likesUserId.length}</button>
                   <button>✉️{problem.commentCount}</button>
                 </div>
 

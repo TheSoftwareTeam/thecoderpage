@@ -9,7 +9,6 @@ const Login = () => {
       <h2>Giriş Yap</h2>
         <input type="text" placeholder="Kullanıcı adı" />
         <input type="password" placeholder="Şifre" />
-        
         <input type="submit" value="Giriş yap" />
         <button>
         <NavLink id="signup-link" to="/home/signup">Kaydol</NavLink>

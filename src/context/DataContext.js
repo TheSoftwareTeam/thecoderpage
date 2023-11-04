@@ -40,7 +40,7 @@ export const DataProvider = ({ children }) => {
       problemHead: state.problemHead,
       problemContent: state.problemContent,
       commentCount: 0,
-      likeCount: 0,
+      likesUserId: [],
       createDate: "25.11.2023",
     };
     dispatch({type:"createProblem",payload:newProblem})
