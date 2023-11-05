@@ -3,7 +3,6 @@ import React, { createContext, useEffect, useReducer } from "react";
 import { reducer, initialState } from "../reducer/reducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { type } from "@testing-library/user-event/dist/type";
 
 const DataContext = createContext();
 
@@ -65,9 +64,17 @@ export const DataProvider = ({ children }) => {
       type: "newProblemComment",
       payload:"",
     })
-    // navigate(`/home/detailproblem/${data.id}`);
-    // window.location.reload();
-  };
+
+    const problem = await state.problems.map((problem) => {if(problem.id === data.id){return problem}});
+      problem[0]=await{
+      ...problem[0],
+      commentCount:problem[0].commentCount+=1 
+    }
+        await axios.patch(`${url}/problems/${data.id}`, problem[0])
+        dispatch({type:"activeProblemDetail",payload:problem[0]})
+        dispatch({type:"createAndUbdateProblem",payload:problem[0]})
+
+  }
 
   const actionLike=async(problemId)=>{
     if (state.activeUser)
