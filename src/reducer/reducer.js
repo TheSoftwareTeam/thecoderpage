@@ -45,15 +45,27 @@ export const reducer = (state, action) => {
         ...state,
         users: action.payload,
       };
-    case "createProblem":
+      case "createAndUbdateProblem":
+        const newProblem = action.payload;
+        // Eğer yeni problem mevcut problemler listesinde değilse ekle
+        if (!state.problems.some(problem => problem.id === newProblem.id)) {
+          return {
+            ...state,
+            problems: [...state.problems, newProblem],
+          };
+        } else {
+          // Eğer yeni eklenmek istenen problem zaten mevcutsa, güncelle
+          return {
+            ...state,
+            problems: state.problems.map(problem =>
+              problem.id === newProblem.id ? newProblem : problem
+            ),
+          };
+        }
+    case "ubdateLike":
       return {
         ...state,
         problems: [...state.problems, action.payload],
-      };
-      case "ubdateLike":
-      return {
-        ...state,
-       problems:[...state.problems, action.payload],
       };
     case "createComment":
       return {

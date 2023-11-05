@@ -73,28 +73,40 @@ export const DataProvider = ({ children }) => {
     if (state.activeUser)
      {
       const problem = state.problems.find((problem) => problem.id === problemId);
-      if(problem && problem.likesUserId && problem.likesUserId.find((id) => id === state.activeUser.id)===state.activeUser.id)
+      // console.log("bu tıklanan problem problems'lerden arandı bulundu getirildi",problem);
+      if(problem.likesUserId.find((id) => id === state.activeUser.id))
       {
+        // alert("problems'lerden arandı bakıldı bu user bu problemi beğenmiş ")
         const response = await axios.get(`${url}/problems?id=${problemId}`);
-         const veri= await response.data[0].likesUserId.filter(id => id !== state.activeUser.id)
-         await axios.patch(`${url}/problems/${problemId}`, { likesUserId: veri })
 
+        const likesUserIds= await response.data[0].likesUserId.filter(id => id !== state.activeUser.id)
+        // console.log("userid silinmiş hali taze çekildi. veri: ",likesUserIds);
+        await axios.patch(`${url}/problems/${problemId}`, { likesUserId: likesUserIds })
 
-      
-         const a=()=>{
-          const updatedLikesUserId = response.data[0].likesUserId.filter(id => id !== state.activeUser.id)
-            return {
-              ...problem,
-              likesUserId: updatedLikesUserId,
-            };
-         }
-            
-       console.log();
+        const ubdateProblem=await{
+          ...problem,
+          likesUserId: response.data[0].likesUserId.filter(id => id !== state.activeUser.id),
+        }
+        // console.log("yeni haliyle userid silinmiş olarak problem: ",ubdateProblem);
+        dispatch({type:"activeProblemDetail",payload:ubdateProblem})
+        dispatch({type:"createAndUbdateProblem",payload:ubdateProblem})
+      }
+      else{
+        // alert("problems'lerden arandı bakıldı bu user bu problemi beğenmemiş")
+        const response = await axios.get(`${url}/problems?id=${problemId}`);
 
-         dispatch({type:"activeProblemDetail",payload:a()})
+        const likesUserIds= await response.data[0].likesUserId;
+        likesUserIds.push(state.activeUser.id)
+        // console.log("userid taze taze eklenmiş hali . veri: ",likesUserIds);
+        await axios.patch(`${url}/problems/${problemId}`, { likesUserId: likesUserIds })
 
-
-            //  window.location.reload();
+        const ubdateProblem={
+          ...problem,
+          likesUserId: likesUserIds,
+        }
+        // console.log("yeni haliyle userid eklenmiş olarak problem: ",ubdateProblem);
+        dispatch({type:"activeProblemDetail",payload:ubdateProblem});
+        dispatch({type:"createAndUbdateProblem",payload:ubdateProblem})
 
       }
     } 

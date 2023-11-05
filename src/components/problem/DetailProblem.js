@@ -61,8 +61,9 @@ const DetailProblem = () => {
               <button onClick={()=>actionLike(state.activeProblemDetail.id)}>{state.activeProblemDetail.likesUserId.find((id)=>id===1)?"❤️":"🤍"}
               {state.activeProblemDetail.likesUserId.length}</button>
 
-              {state.problems[0].likesUserId}
+              activproblem{state.activeProblemDetail.likesUserId}
               <button>✉️{state.activeProblemDetail.commentCount}</button>
+              problemler{state.problems[0].likesUserId}
             </div>
 
             <div className="detail-write-comment">
