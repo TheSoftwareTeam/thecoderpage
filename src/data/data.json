@@ -29,7 +29,14 @@
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
       "commentCount": 3,
-      "likesUserId": [1,2,44,5,5,6,6,23,88,0],
+      "likesUserId": [
+        2,
+        44,
+        5,
+        6,
+        23,
+        4
+      ],
       "createDate": "23.11.2023"
     },
     {
@@ -39,7 +46,18 @@
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
       "commentCount": 3,
-      "likesUserId": [1,2,44,5,5,6,6,23,88,0],
+      "likesUserId": [
+        0,
+        2,
+        44,
+        5,
+        5,
+        6,
+        6,
+        23,
+        88,
+        0
+      ],
       "createDate": "25.11.2023"
     },
     {
@@ -49,7 +67,15 @@
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
       "commentCount": 1,
-      "likesUserId": [34,2,44,5,5,6,6],
+      "likesUserId": [
+        34,
+        2,
+        44,
+        5,
+        5,
+        6,
+        6
+      ],
       "createDate": "26.11.2023"
     },
     {
@@ -59,7 +85,16 @@
       "problemHead": "CSS hata veriyor",
       "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
       "commentCount": 4,
-      "likesUserId": [444,2,44,5,5,6,6,56],
+      "likesUserId": [
+        444,
+        2,
+        44,
+        5,
+        5,
+        6,
+        6,
+        56
+      ],
       "createDate": "27.11.2023"
     },
     {
@@ -69,7 +104,17 @@
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
       "commentCount": 0,
-      "likesUserId": [1,2,44,5,5,6,6,56,2],
+      "likesUserId": [
+        1,
+        2,
+        44,
+        5,
+        5,
+        6,
+        6,
+        56,
+        2
+      ],
       "createDate": "25.11.2023"
     },
     {
@@ -79,7 +124,19 @@
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
       "commentCount": 0,
-      "likesUserId": [3,5,6,7,8,2,44,5,5,6,6],
+      "likesUserId": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        2,
+        44,
+        5,
+        5,
+        6,
+        6
+      ],
       "createDate": "25.11.2023"
     }
   ],
@@ -209,5 +266,3 @@
     }
   ]
 }
-
-

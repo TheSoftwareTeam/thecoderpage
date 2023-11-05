@@ -6,7 +6,7 @@ import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
 const DetailProblem = () => {
-  const { state, dispatch, writeProblemComment } = useContext(DataContext);
+  const { state, dispatch, writeProblemComment,actionLike } = useContext(DataContext);
 
   let url = "http://localhost:3005";
   const { id } = useParams();
@@ -58,9 +58,10 @@ const DetailProblem = () => {
             </div>
 
             <div className="detail-problem-comment-view">
-              <button>❤️{state.activeProblemDetail.likesUserId.length}</button>
+              <button onClick={()=>actionLike(state.activeProblemDetail.id)}>{state.activeProblemDetail.likesUserId.find((id)=>id===1)?"❤️":"🤍"}
+              {state.activeProblemDetail.likesUserId.length}</button>
 
-              
+              {state.problems[0].likesUserId}
               <button>✉️{state.activeProblemDetail.commentCount}</button>
             </div>
 

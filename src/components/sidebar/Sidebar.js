@@ -37,7 +37,7 @@ const Sidebar = () => {
             </div>
 
             <div className="sidebar-problem-comment-view">
-              <button>❤️{problem.likesUserId.length}</button>
+              <button>{problem.likesUserId.find((id)=>id===1)?"❤️":"🤍"}{problem.likesUserId.length}</button>
               <button>✉️{problem.commentCount}</button>
             </div>
           </div>

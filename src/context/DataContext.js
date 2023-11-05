@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useReducer } from "react";
 import { reducer, initialState } from "../reducer/reducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { type } from "@testing-library/user-event/dist/type";
 
 const DataContext = createContext();
 
@@ -68,6 +69,40 @@ export const DataProvider = ({ children }) => {
     // window.location.reload();
   };
 
+  const actionLike=async(problemId)=>{
+    if (state.activeUser)
+     {
+      const problem = state.problems.find((problem) => problem.id === problemId);
+      if(problem && problem.likesUserId && problem.likesUserId.find((id) => id === state.activeUser.id)===state.activeUser.id)
+      {
+        const response = await axios.get(`${url}/problems?id=${problemId}`);
+         const veri= await response.data[0].likesUserId.filter(id => id !== state.activeUser.id)
+         await axios.patch(`${url}/problems/${problemId}`, { likesUserId: veri })
+
+
+      
+         const a=()=>{
+          const updatedLikesUserId = response.data[0].likesUserId.filter(id => id !== state.activeUser.id)
+            return {
+              ...problem,
+              likesUserId: updatedLikesUserId,
+            };
+         }
+            
+       console.log();
+
+         dispatch({type:"activeProblemDetail",payload:a()})
+
+
+            //  window.location.reload();
+
+      }
+    } 
+    else {
+      alert("lütfen beğenmek için giriş yapınız!")
+    }
+  }
+
   useEffect(() => {
     getProblem();
     getCategory();
@@ -79,7 +114,7 @@ export const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ state, dispatch, createProblem, writeProblemComment }}
+      value={{ state, dispatch, createProblem, writeProblemComment,actionLike }}
     >
       {children}
     </DataContext.Provider>

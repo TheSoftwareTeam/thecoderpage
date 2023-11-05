@@ -4,13 +4,23 @@ export const initialState = {
   comments: [],
   users: [],
   activeProblemDetail: {
-      likesUserId: []
+    likesUserId: [],
   },
   selectedCategory: null,
   categoryId: null,
   problemContent: "",
   problemHead: "",
   newProblemComment: "",
+  activeUser: {
+    id: 1,
+    name: "Mahir",
+    surName: "KURŞUN",
+    userName: "mqhirkursun7",
+    email: "mqhir7@icloud.com",
+    password: "123",
+    userPicture: "",
+    problemCount: 4,
+  },
 };
 
 export const reducer = (state, action) => {
@@ -39,6 +49,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         problems: [...state.problems, action.payload],
+      };
+      case "ubdateLike":
+      return {
+        ...state,
+       problems:[...state.problems, action.payload],
       };
     case "createComment":
       return {
