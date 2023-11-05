@@ -44,7 +44,7 @@ export const DataProvider = ({ children }) => {
       likesUserId: [],
       createDate: "25.11.2023",
     };
-    dispatch({type:"createProblem",payload:newProblem})
+    dispatch({type:"createAndUbdateProblem",payload:newProblem})
     await axios.post(`${url}/problems`, newProblem);
     navigate(`/home/detailproblem/${newProblem.id}`);
   };
