@@ -35,7 +35,7 @@ export const DataProvider = ({ children }) => {
     e.preventDefault();
     const newProblem = {
       id: state.problems.length,
-      userId: 0,
+      userId: state.activeUser.id,
       categoryId: state.categoryId,
       problemHead: state.problemHead,
       problemContent: state.problemContent,
@@ -43,7 +43,7 @@ export const DataProvider = ({ children }) => {
       likesUserId: [],
       createDate: "25.11.2023",
     };
-    dispatch({type:"createAndUbdateProblem",payload:newProblem})
+    dispatch({ type: "createAndUbdateProblem", payload: newProblem });
     await axios.post(`${url}/problems`, newProblem);
     navigate(`/home/detailproblem/${newProblem.id}`);
   };
@@ -52,75 +52,77 @@ export const DataProvider = ({ children }) => {
     const newProblemComment = {
       id: state.comments.length,
       problemId: data.id,
-      userId: 1,
+      userId: state.activeUser.id,
       commentContent: state.newProblemComment,
       createDate: "25.11.2023",
     };
-    
-    console.log(state.newProblemComment);
+
     await axios.post(`${url}/comments`, newProblemComment);
-    dispatch({type:"createComment",payload:newProblemComment})
+    dispatch({ type: "createComment", payload: newProblemComment });
     dispatch({
       type: "newProblemComment",
-      payload:"",
-    })
+      payload: "",
+    });
 
-    const problem = await state.problems.map((problem) => {if(problem.id === data.id){return problem}});
-      problem[0]=await{
-      ...problem[0],
-      commentCount:problem[0].commentCount+=1 
-    }
-        await axios.patch(`${url}/problems/${data.id}`, problem[0])
-        dispatch({type:"activeProblemDetail",payload:problem[0]})
-        dispatch({type:"createAndUbdateProblem",payload:problem[0]})
+    data = {
+      ...data,
+      commentCount: (data.commentCount += 1),
+    };
+    await axios.patch(`${url}/problems/${data.id}`, data);
+    dispatch({ type: "activeProblemDetail", payload: data });
+    dispatch({ type: "createAndUbdateProblem", payload: data });
+  };
 
-  }
-
-  const actionLike=async(problemId)=>{
-    if (state.activeUser)
-     {
-      const problem = state.problems.find((problem) => problem.id === problemId);
+  const actionLike = async (problemId) => {
+    if (state.activeUser) {
+      const problem = state.problems.find(
+        (problem) => problem.id === problemId
+      );
       // console.log("bu tıklanan problem problems'lerden arandı bulundu getirildi",problem);
-      if(problem.likesUserId.find((id) => id === state.activeUser.id))
-      {
+      if (problem.likesUserId.find((id) => id === state.activeUser.id)) {
         // alert("problems'lerden arandı bakıldı bu user bu problemi beğenmiş ")
         const response = await axios.get(`${url}/problems?id=${problemId}`);
 
-        const likesUserIds= await response.data[0].likesUserId.filter(id => id !== state.activeUser.id)
+        const likesUserIds = await response.data[0].likesUserId.filter(
+          (id) => id !== state.activeUser.id
+        );
         // console.log("userid silinmiş hali taze çekildi. veri: ",likesUserIds);
-        await axios.patch(`${url}/problems/${problemId}`, { likesUserId: likesUserIds })
+        await axios.patch(`${url}/problems/${problemId}`, {
+          likesUserId: likesUserIds,
+        });
 
-        const ubdateProblem=await{
+        const ubdateProblem = await {
           ...problem,
-          likesUserId: response.data[0].likesUserId.filter(id => id !== state.activeUser.id),
-        }
+          likesUserId: response.data[0].likesUserId.filter(
+            (id) => id !== state.activeUser.id
+          ),
+        };
         // console.log("yeni haliyle userid silinmiş olarak problem: ",ubdateProblem);
-        dispatch({type:"activeProblemDetail",payload:ubdateProblem})
-        dispatch({type:"createAndUbdateProblem",payload:ubdateProblem})
-      }
-      else{
+        dispatch({ type: "activeProblemDetail", payload: ubdateProblem });
+        dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
+      } else {
         // alert("problems'lerden arandı bakıldı bu user bu problemi beğenmemiş")
         const response = await axios.get(`${url}/problems?id=${problemId}`);
 
-        const likesUserIds= await response.data[0].likesUserId;
-        likesUserIds.push(state.activeUser.id)
+        const likesUserIds = await response.data[0].likesUserId;
+        likesUserIds.push(state.activeUser.id);
         // console.log("userid taze taze eklenmiş hali . veri: ",likesUserIds);
-        await axios.patch(`${url}/problems/${problemId}`, { likesUserId: likesUserIds })
+        await axios.patch(`${url}/problems/${problemId}`, {
+          likesUserId: likesUserIds,
+        });
 
-        const ubdateProblem={
+        const ubdateProblem = {
           ...problem,
           likesUserId: likesUserIds,
-        }
+        };
         // console.log("yeni haliyle userid eklenmiş olarak problem: ",ubdateProblem);
-        dispatch({type:"activeProblemDetail",payload:ubdateProblem});
-        dispatch({type:"createAndUbdateProblem",payload:ubdateProblem})
-
+        dispatch({ type: "activeProblemDetail", payload: ubdateProblem });
+        dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
       }
-    } 
-    else {
-      alert("lütfen beğenmek için giriş yapınız!")
+    } else {
+      alert("lütfen beğenmek için giriş yapınız!");
     }
-  }
+  };
 
   useEffect(() => {
     getProblem();
@@ -133,7 +135,13 @@ export const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ state, dispatch, createProblem, writeProblemComment,actionLike }}
+      value={{
+        state,
+        dispatch,
+        createProblem,
+        writeProblemComment,
+        actionLike,
+      }}
     >
       {children}
     </DataContext.Provider>

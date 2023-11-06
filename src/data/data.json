@@ -28,14 +28,15 @@
       "categoryId": 2,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 7,
+      "commentCount": 9,
       "likesUserId": [
         2,
         44,
         5,
         6,
         23,
-        4
+        4,
+        1
       ],
       "createDate": "23.11.2023"
     },
@@ -45,7 +46,7 @@
       "categoryId": 1,
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
-      "commentCount": 3,
+      "commentCount": 5,
       "likesUserId": [
         0,
         2,
@@ -54,7 +55,8 @@
         6,
         23,
         88,
-        0
+        0,
+        1
       ],
       "createDate": "25.11.2023"
     },
@@ -64,7 +66,7 @@
       "categoryId": 3,
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
-      "commentCount": 1,
+      "commentCount": 3,
       "likesUserId": [
         34,
         2,
@@ -80,14 +82,15 @@
       "categoryId": 2,
       "problemHead": "CSS hata veriyor",
       "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
-      "commentCount": 4,
+      "commentCount": 7,
       "likesUserId": [
         444,
         2,
         44,
         5,
         6,
-        56
+        56,
+        1
       ],
       "createDate": "27.11.2023"
     },
@@ -97,9 +100,8 @@
       "categoryId": 0,
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
-      "commentCount": 5,
+      "commentCount": 6,
       "likesUserId": [
-        1,
         2,
         44,
         5,
@@ -126,6 +128,18 @@
         44,
         5,
         6
+      ],
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 6,
+      "userId": 0,
+      "categoryId": 5,
+      "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
+      "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
+      "commentCount": 1,
+      "likesUserId": [
+        1
       ],
       "createDate": "25.11.2023"
     }
@@ -213,6 +227,48 @@
       "problemId": 5,
       "userId": 1,
       "commentContent": "selam",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 12,
+      "problemId": 6,
+      "userId": 1,
+      "commentContent": "Merhaba eklentiyi tekrar kurmayı denediniz mi?",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 13,
+      "problemId": 6,
+      "userId": 1,
+      "commentContent": "merhaba denedim",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 14,
+      "problemId": 2,
+      "userId": 1,
+      "commentContent": "selam",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 21,
+      "problemId": 1,
+      "userId": 1,
+      "commentContent": "csdcsdc",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 22,
+      "problemId": 4,
+      "userId": 1,
+      "commentContent": "csdcsdcsdc",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 23,
+      "problemId": 3,
+      "userId": 1,
+      "commentContent": "cdscascascascasasc",
       "createDate": "25.11.2023"
     }
   ],

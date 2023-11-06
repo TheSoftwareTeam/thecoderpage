@@ -10,11 +10,9 @@ const DetailProblem = () => {
 
   let url = "http://localhost:3005";
   const { id } = useParams();
-
   const getProblemDetail = async () => {
-    const response = await axios.get(`${url}/problems/${Number(id)}`);
-   await dispatch({ type: "activeProblemDetail", payload: response.data });
-
+  const response = await axios.get(`${url}/problems/${Number(id)}`);
+  await dispatch({ type: "activeProblemDetail", payload: response.data });
   };
 
   useEffect(() => {

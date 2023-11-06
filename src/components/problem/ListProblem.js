@@ -10,26 +10,28 @@ import axios from "axios";
 const ListProblem = () => {
   let url = "http://localhost:3005";
 
-  const { state,actionLike } = useContext(DataContext);
+  const { state, actionLike } = useContext(DataContext);
   const navigate = useNavigate();
 
-  const {categoryName}=useParams();
+  const { categoryName } = useParams();
 
-  const [kategori,setKategori]=useState([]);
+  const [kategori, setKategori] = useState([]);
 
-  const getCategory= async()=>{
+  const getCategory = async () => {
+    const response1 = await axios.get(
+      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
+    );
+    const response = await axios.get(
+      `${url}/problems?categoryId=${response1.data[0].id}`
+    );
+    setKategori(response.data);
+  };
 
-      const response1 = await axios.get(`${url}/categories?categoryName=${categoryName.toUpperCase()}`)
-    const response = await axios.get(`${url}/problems?categoryId=${response1.data[0].id}`)
-    setKategori(response.data)
-  }
-
-  useEffect(()=>{
-    if (categoryName!=="all") {
-      getCategory()
+  useEffect(() => {
+    if (categoryName !== "all") {
+      getCategory();
     }
-  },[categoryName])
-
+  }, [categoryName]);
 
   return (
     <div id="list-container">
@@ -48,7 +50,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {(categoryName==="all"?state.problems:kategori).map((problem) =>
+        {(categoryName === "all" ? state.problems : kategori).map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
             <div key={problem.id} className="list-problem">
@@ -76,19 +78,27 @@ const ListProblem = () => {
                 </div>
 
                 <div className="list-problem-comment-view">
-                  <button onClick={()=>actionLike(state.activeProblemDetail.id)}>
-                    {state.problems.find(prob=>prob.id===problem.id).likesUserId.find((id)=>id===1)?"❤️":"🤍"}{problem.likesUserId.length}
-                    </button>
-                  <button>✉️{
-                      state.problems.map(prob=>
-                        {
-                          if(prob.id===problem.id)
-                          {
-                            return prob.commentCount
-                          }
-                         
-                        })
-                    }</button>
+                  <button
+                    onClick={() => actionLike(problem.id)}
+                  >
+                    {state.problems
+                      .find((prob) => prob.id === problem.id)
+                      .likesUserId.find((id) => id === 1)
+                      ? "❤️"
+                      : "🤍"}
+                    {problem.likesUserId.length}
+                  </button>
+                  <button>
+                    ✉️
+                    {state.problems.map((prob) => {
+                      if (prob.id === problem.id) {
+                        return prob.commentCount;
+                      }
+                      else{
+                        return ""
+                      }
+                    })}
+                  </button>
                 </div>
 
                 {state.comments
