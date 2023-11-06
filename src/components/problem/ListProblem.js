@@ -10,7 +10,7 @@ import axios from "axios";
 const ListProblem = () => {
   let url = "http://localhost:3005";
 
-  const { state,actionLike } = useContext(DataContext);
+  const { state, actionLike } = useContext(DataContext);
   const navigate = useNavigate();
 
   const { categoryName } = useParams();
@@ -31,7 +31,7 @@ const ListProblem = () => {
     if (categoryName !== "all") {
       getCategory();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryName]);
 
   return (
@@ -79,16 +79,20 @@ const ListProblem = () => {
                 </div>
 
                 <div className="list-problem-comment-view">
-                  <button onClick={()=>actionLike(problem.id)}>
-                    {state.problems
-                      .find((prob) => prob.id === problem.id)
-                      .likesUserId.find((id) => id === 1)
-                      ? "❤️"
-                      : "🤍"}
-                    {
-                      state.problems.find((prob) => prob.id === problem.id)
-                        .likesUserId.length
-                    }
+                  <button onClick={() => actionLike(problem.id)}>
+                    {state.activeUser !== null
+                      ? state.problems
+                          .find((prob) => prob.id === problem.id)
+                          .likesUserId.find((id) => id === state.activeUser.id)
+                        ? "❤️" +
+                          state.problems.find((prob) => prob.id === problem.id)
+                            .likesUserId.length
+                        : "🤍" +
+                          state.problems.find((prob) => prob.id === problem.id)
+                            .likesUserId.length
+                      : "🤍" +
+                        state.problems.find((prob) => prob.id === problem.id)
+                          .likesUserId.length}
                   </button>
                   <button>✉️{problem.commentCount}</button>
                 </div>

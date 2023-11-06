@@ -3,7 +3,7 @@ import "./login.scss";
 import { NavLink } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 const Login = () => {
-  const { state, dispatch, login } = useContext(DataContext);
+  const { dispatch, login } = useContext(DataContext);
 
   return (
     <div className="login-container">

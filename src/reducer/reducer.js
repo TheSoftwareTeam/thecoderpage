@@ -11,22 +11,18 @@ export const initialState = {
   problemContent: "",
   problemHead: "",
   newProblemComment: "",
-  activeUser: {
-    id: 1,
-    name: "Mahir",
-    surName: "KURŞUN",
-    userName: "mqhirkursun7",
-    email: "mqhir7@icloud.com",
-    password: "123",
-    userPicture: "",
-    problemCount: 4,
-  },
+  activeUser: {},
   loginUserName: "",
   loginPassword: "",
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case "login":
+      return {
+        ...state,
+        activeUser: action.payload,
+      };
     case "loginUserName":
       return {
         ...state,
@@ -74,11 +70,7 @@ export const reducer = (state, action) => {
           ),
         };
       }
-    case "ubdateLike":
-      return {
-        ...state,
-        problems: [...state.problems, action.payload],
-      };
+    
     case "createComment":
       return {
         ...state,

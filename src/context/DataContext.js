@@ -17,11 +17,19 @@ export const DataProvider = ({ children }) => {
     const response = await axios.get(
       `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
     );
-      console.log(response.data);
-    if (response.status === 200 && response.data.length!==0) {
-      const userToken = `${response.data[0].userName}${Math.random()}`;
-      localStorage.setItem("userToken", userToken);
-      navigate(`/home/main/`);
+
+    if (response.status === 200 && response.data.length !== 0) {
+      dispatch({ type: "login", payload: response.data[0] });
+      localStorage.setItem(
+        "userToken",
+        JSON.stringify(`${response.data[0].name}${Math.random()}`)
+      );
+      localStorage.setItem(
+        "userId",
+        JSON.stringify(response.data[0].id)
+      );
+     
+      navigate(`/home/listproblem/`);
       return response.data;
     } else {
       alert("Kullanıcı adı veya şifre yanlış");
@@ -93,7 +101,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const actionLike = async (problemId) => {
-    if (state.activeUser) {
+    if (state.activeUser && localStorage.getItem("userToken")) {
       const problem = state.problems.find(
         (problem) => problem.id === problemId
       );
@@ -139,16 +147,26 @@ export const DataProvider = ({ children }) => {
         dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
       }
     } else {
+     
       alert("lütfen beğenmek için giriş yapınız!");
     }
   };
+
+const deneme=async()=>{
+ 
+  const userId=localStorage.getItem("userId")
+  const response=await axios.get(`${url}/users/${userId}`)
+
+  dispatch({ type: "login", payload: response.data});
+
+}
 
   useEffect(() => {
     getProblem();
     getCategory();
     getComments();
     getUsers();
-
+   deneme();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

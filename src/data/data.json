@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": 1,
       "name": "Murat",
       "surName": "OKUR",
       "userName": "murat",
@@ -11,7 +11,7 @@
       "problemCount": 3
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Mahir",
       "surName": "KURŞUN",
       "userName": "mahir",
@@ -19,6 +19,16 @@
       "password": "123",
       "userPicture": "",
       "problemCount": 4
+    },
+    {
+      "id": 3,
+      "name": "ALi",
+      "surName": "Korkmaz",
+      "userName": "ali",
+      "email": "mqhir7@icloud.com",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 0
     }
   ],
   "problems": [
@@ -30,13 +40,13 @@
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
       "commentCount": 5,
       "likesUserId": [
-        2,
         44,
         5,
         6,
         23,
         4,
-        1
+        1,
+        2
       ],
       "createDate": "23.11.2023"
     },
@@ -49,27 +59,25 @@
       "commentCount": 3,
       "likesUserId": [
         0,
-        2,
         44,
         5,
         6,
         23,
         88,
         0,
-        1
+        2
       ],
       "createDate": "25.11.2023"
     },
     {
       "id": 2,
-      "userId": 0,
+      "userId": 3,
       "categoryId": 3,
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
       "commentCount": 2,
       "likesUserId": [
         34,
-        2,
         44,
         5,
         6,
@@ -86,7 +94,6 @@
       "commentCount": 2,
       "likesUserId": [
         444,
-        2,
         44,
         5,
         6,
@@ -97,25 +104,26 @@
     },
     {
       "id": 4,
-      "userId": 0,
+      "userId": 3,
       "categoryId": 0,
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
       "commentCount": 5,
       "likesUserId": [
-        2,
         44,
         5,
         6,
         56,
         2,
-        1
+        null,
+        null,
+        null
       ],
       "createDate": "25.11.2023"
     },
     {
       "id": 5,
-      "userId": 0,
+      "userId": 3,
       "categoryId": 4,
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
@@ -126,16 +134,16 @@
         6,
         7,
         8,
-        2,
         44,
         5,
-        6
+        6,
+        1
       ],
       "createDate": "25.11.2023"
     },
     {
       "id": 6,
-      "userId": 0,
+      "userId": 3,
       "categoryId": 5,
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
@@ -150,9 +158,7 @@
       "problemHead": "JavaFx nedir",
       "problemContent": "Konuyu açıklar mısın?",
       "commentCount": 1,
-      "likesUserId": [
-        1
-      ],
+      "likesUserId": [],
       "createDate": "25.11.2023"
     }
   ],
@@ -160,14 +166,14 @@
     {
       "id": 0,
       "problemId": 1,
-      "userId": 0,
+      "userId": 3,
       "commentContent": "ne la bu",
       "createDate": "23.11.2023"
     },
     {
       "id": 1,
       "problemId": 0,
-      "userId": 0,
+      "userId": 3,
       "commentContent": "çözülemez vaka",
       "createDate": "23.11.2023"
     },
@@ -188,7 +194,7 @@
     {
       "id": 4,
       "problemId": 3,
-      "userId": 0,
+      "userId": 3,
       "commentContent": "bu sorunu çözen var  mı",
       "createDate": "23.11.2023"
     },

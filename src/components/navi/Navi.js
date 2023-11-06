@@ -7,9 +7,8 @@ import "./nav.scss";
 const Navi = () => {
   const { state, dispatch } = useContext(DataContext);
   const navigate = useNavigate();
-  const deger = localStorage.getItem("userToken");
 
-  useEffect(() => {}, [deger, localStorage]);
+  useEffect(() => {}, []);
   return (
     <>
       <div className="navi-container">
@@ -19,13 +18,17 @@ const Navi = () => {
               TheCoderPage
             </NavLink>
           </h3>
-          {deger !== null ? (
+          {localStorage.getItem("userToken")!== null ? (
             <div>
               {" "}
               <button
                 onClick={() => {
-                  localStorage.removeItem("userToken");
+                  dispatch({ type: "login", payload: null });
+                  localStorage.removeItem("userToken")
+                  localStorage.removeItem("userId")
+                  
                   navigate(`/home/main`);
+                  
                 }}
               >
                 Çıkış Yap
