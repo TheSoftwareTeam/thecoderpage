@@ -14,6 +14,9 @@ export const initialState = {
   activeUser: null,
   loginUserName: "",
   loginPassword: "",
+  signupUserName: "",
+  signupEmail: "",
+  signupPassword: "",
 };
 
 export const reducer = (state, action) => {
@@ -32,6 +35,26 @@ export const reducer = (state, action) => {
       return {
         ...state,
         loginPassword: action.payload,
+      };
+      case "createUser":
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+      };
+    case "signupUserName":
+      return {
+        ...state,
+        signupUserName: action.payload,
+      };
+    case "signupEmail":
+      return {
+        ...state,
+        signupEmail: action.payload,
+      };
+    case "signupPassword":
+      return {
+        ...state,
+        signupPassword: action.payload,
       };
     case "getCategory":
       return {

@@ -11,15 +11,20 @@ export const DataProvider = ({ children }) => {
   const navigate = useNavigate();
   let url = "http://localhost:3005";
 
-  const date=()=>{
-
+  const date = () => {
     const formatTwoDigits = (value) => {
       return value < 10 ? `0${value}` : value;
     };
     const currentDate = new Date();
-    const formattedDate = `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()} ${formatTwoDigits(currentDate.getHours())}:${formatTwoDigits(currentDate.getMinutes())}:${formatTwoDigits(currentDate.getSeconds())}`;
+    const formattedDate = `${currentDate.getDate()}.${
+      currentDate.getMonth() + 1
+    }.${currentDate.getFullYear()} ${formatTwoDigits(
+      currentDate.getHours()
+    )}:${formatTwoDigits(currentDate.getMinutes())}:${formatTwoDigits(
+      currentDate.getSeconds()
+    )}`;
     return formattedDate;
-  }
+  };
   const login = async (e) => {
     e.preventDefault();
 
@@ -41,6 +46,32 @@ export const DataProvider = ({ children }) => {
       alert("Kullanıcı adı veya şifre yanlış");
       console.log("Kullanıcı giriş yapamadı");
       return null;
+    }
+  };
+  const createUser = async (e) => {
+    e.preventDefault();
+    const response = await axios.get(
+      `${url}/users/?userName=${state.signupUserName}`
+    );
+    if (response.status === 200 && response.data.length === 0) {
+      const newUser = {
+        id: state.users.length+1,
+        name: "",
+        surName: "",
+        userName: state.signupUserName,
+        email: state.signupEmail,
+        password: state.signupPassword,
+        userPicture: "",
+        problemCount: 0,
+      };
+      await axios.post(`${url}/users`, newUser);
+      dispatch({ type: "createUser", payload: newUser });
+      dispatch({ type: "signupUserName", payload: "" });
+      dispatch({ type: "signupEmail", payload: "" });
+      dispatch({ type: "signupPassword", payload: "" });
+      navigate(`/home/login`);
+    } else {
+      alert("Bu kullanıcı adı zaten alınmış");
     }
   };
 
@@ -66,7 +97,7 @@ export const DataProvider = ({ children }) => {
 
   const createProblem = async (e) => {
     e.preventDefault();
-    
+
     if (state.activeUser !== null) {
       const newProblem = {
         id: state.problems.length,
@@ -80,18 +111,16 @@ export const DataProvider = ({ children }) => {
       };
       dispatch({ type: "createAndUbdateProblem", payload: newProblem });
       await axios.post(`${url}/problems`, newProblem);
-      dispatch({ type: "problemHead", payload: "" })
-      dispatch({ type: "problemContent", payload: "" })
+      dispatch({ type: "problemHead", payload: "" });
+      dispatch({ type: "problemContent", payload: "" });
       navigate(`/home/detailproblem/${newProblem.id}`);
-
     } else {
       alert("Problem oluşturmak için giriş yapınız!");
     }
   };
 
   const writeProblemComment = async (data) => {
-    
-    if(state.activeUser!==null){
+    if (state.activeUser !== null) {
       const newProblemComment = {
         id: state.comments.length,
         problemId: data.id,
@@ -106,18 +135,17 @@ export const DataProvider = ({ children }) => {
         type: "newProblemComment",
         payload: "",
       });
-  
+
       data = {
         ...data,
         commentCount: (data.commentCount += 1),
       };
-    
+
       await axios.patch(`${url}/problems/${data.id}`, data);
       dispatch({ type: "activeProblemDetail", payload: data });
       dispatch({ type: "createAndUbdateProblem", payload: data });
-    }
-    else{
-      alert("Lütfen giriş yapınız!")
+    } else {
+      alert("Lütfen giriş yapınız!");
     }
   };
 
@@ -198,6 +226,7 @@ export const DataProvider = ({ children }) => {
         writeProblemComment,
         actionLike,
         login,
+        createUser,
       }}
     >
       {children}
