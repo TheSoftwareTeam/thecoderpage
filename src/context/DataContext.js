@@ -11,6 +11,25 @@ export const DataProvider = ({ children }) => {
   const navigate = useNavigate();
   let url = "http://localhost:3005";
 
+  const login = async (e) => {
+    e.preventDefault();
+
+    const response = await axios.get(
+      `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
+    );
+      console.log(response.data);
+    if (response.status === 200 && response.data.length!==0) {
+      const userToken = `${response.data[0].userName}${Math.random()}`;
+      localStorage.setItem("userToken", userToken);
+      navigate(`/home/main/`);
+      return response.data;
+    } else {
+      alert("Kullanıcı adı veya şifre yanlış");
+      console.log("Kullanıcı giriş yapamadı");
+      return null;
+    }
+  };
+
   const getCategory = async () => {
     const response = await axios.get(`${url}/categories`);
     dispatch({ type: "getCategory", payload: await response.data });
@@ -141,6 +160,7 @@ export const DataProvider = ({ children }) => {
         createProblem,
         writeProblemComment,
         actionLike,
+        login,
       }}
     >
       {children}

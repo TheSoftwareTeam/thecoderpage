@@ -4,7 +4,7 @@
       "id": 0,
       "name": "Murat",
       "surName": "OKUR",
-      "userName": "muratoku3",
+      "userName": "murat",
       "email": "muratokur3@icloud.com",
       "password": "123",
       "userPicture": "",
@@ -14,7 +14,7 @@
       "id": 1,
       "name": "Mahir",
       "surName": "KURŞUN",
-      "userName": "mqhirkursun7",
+      "userName": "mahir",
       "email": "mqhir7@icloud.com",
       "password": "123",
       "userPicture": "",
@@ -28,7 +28,7 @@
       "categoryId": 2,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 9,
+      "commentCount": 5,
       "likesUserId": [
         2,
         44,
@@ -46,7 +46,7 @@
       "categoryId": 1,
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
-      "commentCount": 5,
+      "commentCount": 3,
       "likesUserId": [
         0,
         2,
@@ -66,13 +66,14 @@
       "categoryId": 3,
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
-      "commentCount": 3,
+      "commentCount": 2,
       "likesUserId": [
         34,
         2,
         44,
         5,
-        6
+        6,
+        1
       ],
       "createDate": "26.11.2023"
     },
@@ -82,7 +83,7 @@
       "categoryId": 2,
       "problemHead": "CSS hata veriyor",
       "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
-      "commentCount": 7,
+      "commentCount": 2,
       "likesUserId": [
         444,
         2,
@@ -100,14 +101,15 @@
       "categoryId": 0,
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
-      "commentCount": 6,
+      "commentCount": 5,
       "likesUserId": [
         2,
         44,
         5,
         6,
         56,
-        2
+        2,
+        1
       ],
       "createDate": "25.11.2023"
     },
@@ -117,7 +119,7 @@
       "categoryId": 4,
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
-      "commentCount": 0,
+      "commentCount": 1,
       "likesUserId": [
         3,
         5,
@@ -137,6 +139,16 @@
       "categoryId": 5,
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
+      "commentCount": 2,
+      "likesUserId": [],
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "categoryId": 5,
+      "problemHead": "JavaFx nedir",
+      "problemContent": "Konuyu açıklar mısın?",
       "commentCount": 1,
       "likesUserId": [
         1
@@ -269,6 +281,27 @@
       "problemId": 3,
       "userId": 1,
       "commentContent": "cdscascascascasasc",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 18,
+      "problemId": 0,
+      "userId": 1,
+      "commentContent": "denememe",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 19,
+      "problemId": 0,
+      "userId": 1,
+      "commentContent": "asdasdsadsad",
+      "createDate": "25.11.2023"
+    },
+    {
+      "id": 20,
+      "problemId": 7,
+      "userId": 1,
+      "commentContent": "Eclipse ile çalışır",
       "createDate": "25.11.2023"
     }
   ],

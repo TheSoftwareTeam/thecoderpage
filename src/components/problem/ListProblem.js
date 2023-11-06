@@ -10,7 +10,7 @@ import axios from "axios";
 const ListProblem = () => {
   let url = "http://localhost:3005";
 
-  const { state, actionLike } = useContext(DataContext);
+  const { state,actionLike } = useContext(DataContext);
   const navigate = useNavigate();
 
   const { categoryName } = useParams();
@@ -79,27 +79,18 @@ const ListProblem = () => {
                 </div>
 
                 <div className="list-problem-comment-view">
-                  <button
-                    onClick={() => actionLike(problem.id)}
-                  >
+                  <button onClick={()=>actionLike(problem.id)}>
                     {state.problems
                       .find((prob) => prob.id === problem.id)
                       .likesUserId.find((id) => id === 1)
                       ? "❤️"
                       : "🤍"}
-                    {problem.likesUserId.length}
+                    {
+                      state.problems.find((prob) => prob.id === problem.id)
+                        .likesUserId.length
+                    }
                   </button>
-                  <button>
-                    ✉️
-                    {state.problems.map((prob) => {
-                      if (prob.id === problem.id) {
-                        return prob.commentCount;
-                      }
-                      else{
-                        return ""
-                      }
-                    })}
-                  </button>
+                  <button>✉️{problem.commentCount}</button>
                 </div>
 
                 {state.comments

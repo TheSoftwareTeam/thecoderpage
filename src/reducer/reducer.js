@@ -21,10 +21,22 @@ export const initialState = {
     userPicture: "",
     problemCount: 4,
   },
+  loginUserName: "",
+  loginPassword: "",
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case "loginUserName":
+      return {
+        ...state,
+        loginUserName: action.payload,
+      };
+    case "loginPassword":
+      return {
+        ...state,
+        loginPassword: action.payload,
+      };
     case "getCategory":
       return {
         ...state,
