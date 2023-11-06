@@ -6,7 +6,7 @@ import DataContext from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
-  const { state, dispatch } = useContext(DataContext);
+  const { state } = useContext(DataContext);
   const navigate = useNavigate();
 
   return (

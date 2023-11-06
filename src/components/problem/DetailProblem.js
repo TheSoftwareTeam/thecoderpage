@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./detail-problem.scss";
@@ -18,6 +19,7 @@ const DetailProblem = () => {
   useEffect(() => {
     getProblemDetail();
     
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return (
     <div id="detail-container">
