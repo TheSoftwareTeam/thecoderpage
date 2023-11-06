@@ -111,6 +111,10 @@ const ListProblem = () => {
                               user.id === comment.userId ? user.userName : ""
                             )}
                           </h4>
+                          <span>
+                            {comment.createDate}
+                          </span>
+                          
                         </div>
                         <p>{comment.commentContent}</p>
                       </div>

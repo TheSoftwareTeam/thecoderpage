@@ -20,7 +20,7 @@ const Sidebar = () => {
                 user.id === problem.userId ? user.userName : ""
               )}
             </h3>
-            <span>{problem.createDate}</span>
+            
           </div>
           <div className="sidebar-problem-detail">
             <div className="sidebar-problem-head-text">
@@ -46,6 +46,7 @@ const Sidebar = () => {
                   : "🤍" + problem.likesUserId.length}
               </button>
               <button>✉️{problem.commentCount}</button>
+              <span>{problem.createDate.substring(0, problem.createDate.indexOf(" "))}</span>
             </div>
           </div>
         </div>
