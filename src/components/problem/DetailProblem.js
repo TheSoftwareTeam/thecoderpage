@@ -7,19 +7,20 @@ import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
 const DetailProblem = () => {
-  const { state, dispatch, writeProblemComment,actionLike } = useContext(DataContext);
+  const { state, dispatch, writeProblemComment, actionLike } =
+    useContext(DataContext);
 
   let url = "http://localhost:3005";
   const { id } = useParams();
   const getProblemDetail = async () => {
-  const response = await axios.get(`${url}/problems/${Number(id)}`);
-  await dispatch({ type: "activeProblemDetail", payload: response.data });
+    const response = await axios.get(`${url}/problems/${Number(id)}`);
+    await dispatch({ type: "activeProblemDetail", payload: response.data });
   };
 
   useEffect(() => {
     getProblemDetail();
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return (
     <div id="detail-container">
@@ -38,17 +39,20 @@ const DetailProblem = () => {
             </button>
           </div>
         </div>
-        {
-
-        }
+        {}
         <div className="detail-list-problem">
+          
           <div className="detail-user-picture">
+  
             <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
             <h3>
               {state.users.map((user) =>
-                user.id === state.activeProblemDetail.userId ? user.userName : ""
+                user.id === state.activeProblemDetail.userId
+                  ? user.userName
+                  : ""
               )}
             </h3>
+            <span>{state.activeProblemDetail.createDate}</span>
           </div>
           <div className="detail-problem-detail">
             <div className="detail-problem-head-text">
@@ -58,9 +62,16 @@ const DetailProblem = () => {
             </div>
 
             <div className="detail-problem-comment-view">
-              <button onClick={()=>actionLike(state.activeProblemDetail.id)}>{state.activeProblemDetail.likesUserId.find((id)=>id===state.activeUser.id)?"❤️":"🤍"}
-              {state.activeProblemDetail.likesUserId.length}</button>
-                 
+              <button onClick={() => actionLike(state.activeProblemDetail.id)}>
+                {state.activeUser !== null
+                  ? state.activeProblemDetail.likesUserId.find(
+                      (id) => id === state.activeUser.id
+                    )
+                    ? "❤️" + state.activeProblemDetail.likesUserId.length
+                    : "🤍" + state.activeProblemDetail.likesUserId.length
+                  : "🤍" + state.activeProblemDetail.likesUserId.length}
+              </button>
+
               <button>✉️{state.activeProblemDetail.commentCount}</button>
             </div>
 
@@ -75,30 +86,34 @@ const DetailProblem = () => {
                 }
                 placeholder="Yorum yaz.."
               />
-              <button onClick={() => writeProblemComment(state.activeProblemDetail)}>Gönder</button>
+              <button
+                onClick={() => writeProblemComment(state.activeProblemDetail)}
+              >
+                Gönder
+              </button>
             </div>
 
+            {state.comments
+              .slice()
+              .reverse()
+              .map((comment) =>
+                comment.problemId === state.activeProblemDetail.id ? (
+                  <div key={comment.id} className="detail-user-comment">
+                    <div className="detail-comment-user-picture">
+                      <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
+                      <h4>
+                        {state.users.map((user) =>
+                          user.id === comment.userId ? user.userName : ""
+                        )}
+                      </h4>
+                    </div>
 
-      {state.comments.slice().reverse().map((comment) =>
-              comment.problemId === state.activeProblemDetail.id ? (
-                <div key={comment.id} className="detail-user-comment">
-                  <div className="detail-comment-user-picture">
-                    <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
-                    <h4>
-                      {state.users.map((user) =>
-                        user.id === comment.userId ? user.userName : ""
-                      )}
-                    </h4>
+                    <p>{comment.commentContent}</p>
                   </div>
-
-                  <p>{comment.commentContent}</p>
-                </div>
-              ) : (
-                ""
-              )
-            )}
-
-          
+                ) : (
+                  ""
+                )
+              )}
           </div>
         </div>
       </div>

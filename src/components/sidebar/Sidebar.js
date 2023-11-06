@@ -20,6 +20,7 @@ const Sidebar = () => {
                 user.id === problem.userId ? user.userName : ""
               )}
             </h3>
+            <span>{problem.createDate}</span>
           </div>
           <div className="sidebar-problem-detail">
             <div className="sidebar-problem-head-text">

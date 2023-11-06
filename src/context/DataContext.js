@@ -11,6 +11,15 @@ export const DataProvider = ({ children }) => {
   const navigate = useNavigate();
   let url = "http://localhost:3005";
 
+  const date=()=>{
+
+    const formatTwoDigits = (value) => {
+      return value < 10 ? `0${value}` : value;
+    };
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()} ${formatTwoDigits(currentDate.getHours())}:${formatTwoDigits(currentDate.getMinutes())}:${formatTwoDigits(currentDate.getSeconds())}`;
+    return formattedDate;
+  }
   const login = async (e) => {
     e.preventDefault();
 
@@ -24,11 +33,8 @@ export const DataProvider = ({ children }) => {
         "userToken",
         JSON.stringify(`${response.data[0].name}${Math.random()}`)
       );
-      localStorage.setItem(
-        "userId",
-        JSON.stringify(response.data[0].id)
-      );
-     
+      localStorage.setItem("userId", JSON.stringify(response.data[0].id));
+
       navigate(`/home/listproblem/`);
       return response.data;
     } else {
@@ -60,44 +66,59 @@ export const DataProvider = ({ children }) => {
 
   const createProblem = async (e) => {
     e.preventDefault();
-    const newProblem = {
-      id: state.problems.length,
-      userId: state.activeUser.id,
-      categoryId: state.categoryId,
-      problemHead: state.problemHead,
-      problemContent: state.problemContent,
-      commentCount: 0,
-      likesUserId: [],
-      createDate: "25.11.2023",
-    };
-    dispatch({ type: "createAndUbdateProblem", payload: newProblem });
-    await axios.post(`${url}/problems`, newProblem);
-    navigate(`/home/detailproblem/${newProblem.id}`);
+    
+    if (state.activeUser !== null) {
+      const newProblem = {
+        id: state.problems.length,
+        userId: state.activeUser.id,
+        categoryId: state.categoryId,
+        problemHead: state.problemHead,
+        problemContent: state.problemContent,
+        commentCount: 0,
+        likesUserId: [],
+        createDate: date(),
+      };
+      dispatch({ type: "createAndUbdateProblem", payload: newProblem });
+      await axios.post(`${url}/problems`, newProblem);
+      dispatch({ type: "problemHead", payload: "" })
+      dispatch({ type: "problemContent", payload: "" })
+      navigate(`/home/detailproblem/${newProblem.id}`);
+
+    } else {
+      alert("Problem oluşturmak için giriş yapınız!");
+    }
   };
 
   const writeProblemComment = async (data) => {
-    const newProblemComment = {
-      id: state.comments.length,
-      problemId: data.id,
-      userId: state.activeUser.id,
-      commentContent: state.newProblemComment,
-      createDate: "25.11.2023",
-    };
+    
+    if(state.activeUser!==null){
+      const newProblemComment = {
+        id: state.comments.length,
+        problemId: data.id,
+        userId: state.activeUser.id,
+        commentContent: state.newProblemComment,
+        createDate: date(),
+      };
 
-    await axios.post(`${url}/comments`, newProblemComment);
-    dispatch({ type: "createComment", payload: newProblemComment });
-    dispatch({
-      type: "newProblemComment",
-      payload: "",
-    });
-
-    data = {
-      ...data,
-      commentCount: (data.commentCount += 1),
-    };
-    await axios.patch(`${url}/problems/${data.id}`, data);
-    dispatch({ type: "activeProblemDetail", payload: data });
-    dispatch({ type: "createAndUbdateProblem", payload: data });
+      await axios.post(`${url}/comments`, newProblemComment);
+      dispatch({ type: "createComment", payload: newProblemComment });
+      dispatch({
+        type: "newProblemComment",
+        payload: "",
+      });
+  
+      data = {
+        ...data,
+        commentCount: (data.commentCount += 1),
+      };
+    
+      await axios.patch(`${url}/problems/${data.id}`, data);
+      dispatch({ type: "activeProblemDetail", payload: data });
+      dispatch({ type: "createAndUbdateProblem", payload: data });
+    }
+    else{
+      alert("Lütfen giriş yapınız!")
+    }
   };
 
   const actionLike = async (problemId) => {
@@ -147,30 +168,24 @@ export const DataProvider = ({ children }) => {
         dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
       }
     } else {
-     
       alert("lütfen beğenmek için giriş yapınız!");
     }
   };
 
-const deneme=async()=>{
- 
-  const userId=localStorage.getItem("userId")
-  if(userId){
-    const response=await axios.get(`${url}/users/${userId}`)
-    dispatch({ type: "login", payload: response.data});
-
-  }
-  
-
-  
-}
+  const deneme = async () => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      const response = await axios.get(`${url}/users/${userId}`);
+      dispatch({ type: "login", payload: response.data });
+    }
+  };
 
   useEffect(() => {
     getProblem();
     getCategory();
     getComments();
     getUsers();
-   deneme();
+    deneme();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

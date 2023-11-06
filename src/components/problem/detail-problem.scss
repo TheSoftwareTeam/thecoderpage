@@ -69,6 +69,7 @@
       border-radius: 10px;
       .detail-user-picture {
         width: 100%;
+        position: relative;
         height: 50px;
         display: flex;
         flex-direction: row;
@@ -81,6 +82,15 @@
         }
         h3 {
           color: rgb(64, 121, 171);
+        }
+        span{
+          position: absolute;
+          right: 5px;
+          background-color: rgb(219, 219, 219);
+          padding: 5px 10px;
+          border-radius: 15px;
+          font-family: monospace;
+          font-size: 12px;
         }
       }
 

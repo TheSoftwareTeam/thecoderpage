@@ -62,6 +62,7 @@ const ListProblem = () => {
                     user.id === problem.userId ? user.userName : ""
                   )}
                 </h3>
+                <span>{problem.createDate}</span>
               </div>
               <div className="list-problem-detail">
                 <div className="list-problem-head-text">

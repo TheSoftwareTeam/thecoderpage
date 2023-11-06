@@ -20,9 +20,9 @@ const CreateProblem = () => {
           onChange={(e) =>dispatch({ type: "categoryId", payload: Number(e.target.value) })}
           required
         >
-          <option>Selected Category</option>
+          <option value="">Selected Category</option>
           {state.categories.map((category) => (
-            <option value={category.id} key={category}>
+            <option value={category.id} key={category} >
               {category.categoryName}
             </option>
           ))}

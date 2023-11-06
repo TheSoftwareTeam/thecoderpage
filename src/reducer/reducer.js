@@ -11,7 +11,7 @@ export const initialState = {
   problemContent: "",
   problemHead: "",
   newProblemComment: "",
-  activeUser: {},
+  activeUser: null,
   loginUserName: "",
   loginPassword: "",
 };
