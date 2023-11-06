@@ -28,7 +28,7 @@
       "categoryId": 2,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 5,
+      "commentCount": 7,
       "likesUserId": [
         2,
         44,
@@ -213,90 +213,6 @@
       "problemId": 5,
       "userId": 1,
       "commentContent": "selam",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 12,
-      "problemId": 5,
-      "userId": 1,
-      "commentContent": "yorum 2\n",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 13,
-      "problemId": 2,
-      "userId": 1,
-      "commentContent": "master page",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 14,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "123",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 15,
-      "problemId": 2,
-      "userId": 1,
-      "commentContent": "asdasdasd",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 16,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "csdcsd\n",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 17,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "cdcsdcsdcsdcsdcsdcsdcsd",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 18,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "123123123",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 19,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "sssssss",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 20,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "aaaaaaa",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 21,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "asasxasxasxasx",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 22,
-      "problemId": 4,
-      "userId": 1,
-      "commentContent": "Nerede yorumlar",
-      "createDate": "25.11.2023"
-    },
-    {
-      "id": 23,
-      "problemId": 4,
-      "userId": 1,
-      "commentContent": "ascasc",
       "createDate": "25.11.2023"
     }
   ],
