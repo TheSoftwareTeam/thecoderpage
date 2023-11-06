@@ -155,10 +155,14 @@ export const DataProvider = ({ children }) => {
 const deneme=async()=>{
  
   const userId=localStorage.getItem("userId")
-  const response=await axios.get(`${url}/users/${userId}`)
+  if(userId){
+    const response=await axios.get(`${url}/users/${userId}`)
+    dispatch({ type: "login", payload: response.data});
 
-  dispatch({ type: "login", payload: response.data});
+  }
+  
 
+  
 }
 
   useEffect(() => {
