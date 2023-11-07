@@ -1,24 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./profile.scss";
 import DataContext from "../../context/DataContext";
-
+import image from"../../images/muratokur.jpeg";
 const Profile = () => {
-  const { state,dispatch } = useContext(DataContext);
+  const { state,dispatch,editProfile,handleImageChange } = useContext(DataContext);
+useEffect(()=>{
+  if(state.activeUser !== null){
+  dispatch({type:"profileName",payload:state.activeUser.name})
+  dispatch({type:"profileSurname",payload:state.activeUser.surName})
+  }
+  
+},[])
   return (
     <div className="profile-container">
       <h2>Profile</h2>
       <div className="profile-content">
         <div className="profile-picture">
           <img
-            src="https://media.licdn.com/dms/image/C5603AQE3q1bcRO2i6A/profile-displayphoto-shrink_100_100/0/1625398374451?e=1704326400&v=beta&t=381trX8mwswMBxjGs5Q3bDU-VZEE-yx58wDnlNGXoi8"
+            src={image}
             alt="res"
           />
-          <button>✚</button>
+          <input accept="images/*" type="file" onChange={handleImageChange}/>
         </div>
-        <form>
-          <input onChange={(e)=>dispatch({type:"profileName",payload:e.target.value})} type="text" placeholder="Ad" value={state.activeUser.name===""?state.profileName:state.activeUser.name}/>
+        <form onSubmit={editProfile}>
+          <input onChange={(e)=>dispatch({type:"profileName",payload:e.target.value})} type="text"  placeholder="Ad" value={state.profileName}/>
 
-          <input onChange={(e)=>dispatch({type:"profileSurname",payload:e.target.value})}  type="text" placeholder="Soyad" value={state.activeUser.surName===""?state.profileSurname:state.activeUser.surName}/>
+          <input onChange={(e)=>dispatch({type:"profileSurname",payload:e.target.value})}  type="text" placeholder="Soyad" value={state.profileSurname}/>
           <input type="text" value={state.activeUser.userName} readOnly/>
           <input type="email" value={state.activeUser.email} readOnly/>
           <input type="submit"  value="Edit Profile" />

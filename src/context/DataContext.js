@@ -41,10 +41,7 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: "login", payload: await response.data[0] });
       dispatch({ type: "loginUserName", payload: "" });
       dispatch({ type: "loginPassword", payload: "" });
-      if (
-        response.data[0].name === "" &&
-        response.data[0].surName === ""
-      ) {
+      if (response.data[0].name === "" && response.data[0].surName === "") {
         navigate(`/home/profile/`);
       } else {
         navigate(`/home/listproblem/`);
@@ -101,6 +98,34 @@ export const DataProvider = ({ children }) => {
         alert("Bu kullanıcı adı ve email alınmış");
       }
     }
+  };
+
+  const editProfile = async (e) => {
+    e.preventDefault();
+    const userId = localStorage.getItem("userId");
+    const response = await axios.get(`${url}/users/${userId}`);
+    const user = await response.data;
+    const newUser = {
+      ...user,
+      name: state.profileName,
+      surName: state.profileSurname,
+    };
+    await axios.patch(`${url}/users/${userId}`, newUser);
+    dispatch({ type: "login", payload: newUser });
+    navigate(`/home/listproblem/`);
+  };
+
+  const handleImageChange = async (e) => {
+    e.preventDefault();
+    console.log(e.target.files);
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload =  (e) => {
+        dispatch({ type: "profilePicture", payload: e.target.result });
+       console.log(state.profilePicture);
+      reader.readAsDataURL(file);
+    }}
   };
 
   const getCategory = async () => {
@@ -255,6 +280,8 @@ export const DataProvider = ({ children }) => {
         actionLike,
         login,
         createUser,
+        editProfile,
+        handleImageChange,
       }}
     >
       {children}

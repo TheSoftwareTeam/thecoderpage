@@ -17,8 +17,9 @@ export const initialState = {
   signupUserName: "",
   signupEmail: "",
   signupPassword: "",
-  profileName:"",
-  profileSurname:"",
+  profileName: "",
+  profileSurname: "",
+  profilePicture: "",
 };
 
 export const reducer = (state, action) => {
@@ -38,7 +39,7 @@ export const reducer = (state, action) => {
         ...state,
         loginPassword: action.payload,
       };
-      case "createUser":
+    case "createUser":
       return {
         ...state,
         users: [...state.users, action.payload],
@@ -58,16 +59,21 @@ export const reducer = (state, action) => {
         ...state,
         signupPassword: action.payload,
       };
-      case "profileName":
-        return {
-          ...state,
-          profileName: action.payload,
-        };
-      case "profileSurname":
-        return {
-          ...state,
-          profileSurname: action.payload,
-        };
+    case "profileName":
+      return {
+        ...state,
+        profileName: action.payload,
+      };
+    case "profileSurname":
+      return {
+        ...state,
+        profileSurname: action.payload,
+      };
+    case "profilePicture":
+      return {
+        ...state,
+        profilePicture: action.payload,
+      };
     case "getCategory":
       return {
         ...state,
@@ -105,7 +111,7 @@ export const reducer = (state, action) => {
           ),
         };
       }
-    
+
     case "createComment":
       return {
         ...state,
