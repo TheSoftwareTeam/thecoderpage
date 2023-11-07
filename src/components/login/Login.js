@@ -15,14 +15,14 @@ const Login = () => {
           }
           type="text"
           placeholder="Kullanıcı adı"
-        />
+        required/>
         <input
           onChange={(e) =>
             dispatch({ type: "loginPassword", payload: e.target.value })
           }
           type="password"
           placeholder="Şifre"
-        />
+          required/>
         <input type="submit" value="Giriş yap" />
         <button>
           <NavLink id="signup-link" to="/home/signup">

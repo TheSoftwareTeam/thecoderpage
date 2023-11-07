@@ -17,6 +17,8 @@ export const initialState = {
   signupUserName: "",
   signupEmail: "",
   signupPassword: "",
+  profileName:"",
+  profileSurname:"",
 };
 
 export const reducer = (state, action) => {
@@ -56,6 +58,16 @@ export const reducer = (state, action) => {
         ...state,
         signupPassword: action.payload,
       };
+      case "profileName":
+        return {
+          ...state,
+          profileName: action.payload,
+        };
+      case "profileSurname":
+        return {
+          ...state,
+          profileSurname: action.payload,
+        };
     case "getCategory":
       return {
         ...state,

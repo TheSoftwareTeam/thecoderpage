@@ -25,37 +25,53 @@ export const DataProvider = ({ children }) => {
     )}`;
     return formattedDate;
   };
+
   const login = async (e) => {
     e.preventDefault();
 
     const response = await axios.get(
       `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
     );
-
     if (response.status === 200 && response.data.length !== 0) {
-      dispatch({ type: "login", payload: response.data[0] });
       localStorage.setItem(
         "userToken",
         JSON.stringify(`${response.data[0].name}${Math.random()}`)
       );
       localStorage.setItem("userId", JSON.stringify(response.data[0].id));
-
-      navigate(`/home/listproblem/`);
-      return response.data;
+      dispatch({ type: "login", payload: await response.data[0] });
+      dispatch({ type: "loginUserName", payload: "" });
+      dispatch({ type: "loginPassword", payload: "" });
+      if (
+        response.data[0].name === "" &&
+        response.data[0].surName === ""
+      ) {
+        navigate(`/home/profile/`);
+      } else {
+        navigate(`/home/listproblem/`);
+      }
     } else {
       alert("Kullanıcı adı veya şifre yanlış");
       console.log("Kullanıcı giriş yapamadı");
       return null;
     }
   };
+
   const createUser = async (e) => {
     e.preventDefault();
-    const response = await axios.get(
+    const responseUserName = await axios.get(
       `${url}/users/?userName=${state.signupUserName}`
     );
-    if (response.status === 200 && response.data.length === 0) {
+    const responseEmail = await axios.get(
+      `${url}/users/?email=${state.signupEmail}`
+    );
+    if (
+      responseUserName.status === 200 &&
+      responseUserName.data.length === 0 &&
+      responseEmail.status === 200 &&
+      responseEmail.data.length === 0
+    ) {
       const newUser = {
-        id: state.users.length+1,
+        id: state.users.length + 1,
         name: "",
         surName: "",
         userName: state.signupUserName,
@@ -71,7 +87,19 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: "signupPassword", payload: "" });
       navigate(`/home/login`);
     } else {
-      alert("Bu kullanıcı adı zaten alınmış");
+      if (
+        responseUserName.data.length !== 0 &&
+        responseEmail.data.length === 0
+      ) {
+        alert("Bu kullanıcı adı alınmış");
+      } else if (
+        responseEmail.data.length !== 0 &&
+        responseUserName.data.length === 0
+      ) {
+        alert("Bu email alınmış");
+      } else {
+        alert("Bu kullanıcı adı ve email alınmış");
+      }
     }
   };
 
