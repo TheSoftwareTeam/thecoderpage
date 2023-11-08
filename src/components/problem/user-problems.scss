@@ -1,0 +1,162 @@
+#user-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 95vh;
+  
+    #user-content {
+      margin: 50px;
+      width: 70vw;
+      display: flex;
+      flex-direction: column;
+      .user-aciklama {
+        width: 100%;
+        height: 180px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: rgb(156, 153, 153);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        .user-text {
+          width: 50%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-right: 2px solid white;
+          padding: 30px;
+        }
+        .user-share-button {
+          width: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          button {
+            background-color: rgb(104, 103, 102);
+            width: 120px;
+            border-radius: 12px;
+            box-shadow: 5px 10px 15px black;
+            border: none;
+            height: 40px;
+            transition: 0.4s;
+            .user-link {
+              text-decoration: none;
+              color: white;
+            }
+            &:hover{
+              width: 170px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+  
+      hr {
+        height: 2px;
+        margin-top: 15px;
+        background-color: gray;
+      }
+  
+      .user-problem {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        background-color: cornsilk;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 10px;
+        .user-user-picture {
+          position: relative;
+          width: 100%;
+          height: 50px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 25px;
+          }
+          h3 {
+            color: rgb(64, 121, 171);
+          }
+          span{
+            position: absolute;
+            right: 5px;
+            background-color: rgb(219, 219, 219);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-family: monospace;
+            font-size: 12px;
+          }
+        }
+  
+        .user-problem-detail {
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .user-problem-head-text {
+            padding: 10px;
+            background-color: rgb(181, 171, 133);
+          }
+  
+          .user-problem-comment-view {
+            width: 100%;
+            height: 32px;
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            padding: 5px;
+          } 
+  
+          .user-user-comment {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background-color: rgb(213, 207, 178);
+            border-radius: 10px;
+            .user-comment-user-picture {
+              position: relative;
+              width: 100%;
+              height: 40px;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              background-color: rgb(228, 224, 205);
+              gap: 10px;
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 25px;
+              }
+              h4 {
+                color: rgb(83, 124, 160);
+              }
+              span{
+                position: absolute;
+                right: 5px;
+                background-color: rgb(219, 219, 219);
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-family: monospace;
+                font-size: 12px;
+              }
+            }
+  
+            p {
+              width: 100%;
+              padding: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  

@@ -2,60 +2,45 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
-import "./list-problem.scss";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import "./user-problems.scss";
+import { NavLink, useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
-import { useState } from "react";
-import axios from "axios";
-const ListProblem = () => {
-  let url = "http://localhost:3005";
+
+const UserProblem = () => {
+
 
   const { state, actionLike } = useContext(DataContext);
   const navigate = useNavigate();
 
-  const { categoryName } = useParams();
-
-  const [kategori, setKategori] = useState([]);
-
-  const getCategory = async () => {
-    const response1 = await axios.get(
-      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
-    );
-    const response = await axios.get(
-      `${url}/problems?categoryId=${response1.data[0].id}`
-    );
-    setKategori(response.data);
-  };
-
+  
   useEffect(() => {
-    if (categoryName !== "all") {
-      getCategory();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryName]);
+    
+  }, [state.activeUser]); 
 
   return (
-    <div id="list-container">
-      <div id="list-content">
-        <div className="list-aciklama">
-          <div className="list-text">
+    <div id="user-container">
+      <div id="user-content">
+        <div className="user-aciklama">
+          <div className="user-text">
             Açıklama Lorem Ipsum is simply dummy text of the printing and
             typesetting industry. Lorem Ipsum has been the industry's standard
             dummy
           </div>
-          <div className="list-share-button">
+          <div className="user-share-button">
             <button>
-              <NavLink className="list-link" to="/home/createproblem">
+              <NavLink className="user-link" to="/home/createproblem">
                 Problem Paylaş
               </NavLink>
             </button>
           </div>
         </div>
-        {(categoryName === "all" ? state.problems : kategori).map((problem) =>
+        {state.problems
+  .filter(problem => state.selectedCategory === null ? problem.userId === state.activeUser.id : problem.categoryId === state.selectedCategory)
+  .map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
-            <div key={problem.id} className="list-problem">
-              <div className="list-user-picture">
+            <div key={problem.id} className="user-problem">
+              <div className="user-user-picture">
                 <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
                 <h3>
                   {state.users.map((user) =>
@@ -64,8 +49,8 @@ const ListProblem = () => {
                 </h3>
                 <span>{problem.createDate}</span>
               </div>
-              <div className="list-problem-detail">
-                <div className="list-problem-head-text">
+              <div className="user-problem-detail">
+                <div className="user-problem-head-text">
                   <h3>{problem.problemHead}</h3>
                   <p>
                     {problem.problemContent.slice(0, 150)}
@@ -79,7 +64,7 @@ const ListProblem = () => {
                   </p>
                 </div>
 
-                <div className="list-problem-comment-view">
+                <div className="user-problem-comment-view">
                   <button onClick={() => actionLike(problem.id)}>
                     {state.activeUser !== null
                       ? state.problems
@@ -103,8 +88,8 @@ const ListProblem = () => {
                   .slice(0, 2)
                   .map((comment) =>
                     comment.problemId === problem.id ? (
-                      <div key={comment.id} className="list-user-comment">
-                        <div className="list-comment-user-picture">
+                      <div key={comment.id} className="user-user-comment">
+                        <div className="user-comment-user-picture">
                           <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
                           <h4>
                             {state.users.map((user) =>
@@ -139,4 +124,4 @@ const ListProblem = () => {
   );
 };
 
-export default ListProblem;
+export default UserProblem;

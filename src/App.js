@@ -11,6 +11,7 @@ import ListProblem from "./components/problem/ListProblem";
 import DetailProblem from "./components/problem/DetailProblem";
 import "./style.scss";
 import { DataProvider } from "./context/DataContext";
+import UserProblems from "./components/problem/UserProblems";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="createproblem" element={<CreateProblem />} />
           <Route path="listproblem/:categoryName" element={<ListProblem />} />
-          <Route path="listproblem/all/:userId" element={<ListProblem />} />
+          <Route path="myproblem/:userId" element={< UserProblems/>} />
           <Route path="detailproblem/:id" element={<DetailProblem />} />
         </Route>
       </Routes>
