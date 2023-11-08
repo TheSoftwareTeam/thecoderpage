@@ -1,6 +1,6 @@
 .navi-container{
     
-    height: 7vh;
+    height: 8vh;
     .navi-header{
         display: flex;
         border-bottom: 1px solid black;
@@ -47,7 +47,13 @@
             box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 1;
             h5{
-                margin: 5px;
+                margin: 8px;
+                font-family: monospace;
+                font-size: 14px;
+                font-weight: 700;
+                color: #333;
+                 padding: 4px 8px;
+             
             }
           }
           
