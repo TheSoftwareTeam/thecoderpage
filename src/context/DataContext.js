@@ -115,19 +115,6 @@ export const DataProvider = ({ children }) => {
     navigate(`/home/listproblem/`);
   };
 
-  const handleImageChange = async (e) => {
-    e.preventDefault();
-    console.log(e.target.files);
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload =  (e) => {
-        dispatch({ type: "profilePicture", payload: e.target.result });
-       console.log(state.profilePicture);
-      reader.readAsDataURL(file);
-    }}
-  };
-
   const getCategory = async () => {
     const response = await axios.get(`${url}/categories`);
     dispatch({ type: "getCategory", payload: await response.data });
@@ -281,7 +268,6 @@ export const DataProvider = ({ children }) => {
         login,
         createUser,
         editProfile,
-        handleImageChange,
       }}
     >
       {children}

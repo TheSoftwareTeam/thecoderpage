@@ -1,4 +1,3 @@
-import React from "react";
 import SectionOne from "./SectionOne";
 import SectionTwo from "./SectionTwo";
 import SectionThree from "./SectionThree";
@@ -8,11 +7,10 @@ import SectionSix from "./SectionSix";
 import "./main.scss"
 
 const Main = () => {
+
+
   return (
     <div>
-      <div>
-        Popüler
-      </div>
       <SectionOne />
       <SectionTwo />
       <SectionThree />
@@ -20,7 +18,6 @@ const Main = () => {
       <SectionFive />
       <SectionSix />
     </div>
-    
   );
 };
 

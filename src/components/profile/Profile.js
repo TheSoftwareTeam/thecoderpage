@@ -3,7 +3,7 @@ import "./profile.scss";
 import DataContext from "../../context/DataContext";
 import image from"../../images/avatar.png";
 const Profile = () => {
-  const { state,dispatch,editProfile,handleImageChange } = useContext(DataContext);
+  const { state,dispatch,editProfile } = useContext(DataContext);
   
 useEffect(()=>{
 

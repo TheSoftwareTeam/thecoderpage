@@ -128,13 +128,14 @@
       "categoryId": 0,
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
-      "commentCount": 5,
+      "commentCount": 6,
       "likesUserId": [
         44,
         5,
         6,
         56,
-        2
+        2,
+        1
       ],
       "createDate": "23.11.2023 21:13:10"
     },
@@ -301,6 +302,13 @@
       "userId": 2,
       "commentContent": "sadasdasdads",
       "createDate": "6.11.2023 21:12:51"
+    },
+    {
+      "id": 16,
+      "problemId": 4,
+      "userId": 1,
+      "commentContent": "asdfghjkl",
+      "createDate": "7.11.2023 20:40:56"
     }
   ],
   "categories": [
