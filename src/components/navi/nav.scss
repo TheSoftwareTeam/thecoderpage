@@ -1,10 +1,10 @@
 .navi-container{
     
-    height: 9vh;
+    height: 7vh;
     .navi-header{
         display: flex;
         border-bottom: 1px solid black;
-        height: 5vh;
+        height: 6vh;
         justify-content: space-between;
         align-items: center;
         background-color: aliceblue;
@@ -19,7 +19,8 @@
         }
         img{
             border-radius: 100%;
-            width: 30px;
+            width: 40px;
+            margin:15px 10px 10px 0px;  
         }
         button{
             margin-right: 15px;
@@ -38,12 +39,12 @@
         }
         .dropdown-menu {
             position: absolute;
-            top: 40px; 
+            top: 50px; 
             right: 10px;
             background-color: #fff; 
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 1;
             h5{
                 margin: 5px;
@@ -61,7 +62,7 @@
           }
           
           .dropdown-menu li:hover {
-            background-color: #f0f0f0;
+            background-color: #cccccc;
           }
           
     }
