@@ -13,26 +13,44 @@ const ListProblem = () => {
   const { state, actionLike } = useContext(DataContext);
   const navigate = useNavigate();
 
-  const { categoryName } = useParams();
+  const { categoryName, userId } = useParams();
 
   const [kategori, setKategori] = useState([]);
-
+  const [userProblems, setUserProblems] = useState([]);
   const getCategory = async () => {
     const response1 = await axios.get(
-      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
+      `${url}/categories?categoryName=${categoryName}`
     );
+    if (response1.data.length === 0) {
+      setKategori([]);
+      return;
+    }
     const response = await axios.get(
       `${url}/problems?categoryId=${response1.data[0].id}`
     );
     setKategori(response.data);
   };
-
+  const getUserProblems = async () => {
+    const response = await axios.get(
+      `${url}/problems?userId=${userId}`
+    );
+   
+    setUserProblems(response.data);
+    
+  };
   useEffect(() => {
-    if (categoryName !== "all") {
+  
+
+    if (categoryName !== "all"||userId !== undefined) {
       getCategory();
     }
+    if(userId !== undefined||categoryName === "all"){
+      getUserProblems();
+    
+    } 
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryName]);
+  }, [categoryName,userId]);
 
   return (
     <div id="list-container">
@@ -51,7 +69,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {(categoryName === "all" ? state.problems : kategori).map((problem) =>
+        {(categoryName === "all" ? [...state.problems, ...userProblems] : [...kategori, ...userProblems]).map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
             <div key={problem.id} className="list-problem">
@@ -111,10 +129,7 @@ const ListProblem = () => {
                               user.id === comment.userId ? user.userName : ""
                             )}
                           </h4>
-                          <span>
-                            {comment.createDate}
-                          </span>
-                          
+                          <span>{comment.createDate}</span>
                         </div>
                         <p>{comment.commentContent}</p>
                       </div>

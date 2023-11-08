@@ -45,7 +45,7 @@ const Navi = () => {
             
               <hr/>
               <li onClick={()=>navigate(`/home/profile`)}>Profilim</li>
-              <li onClick={()=>navigate(`/home/detailproblem/${state.activeUser.id}`)}>Problemlerim</li>
+              <li onClick={()=>navigate(`/home/listproblem/all/${state.activeUser.id}`)}>Problemlerim</li>
               <li onClick={handleLogout}>Çıkış Yap</li>
             </ul>
           </div>
