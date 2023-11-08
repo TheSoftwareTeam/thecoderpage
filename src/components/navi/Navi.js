@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 import "./nav.scss";
@@ -8,7 +8,20 @@ const Navi = () => {
   const { state, dispatch } = useContext(DataContext);
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch({ type: "login", payload: null });
+                  localStorage.removeItem("userToken")
+                  localStorage.removeItem("userId")
+                  
+                  navigate(`/home/main`);
+  };
+  
   return (
     <>
       <div className="navi-container">
@@ -20,20 +33,26 @@ const Navi = () => {
           </h3>
           {localStorage.getItem("userToken")!== null ? (
             <div>
-              {" "}
-              <button
-                onClick={() => {
-                  dispatch({ type: "login", payload: null });
-                  localStorage.removeItem("userToken")
-                  localStorage.removeItem("userId")
-                  
-                  navigate(`/home/main`);
-                  
-                }}
-              >
-                Çıkış Yap
-              </button>
-              <img onClick={()=>navigate("/home/profile")} src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
+
+            
+              <img onClick={toggleDropdown} src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
+
+              {isDropdownOpen && (
+          <div className="dropdown-menu">
+            <ul>
+              <h5>{state.activeUser.name} {state.activeUser.surName}</h5>
+              <h5>{state.activeUser.email}</h5>
+            
+              <hr/>
+              <li onClick={()=>navigate(`/home/profile`)}>Profilim</li>
+              <li onClick={()=>navigate(`/home/detailproblem/${state.activeUser.id}`)}>Problemlerim</li>
+              <li onClick={handleLogout}>Çıkış Yap</li>
+            </ul>
+          </div>
+        )}
+
+
+
             </div>
           ) : (
             <button>

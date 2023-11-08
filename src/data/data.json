@@ -90,7 +90,7 @@
     },
     {
       "id": 2,
-      "userId": 3,
+      "userId": 2,
       "categoryId": 3,
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
@@ -124,7 +124,7 @@
     },
     {
       "id": 4,
-      "userId": 3,
+      "userId": 2,
       "categoryId": 0,
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
@@ -141,7 +141,7 @@
     },
     {
       "id": 5,
-      "userId": 3,
+      "userId": 2,
       "categoryId": 4,
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
