@@ -41,10 +41,13 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: "login", payload: await response.data[0] });
       dispatch({ type: "loginUserName", payload: "" });
       dispatch({ type: "loginPassword", payload: "" });
+      dispatch({type:"selectedCategory",payload:null} );
       if (response.data[0].name === "" && response.data[0].surName === "") {
         navigate(`/home/profile/`);
+       
       } else {
         navigate(`/home/listproblem/`);
+
       }
     } else {
       alert("Kullanıcı adı veya şifre yanlış");

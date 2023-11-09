@@ -16,6 +16,7 @@ const Navi = () => {
 
   const handleLogout = () => {
     dispatch({ type: "login", payload: null });
+    dispatch({type:"selectedCategory",payload:null} );
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
 
@@ -52,6 +53,7 @@ const Navi = () => {
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });
                         navigate(`/home/myproblem/${state.activeUser.id}`);
+                    
                       }}
                     >
                       Problemlerim
