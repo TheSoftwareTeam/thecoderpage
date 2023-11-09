@@ -15,7 +15,7 @@ useEffect(()=>{
 },[state.activeUser])
   return (
     <div className="profile-container">
-      <h2>Profile</h2>
+      <h2>Profil</h2>
       <div className="profile-content">
         <div className="profile-picture">
           <img
@@ -31,7 +31,7 @@ useEffect(()=>{
 
            <input type="text" value={state.activeUser!==null?state.activeUser.userName:""} readOnly/>
           <input type="email" value={state.activeUser!==null?state.activeUser.email:""}  readOnly/>
-          <input type="submit"  value="Edit Profile" />
+          <input type="submit"  value="Düzenle" />
         </form>
       </div>
     </div>
