@@ -4,21 +4,16 @@ import Sidebar from "../sidebar/Sidebar";
 import "./detail-problem.scss";
 import DataContext from "../../context/DataContext";
 import { NavLink, useParams } from "react-router-dom";
-import axios from "axios";
 
 const DetailProblem = () => {
-  const { state, dispatch, writeProblemComment, actionLike } =
+  const { state, dispatch, writeProblemComment, actionLike,getProblemDetail } =
     useContext(DataContext);
 
-  let url = "http://localhost:3005";
   const { id } = useParams();
-  const getProblemDetail = async () => {
-    const response = await axios.get(`${url}/problems/${Number(id)}`);
-    await dispatch({ type: "activeProblemDetail", payload: response.data });
-  };
+  
 
   useEffect(() => {
-    getProblemDetail();
+    getProblemDetail(id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);

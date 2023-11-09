@@ -4,12 +4,12 @@ import {useNavigate } from 'react-router-dom'
 import DataContext from '../../context/DataContext';
 
 const SignUp = () => {
-  const {dispatch,createUser} = useContext(DataContext);
+  const {dispatch,signupUser} = useContext(DataContext);
   const navigate = useNavigate();
   return (
-    <div className="login-container">
+    <div className="signup-container">
   
-      <form onSubmit={createUser}>
+      <form onSubmit={signupUser}>
       <h2>Kaydol</h2>
         <input onChange={(e)=>dispatch({type:"signupUserName",payload:e.target.value})} type="text" placeholder="Kullanıcı adı" required/>
         <input onChange={(e)=>dispatch({type:"signupEmail",payload:e.target.value})} type="email" placeholder="Email" required/>

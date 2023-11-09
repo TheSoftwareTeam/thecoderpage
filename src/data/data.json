@@ -58,7 +58,7 @@
       "categoryId": 2,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 5,
+      "commentCount": 6,
       "likesUserId": [
         44,
         5,
@@ -309,6 +309,13 @@
       "userId": 1,
       "commentContent": "asdfghjkl",
       "createDate": "7.11.2023 20:40:56"
+    },
+    {
+      "id": 17,
+      "problemId": 0,
+      "userId": 2,
+      "commentContent": "yorum deneme",
+      "createDate": "9.11.2023 17:01:09"
     }
   ],
   "categories": [

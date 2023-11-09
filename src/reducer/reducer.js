@@ -27,6 +27,7 @@ export const initialState = {
   problemContent: "",
   problemHead: "",
   categoryFilterProblem:[],
+  activeUserProblem:[],
   activeProblemDetail: {
     likesUserId: [],
   },
@@ -164,6 +165,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         categoryFilterProblem: action.payload,
+      };
+    case "activeUserProblem":
+      return {
+        ...state,
+        activeUserProblem: action.payload,
       };
     case "activeProblemDetail":
       return {

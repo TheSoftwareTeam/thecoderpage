@@ -3,15 +3,20 @@
 import React, { useContext, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./user-problems.scss";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 
 const UserProblem = () => {
 
+  const { userName } = useParams();
 
-  const { state, actionLike } = useContext(DataContext);
+  const { state, actionLike,activeUserProblem } = useContext(DataContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    activeUserProblem(userName)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userName]); 
 
   return (
     <div id="user-container">
@@ -30,9 +35,7 @@ const UserProblem = () => {
             </button>
           </div>
         </div>
-        {state.problems
-  .filter(problem => state.selectedCategory === null ? problem.userId === state.activeUser.id : problem.categoryId === state.selectedCategory)
-  .map((problem) =>
+        {state.activeUserProblem.map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
             <div key={problem.id} className="user-problem">

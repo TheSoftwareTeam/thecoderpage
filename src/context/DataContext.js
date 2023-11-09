@@ -26,6 +26,7 @@ export const DataProvider = ({ children }) => {
     return formattedDate;
   };
 
+  //login
   const login = async (e) => {
     e.preventDefault();
 
@@ -55,8 +56,8 @@ export const DataProvider = ({ children }) => {
       return null;
     }
   };
-
-  const createUser = async (e) => {
+  //signup
+  const signupUser = async (e) => {
     e.preventDefault();
     const responseUserName = await axios.get(
       `${url}/users/?userName=${state.signupUserName}`
@@ -102,7 +103,7 @@ export const DataProvider = ({ children }) => {
       }
     }
   };
-
+//profile
   const editProfile = async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem("userId");
@@ -117,59 +118,16 @@ export const DataProvider = ({ children }) => {
     dispatch({ type: "login", payload: newUser });
     navigate(`/home/listproblem/`);
   };
-
-  const getCategory = async () => {
-    const response = await axios.get(`${url}/categories`);
-    dispatch({ type: "getCategory", payload: await response.data });
-  };
-
-  const getProblem = async () => {
-    const response = await axios.get(`${url}/problems`);
-    dispatch({ type: "getProblems", payload: await response.data });
-  };
-
-  const getCategoryFilterproblem = async (categoryName) => {
-    const category = await axios.get(
-      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
-    );
-    const response = await axios.get(
-      `${url}/problems?categoryId=${category.data[0].id}`
-    );
-    dispatch({ type: "categoryFilterProblem", payload: response.data });
-  };
-
-  const getComments = async () => {
-    const response = await axios.get(`${url}/comments`);
-    dispatch({ type: "getComments", payload: await response.data });
-  };
-
+  //user
   const getUsers = async () => {
     const response = await axios.get(`${url}/users`);
     dispatch({ type: "getUsers", payload: await response.data });
   };
 
-  const createProblem = async (e) => {
-    e.preventDefault();
-
-    if (state.activeUser !== null) {
-      const newProblem = {
-        id: state.problems.length,
-        userId: state.activeUser.id,
-        categoryId: state.categoryId,
-        problemHead: state.problemHead,
-        problemContent: state.problemContent,
-        commentCount: 0,
-        likesUserId: [],
-        createDate: date(),
-      };
-      dispatch({ type: "createAndUbdateProblem", payload: newProblem });
-      await axios.post(`${url}/problems`, newProblem);
-      dispatch({ type: "problemHead", payload: "" });
-      dispatch({ type: "problemContent", payload: "" });
-      navigate(`/home/detailproblem/${newProblem.id}`);
-    } else {
-      alert("Problem oluşturmak için giriş yapınız!");
-    }
+  //comment
+  const getComments = async () => {
+    const response = await axios.get(`${url}/comments`);
+    dispatch({ type: "getComments", payload: await response.data });
   };
 
   const writeProblemComment = async (data) => {
@@ -199,6 +157,67 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: "createAndUbdateProblem", payload: data });
     } else {
       alert("Lütfen giriş yapınız!");
+    }
+  };
+
+  //category
+  const getCategory = async () => {
+    const response = await axios.get(`${url}/categories`);
+    dispatch({ type: "getCategory", payload: await response.data });
+  };
+
+  const getCategoryFilterproblem = async (categoryName) => {
+    const category = await axios.get(
+      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
+    );
+    const response = await axios.get(
+      `${url}/problems?categoryId=${category.data[0].id}`
+    );
+    dispatch({ type: "categoryFilterProblem", payload: response.data });
+  };
+
+  //problem
+  const getProblem = async () => {
+    const response = await axios.get(`${url}/problems`);
+    dispatch({ type: "getProblems", payload: await response.data });
+  };
+
+  const activeUserProblem = async (userName) => {
+    const user = await axios.get(
+      `${url}/users?userName=${userName}`
+    );
+    const response = await axios.get(
+      `${url}/problems?userId=${user.data[0].id}`
+    );
+    dispatch({ type: "activeUserProblem", payload: response.data });
+  };
+
+  const getProblemDetail = async (id) => {
+    const response = await axios.get(`${url}/problems/${Number(id)}`);
+    await dispatch({ type: "activeProblemDetail", payload: response.data });
+  };
+
+  const createProblem = async (e) => {
+    e.preventDefault();
+
+    if (state.activeUser !== null) {
+      const newProblem = {
+        id: state.problems.length,
+        userId: state.activeUser.id,
+        categoryId: state.categoryId,
+        problemHead: state.problemHead,
+        problemContent: state.problemContent,
+        commentCount: 0,
+        likesUserId: [],
+        createDate: date(),
+      };
+      dispatch({ type: "createAndUbdateProblem", payload: newProblem });
+      await axios.post(`${url}/problems`, newProblem);
+      dispatch({ type: "problemHead", payload: "" });
+      dispatch({ type: "problemContent", payload: "" });
+      navigate(`/home/detailproblem/${newProblem.id}`);
+    } else {
+      alert("Problem oluşturmak için giriş yapınız!");
     }
   };
 
@@ -253,7 +272,8 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const deneme = async () => {
+  //other
+  const userCache = async () => {
     const userId = localStorage.getItem("userId");
     if (userId) {
       const response = await axios.get(`${url}/users/${userId}`);
@@ -266,7 +286,7 @@ export const DataProvider = ({ children }) => {
     getCategory();
     getComments();
     getUsers();
-    deneme();
+    userCache();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -279,9 +299,11 @@ export const DataProvider = ({ children }) => {
         writeProblemComment,
         actionLike,
         login,
-        createUser,
+        signupUser,
         editProfile,
         getCategoryFilterproblem,
+        activeUserProblem,
+        getProblemDetail,
       }}
     >
       {children}
