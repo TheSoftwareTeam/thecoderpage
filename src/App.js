@@ -25,7 +25,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="createproblem" element={<CreateProblem />} />
           <Route path="listproblem/:categoryName" element={<ListProblem />} />
-          <Route path="myproblem/:userId" element={< UserProblems/>} />
+          <Route path="userproblems/:userName" element={< UserProblems/>} />
           <Route path="detailproblem/:id" element={<DetailProblem />} />
         </Route>
       </Routes>

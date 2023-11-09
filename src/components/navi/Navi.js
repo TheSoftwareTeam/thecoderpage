@@ -52,7 +52,7 @@ const Navi = () => {
                     <li
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });
-                        navigate(`/home/myproblem/${state.activeUser.id}`);
+                        navigate(`/home/userproblems/${state.activeUser.userName}`);
                     
                       }}
                     >
