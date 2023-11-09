@@ -8,7 +8,8 @@
       "email": "muratokur3@icloud.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 3
+      "problemCount": 3,
+      "createDate": "23.11.2023 21:13:10"
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "email": "mqhir7@icloud.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 4
+      "problemCount": 4,
+      "createDate": "23.11.2023 21:13:10"
     },
     {
       "id": 3,
@@ -28,27 +30,19 @@
       "email": "mqhir7@icloud.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 0
+      "problemCount": 0,
+      "createDate": "23.11.2023 21:13:10"
     },
     {
       "id": 4,
-      "name": "",
-      "surName": "",
-      "userName": "ayşe",
-      "email": "ayse@fatma.com",
-      "password": "123",
-      "userPicture": "",
-      "problemCount": 0
-    },
-    {
-      "id": 5,
       "name": "Zeynep",
       "surName": "Kaya",
       "userName": "zeynep",
       "email": "zeynep@z.z",
       "password": "123",
       "userPicture": "",
-      "problemCount": 0
+      "problemCount": 0,
+      "createDate": "23.11.2023 21:13:10"
     }
   ],
   "problems": [

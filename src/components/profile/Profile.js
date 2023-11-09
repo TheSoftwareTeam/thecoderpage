@@ -23,6 +23,8 @@ useEffect(()=>{
             src={image}
             alt="res"
           />
+          <hr/>
+          <span>katılma tarihi: {state.activeUser!==null?state.activeUser.createDate.split(' ')[0]:""}</span>
         </div>
         <form onSubmit={editProfile}>
 

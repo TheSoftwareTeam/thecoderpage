@@ -80,6 +80,7 @@ export const DataProvider = ({ children }) => {
         password: state.signupPassword,
         userPicture: "",
         problemCount: 0,
+        createDate: date(),
       };
       await axios.post(`${url}/users`, newUser);
       dispatch({ type: "createUser", payload: newUser });

@@ -12,6 +12,13 @@ import DetailProblem from "./components/problem/DetailProblem";
 import "./style.scss";
 import { DataProvider } from "./context/DataContext";
 import UserProblems from "./components/problem/UserProblems";
+import AdminPanel from "./admin/panel/AdminPanel"
+import Users from "./admin/users/Users"
+import Categories from "./admin/categories/Categories"
+import Problems from "./admin/problems/Problems"
+import Comments from "./admin/comments/Comments"
+
+
 
 function App() {
   return (
@@ -27,7 +34,19 @@ function App() {
           <Route path="listproblem/:categoryName" element={<ListProblem />} />
           <Route path="userproblems/:userName" element={< UserProblems/>} />
           <Route path="detailproblem/:id" element={<DetailProblem />} />
-        </Route>
+          </Route>
+          <Route path="admin" element={<AdminPanel/>} >
+            <Route path="users" element={<Users/>} />
+            <Route path="categories" element={<Categories/>} />
+            <Route path="problems" element={<Problems/>} />
+            <Route path="comments" element={<Comments/>} />
+
+            <Route path="usersDetail/:id" element="teaits"/>
+            <Route path="categoryDetail/:id" element="teaits"/>
+            <Route path="commentDetail/:id" element="teaits"/>
+            <Route path="problemDetail/:id" element="teaits"/>
+
+          </Route>
       </Routes>
       <Footer />
     </DataProvider>
