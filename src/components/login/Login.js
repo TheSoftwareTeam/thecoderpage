@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import "./login.scss";
-import { NavLink } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 const Login = () => {
   const { dispatch, login } = useContext(DataContext);
+  const navigate = useNavigate();
 
   return (
     <div className="login-container">
@@ -24,10 +25,8 @@ const Login = () => {
           placeholder="Şifre"
           required/>
         <input type="submit" value="Giriş yap" />
-        <button>
-          <NavLink id="signup-link" to="/home/signup">
-            Kaydol
-          </NavLink>
+        <button onClick={()=>navigate("/home/signup")}>
+          Kaydol
         </button>
       </form>
     </div>

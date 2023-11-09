@@ -128,6 +128,16 @@ export const DataProvider = ({ children }) => {
     dispatch({ type: "getProblems", payload: await response.data });
   };
 
+  const getCategoryFilterproblem = async (categoryName) => {
+    const category = await axios.get(
+      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
+    );
+    const response = await axios.get(
+      `${url}/problems?categoryId=${category.data[0].id}`
+    );
+    dispatch({ type: "categoryFilterProblem", payload: response.data });
+  };
+
   const getComments = async () => {
     const response = await axios.get(`${url}/comments`);
     dispatch({ type: "getComments", payload: await response.data });
@@ -271,6 +281,7 @@ export const DataProvider = ({ children }) => {
         login,
         createUser,
         editProfile,
+        getCategoryFilterproblem,
       }}
     >
       {children}

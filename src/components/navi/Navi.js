@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 import "./nav.scss";
@@ -8,10 +8,9 @@ const Navi = () => {
   const { state, dispatch } = useContext(DataContext);
   const navigate = useNavigate();
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+    dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
   };
 
   const handleLogout = () => {
@@ -19,7 +18,6 @@ const Navi = () => {
     dispatch({type:"selectedCategory",payload:null} );
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
-
     navigate(`/home/main`);
   };
 
@@ -39,7 +37,7 @@ const Navi = () => {
                 src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"
               />
 
-              {isDropdownOpen && (
+              {state.isDropdownOpen && (
                 <div onClick={(toggleDropdown)} className="dropdown-menu">
                   <ul>
                     <h5>

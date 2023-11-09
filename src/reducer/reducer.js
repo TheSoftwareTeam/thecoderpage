@@ -1,29 +1,41 @@
 export const initialState = {
-  categories: [],
-  problems: [],
-  comments: [],
-  users: [],
-  activeProblemDetail: {
-    likesUserId: [],
-  },
-  selectedCategory: null,
-  categoryId: null,
-  problemContent: "",
-  problemHead: "",
-  newProblemComment: "",
+  //login
   activeUser: null,
   loginUserName: "",
   loginPassword: "",
+  //signup
   signupUserName: "",
   signupEmail: "",
   signupPassword: "",
+  //profile
   profileName: "",
   profileSurname: "",
   profilePicture: "",
+  //user
+  users: [],
+  //navi
+  isDropdownOpen: false,
+  //comment
+  comments: [],
+  newProblemComment: "",
+  //category
+  categories: [],
+  selectedCategory: null,
+  categoryId: null,
+  //problem
+  problems: [],
+  problemContent: "",
+  problemHead: "",
+  categoryFilterProblem:[],
+  activeProblemDetail: {
+    likesUserId: [],
+  },
 };
 
 export const reducer = (state, action) => {
+  
   switch (action.type) {
+    //login
     case "login":
       return {
         ...state,
@@ -39,11 +51,7 @@ export const reducer = (state, action) => {
         ...state,
         loginPassword: action.payload,
       };
-    case "createUser":
-      return {
-        ...state,
-        users: [...state.users, action.payload],
-      };
+  //signup
     case "signupUserName":
       return {
         ...state,
@@ -59,6 +67,7 @@ export const reducer = (state, action) => {
         ...state,
         signupPassword: action.payload,
       };
+  //profile
     case "profileName":
       return {
         ...state,
@@ -74,25 +83,65 @@ export const reducer = (state, action) => {
         ...state,
         profilePicture: action.payload,
       };
-    case "getCategory":
+  //user
+    case "createUser":
       return {
         ...state,
-        categories: action.payload,
-      };
-    case "getProblems":
-      return {
-        ...state,
-        problems: action.payload,
-      };
-    case "getComments":
-      return {
-        ...state,
-        comments: action.payload,
+        users: [...state.users, action.payload],
       };
     case "getUsers":
       return {
         ...state,
         users: action.payload,
+      };
+  //navi
+    case "isDropdownOpen":
+      return {
+        ...state,
+        isDropdownOpen: action.payload,
+      }; 
+  //comment
+    case "getComments":
+      return {
+        ...state,
+        comments: action.payload,
+      };
+    case "createComment":
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
+      };
+    case "newProblemComment":
+      return {
+        ...state,
+        newProblemComment: action.payload,
+      };
+  //category
+    case "getCategory":
+      return {
+        ...state,
+        categories: action.payload,
+      };
+    case "selectedCategory":
+      return {
+        ...state,
+        selectedCategory: action.payload,
+      };
+    case "categoryId":
+      return {
+        ...state,
+        categoryId: action.payload,
+      };
+  //problem
+    case "getProblems":
+      return {
+        ...state,
+        problems: action.payload,
+      };
+    case "problemContent":
+      return {
+        ...state,
+        problemContent: action.payload,
       };
     case "createAndUbdateProblem":
       const newProblem = action.payload;
@@ -111,41 +160,20 @@ export const reducer = (state, action) => {
           ),
         };
       }
-
-    case "createComment":
+    case "categoryFilterProblem":
       return {
         ...state,
-        comments: [...state.comments, action.payload],
+        categoryFilterProblem: action.payload,
       };
     case "activeProblemDetail":
       return {
         ...state,
         activeProblemDetail: action.payload,
       };
-    case "selectedCategory":
-      return {
-        ...state,
-        selectedCategory: action.payload,
-      };
-    case "categoryId":
-      return {
-        ...state,
-        categoryId: action.payload,
-      };
     case "problemHead":
       return {
         ...state,
         problemHead: action.payload,
-      };
-    case "problemContent":
-      return {
-        ...state,
-        problemContent: action.payload,
-      };
-    case "newProblemComment":
-      return {
-        ...state,
-        newProblemComment: action.payload,
       };
 
     default:

@@ -12,10 +12,6 @@ const UserProblem = () => {
   const { state, actionLike } = useContext(DataContext);
   const navigate = useNavigate();
 
-  
-  useEffect(() => {
-    
-  }, [state.activeUser]); 
 
   return (
     <div id="user-container">

@@ -5,31 +5,14 @@ import Sidebar from "../sidebar/Sidebar";
 import "./list-problem.scss";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import DataContext from "../../context/DataContext";
-import { useState } from "react";
-import axios from "axios";
+
 const ListProblem = () => {
-  let url = "http://localhost:3005";
-
-  const { state, actionLike } = useContext(DataContext);
+  const { state, actionLike,getCategoryFilterproblem } = useContext(DataContext);
   const navigate = useNavigate();
-
   const { categoryName } = useParams();
-
-  const [kategori, setKategori] = useState([]);
-
-  const getCategory = async () => {
-    const response1 = await axios.get(
-      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
-    );
-    const response = await axios.get(
-      `${url}/problems?categoryId=${response1.data[0].id}`
-    );
-    setKategori(response.data);
-  };
-
   useEffect(() => {
     if (categoryName !== "all") {
-      getCategory();
+      getCategoryFilterproblem(categoryName);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryName]);
@@ -51,7 +34,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {(categoryName === "all" ? state.problems : kategori).map((problem) =>
+        {(categoryName === "all" ? state.problems : state.categoryFilterProblem).map((problem) =>
           problem.categoryId === state.selectedCategory ||
           state.selectedCategory === null ? (
             <div key={problem.id} className="list-problem">
