@@ -12,7 +12,6 @@ const AdminPanel = () => {
         <li><NavLink to="/admin/problems">PROBLEMLER</NavLink></li>
         <li><NavLink to="/admin/comments">YORUMLAR</NavLink></li>
         <li><NavLink to="/admin/categories">KATEGORİLER</NavLink></li>
-
       </ul>
       </div>
       <div id='panel-content'>

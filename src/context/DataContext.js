@@ -125,6 +125,14 @@ export const DataProvider = ({ children }) => {
     dispatch({ type: "getUsers", payload: await response.data });
   };
 
+  const getUserDetail = async (userName) => {
+    const response = await axios.get(
+      `${url}/users/?userName=${userName}`
+    );
+    login(response.data[0]);
+    dispatch({ type: "getUserDetail", payload: await response.data[0] });
+  }
+
   //comment
   const getComments = async () => {
     const response = await axios.get(`${url}/comments`);
@@ -177,6 +185,18 @@ export const DataProvider = ({ children }) => {
     dispatch({ type: "categoryFilterProblem", payload: response.data });
   };
 
+  const createCategory = async (e) => {
+    e.preventDefault();
+    const newCategory = {
+      id: state.categories.length,
+      categoryName: state.categoryName.toUpperCase(),
+    };
+    dispatch({ type: "createCategory", payload: newCategory });
+    await axios.post(`${url}/categories`, newCategory);
+    dispatch({ type: "categoryName", payload: "" });
+    navigate(`/admin/categories/`);
+
+  };
   //problem
   const getProblem = async () => {
     const response = await axios.get(`${url}/problems`);
@@ -305,6 +325,8 @@ export const DataProvider = ({ children }) => {
         getCategoryFilterproblem,
         activeUserProblem,
         getProblemDetail,
+        createCategory,
+        getUserDetail,
       }}
     >
       {children}

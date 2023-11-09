@@ -13,6 +13,7 @@ export const initialState = {
   profilePicture: "",
   //user
   users: [],
+  userDetail:[],
   //navi
   isDropdownOpen: false,
   //comment
@@ -95,6 +96,11 @@ export const reducer = (state, action) => {
         ...state,
         users: action.payload,
       };
+    case "getUserDetail":
+      return {
+        ...state,
+        userDetail: action.payload,
+      };
   //navi
     case "isDropdownOpen":
       return {
@@ -132,6 +138,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         categoryId: action.payload,
+      };
+      case "categoryName":
+      return {
+        ...state,
+        categoryName: action.payload,
+      };
+      case "createCategory":
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
       };
   //problem
     case "getProblems":
