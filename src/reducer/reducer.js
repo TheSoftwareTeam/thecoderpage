@@ -13,7 +13,7 @@ export const initialState = {
   profilePicture: "",
   //user
   users: [],
-  userDetail:[],
+  userDetail:{},
   //navi
   isDropdownOpen: false,
   //comment

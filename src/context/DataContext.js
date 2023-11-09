@@ -29,7 +29,6 @@ export const DataProvider = ({ children }) => {
   //login
   const login = async (e) => {
     e.preventDefault();
-
     const response = await axios.get(
       `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
     );
@@ -42,13 +41,11 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: "login", payload: await response.data[0] });
       dispatch({ type: "loginUserName", payload: "" });
       dispatch({ type: "loginPassword", payload: "" });
-      dispatch({type:"selectedCategory",payload:null} );
+      dispatch({ type: "selectedCategory", payload: null });
       if (response.data[0].name === "" && response.data[0].surName === "") {
         navigate(`/home/profile/`);
-       
       } else {
         navigate(`/home/listproblem/`);
-
       }
     } else {
       alert("Kullanıcı adı veya şifre yanlış");
@@ -104,7 +101,7 @@ export const DataProvider = ({ children }) => {
       }
     }
   };
-//profile
+  //profile
   const editProfile = async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem("userId");
@@ -126,12 +123,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const getUserDetail = async (userName) => {
-    const response = await axios.get(
-      `${url}/users/?userName=${userName}`
-    );
+    const response = await axios.get(`${url}/users/?userName=${userName}`);
     login(response.data[0]);
     dispatch({ type: "getUserDetail", payload: await response.data[0] });
-  }
+  };
 
   //comment
   const getComments = async () => {
@@ -195,7 +190,6 @@ export const DataProvider = ({ children }) => {
     await axios.post(`${url}/categories`, newCategory);
     dispatch({ type: "categoryName", payload: "" });
     navigate(`/admin/categories/`);
-
   };
   //problem
   const getProblem = async () => {
@@ -204,9 +198,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const activeUserProblem = async (userName) => {
-    const user = await axios.get(
-      `${url}/users?userName=${userName}`
-    );
+    const user = await axios.get(`${url}/users?userName=${userName}`);
     const response = await axios.get(
       `${url}/problems?userId=${user.data[0].id}`
     );
