@@ -1,50 +1,73 @@
-
-#head{
-    width: 100%;
-    height: 5vh;
-    background-color: rgb(138, 199, 179);
+#panel-content {
+    width: 80%;
+    min-height: 88vh;
+    background-color: #999;
+    padding: 2%;
+   
 }
 
-#panel-container{
+#panel-container {
     width: 100%;
-    height: 90vh;
-    background-color: rgb(196, 200, 200);
+    min-height: 88vh;
     display: flex;
     flex-direction: row;
-    font-family: monospace;
+    font-family: 'Monospace', sans-serif;
     font-size: 1rem;
 }
 
-#navi{
-    width:20%;
-    min-height: 90vh;
-    background-color: rgb(108, 122, 122);
 
-    ul{
+#head {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    h3 {
+        margin-left: 15px;
+        font-family: 'Monospace', sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        
+        color: #fff; 
+        .navi-link {
+            text-decoration: none;
+            color: #ffffff;
+        }
+    }
+    
+}
+
+
+
+#navi {
+    width: 20%;
+    min-height: 88vh;
+    background-color: #ccc;
+    font-family: 'Monospace', sans-serif;
+    font-size: 17px;
+   ul {
         width: 100%;
-        height: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         list-style: none;
         padding: 0;
         margin: 0;
-        li{
+        li {
             width: 100%;
             padding: 10px;
-            background-color: rgb(2, 2, 2);
-            border: .5px solid rgb(228, 250, 243);
-            a{
+            background-color: #666;
+            border: 1px  solid #888; 
+            a {
                 text-decoration: none;
-                color: rgb(255, 255, 255);
+                color: #ffffff;
+                letter-spacing:0.5px;
+                transition: 0.5s;
+                &:hover {
+                    color: #000000;
+                    
+                }
             }
         }
-    
     }
 }
-#panel-content{
-    width: 80%;
-    min-height: 90vh;
-    background-color: rgb(14, 87, 63);
-    padding: 3%;
-}
+
+

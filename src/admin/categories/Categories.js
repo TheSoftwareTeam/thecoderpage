@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import "./categories.scss";
 const Categories = () => {
-  const { state,dispatch, createCategory } = useContext(DataContext);
+  const { state,dispatch, createCategory } = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <div id="admin-categories-container">

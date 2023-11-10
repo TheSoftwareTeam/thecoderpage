@@ -10,25 +10,23 @@ import CreateProblem from "./components/problem/CreateProblem";
 import ListProblem from "./components/problem/ListProblem";
 import DetailProblem from "./components/problem/DetailProblem";
 import "./style.scss";
-import { DataProvider} from "./context/DataContext";
+import { UserProvider } from "./context/UserContext";
+import { AdminProvider } from "./context/AdminContext";
 import UserProblems from "./components/problem/UserProblems";
-import AdminPanel from "./admin/panel/AdminPanel"
-import Users from "./admin/users/Users"
-import Categories from "./admin/categories/Categories"
-import Problems from "./admin/problems/Problems"
-import Comments from "./admin/comments/Comments"
-import UserDetail from "./admin/users/UserDetail"
-import CategoryDetail from "./admin/categories/CategoryDetail"
-import CommentDetail from "./admin/comments/CommentDetail"
-import ProblemDetail from "./admin/problems/ProblemDetail" 
-
-
-
+import AdminPanel from "./admin/panel/AdminPanel";
+import Users from "./admin/users/Users";
+import Categories from "./admin/categories/Categories";
+import Problems from "./admin/problems/Problems";
+import Comments from "./admin/comments/Comments";
+import UserDetail from "./admin/users/UserDetail";
+import CategoryDetail from "./admin/categories/CategoryDetail";
+import CommentDetail from "./admin/comments/CommentDetail";
+import ProblemDetail from "./admin/problems/ProblemDetail";
 
 function App() {
   return (
-    <DataProvider>
-      <Routes>
+    <Routes>
+      <UserProvider>
         <Route path="/*" element={<LoadingPage />} />
         <Route path="home" element={<Navi />}>
           <Route path="main" element={<Main />} />
@@ -37,24 +35,25 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="createproblem" element={<CreateProblem />} />
           <Route path="listproblem/:categoryName" element={<ListProblem />} />
-          <Route path="userproblems/:userName" element={< UserProblems/>} />
+          <Route path="userproblems/:userName" element={<UserProblems />} />
           <Route path="detailproblem/:id" element={<DetailProblem />} />
+        </Route>
+        <AdminProvider>
+          <Route path="admin/*" element={<AdminPanel />}>
+            <Route path="users" element={<Users />} />
+            <Route path="categories" element={<Categories />} />
+            <Route path="problems" element={<Problems />} />
+            <Route path="comments" element={<Comments />} />
+            <Route path="userdetail/:username" element={<UserDetail />} />
+            <Route path="categorydetail/:id" element={<CategoryDetail />} />
+            <Route path="commentdetail/:id" element={<CommentDetail />} />
+            <Route path="problemdetail/:id" element={<ProblemDetail />} />
           </Route>
-          <Route path="admin/*" element={<AdminPanel/>} >
-            <Route path="users" element={<Users/>} />
-            <Route path="categories" element={<Categories/>} />
-            <Route path="problems" element={<Problems/>} />
-            <Route path="comments" element={<Comments/>} />
+        </AdminProvider>
 
-            <Route path="userdetail/:username" element={<UserDetail/>}/>
-            <Route path="categorydetail/:id" element={<CategoryDetail/>}/>
-            <Route path="commentdetail/:id" element={<CommentDetail/>}/>
-            <Route path="problemdetail/:id" element={<ProblemDetail/>}/>
-
-          </Route>
-      </Routes>
-      <Footer />
-    </DataProvider>
+        <Footer />
+      </UserProvider>{" "}
+    </Routes>
   );
 }
 

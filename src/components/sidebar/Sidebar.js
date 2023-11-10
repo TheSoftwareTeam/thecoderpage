@@ -2,11 +2,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from "react";
 import "./sidebar.scss";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
-  const { state } = useContext(DataContext);
+  const { state } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (

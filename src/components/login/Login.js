@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./login.scss";
 import {useNavigate } from "react-router-dom";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 const Login = () => {
-  const { dispatch, login } = useContext(DataContext);
+  const { dispatch, login } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (

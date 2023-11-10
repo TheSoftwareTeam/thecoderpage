@@ -160,6 +160,13 @@ export const reducer = (state, action) => {
         ...state,
         problemContent: action.payload,
       };
+      case"problemSil":
+      return {
+        ...state,
+        problems: state.problems.filter(
+          (problem) => problem.id !== action.id
+        ),
+      };
     case "createAndUbdateProblem":
       const newProblem = action.payload;
       // Eğer yeni problem mevcut problemler listesinde değilse ekle

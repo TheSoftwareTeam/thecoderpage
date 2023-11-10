@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
 import "./problem-detail.scss";
-import DataContext from "../../context/DataContext";
+import AdminContext from "../../context/AdminContext";
+
 import { useParams } from "react-router-dom";
 
+
 const ProblemDetail = () => {
-  const { state,getProblemDetail } =
-    useContext(DataContext);
+  const { state,deleteProblem,getProblemDetail } =
+    useContext(AdminContext);
 
   const { id } = useParams();
   
@@ -77,7 +79,9 @@ const ProblemDetail = () => {
          
         </div>
          <div className="action">
-                <button>Sil</button>
+                <button onClick={()=>{
+                  deleteProblem(state.activeProblemDetail.id);
+                }}>Sil</button>
                 <button>Güncelle</button>
               </div>
       </div>

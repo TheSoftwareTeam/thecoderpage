@@ -4,9 +4,9 @@ import { reducer, initialState } from "../reducer/reducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const DataContext = createContext();
+const UserContext = createContext();
 
-export const DataProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
   let url = "http://localhost:3005";
@@ -124,7 +124,7 @@ export const DataProvider = ({ children }) => {
 
   const getUserDetail = async (userName) => {
     const response = await axios.get(`${url}/users/?userName=${userName}`);
-    login(response.data[0]);
+
     dispatch({ type: "getUserDetail", payload: await response.data[0] });
   };
 
@@ -234,6 +234,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+
   const actionLike = async (problemId) => {
     if (state.activeUser && localStorage.getItem("userToken")) {
       const problem = state.problems.find(
@@ -304,7 +305,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider
+    <UserContext.Provider
       value={{
         state,
         dispatch,
@@ -319,11 +320,12 @@ export const DataProvider = ({ children }) => {
         getProblemDetail,
         createCategory,
         getUserDetail,
+
       }}
     >
       {children}
-    </DataContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export default DataContext;
+export default UserContext;

@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 import "./nav.scss";
 
 const Navi = () => {
-  const { state, dispatch } = useContext(DataContext);
+  const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
 

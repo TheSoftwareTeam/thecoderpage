@@ -2,12 +2,12 @@
 import React, { useContext, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./detail-problem.scss";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 import { NavLink, useParams } from "react-router-dom";
 
 const DetailProblem = () => {
   const { state, dispatch, writeProblemComment, actionLike,getProblemDetail } =
-    useContext(DataContext);
+    useContext(UserContext);
 
   const { id } = useParams();
   

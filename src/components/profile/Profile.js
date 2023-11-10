@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import "./profile.scss";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 import image from"../../images/avatar.png";
 const Profile = () => {
-  const { state,dispatch,editProfile } = useContext(DataContext);
+  const { state,dispatch,editProfile } = useContext(UserContext);
   
 useEffect(()=>{
 

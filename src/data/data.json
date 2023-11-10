@@ -43,6 +43,39 @@
       "userPicture": "",
       "problemCount": 0,
       "createDate": "23.11.2023 21:13:10"
+    },
+    {
+      "id": 5,
+      "name": "",
+      "surName": "",
+      "userName": "asdasd",
+      "email": "mqhir7@gmail.coma",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 0,
+      "createDate": "10.11.2023 12:07:38"
+    },
+    {
+      "id": 6,
+      "name": "",
+      "surName": "",
+      "userName": "asdasd",
+      "email": "mqhir7@gmail.coma",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 0,
+      "createDate": "10.11.2023 12:07:38"
+    },
+    {
+      "id": 7,
+      "name": "",
+      "surName": "",
+      "userName": "asdasd",
+      "email": "mqhir7@gmail.coma",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 0,
+      "createDate": "10.11.2023 12:07:38"
     }
   ],
   "problems": [
@@ -62,7 +95,8 @@
         1,
         2
       ],
-      "createDate": "23.11.2023 21:13:10"
+      "createDate": "23.11.2023 21:13:10",
+      "isDeleted": true
     },
     {
       "id": 1,
@@ -171,7 +205,8 @@
       "problemContent": "Konuyu açıklar mısın?",
       "commentCount": 1,
       "likesUserId": [],
-      "createDate": "25.11.2023"
+      "createDate": "25.11.2023",
+      "isDeleted": true
     },
     {
       "id": 12,
@@ -181,7 +216,8 @@
       "problemContent": "dasdasd",
       "commentCount": 0,
       "likesUserId": [],
-      "createDate": "6.11.2023 21:13:10"
+      "createDate": "6.11.2023 21:13:10",
+      "isDeleted": true
     }
   ],
   "comments": [

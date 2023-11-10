@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./create-problem.scss";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 
 const CreateProblem = () => {
-  const { state, dispatch, createProblem } = useContext(DataContext);
+  const { state, dispatch, createProblem } = useContext(UserContext);
 
   return (
     <div className="create-content">

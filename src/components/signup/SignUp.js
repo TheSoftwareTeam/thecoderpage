@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import "./signup.scss"
 import {useNavigate } from 'react-router-dom'
-import DataContext from '../../context/DataContext';
+import UserContext from '../../context/UserContext';
 
 const SignUp = () => {
-  const {dispatch,signupUser} = useContext(DataContext);
+  const {dispatch,signupUser} = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <div className="signup-container">

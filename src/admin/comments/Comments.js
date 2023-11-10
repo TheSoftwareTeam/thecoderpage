@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import "./comments.scss";
 import image from "../../images/avatar.png";
 const Comments = () => {
-  const { state } = useContext(DataContext);
+  const { state } = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <div id="admin-comment-container">

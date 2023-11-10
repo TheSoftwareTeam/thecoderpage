@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 import "./users.scss";
 import image from"../../images/avatar.png";
 import { useNavigate } from "react-router-dom";
 
 
 const Users = () => {
-  const {dispatch,signupUser} = useContext(DataContext);
-  const { state } = useContext(DataContext);
+  const {dispatch,signupUser} = useContext(UserContext);
+  const { state } = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <div id="users-container">

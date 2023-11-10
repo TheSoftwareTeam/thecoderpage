@@ -4,13 +4,13 @@ import React, { useContext, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./user-problems.scss";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import DataContext from "../../context/DataContext";
+import UserContext from "../../context/UserContext";
 
 const UserProblem = () => {
 
   const { userName } = useParams();
 
-  const { state, actionLike,activeUserProblem } = useContext(DataContext);
+  const { state, actionLike,activeUserProblem } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {

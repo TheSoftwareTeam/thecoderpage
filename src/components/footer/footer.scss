@@ -1,19 +1,22 @@
-.footer{
+
+.footer {
     display: flex;
-    bottom: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-top: 1px solid black;
     height: 7vh;
     justify-content: space-between;
     align-items: center;
     background-color: aliceblue;
-    h3{
-        margin-left:15px ;
-        font-family: monospace;
+    h3 {
+        margin-left: 15px;
+        font-family: 'Monospace', sans-serif;
         font-size: 25px;
     }
-    h4{
-        margin-right:15px ;
-        font-family: monospace;
+    h4 {
+        margin-right: 15px;
+        font-family: 'Monospace', sans-serif;
         font-size: 15px;
     }
 }
