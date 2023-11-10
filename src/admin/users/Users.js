@@ -21,7 +21,7 @@ const Users = () => {
 
 <div id="user-list">
 {state.users.map((user) => (
-        <div onClick={()=>navigate(`/admin/userdetail/${user.userName}`)} className="user" key={user.id}>
+        <div onClick={()=>navigate(`/admin/userdetail/${user.id}`)} className="user" key={user.id}>
           <div className="user-image">
             <img src={image} />
           </div>
