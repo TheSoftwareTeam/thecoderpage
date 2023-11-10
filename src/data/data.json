@@ -96,7 +96,7 @@
         2
       ],
       "createDate": "23.11.2023 21:13:10",
-      "isDeleted": true
+      "isDeleted": false
     },
     {
       "id": 1,
@@ -114,7 +114,8 @@
         88,
         0
       ],
-      "createDate": "23.11.2023 21:13:10"
+      "createDate": "23.11.2023 21:13:10",
+      "isDeleted": false
     },
     {
       "id": 2,

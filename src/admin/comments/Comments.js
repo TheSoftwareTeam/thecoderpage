@@ -1,17 +1,18 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
-import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import "./comments.scss";
 import image from "../../images/avatar.png";
+import AdminContext from "../../context/AdminContext";
 const Comments = () => {
-  const { state } = useContext(UserContext);
+  const { state } = useContext(AdminContext);
   const navigate = useNavigate();
   return (
     <div id="admin-comment-container">
+      
       {state.comments.map((comment) => (
         <div
-          onClick={() => navigate(`/admin/commentdetail/${comment.id}`)}
+          // onClick={() => navigate(`/admin/commentdetail/${comment.id}`)}
           key={comment.id}
           className="admin-comment"
         >
@@ -27,9 +28,10 @@ const Comments = () => {
           <div className="admin-comment-comment-head-text">
             <h6>{comment.commentContent.slice(0, 150)}...</h6>
           </div>
-          <button onClick={(()=>navigate(`/admin/commentdetail/${comment.id}`))}>Problemi Gör</button>
+          <button onClick={(()=>navigate(`/admin/problemdetail/${comment.problemId}`))}>Problemi Gör</button>
         </div>
       ))}
+
     </div>
   );
 };

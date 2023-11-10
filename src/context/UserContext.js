@@ -1,13 +1,13 @@
 /* eslint-disable array-callback-return */
 import React, { createContext, useEffect, useReducer } from "react";
-import { reducer, initialState } from "../reducer/reducer";
+import { userReducer, initialState } from "../reducers/userReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(userReducer, initialState);
   const navigate = useNavigate();
   let url = "http://localhost:3005";
 

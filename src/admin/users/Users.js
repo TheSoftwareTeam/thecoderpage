@@ -1,14 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
-import UserContext from "../../context/UserContext";
+import AdminContext from "../../context/AdminContext";
 import "./users.scss";
 import image from"../../images/avatar.png";
 import { useNavigate } from "react-router-dom";
 
 
 const Users = () => {
-  const {dispatch,signupUser} = useContext(UserContext);
-  const { state } = useContext(UserContext);
+  const {state,dispatch,signupUser} = useContext(AdminContext);
   const navigate = useNavigate();
   return (
     <div id="users-container">
@@ -51,6 +50,7 @@ const Users = () => {
           </div>
         </div>
       ))}
+      
     </div>
   );
 };

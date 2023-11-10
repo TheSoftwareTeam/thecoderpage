@@ -50,6 +50,7 @@ const ProblemDetail = () => {
 
               <button>✉️{state.activeProblemDetail.commentCount}</button>
             </div>
+            {console.log(state.comments)}
             {state.comments
               .slice()
               .reverse()

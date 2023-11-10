@@ -26,20 +26,23 @@ import { AdminProvider } from "./context/AdminContext";
 function App() {
   return (
     <UserProvider>
-      <Routes>
-        <Route path="/*" element={<LoadingPage />} />
-        <Route path="home" element={<Navi />}>
-          <Route path="main" element={<Main />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="createproblem" element={<CreateProblem />} />
-          <Route path="listproblem/:categoryName" element={<ListProblem />} />
-          <Route path="userproblems/:userName" element={<UserProblems />} />
-          <Route path="detailproblem/:id" element={<DetailProblem />} />
-        </Route>
-        <AdminProvider>
+      <AdminProvider>
+        <Routes>
+          <Route path="/*" element={<LoadingPage />} />
+          <Route path="home" element={<Navi />}>
+            <Route path="main" element={<Main />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="createproblem" element={<CreateProblem />} />
+            <Route path="listproblem/:categoryName" element={<ListProblem />} />
+            <Route path="userproblems/:userName" element={<UserProblems />} />
+            <Route path="detailproblem/:id" element={<DetailProblem />} />
+          </Route>
+
+
           <Route path="admin/*" element={<AdminPanel />}>
+           <Route index element={<div>Admin Ana Sayfa</div>} />  
             <Route path="users" element={<Users />} />
             <Route path="categories" element={<Categories />} />
             <Route path="problems" element={<Problems />} />
@@ -50,9 +53,9 @@ function App() {
             <Route path="commentdetail/:id" element={<CommentDetail />} />
             <Route path="problemdetail/:id" element={<ProblemDetail />} />
           </Route>
-        </AdminProvider>
-      </Routes>
-      <Footer />
+        </Routes>
+        <Footer />
+      </AdminProvider>
     </UserProvider>
   );
 }

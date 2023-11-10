@@ -18,7 +18,7 @@
     input {
       width: 80%;
       min-width: 24%;
-      background-color: #ffffff; 
+      background-color: #ffffff;
       padding: 20px;
       border-radius: 10px;
       font-size: 25px;
@@ -27,21 +27,55 @@
     button {
       width: 50%;
       min-width: 24%;
-      background-color: #ccc; 
+      background-color: #ccc;
       padding: 10px;
       border-radius: 10px;
       font-size: 20px;
-      font-family: 'Monospace', sans-serif;
+      font-family: "Monospace", sans-serif;
+      border: none;
     }
   }
 
-  .admin-categories {
-    width: 35%;
+  #category-list {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
-    text-align: center;
-    min-width: 24%;
-    background-color: #ccc; /* Gri tonu */
-    padding: 20px;
-    border-radius: 10px;
+    border-top: 5px solid white;
+    padding-top: 50px;
+    justify-content: center;
+    .admin-categories {
+      width: 30%;
+      text-align: center;
+      min-width: 15%;
+      height: 10vh;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      background-color: #ccc; /* Gri tonu */
+      gap: 10px;
+      .action {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        button {
+          width: 40%;
+          min-width: 10%;
+          background-color: rgb(68, 66, 62);
+          color: white;
+          padding: 10px;
+          border-radius: 10px;
+          font-size: 13px;
+          font-family: "Monospace", sans-serif;
+          border: none;
+        }
+      }
+    }
   }
 }

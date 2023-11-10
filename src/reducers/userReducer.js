@@ -34,7 +34,7 @@ export const initialState = {
   },
 };
 
-export const reducer = (state, action) => {
+export const userReducer = (state, action) => {
   
   switch (action.type) {
     //login

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import "./user-detail.scss";
-import DataContext from "../../context/UserContext";
+import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
 import { useParams } from "react-router-dom";
 const UserDetail = () => {
-  const { state, getUserDetail,dispatch,editProfile } = useContext(DataContext);
+  const { state, getUserDetail,dispatch,editProfile } = useContext(AdminContext);
 
   const { username } = useParams();
   useEffect(() => {

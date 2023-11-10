@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <h3>TheCoderPage</h3>
-      <h4>Copyright © Murat-Mahir / Tüm hakları saklıdır</h4>
+      <h5>Copyright © Murat-Mahir / Tüm hakları saklıdır</h5>
     </div>
   );
 };
