@@ -8,13 +8,15 @@
     height: 7vh;
     justify-content: space-between;
     align-items: center;
-    background-color: aliceblue;
+    background-color: #333;
     h3 {
         margin-left: 5vw;
+        color: white;
         font-family: 'Monospace', sans-serif;
     }
     h5 {
         margin-right: 3vw;
+        color: white;
         font-family: 'Monospace', sans-serif;
     }
 }

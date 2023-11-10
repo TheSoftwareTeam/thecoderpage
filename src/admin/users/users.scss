@@ -35,11 +35,18 @@
     input[type="submit"] {
       width: 40%;
       min-width: 24%;
-      background-color: #999; /* Orta Gri Tonu */
+      background-color: #6d6d6d; /* Orta Gri Tonu */
       padding: 10px;
+      color: #f5f5f5;
       border-radius: 10px;
       font-size: 20px;
       font-family: monospace;
+      &:hover {
+        background-color: #f5f5f5;
+        color: #6d6d6d;
+        border: 1px solid #6d6d6d;
+        cursor: pointer;
+      } 
     }
   }
 #user-list{
@@ -51,6 +58,7 @@
   align-items: center;
   border-top: 2px solid white;
   padding-top:5% ;
+  cursor: pointer;
   .user {
     width: 23%;
     height: 30%;
