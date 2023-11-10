@@ -48,7 +48,7 @@ function App() {
             <Route path="problems" element={<Problems />} />
             <Route path="comments" element={<Comments />} />
 
-            <Route path="userdetail/:username" element={<UserDetail />} />
+            <Route path="userdetail/:id" element={<UserDetail />} />
             <Route path="categorydetail/:id" element={<CategoryDetail />} />
             <Route path="commentdetail/:id" element={<CommentDetail />} />
             <Route path="problemdetail/:id" element={<ProblemDetail />} />

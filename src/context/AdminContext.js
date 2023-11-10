@@ -30,6 +30,12 @@ export const AdminProvider = ({ children }) => {
     const response = await axios.get(`${url}/users`);
     dispatch({ type: "getUsers", payload: await response.data });
   };
+
+  const getUserDetail = async (id) => {
+    const response = await axios.get(`${url}/users/?id=${id}`);
+
+    dispatch({ type: "getUserDetail", payload: await response.data[0] });
+  };
   //comment
   const getComments = async () => {
     const response = await axios.get(`${url}/comments`);
@@ -78,6 +84,7 @@ export const AdminProvider = ({ children }) => {
         dispatch,
         deleteProblem,
         getProblemDetail,
+        getUserDetail,
       }}
     >
       {children}

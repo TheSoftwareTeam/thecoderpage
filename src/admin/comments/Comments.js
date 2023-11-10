@@ -29,6 +29,8 @@ const Comments = () => {
             <h6>{comment.commentContent.slice(0, 150)}...</h6>
           </div>
           <button onClick={(()=>navigate(`/admin/problemdetail/${comment.problemId}`))}>Problemi Gör</button>
+          <button onClick={(()=>navigate(`/admin/userdetail/${comment.userId}`))}>Kullanıcı</button>
+          <button onClick={("")}>Sil</button>
         </div>
       ))}
 

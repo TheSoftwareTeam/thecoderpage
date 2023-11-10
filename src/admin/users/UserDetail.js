@@ -6,11 +6,11 @@ import { useParams } from "react-router-dom";
 const UserDetail = () => {
   const { state, getUserDetail,dispatch,editProfile } = useContext(AdminContext);
 
-  const { username } = useParams();
+  const { id } = useParams();
   useEffect(() => {
-    getUserDetail(username);
+    getUserDetail(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username]);
+  }, [id]);
 
   return (
     <div className="profile-container">

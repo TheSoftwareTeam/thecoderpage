@@ -96,7 +96,7 @@
         2
       ],
       "createDate": "23.11.2023 21:13:10",
-      "isDeleted": false
+      "isDeleted": true
     },
     {
       "id": 1,
@@ -196,7 +196,8 @@
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
       "commentCount": 2,
       "likesUserId": [],
-      "createDate": "23.11.2023 21:13:10"
+      "createDate": "23.11.2023 21:13:10",
+      "isDeleted": true
     },
     {
       "id": 7,
