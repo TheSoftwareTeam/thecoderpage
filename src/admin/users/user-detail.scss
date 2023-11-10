@@ -1,20 +1,21 @@
 .profile-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    padding-top: 100px;
-  
     h2 {
       font-family: monospace;
       font-size: 25px;
       font-weight: bold;
     }
     .profile-content {
+      width: 100%;
       display: flex;
       flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(194, 191, 191);
   
       .profile-picture {
+        width: 35vw;
         height:auto;
          position: relative;
          display: flex  ;
@@ -49,15 +50,15 @@
         gap: 10px;
         align-items: center;
         justify-content: center;
-        input,
-        textarea,
-        select {
+        input,select {
+          font-size: 15px;
           width: 40vw;
           height: 5vh;
           padding: 15px;
           border-radius: 10px;
           border: none;
           box-shadow: 3px 6px 9px rgb(128, 124, 124);
+          
         }
         input[type="submit"] {
           background-color: rgb(194, 191, 191);

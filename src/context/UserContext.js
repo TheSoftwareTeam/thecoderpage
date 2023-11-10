@@ -38,10 +38,14 @@ export const UserProvider = ({ children }) => {
         JSON.stringify(`${response.data[0].name}${Math.random()}`)
       );
       localStorage.setItem("userId", JSON.stringify(response.data[0].id));
+
       dispatch({ type: "login", payload: await response.data[0] });
       dispatch({ type: "loginUserName", payload: "" });
       dispatch({ type: "loginPassword", payload: "" });
       dispatch({ type: "selectedCategory", payload: null });
+      await axios.patch(`${url}/users/${response.data[0].id}`, {
+        userToken: JSON.parse(localStorage.getItem("userToken")),
+      });
       if (response.data[0].name === "" && response.data[0].surName === "") {
         navigate(`/home/profile/`);
       } else {
@@ -234,7 +238,6 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-
   const actionLike = async (problemId) => {
     if (state.activeUser && localStorage.getItem("userToken")) {
       const problem = state.problems.find(
@@ -295,14 +298,45 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  
+
   useEffect(() => {
     getProblem();
     getCategory();
     getComments();
     getUsers();
     userCache();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // Check user session validity every 1 minute
+    const response = setInterval(async() => {
+    const userId = localStorage.getItem("userId");
+      const userToken = localStorage.getItem("userToken");
+      if (userToken) {
+        const response = await axios.get(`${url}/users/?id=${userId}`);
+        const userTokenJson=JSON.stringify(response.data[0].userToken);
+
+        if (userToken !== userTokenJson) {
+          localStorage.removeItem("userToken");
+          localStorage.removeItem("userId");
+          dispatch({ type: "login", payload: null });
+          alert("Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapınız.");
+          navigate("/home/login");
+        }
+        else
+        {
+          console.log("eşleşiyor");
+        }
+      }
+      else
+      {
+        console.log("giriş yapılmadığından no problem");
+      }
+    }, 60000);
+   
+    return () => clearInterval(response);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.name]);
+
+ 
 
   return (
     <UserContext.Provider
@@ -320,7 +354,6 @@ export const UserProvider = ({ children }) => {
         getProblemDetail,
         createCategory,
         getUserDetail,
-
       }}
     >
       {children}

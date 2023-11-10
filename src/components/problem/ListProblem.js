@@ -17,7 +17,7 @@ const ListProblem = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryName]);
-
+ 
   return (
     <div id="list-container">
       <div id="list-content">

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./admin-panel.scss";
-const AdminPanel = () => {
+
+
   return (
     <>
       <div id="head">

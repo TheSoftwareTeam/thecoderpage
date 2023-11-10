@@ -9,18 +9,23 @@
       "password": "123",
       "userPicture": "",
       "problemCount": 3,
-      "createDate": "23.11.2023 21:13:10"
+      "createDate": "23.11.2023 21:13:10",
+      "userToken": "",
+      "userRol": "",
+      "picture": ""
     },
     {
       "id": 2,
       "name": "Mahir",
       "surName": "KURŞUN",
-      "userName": "mahir",
+      "userName": "mahirkursun",
       "email": "mqhir7@icloud.com",
       "password": "123",
       "userPicture": "",
       "problemCount": 4,
-      "createDate": "23.11.2023 21:13:10"
+      "userToken": "",
+      "createDate": "23.11.2023 21:13:10",
+      "picture": ""
     },
     {
       "id": 3,
@@ -112,7 +117,8 @@
         6,
         23,
         88,
-        0
+        0,
+        1
       ],
       "createDate": "23.11.2023 21:13:10",
       "isDeleted": false

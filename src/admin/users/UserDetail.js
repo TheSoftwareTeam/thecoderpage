@@ -4,11 +4,12 @@ import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
 import { useParams } from "react-router-dom";
 const UserDetail = () => {
-  const { state, getUserDetail,dispatch,editProfile } = useContext(AdminContext);
+  const { state, getUserDetail,dispatch,editUser } = useContext(AdminContext);
 
   const { id } = useParams();
   useEffect(() => {
     getUserDetail(id);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -22,16 +23,25 @@ const UserDetail = () => {
             alt="res"
           />
           <hr/>
-          <span>katılma tarihi: {state.activeUser!==null?state.activeUser.createDate.split(' ')[0]:""}</span>
+          {/* <span>katılma tarihi: {state.userDetail!==null?state.userDetail.createDate.split(' ')[0]:""}</span> */}
         </div>
-        <form onSubmit={editProfile}>
+        <form onSubmit={editUser}>
 
-          <input onChange={(e)=>dispatch({type:"profileName",payload:e.target.value})} type="text"  placeholder="Ad" value={state.profileName} required/>
+          <input onChange={(e)=>dispatch({type:"userName",payload:e.target.value})} type="text"  placeholder="Ad" value={state.userName} required/>
 
-          <input onChange={(e)=>dispatch({type:"profileSurname",payload:e.target.value})}  type="text" placeholder="Soyad" value={state.profileSurname} required/>
+          <input onChange={(e)=>dispatch({type:"userSurname",payload:e.target.value})} type="text"  placeholder="Soyad" value={state.userSurname} required/>
 
-           <input type="text" value={state.activeUser!==null?state.activeUser.userName:""} readOnly/>
-          <input type="email" value={state.activeUser!==null?state.activeUser.email:""}  readOnly/>
+          <input onChange={(e)=>dispatch({type:"userUserName",payload:e.target.value})} type="text"  placeholder="Kullanıcı Adı" value={state.userUserName} required/>
+
+          <input onChange={(e)=>dispatch({type:"userEmail",payload:e.target.value})} type="email"  placeholder="E-mail" value={state.userEmail} required/>
+
+          <select onChange={(e)=>dispatch({type:"userRol",payload:e.target.value})} value={state.userRol} >
+            <option value="">Rol Seçiniz</option>
+            <option value="admin">Admin</option>
+            <option value="user">Kullanıcı</option>
+          </select>
+         
+           
           <input type="submit"  value="Düzenle" />
         </form>
       </div>

@@ -35,7 +35,36 @@ export const AdminProvider = ({ children }) => {
     const response = await axios.get(`${url}/users/?id=${id}`);
 
     dispatch({ type: "getUserDetail", payload: await response.data[0] });
+    dispatch({ type: "userName", payload: await response.data[0].name });
+    dispatch({ type: "userSurname", payload: await response.data[0].surName });
+    dispatch({
+      type: "userUserName",
+      payload: await response.data[0].userName,
+    });
+    dispatch({ type: "userEmail", payload: await response.data[0].email });
+    dispatch({ type: "userRol", payload: await response.data[0].userRol });
   };
+
+  const editUser = async (e) => {
+    e.preventDefault();
+    const userId = localStorage.getItem("userId");
+    const response = await axios.get(`${url}/users/${userId}`);
+    const user = await response.data;
+    const newUser = {
+      ...user,
+      name: state.userName,
+      surName: state.userSurname,
+      userName: state.userUserName,
+      email: state.userEmail,
+      userRol: state.userRol,
+      userToken: "",
+      picture: "",
+    };
+    await axios.patch(`${url}/users/${userId}`, newUser);
+    // dispatch({ type: "login", payload: newUser });
+    navigate(`/admin/users`);
+  };
+
   //comment
   const getComments = async () => {
     const response = await axios.get(`${url}/comments`);
@@ -55,7 +84,7 @@ export const AdminProvider = ({ children }) => {
   };
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
-    await dispatch({ type: "activeProblemDetail", payload: response.data });
+    dispatch({ type: "activeProblemDetail", payload: await response.data });
   };
 
   const deleteProblem = async (id) => {
@@ -73,7 +102,7 @@ export const AdminProvider = ({ children }) => {
     getCategory();
     getComments();
     getUsers();
-   
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -85,6 +114,7 @@ export const AdminProvider = ({ children }) => {
         deleteProblem,
         getProblemDetail,
         getUserDetail,
+        editUser,
       }}
     >
       {children}
