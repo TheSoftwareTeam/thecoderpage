@@ -9,6 +9,9 @@ const Problems = () => {
   const navigate = useNavigate();
   return (
     <div id="admin-container">
+
+      <div id="problem-list">
+
       {state.problems.map(
         (problem) =>
           !problem.isDeleted && (
@@ -45,6 +48,8 @@ const Problems = () => {
             </div>
           )
       )}
+      </div>
+     
     </div>
   );
 };

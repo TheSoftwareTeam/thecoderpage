@@ -2,9 +2,8 @@
   width: 100%;
   border-radius: 15px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  background-color: #ccc; 
   padding: 30px 7px;
   flex-wrap: wrap;
   gap: 10px;
@@ -12,7 +11,7 @@
   form {
  
     border-radius: 15px;
-    padding: 50px 0px;
+    padding: 40px 0px;
     display: flex;
     flex-direction: column;
     width: 80vw;
@@ -42,7 +41,15 @@
       font-family: monospace;
     }
   }
-
+#user-list{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  border-top: 2px solid white;
+  padding-top:5% ;
   .user {
     width: 23%;
     height: 30%;
@@ -89,4 +96,6 @@
       margin-top: 10px;
     }
   }
+}
+  
 }

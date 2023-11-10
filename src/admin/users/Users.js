@@ -19,7 +19,8 @@ const Users = () => {
         <input type="submit" value="Kullanıcı Oluştur" />
       </form>
 
-      {state.users.map((user) => (
+<div id="user-list">
+{state.users.map((user) => (
         <div onClick={()=>navigate(`/admin/userdetail/${user.userName}`)} className="user" key={user.id}>
           <div className="user-image">
             <img src={image} />
@@ -50,6 +51,8 @@ const Users = () => {
           </div>
         </div>
       ))}
+</div>
+      
       
     </div>
   );
