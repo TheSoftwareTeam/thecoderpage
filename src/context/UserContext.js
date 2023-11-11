@@ -81,6 +81,7 @@ export const UserProvider = ({ children }) => {
         password: state.signupPassword,
         userPicture: "",
         problemCount: 0,
+        userRol: "user",
         createDate: date(),
       };
       await axios.post(`${url}/users`, newUser);
@@ -211,7 +212,7 @@ export const UserProvider = ({ children }) => {
 
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
-    await dispatch({ type: "activeProblemDetail", payload: response.data });
+     dispatch({ type: "activeProblemDetail", payload:await response.data });
   };
 
   const createProblem = async (e) => {
@@ -226,6 +227,8 @@ export const UserProvider = ({ children }) => {
         problemContent: state.problemContent,
         commentCount: 0,
         likesUserId: [],
+        isCompleted: false,
+        isDeleted: false,
         createDate: date(),
       };
       dispatch({ type: "createAndUbdateProblem", payload: newProblem });
@@ -307,7 +310,7 @@ export const UserProvider = ({ children }) => {
     getUsers();
     userCache();
     // Check user session validity every 1 minute
-    const response = setInterval(async() => {
+    const loginControl = setInterval(async() => {
     const userId = localStorage.getItem("userId");
       const userToken = localStorage.getItem("userToken");
       if (userToken) {
@@ -321,18 +324,10 @@ export const UserProvider = ({ children }) => {
           alert("Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapınız.");
           navigate("/home/login");
         }
-        else
-        {
-          console.log("eşleşiyor");
-        }
-      }
-      else
-      {
-        console.log("giriş yapılmadığından no problem");
       }
     }, 60000);
    
-    return () => clearInterval(response);
+    return () => clearInterval(loginControl);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.name]);
 

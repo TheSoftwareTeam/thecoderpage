@@ -1,8 +1,11 @@
-import React from "react";
+/* eslint-disable no-empty-pattern */
+import React, { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./admin-panel.scss";
+import AdminContext from "../../context/AdminContext";
 const AdminPanel = () => {
-  
+  const {} = useContext(AdminContext);
+
   return (
     <>
       <div id="head">

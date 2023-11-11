@@ -25,6 +25,7 @@ export const AdminProvider = ({ children }) => {
     )}`;
     return formattedDate;
   };
+
   //user
   const getUsers = async () => {
     const response = await axios.get(`${url}/users`);
@@ -45,24 +46,84 @@ export const AdminProvider = ({ children }) => {
     dispatch({ type: "userRol", payload: await response.data[0].userRol });
   };
 
+  const createUser = async (e) => {
+    e.preventDefault();
+    const responseUserName = await axios.get(
+      `${url}/users/?userName=${state.signupUserName}`
+    );
+    const responseEmail = await axios.get(
+      `${url}/users/?email=${state.signupEmail}`
+    );
+    if (
+      responseUserName.status === 200 &&
+      responseUserName.data.length === 0 &&
+      responseEmail.status === 200 &&
+      responseEmail.data.length === 0
+    ) {
+      const newUser = {
+        id: state.users.length + 1,
+        name: "",
+        surName: "",
+        userName: state.createUserName,
+        email: state.createEmail,
+        password: state.createPassword,
+        userPicture: "",
+        problemCount: 0,
+        userRol: "user",
+        createDate: date(),
+        userToken: "",
+      };
+      await axios.post(`${url}/users`, newUser);
+      dispatch({ type: "createUser", payload: newUser });
+      dispatch({ type: "createUserName", payload: "" });
+      dispatch({ type: "createEmail", payload: "" });
+      dispatch({ type: "createPassword", payload: "" });
+    } else {
+      if (
+        responseUserName.data.length !== 0 &&
+        responseEmail.data.length === 0
+      ) {
+        alert("Bu kullanıcı adı alınmış");
+      } else if (
+        responseEmail.data.length !== 0 &&
+        responseUserName.data.length === 0
+      ) {
+        alert("Bu email alınmış");
+      } else {
+        alert("Bu kullanıcı adı ve email alınmış");
+      }
+    }
+  };
+
   const editUser = async (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem("userId");
+    const userId=state.userDetail.id;
     const response = await axios.get(`${url}/users/${userId}`);
     const user = await response.data;
-    const newUser = {
+    const ubdateUser = {
       ...user,
+      id: userId,
       name: state.userName,
       surName: state.userSurname,
       userName: state.userUserName,
       email: state.userEmail,
       userRol: state.userRol,
       userToken: "",
-      picture: "",
     };
-    await axios.patch(`${url}/users/${userId}`, newUser);
-    // dispatch({ type: "login", payload: newUser });
-    navigate(`/admin/users`);
+    await axios.patch(`${url}/users/${userId}`, ubdateUser);
+    if (response.status === 200) {
+
+      alert("Kullanıcı bilgileri güncellendi");
+      dispatch({type:"ubdateUser",payload:ubdateUser})
+      dispatch({type:"userName",payload:""})
+      dispatch({type:"userSurname",payload:""})
+      dispatch({type:"userUserName",payload:""})
+      dispatch({type:"userEmail",payload:""})
+      dispatch({type:"userRol",payload:""})
+      dispatch({type:"userPicture",payload:""})
+      navigate(`/admin/users`);
+
+    }
   };
 
   //comment
@@ -82,6 +143,7 @@ export const AdminProvider = ({ children }) => {
     const response = await axios.get(`${url}/problems`);
     dispatch({ type: "getProblems", payload: await response.data });
   };
+
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
@@ -97,12 +159,31 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    getProblem();
-    getCategory();
-    getComments();
-    getUsers();
+  //other
+  const roleControl = async () => {
 
+    const userId = localStorage.getItem("userId");
+    const userToken = localStorage.getItem("userToken");
+    if (userToken) {
+      const response = await axios.get(`${url}/users/?id=${userId}`);
+      const userRol = response.data[0].userRol;
+      if (userRol !== "admin") {
+       navigate(`/home/main`);
+      } else {
+        console.log("admin açık");
+      }
+    }
+    else{
+      navigate(`/home/main`);
+    }
+  };
+
+  useEffect(() => {
+    roleControl();
+    getUsers();
+    getComments();
+    getCategory();
+    getProblem();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -115,6 +196,8 @@ export const AdminProvider = ({ children }) => {
         getProblemDetail,
         getUserDetail,
         editUser,
+        createUser,
+        roleControl,
       }}
     >
       {children}

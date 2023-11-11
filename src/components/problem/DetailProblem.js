@@ -51,6 +51,8 @@ const DetailProblem = () => {
           </div>
           <div className="detail-problem-detail">
             <div className="detail-problem-head-text">
+            {state.activeProblemDetail.isCompleted?"✅ Çözüldü":"❌ Çözüm aranıyor"}
+              
               <h3>{state.activeProblemDetail.problemHead}</h3>
               <br />
               <p>{state.activeProblemDetail.problemContent}</p>

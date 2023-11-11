@@ -64,7 +64,7 @@ const ProblemDetail = () => {
                           user.id === comment.userId ? user.userName : ""
                         )}
                       </h4>
-                      <span>{comment.createDate}</span>
+                      <span>{comment.createDate} <button onClick={("")}>Sil</button></span>
                     </div>
 
                     <p>{comment.commentContent}</p>
@@ -83,7 +83,6 @@ const ProblemDetail = () => {
                 <button onClick={()=>{
                   deleteProblem(state.activeProblemDetail.id);
                 }}>Sil</button>
-                <button>Güncelle</button>
               </div>
       </div>
     </div>

@@ -24,6 +24,8 @@ const Sidebar = () => {
           </div>
           <div className="sidebar-problem-detail">
             <div className="sidebar-problem-head-text">
+            {problem.isCompleted?"✅ Çözüldü":"❌ Çözüm aranıyor"}
+
               <h3>{problem.problemHead}</h3>
               <p>
                 {problem.problemContent.slice(0, 50)}

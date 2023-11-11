@@ -2,15 +2,15 @@ export const initialState = {
   //login
   activeUser: null,
   //signup
-  signupUserName: "",
-  signupEmail: "",
-  signupPassword: "",
+  createUserName: "",
+  createEmail: "",
+  createPassword: "",
   //user
   userName: "",
   userSurname: "",
   userUserName: "",
   userEmail: "",
-  usereRol: "",
+  userRol: "",
   userPicture: "",
   //user
   users: [],
@@ -30,21 +30,21 @@ export const initialState = {
 
 export const adminReducer = (state, action) => {
   switch (action.type) {
-    //signup
-    case "signupUserName":
+    //Create User
+    case "createUserName":
       return {
         ...state,
-        signupUserName: action.payload,
+        createUserName: action.payload,
       };
-    case "signupEmail":
+    case "createEmail":
       return {
         ...state,
-        signupEmail: action.payload,
+        createEmail: action.payload,
       };
-    case "signupPassword":
+    case "createPassword":
       return {
         ...state,
-        signupPassword: action.payload,
+        createPassword: action.payload,
       };
     //user
     case "userName":
@@ -57,7 +57,6 @@ export const adminReducer = (state, action) => {
         ...state,
         userSurname: action.payload,
       };
-
     case "userUserName":
       return {
         ...state,
@@ -83,6 +82,13 @@ export const adminReducer = (state, action) => {
       return {
         ...state,
         users: [...state.users, action.payload],
+      };
+    case "ubdateUser":
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user.id === action.payload.id ? action.payload : user
+        ),
       };
     case "getUsers":
       return {

@@ -181,6 +181,22 @@
               border-radius: 15px;
               font-family: monospace;
               font-size: 12px;
+              button {
+                width: 40px;
+                height: 30px;
+                border-radius: 10px;
+                border: none;
+                background-color: #cf2f2f; /* Darker gray background */
+                color: white;
+                font-size: 12px;
+                font-weight: bold;
+                transition: 0.5s;
+        
+                &:hover {
+                  cursor: pointer;
+                  width: 120px;
+                }
+              }
             }
           }
 
@@ -206,7 +222,7 @@
         height: 40px;
         border-radius: 10px;
         border: none;
-        background-color: #555; /* Darker gray background */
+        background-color: #cf2f2f; /* Darker gray background */
         color: white;
         font-size: 16px;
         font-weight: bold;

@@ -3,21 +3,26 @@ import React, { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import "./nav.scss";
+import axios from "axios";
+let url = "http://localhost:3005";
 
 const Navi = () => {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
-
   const toggleDropdown = () => {
     dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
   };
 
-  const handleLogout = () => {
+  const handleLogout =async () => {
     dispatch({ type: "login", payload: null });
-    dispatch({type:"selectedCategory",payload:null} );
+    dispatch({ type: "selectedCategory", payload: null });
+    await axios.patch(`${url}/users/${localStorage.getItem("userId")}`, {
+      userToken: "",
+    });
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
+   
     navigate(`/home/main`);
   };
 
@@ -33,12 +38,12 @@ const Navi = () => {
           {localStorage.getItem("userToken") !== null ? (
             <div>
               <img
-                onClick={(toggleDropdown)}
+                onClick={toggleDropdown}
                 src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"
               />
 
               {state.isDropdownOpen && (
-                <div onClick={(toggleDropdown)} className="dropdown-menu">
+                <div onClick={toggleDropdown} className="dropdown-menu">
                   <ul>
                     <h5>
                       {state.activeUser.name} {state.activeUser.surName}
@@ -46,12 +51,16 @@ const Navi = () => {
                     <h5>{state.activeUser.email}</h5>
 
                     <hr />
+                    {state.activeUser.userRol === "admin" && (
+                      <li onClick={() => navigate(`/admin`)}>Admin Paneli</li>
+                    )}
                     <li onClick={() => navigate(`/home/profile`)}>Profilim</li>
                     <li
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });
-                        navigate(`/home/userproblems/${state.activeUser.userName}`);
-                    
+                        navigate(
+                          `/home/userproblems/${state.activeUser.userName}`
+                        );
                       }}
                     >
                       Problemlerim

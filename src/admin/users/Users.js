@@ -7,15 +7,15 @@ import { useNavigate } from "react-router-dom";
 
 
 const Users = () => {
-  const {state,dispatch,signupUser} = useContext(AdminContext);
+  const {state,dispatch,createUser} = useContext(AdminContext);
   const navigate = useNavigate();
   return (
     <div id="users-container">
-       <form onSubmit={signupUser}>
+       <form onSubmit={createUser}>
       <h2>Kullanıcı Oluştur</h2>
-        <input onChange={(e)=>dispatch({type:"signupUserName",payload:e.target.value})} type="text" placeholder="Kullanıcı adı" required/>
-        <input onChange={(e)=>dispatch({type:"signupEmail",payload:e.target.value})} type="email" placeholder="Email" required/>
-        <input onChange={(e)=>dispatch({type:"signupPassword",payload:e.target.value})} type="password" placeholder="Şifre" required/>
+        <input onChange={(e)=>dispatch({type:"createUserName",payload:e.target.value})} value={state.createUserName} type="text" placeholder="Kullanıcı adı" required/>
+        <input onChange={(e)=>dispatch({type:"createEmail",payload:e.target.value})} value={state.createEmail} type="email" placeholder="Email" required/>
+        <input onChange={(e)=>dispatch({type:"createPassword",payload:e.target.value})} value={state.createPassword} type="password" placeholder="Şifre" required/>
         <input type="submit" value="Kullanıcı Oluştur" />
       </form>
 
@@ -31,6 +31,14 @@ const Users = () => {
           </h2>
           <div className="user-info">
             <table>
+            <tr>
+                <td>Rol:</td>
+                <td>{user.userRol}</td>
+              </tr>
+              <tr>
+                <td>Tarih:</td>
+                <td>{user.createDate.split(" ")[0]}</td>
+              </tr>
               <tr>
                 <td>Telefon:</td>
                 <td>+90 243 349 34 98</td>
@@ -39,14 +47,11 @@ const Users = () => {
                 <td>Email:</td>
                 <td>{user.email}</td>
               </tr>
-              <tr>
-                <td>Rol:</td>
-                <td>Kullanıcı</td>
-              </tr>
-              <tr>
-                <td>Tarih:</td>
-                <td>{user.createDate.split(" ")[0]}</td>
-              </tr>
+             <tr>
+
+             <td>Problem Sayısı:</td>
+                <td>{user.problemCount}</td>
+             </tr>
             </table>
           </div>
         </div>
