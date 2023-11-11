@@ -1,118 +1,115 @@
-.navi-container{
-    
-    height: 8vh;
-    .navi-header{
-        display: flex;
-        border-bottom: 1px solid black;
-        height: 6vh;
-        justify-content: space-between;
-        align-items: center;
-        background-color: aliceblue;
-        h3{
-            margin-left:15px ;
-            font-family: monospace;
-            font-size: 25px;
-            .navi-link{
-                text-decoration: none;
-                color: rgb(61, 58, 58);
-                }
-        }
-        img{
-            border-radius: 100%;
-            width: 40px;
-            margin:15px 10px 10px 0px;  
-        }
-        button{
-            margin-right: 15px;
-            width: 15vw;
-            height: 2.5vh;
-            border-radius: 8px;
-            border: none;
-            background-color:darkgrey;
-            font-family: monospace;
-            font-size: 15px;
-            font-weight: bold;
-            .navi-link{
-            text-decoration: none;
-            color: white;
-            }
-        }
-        .dropdown-menu {
-            position: absolute;
-            top: 50px; 
-            right: 10px;
-            background-color: #fff; 
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            h5{
-                margin: 8px;
-                font-family: monospace;
-                font-size: 14px;
-                font-weight: 700;
-                color: #333;
-                 padding: 4px 8px;
-             
-            }
-          }
-          
-          .dropdown-menu ul {
-            list-style: none;
-            padding: 0;
-          }
-          
-          .dropdown-menu li {
-            padding: 10px 20px;
-            cursor: pointer;
-          }
-          
-          .dropdown-menu li:hover {
-            background-color: #cccccc;
-          }
-          
+.navi-container {
+  height: 8vh;
+  .navi-header {
+    display: flex;
+    border-bottom: 1px solid black;
+    height: 6vh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aliceblue;
+    h3 {
+      margin-left: 15px;
+      font-family: monospace;
+      font-size: 25px;
+      .navi-link {
+        text-decoration: none;
+        color: rgb(61, 58, 58);
+      }
     }
-    nav ul{
-
-        height: 3.5vh;
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        justify-content: space-around;
-        gap: 5px;
-        li{
-            box-shadow: 3px 6px 9px black;
-            width: 15vw;
-            background-color: lightslategray;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: monospace;
-            font-size: 20px;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            transition: 0.7s;
-            cursor: pointer;
-
-        }
-        .navi-active{
-            height: 4.5vh;
-            box-shadow: 5px 10px 15px black;
-            background-color: rgb(88, 100, 112);
-            color: aliceblue;
-            transition: 0.7s;
-            cursor: pointer;
-       
-            &:hover{
-                height: 4.5vh;
-            box-shadow: 5px 10px 15px black;
-            transition: 0.7s;
-            cursor: pointer;
-            }
-        }
+    img {
+      border-radius: 100%;
+      width: 40px;
+      margin: 15px 10px 10px 0px;
     }
-}
-.navi-outlet{
-    min-height: 84vh;
-}
+    button {
+      margin-right: 15px;
+      width: 15vw;
+      height: 2.5vh;
+      border-radius: 8px;
+      border: none;
+      background-color: darkgrey;
+      font-family: monospace;
+      font-size: 15px;
+      font-weight: bold;
+      .navi-link {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background-color: #fff;
+      color: black;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      h5 {
+        margin: 8px;
+        font-family: monospace;
+        font-size: 14px;
+        font-weight: 700;
+        color: #333;
+        padding: 4px 8px;
+      }
+    }
 
+    .dropdown-menu ul {
+      width: auto;
+      height: auto;
+      list-style: none;
+      padding: 0;
+    }
+
+    .dropdown-menu li {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .dropdown-menu li:hover {
+      background-color: #cccccc;
+    }
+  }
+  nav ul {
+    height: 3.5vh;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-around;
+    gap: 5px;
+    li {
+      box-shadow: 3px 6px 9px black;
+      width: 15vw;
+      background-color: lightslategray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 20px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      transition: 0.7s;
+      cursor: pointer;
+    }
+    .navi-active {
+      height: 4.5vh;
+      box-shadow: 5px 10px 15px black;
+      background-color: rgb(88, 100, 112);
+      color: aliceblue;
+      transition: 0.7s;
+      cursor: pointer;
+
+      &:hover {
+        height: 4.5vh;
+        box-shadow: 5px 10px 15px black;
+        transition: 0.7s;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.navi-outlet {
+  min-height: 84vh;
+}

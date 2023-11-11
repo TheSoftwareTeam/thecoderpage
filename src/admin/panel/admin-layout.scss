@@ -1,0 +1,114 @@
+.navi-header {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(186, 204, 219);
+  h3 {
+    margin-left: 15px;
+    font-family: monospace;
+    font-size: 25px;
+    color: rgb(50, 52, 50);
+  }
+  img {
+    border-radius: 100%;
+    width: 40px;
+  }
+  
+
+  .dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #373434;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    h4 {
+      margin: 8px;
+      font-family: monospace;
+      font-weight: 700;
+      color: #ffffff;
+      padding: 4px 8px;
+    }
+  }
+
+  .dropdown-menu ul {
+    width: 150px;
+    height: 105px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .dropdown-menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .dropdown-menu li:hover {
+    background-color: #cccccc;
+    color: #000000;
+  }
+}
+
+#panel-container {
+  width:100%;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: row;
+  font-family: "Monospace", sans-serif;
+  font-size: 1rem;
+
+  #navi {
+    width: 20%;
+    min-height: 88vh;
+    font-family: "Monospace", sans-serif;
+    font-size: 17px;
+    ul {
+
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        width: 100%;
+        min-height: 14.6vh;
+        height: 15.8vh;
+        font-weight: 900;
+        font-family: monospace;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: xx-large;
+        padding: 10px;
+        background-color: #666;
+        border: 1px solid #888;
+        a {
+          text-decoration: none;
+          color: #ffffff;
+          letter-spacing: 0.5px;
+          transition: 0.5s;
+        }
+        &:hover {
+          background-color: #888;
+        }
+      }
+    }
+  }
+
+  #panel-content {
+    width: 80%;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}

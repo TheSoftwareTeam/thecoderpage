@@ -3,29 +3,12 @@ import React, { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import "./nav.scss";
-import axios from "axios";
-let url = "http://localhost:3005";
 
 const Navi = () => {
-  const { state, dispatch } = useContext(UserContext);
+  const { state, dispatch,toggleDropdown,handleLogout } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const toggleDropdown = () => {
-    dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
-  };
-
-  const handleLogout =async () => {
-    dispatch({ type: "login", payload: null });
-    dispatch({ type: "selectedCategory", payload: null });
-    await axios.patch(`${url}/users/${localStorage.getItem("userId")}`, {
-      userToken: "",
-    });
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("userId");
-   
-    navigate(`/home/main`);
-  };
-
+ 
   return (
     <>
       <div className="navi-container">

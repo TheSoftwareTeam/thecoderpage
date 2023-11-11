@@ -12,7 +12,7 @@ import DetailProblem from "./components/problem/DetailProblem";
 import "./style.scss";
 import { UserProvider } from "./context/UserContext";
 import UserProblems from "./components/problem/UserProblems";
-import AdminPanel from "./admin/panel/AdminPanel";
+import AdminLayout from "./admin/panel/AdminLayout";
 import Users from "./admin/users/Users";
 import Categories from "./admin/categories/Categories";
 import Problems from "./admin/problems/Problems";
@@ -22,6 +22,7 @@ import CategoryDetail from "./admin/categories/CategoryDetail";
 import CommentDetail from "./admin/comments/CommentDetail";
 import ProblemDetail from "./admin/problems/ProblemDetail";
 import { AdminProvider } from "./context/AdminContext";
+import AdminHome from "./admin/panel/AdminHome";
 
 function App() {
   return (
@@ -41,8 +42,8 @@ function App() {
           </Route>
 
 
-          <Route path="admin/*" element={<AdminPanel />}>
-           <Route index element={<div>Admin Ana Sayfa</div>} />  
+          <Route path="admin/*" element={<AdminLayout />}>
+           <Route index element={<div><AdminHome/></div>} />  
             <Route path="users" element={<Users />} />
             <Route path="categories" element={<Categories />} />
             <Route path="problems" element={<Problems />} />

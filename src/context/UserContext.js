@@ -212,7 +212,7 @@ export const UserProvider = ({ children }) => {
 
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
-     dispatch({ type: "activeProblemDetail", payload:await response.data });
+    dispatch({ type: "activeProblemDetail", payload: await response.data });
   };
 
   const createProblem = async (e) => {
@@ -301,7 +301,21 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  
+  const toggleDropdown = () => {
+    dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
+  };
+
+  const handleLogout = async () => {
+    dispatch({ type: "login", payload: null });
+    dispatch({ type: "selectedCategory", payload: null });
+    await axios.patch(`${url}/users/${localStorage.getItem("userId")}`, {
+      userToken: "",
+    });
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("userId");
+
+    navigate(`/home/main`);
+  };
 
   useEffect(() => {
     getProblem();
@@ -310,12 +324,12 @@ export const UserProvider = ({ children }) => {
     getUsers();
     userCache();
     // Check user session validity every 1 minute
-    const loginControl = setInterval(async() => {
-    const userId = localStorage.getItem("userId");
+    const loginControl = setInterval(async () => {
+      const userId = localStorage.getItem("userId");
       const userToken = localStorage.getItem("userToken");
       if (userToken) {
         const response = await axios.get(`${url}/users/?id=${userId}`);
-        const userTokenJson=JSON.stringify(response.data[0].userToken);
+        const userTokenJson = JSON.stringify(response.data[0].userToken);
 
         if (userToken !== userTokenJson) {
           localStorage.removeItem("userToken");
@@ -326,12 +340,10 @@ export const UserProvider = ({ children }) => {
         }
       }
     }, 60000);
-   
-    return () => clearInterval(loginControl);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.name]);
 
- 
+    return () => clearInterval(loginControl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.name]);
 
   return (
     <UserContext.Provider
@@ -349,6 +361,8 @@ export const UserProvider = ({ children }) => {
         getProblemDetail,
         createCategory,
         getUserDetail,
+        toggleDropdown,
+        handleLogout,
       }}
     >
       {children}
