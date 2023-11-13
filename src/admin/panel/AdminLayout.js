@@ -39,24 +39,12 @@ const AdminPanel = () => {
       <div id="panel-container">
         <div id="navi">
           <ul>
-          <li>
-              <NavLink to="/admin">ANASAYFA</NavLink>
-            </li>
-            <li>
-              <NavLink to="/admin/users">KULLANICILAR</NavLink>
-            </li>
-            <li>
-              <NavLink to="/admin/problems">PROBLEMLER</NavLink>
-            </li>
-            <li>
-              <NavLink to="/admin/comments">YORUMLAR</NavLink>
-            </li>
-            <li>
-              <NavLink to="/admin/categories">KATEGORİLER</NavLink>
-            </li>
-            <li>
-              <NavLink to="/admin">SİTE AYARLARI</NavLink>
-            </li>
+              <NavLink className="navlink" to="/admin">ANASAYFA</NavLink>
+              <NavLink className="navlink" to="/admin/problems">PROBLEMLER</NavLink>
+              <NavLink className="navlink" to="/admin/users">KULLANICILAR</NavLink>
+              <NavLink className="navlink" to="/admin/comments">YORUMLAR</NavLink>
+              <NavLink className="navlink" to="/admin/categories">KATEGORİLER</NavLink>
+              <NavLink className="navlink" to="/admin">SİTE AYARLARI</NavLink>
             
           </ul>
         </div>

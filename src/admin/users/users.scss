@@ -5,17 +5,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 30px 7px;
   flex-wrap: wrap;
   gap: 10px;
 
   form {
  
-    border-radius: 15px;
-    padding: 40px 0px;
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    width: 80%;
     gap: 10px;
     align-items: center;
     justify-content: center;
