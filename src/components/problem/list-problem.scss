@@ -14,9 +14,9 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      background-color: rgb(156, 153, 153);
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      background-color: #ddd;
+      border-radius: 10px;
+
       .list-text {
         width: 50%;
         height: 100%;
@@ -32,7 +32,7 @@
         align-items: center;
         justify-content: center;
         button {
-          background-color: rgb(104, 103, 102);
+          background-color: #555;
           width: 120px;
           border-radius: 12px;
           box-shadow: 5px 10px 15px black;
@@ -43,7 +43,7 @@
             text-decoration: none;
             color: white;
           }
-          &:hover{
+          &:hover {
             width: 170px;
             cursor: pointer;
           }
@@ -62,7 +62,7 @@
       height: auto;
       display: flex;
       flex-direction: column;
-      background-color: cornsilk;
+      background-color: #ddd;
       padding: 20px;
       margin-top: 15px;
       border-radius: 10px;
@@ -82,7 +82,7 @@
         h3 {
           color: rgb(64, 121, 171);
         }
-        span{
+        span {
           position: absolute;
           right: 5px;
           background-color: rgb(219, 219, 219);
@@ -101,18 +101,19 @@
         gap: 10px;
         .list-problem-head-text {
           padding: 10px;
-          background-color: rgb(181, 171, 133);
+          background-color: #919191;
+          border-radius: 10px;
         }
 
         .list-problem-comment-view {
           width: 100%;
           height: 32px;
-          background-color: aliceblue;
+          background-color: #ddd;
           display: flex;
           flex-direction: row;
           gap: 10px;
           padding: 5px;
-        } 
+        }
 
         .list-user-comment {
           width: 100%;
@@ -120,7 +121,7 @@
           display: flex;
           flex-direction: column;
           gap: 5px;
-          background-color: rgb(213, 207, 178);
+          background-color: #919191;
           border-radius: 10px;
           .list-comment-user-picture {
             position: relative;
@@ -129,20 +130,22 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            background-color: rgb(228, 224, 205);
+            background-color: #c4c4c4;
+            border-radius: 10px 10px 0 0;
             gap: 10px;
             img {
               width: 30px;
               height: 30px;
               border-radius: 25px;
+              margin-left: 10px;
             }
             h4 {
               color: rgb(83, 124, 160);
             }
-            span{
+            span {
               position: absolute;
               right: 5px;
-           
+
               padding: 5px 10px;
               border-radius: 15px;
               font-family: monospace;

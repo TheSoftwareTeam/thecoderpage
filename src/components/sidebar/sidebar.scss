@@ -1,8 +1,9 @@
 .sidebar-container{
     width: 30vw;
-    background-color: rgb(197, 222, 223);
+    background-color: #ddd;
     margin: 50px 30px 30px 0;
     border-radius: 10px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +13,9 @@
         height: auto;
         display: flex;
         flex-direction: column;
-        background-color: cornsilk;
+        border: 1px solid #c4c4c4;
+        box-shadow: 2px 4px 8px black;
+        background-color: #ddd;
         padding: 10px;
        
         border-radius: 10px;
@@ -43,7 +46,8 @@
          
           .sidebar-problem-head-text {
             padding: 10px;
-            background-color: rgb(181, 171, 133);
+            background-color: #919191;
+            border-radius: 10px 10px 0 0;
           }
   
           .sidebar-problem-comment-view {
@@ -51,6 +55,7 @@
             width: 100%;
             height: 32px;
             background-color: aliceblue;
+            border-radius: 0px 0px 10px 10px;
             display: flex;
             flex-direction: row;
             gap: 10px;

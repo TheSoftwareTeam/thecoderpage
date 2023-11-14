@@ -178,6 +178,10 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
+
+  const toggleDropdown = () => {
+    dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
+  };
   useEffect(() => {
     roleControl();
     getUsers();
@@ -198,6 +202,7 @@ export const AdminProvider = ({ children }) => {
         editUser,
         createUser,
         roleControl,
+        toggleDropdown,
       }}
     >
       {children}

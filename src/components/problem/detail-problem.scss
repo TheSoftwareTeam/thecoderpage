@@ -14,7 +14,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      background-color: rgb(156, 153, 153);
+      background-color: #ddd;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       .detail-text {
@@ -33,7 +33,7 @@
         justify-content: center;
         button {
           width: 120px;
-          background-color: rgb(104, 103, 102);
+          background-color: #555;
           border-radius: 12px;
           box-shadow: 5px 10px 15px black;
           border: none;
@@ -63,7 +63,7 @@
 
       display: flex;
       flex-direction: column;
-      background-color: cornsilk;
+      background-color: #ddd;
       padding: 20px;
       margin-top: 15px;
       border-radius: 10px;
@@ -101,13 +101,13 @@
         flex-direction: column;
         .detail-problem-head-text {
           padding: 10px;
-          background-color: rgb(181, 171, 133);
+          background-color: #919191;
         }
 
         .detail-problem-comment-view {
           width: 100%;
           height: 32px;
-          background-color: aliceblue;
+          background-color: #ddd;
           display: flex;
           flex-direction: row;
           gap: 10px;
@@ -138,7 +138,7 @@
           display: flex;
           flex-direction: column;
           gap: 5px;
-          background-color: rgb(213, 207, 178);
+          background-color: #919191;
           border-radius: 10px;
           .detail-comment-user-picture {
             position: relative;
@@ -147,7 +147,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            background-color: rgb(228, 224, 205);
+            background-color: #c4c4c4;
             gap: 10px;
             img {
               width: 30px;
