@@ -5,10 +5,10 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./admin-layout.scss";
 import UserContext from "../../context/UserContext";
 import { FaHome, FaUsers, FaComments } from "react-icons/fa";
-import { MdReportProblem } from "react-icons/md";
+import { MdReportProblem,MdContactMail } from "react-icons/md";
 import { BiSolidCategoryAlt } from "react-icons/bi";
-import { IoSettings } from "react-icons/io5";
-import { IoLogOut } from "react-icons/io5";
+import { IoSettings,IoNewspaperSharp ,IoLogOut} from "react-icons/io5";
+
 const AdminPanel = () => {
   const navigate = useNavigate();
   const {
@@ -20,7 +20,7 @@ const AdminPanel = () => {
     <>
       <div className="navi-header">
         <h3 onClick={() => navigate("/admin")}>
-          TheCoderPage Administrator Panel
+          TheCoderPage <h5>Administrator Panel</h5>
         </h3>
 
         <img
@@ -90,6 +90,22 @@ const AdminPanel = () => {
             >
               <BiSolidCategoryAlt />
               Kategoriler
+            </NavLink>
+            <NavLink
+              className="navlink"
+              activeClassName="active"
+              to="/admin/categori"
+            >
+             <IoNewspaperSharp />
+              Şikayetler
+            </NavLink>
+            <NavLink
+              className="navlink"
+              activeClassName="active"
+              to="/admin/categor"
+            >
+          <MdContactMail />
+              İletişim Formları
             </NavLink>
             <NavLink className="navlink" activeClassName="active" to="/admina">
               <IoSettings />

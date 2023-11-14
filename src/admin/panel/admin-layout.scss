@@ -7,10 +7,19 @@
   background-color: #363636; 
   padding: 10px;
   h3 {
+    float: left;
     margin-left: 15px;
     font-family: monospace;
-    font-size: 25px;
+    font-size: 28px;
     color: #dcdcdc; 
+    h5{
+      float: right;
+      margin-left: 15px;
+      margin-top: 4px;
+      font-family: monospace;
+      font-weight: 100;
+      color: #dcdcdc; 
+    }
   }
   img {
     border-radius: 100%;
@@ -87,8 +96,9 @@
     &:hover {
       background-color: #666;
       box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4); 
+      
     }
-  
+    
     svg {
       margin-right: 7px;
     }
@@ -101,10 +111,13 @@
       width: 7px;
       border-radius: 10px 0 0 10px;
       height: 100%;
-      background-color: red;
+      background-color: rgb(209, 1, 1);
       transition: height 1s ease; 
       box-shadow:5px 3px 6px 2px rgba(255, 0, 0, 0.4); 
+      
     }
+   
+
   }
 }
 
