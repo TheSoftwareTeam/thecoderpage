@@ -33,7 +33,13 @@ const AdminPanel = () => {
             <ul>
               <h4>{userState.activeUser.userName}</h4>
               <hr />
-              <li onClick={() => navigate(`/home/profile`)}>Profilim</li>
+              <li
+                onClick={() =>
+                  navigate(`/admin/userdetail/${userState.activeUser.id}`)
+                }
+              >
+                Profilim
+              </li>
               <li onClick={handleLogout}>Çıkış Yap</li>
             </ul>
           </div>
@@ -46,14 +52,17 @@ const AdminPanel = () => {
             <NavLink
               className="navlink"
               activeClassName="active"
-              to="/admin"
-  
+              to="/admin/"
+              exact
             >
-              <FaHome />Anasayfa</NavLink>
+              <FaHome />
+              Anasayfa
+            </NavLink>
             <NavLink
               className="navlink"
               activeClassName="active"
               to="/admin/problems"
+      
             >
               <MdReportProblem />
               Problemler
@@ -86,7 +95,12 @@ const AdminPanel = () => {
               <IoSettings />
               Site Ayarları
             </NavLink>
-            <NavLink onClick={handleLogout} className="navlink" activeClassName="active" to="/admind">
+            <NavLink
+              onClick={handleLogout}
+              className="navlink"
+              activeClassName="active"
+              to="/admind"
+            >
               <IoLogOut />
               Oturumu Kapat
             </NavLink>

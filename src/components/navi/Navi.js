@@ -35,7 +35,7 @@ const Navi = () => {
 
                     <hr />
                     {state.activeUser.userRol === "admin" && (
-                      <li onClick={() => navigate(`/admin`)}>Admin Paneli</li>
+                      <li onClick={() => navigate(`/admin/`)}>Admin Paneli</li>
                     )}
                     <li onClick={() => navigate(`/home/profile`)}>Profilim</li>
                     <li

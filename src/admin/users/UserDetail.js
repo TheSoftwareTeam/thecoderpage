@@ -14,10 +14,10 @@ const UserDetail = () => {
   }, [id]);
 
   return (
-    <div className="profile-container">
+    <div className="user-profile-container">
       <h2>Kullanıcı Bilgileri</h2>
-      <div className="profile-content">
-        <div className="profile-picture">
+      <div className="user-profile-content">
+        <div className="user-profile-picture">
           <img src={image} alt="res"/>
           <hr/>
           {/* <span>katılma tarihi: {state.userDetail!==null?state.userDetail.createDate.split(' ')[0]:""}</span> */}
