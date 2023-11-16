@@ -7,10 +7,10 @@
       "userName": "murat",
       "email": "muratokur3@icloud.com",
       "password": "123",
-      "userPicture": "uploaduserimages/murat.jpeg",
+      "userPicture": "",
       "problemCount": 3,
       "createDate": "23.11.2023 21:13:10",
-      "userToken": "",
+      "userToken": "Murat0.7217872377337641",
       "userRol": "admin"
     },
     {
@@ -20,10 +20,10 @@
       "userName": "mahir",
       "email": "mqhir7@icloud.com",
       "password": "123",
-      "userPicture": "",
+      "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "Mahir0.4438264294440466",
-      "userRol": "admin", 
+      "userToken": "",
+      "userRol": "admin",
       "createDate": "23.11.2023 21:13:10"
     },
     {

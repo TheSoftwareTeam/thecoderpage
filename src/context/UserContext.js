@@ -116,7 +116,7 @@ export const UserProvider = ({ children }) => {
       ...user,
       name: state.profileName,
       surName: state.profileSurname,
-      userPicture: state.profilePicture,
+      userPicture: state.profilePicture===""?state.activeUser.userPicture:state.profilePicture,
     };
     await axios.patch(`${url}/users/${userId}`, newUser);
     dispatch({ type: "createUser", payload: newUser });
