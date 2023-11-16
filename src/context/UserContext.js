@@ -116,9 +116,12 @@ export const UserProvider = ({ children }) => {
       ...user,
       name: state.profileName,
       surName: state.profileSurname,
+      userPicture: state.profilePicture,
     };
     await axios.patch(`${url}/users/${userId}`, newUser);
+    dispatch({ type: "createUser", payload: newUser });
     dispatch({ type: "login", payload: newUser });
+
     navigate(`/home/listproblem/`);
   };
   //user
@@ -314,7 +317,37 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
 
-    navigate(`/home/main`);
+    navigate(`/home/login`);
+  };
+
+  const handleFileUpload = async (e) => {
+    try {
+      const file = e.target.files[0];
+      const newFile = new File(
+        [file],
+        `${state.activeUser.userName}.${file.type.split("/")[1]}`,
+        { type: file.type }
+      );
+      const formData = new FormData();
+      formData.append("file", newFile);
+      formData.append("userId", state.activeUser.id);
+      formData.append("userName", state.activeUser.userName);
+      
+      const response = await axios.post(
+        "http://localhost:3001/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      dispatch({type:"profilePicture",payload:response.data.imagePath});
+        console.log(response.data.imagePath);
+
+    } catch (error) {
+      console.error("File upload error:", error);
+    }
   };
 
   useEffect(() => {
@@ -363,6 +396,7 @@ export const UserProvider = ({ children }) => {
         getUserDetail,
         toggleDropdown,
         handleLogout,
+        handleFileUpload,
       }}
     >
       {children}

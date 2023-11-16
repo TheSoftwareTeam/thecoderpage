@@ -1,4 +1,4 @@
-export const initialState = {
+const initialState = {
   //login
   activeUser: null,
   loginUserName: "",
@@ -11,9 +11,10 @@ export const initialState = {
   profileName: "",
   profileSurname: "",
   profilePicture: "",
+
   //user
   users: [],
-  userDetail:{},
+  userDetail: {},
   //navi
   isDropdownOpen: false,
   //comment
@@ -27,15 +28,14 @@ export const initialState = {
   problems: [],
   problemContent: "",
   problemHead: "",
-  categoryFilterProblem:[],
-  activeUserProblem:[],
+  categoryFilterProblem: [],
+  activeUserProblem: [],
   activeProblemDetail: {
     likesUserId: [],
   },
 };
 
-export const userReducer = (state, action) => {
-  
+const userReducer = (state, action) => {
   switch (action.type) {
     //login
     case "login":
@@ -53,7 +53,7 @@ export const userReducer = (state, action) => {
         ...state,
         loginPassword: action.payload,
       };
-  //signup
+    //signup
     case "signupUserName":
       return {
         ...state,
@@ -69,7 +69,7 @@ export const userReducer = (state, action) => {
         ...state,
         signupPassword: action.payload,
       };
-  //profile
+    //profile
     case "profileName":
       return {
         ...state,
@@ -85,12 +85,26 @@ export const userReducer = (state, action) => {
         ...state,
         profilePicture: action.payload,
       };
-  //user
+    //user
     case "createUser":
-      return {
-        ...state,
-        users: [...state.users, action.payload],
-      };
+      const userIndex = state.users.findIndex(
+        (user) => user.id === action.payload.id
+      );
+      if (userIndex !== -1) {
+        // Kullanıcı bulundu, güncelle
+        return {
+          ...state,
+          users: state.users.map((user, index) =>
+            index === userIndex ? action.payload : user
+          ),
+        };
+      } else {
+        // Kullanıcı bulunamadı, ekle
+        return {
+          ...state,
+          users: [...state.users, action.payload],
+        };
+      }
     case "getUsers":
       return {
         ...state,
@@ -101,13 +115,13 @@ export const userReducer = (state, action) => {
         ...state,
         userDetail: action.payload,
       };
-  //navi
+    //navi
     case "isDropdownOpen":
       return {
         ...state,
         isDropdownOpen: action.payload,
-      }; 
-  //comment
+      };
+    //comment
     case "getComments":
       return {
         ...state,
@@ -123,7 +137,7 @@ export const userReducer = (state, action) => {
         ...state,
         newProblemComment: action.payload,
       };
-  //category
+    //category
     case "getCategory":
       return {
         ...state,
@@ -139,17 +153,17 @@ export const userReducer = (state, action) => {
         ...state,
         categoryId: action.payload,
       };
-      case "categoryName":
+    case "categoryName":
       return {
         ...state,
         categoryName: action.payload,
       };
-      case "createCategory":
+    case "createCategory":
       return {
         ...state,
         categories: [...state.categories, action.payload],
       };
-  //problem
+    //problem
     case "getProblems":
       return {
         ...state,
@@ -160,12 +174,10 @@ export const userReducer = (state, action) => {
         ...state,
         problemContent: action.payload,
       };
-      case"problemSil":
+    case "problemSil":
       return {
         ...state,
-        problems: state.problems.filter(
-          (problem) => problem.id !== action.id
-        ),
+        problems: state.problems.filter((problem) => problem.id !== action.id),
       };
     case "createAndUbdateProblem":
       const newProblem = action.payload;
@@ -209,3 +221,4 @@ export const userReducer = (state, action) => {
       return state;
   }
 };
+module.exports = { initialState, userReducer };

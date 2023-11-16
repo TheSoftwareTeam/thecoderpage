@@ -8,7 +8,7 @@ import { FaHome, FaUsers, FaComments } from "react-icons/fa";
 import { MdReportProblem,MdContactMail } from "react-icons/md";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { IoSettings,IoNewspaperSharp ,IoLogOut} from "react-icons/io5";
-
+import image from "../../images/avatar.png";
 const AdminPanel = () => {
   const navigate = useNavigate();
   const {
@@ -23,10 +23,21 @@ const AdminPanel = () => {
           TheCoderPage <h5>Administrator Panel</h5>
         </h3>
 
-        <img
-          onClick={toggleDropdown}
-          src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"
-        />
+        {
+                    userState.activeUser &&
+                    userState.activeUser.userPicture ? (
+                      <img
+                      onClick={toggleDropdown}
+                        src={
+                          "http://localhost:3001/" +
+                          userState.activeUser.userPicture
+                        }
+                        alt="res"
+                      />
+                    )
+                  : (
+                    <img onClick={toggleDropdown} src={image} alt="res" />
+                  )}
 
         {userState.isDropdownOpen && (
           <div onClick={toggleDropdown} className="dropdown-menu">

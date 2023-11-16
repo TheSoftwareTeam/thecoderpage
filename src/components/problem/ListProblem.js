@@ -5,7 +5,7 @@ import Sidebar from "../sidebar/Sidebar";
 import "./list-problem.scss";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
-
+import image from "../../images/avatar.png";
 const ListProblem = () => {
   const { state, actionLike, getCategoryFilterproblem } =
     useContext(UserContext);
@@ -17,7 +17,7 @@ const ListProblem = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryName]);
- 
+
   return (
     <div id="list-container">
       <div id="list-content">
@@ -45,18 +45,31 @@ const ListProblem = () => {
             state.selectedCategory === null ? (
               <div key={problem.id} className="list-problem">
                 <div className="list-user-picture">
-                  <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
+                  {state.users.find((user) => user.id === problem.userId)
+                    ?.userPicture ? (
+                    <img
+                      src={
+                        "http://localhost:3001/" +
+                        state.users.find((user) => user.id === problem.userId)
+                          ?.userPicture
+                      }
+                      alt="res"
+                    />
+                  ) : (
+                    <img src={image} alt="res" />
+                  )}
                   <h3>
-                    {state.users.map((user) =>
-                      user.id === problem.userId ? user.userName : ""
-                    )}
+                    {
+                      state.users.find((user) => user.id === problem.userId)
+                        ?.userName
+                    }
                   </h3>
                   <span>{problem.createDate}</span>
                 </div>
                 <div className="list-problem-detail">
                   <div className="list-problem-head-text">
-                  {problem.isCompleted?"✅ Çözüldü":"❌ Çözüm aranıyor"}
-                    <h3>  {problem.problemHead}</h3>
+                    {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
+                    <h3> {problem.problemHead}</h3>
                     <p>
                       {problem.problemContent.slice(0, 150)}
                       <a
@@ -99,11 +112,27 @@ const ListProblem = () => {
                       comment.problemId === problem.id ? (
                         <div key={comment.id} className="list-user-comment">
                           <div className="list-comment-user-picture">
-                            <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
+                            {state.users.find(
+                              (user) => user.id === comment.userId
+                            )?.userPicture ? (
+                              <img
+                                src={
+                                  "http://localhost:3001/" +
+                                  state.users.find(
+                                    (user) => user.id === comment.userId
+                                  )?.userPicture
+                                }
+                                alt="res"
+                              />
+                            ) : (
+                              <img src={image} alt="res" />
+                            )}
                             <h4>
-                              {state.users.map((user) =>
-                                user.id === comment.userId ? user.userName : ""
-                              )}
+                              {
+                                state.users.find(
+                                  (user) => user.id === comment.userId
+                                )?.userName
+                              }
                             </h4>
                             <span>{comment.createDate}</span>
                           </div>

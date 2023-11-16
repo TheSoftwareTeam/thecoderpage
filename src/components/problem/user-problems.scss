@@ -62,7 +62,7 @@
         height: auto;
         display: flex;
         flex-direction: column;
-        background-color: cornsilk;
+        background-color: #ddd;
         padding: 20px;
         margin-top: 15px;
         border-radius: 10px;
@@ -101,7 +101,7 @@
           gap: 10px;
           .user-problem-head-text {
             padding: 10px;
-            background-color: rgb(181, 171, 133);
+            background-color: #919191;
           }
   
           .user-problem-comment-view {
@@ -120,7 +120,7 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
-            background-color: rgb(213, 207, 178);
+            background-color: #919191;
             border-radius: 10px;
             .user-comment-user-picture {
               position: relative;
@@ -129,7 +129,7 @@
               display: flex;
               flex-direction: row;
               align-items: center;
-              background-color: rgb(228, 224, 205);
+              background-color: #c4c4c4;
               gap: 10px;
               img {
                 width: 30px;

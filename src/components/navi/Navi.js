@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import "./nav.scss";
-
+import image from "../../images/avatar.png";
 const Navi = () => {
   const { state, dispatch,toggleDropdown,handleLogout } = useContext(UserContext);
   const navigate = useNavigate();
@@ -20,10 +20,21 @@ const Navi = () => {
           </h3>
           {localStorage.getItem("userToken") !== null ? (
             <div>
-              <img
-                onClick={toggleDropdown}
-                src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w"
-              />
+               {
+                    state.activeUser &&
+                    state.activeUser.userPicture ? (
+                      <img
+                      onClick={toggleDropdown}
+                        src={
+                          "http://localhost:3001/" +
+                          state.activeUser.userPicture
+                        }
+                        alt="res"
+                      />
+                    )
+                  : (
+                    <img onClick={toggleDropdown} src={image} alt="res" />
+                  )}
 
               {state.isDropdownOpen && (
                 <div onClick={toggleDropdown} className="dropdown-menu">

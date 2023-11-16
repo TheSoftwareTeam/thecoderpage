@@ -4,13 +4,12 @@ import Sidebar from "../sidebar/Sidebar";
 import "./detail-problem.scss";
 import UserContext from "../../context/UserContext";
 import { NavLink, useParams } from "react-router-dom";
-
+import image from "../../images/avatar.png";
 const DetailProblem = () => {
-  const { state, dispatch, writeProblemComment, actionLike,getProblemDetail } =
+  const { state, dispatch, writeProblemComment, actionLike, getProblemDetail } =
     useContext(UserContext);
 
   const { id } = useParams();
-  
 
   useEffect(() => {
     getProblemDetail(id);
@@ -34,25 +33,36 @@ const DetailProblem = () => {
             </button>
           </div>
         </div>
-        {}
+   
         <div className="detail-list-problem">
-          
           <div className="detail-user-picture">
-  
-            <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
-            <h3>
-              {state.users.map((user) =>
-                user.id === state.activeProblemDetail.userId
-                  ? user.userName
-                  : ""
-              )}
-            </h3>
+          {state.users.map(
+  (user) =>
+    user.id === state.activeProblemDetail.userId && (
+      <div key={user.id}>
+        {user.userPicture ? (
+          <img
+            src={
+              "http://localhost:3001/" +
+              user.userPicture
+            }
+            alt="res"
+          />
+        ) : (
+          <img src={image} alt="res" />
+        )}
+        <h3>{user.userName}</h3>
+      </div>
+    )
+)}
             <span>{state.activeProblemDetail.createDate}</span>
           </div>
           <div className="detail-problem-detail">
             <div className="detail-problem-head-text">
-            {state.activeProblemDetail.isCompleted?"✅ Çözüldü":"❌ Çözüm aranıyor"}
-              
+              {state.activeProblemDetail.isCompleted
+                ? "✅ Çözüldü"
+                : "❌ Çözüm aranıyor"}
+
               <h3>{state.activeProblemDetail.problemHead}</h3>
               <br />
               <p>{state.activeProblemDetail.problemContent}</p>
@@ -89,29 +99,40 @@ const DetailProblem = () => {
                 Gönder
               </button>
             </div>
-
             {state.comments
-              .slice()
-              .reverse()
-              .map((comment) =>
-                comment.problemId === state.activeProblemDetail.id ? (
-                  <div key={comment.id} className="detail-user-comment">
-                    <div className="detail-comment-user-picture">
-                      <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
-                      <h4>
-                        {state.users.map((user) =>
-                          user.id === comment.userId ? user.userName : ""
-                        )}
-                      </h4>
-                      <span>{comment.createDate}</span>
-                    </div>
+  .slice()
+  .map((comment) =>
+    comment.problemId === state.activeProblemDetail.id ? (
+      <div key={comment.id} className="detail-user-comment">
+        <div className="detail-comment-user-picture">
+          {state.users.map((user) =>
+            user.id === comment.userId ? (
+              user.userPicture ? (
+                <img
+                key={user.id}
+                  src={
+                    "http://localhost:3001/" +
+                    user.userPicture
+                  }
+                  alt="res"
+                />
+              ) : (
+                <img key={user.id} src={image} alt="res" />
+              )
+            ) : null
+          )}
+          <h4>
+            {state.users.map((user) =>
+              user.id === comment.userId ? user.userName : null
+            )}
+          </h4>
+          <span>{comment.createDate}</span>
+        </div>
 
-                    <p>{comment.commentContent}</p>
-                  </div>
-                ) : (
-                  ""
-                )
-              )}
+        <p>{comment.commentContent}</p>
+      </div>
+    ) : null
+  )}
           </div>
         </div>
       </div>

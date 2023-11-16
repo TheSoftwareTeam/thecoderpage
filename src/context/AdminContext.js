@@ -170,7 +170,7 @@ export const AdminProvider = ({ children }) => {
       if (userRol !== "admin") {
        navigate(`/home/main`);
       } else {
-        console.log("admin açık");
+       // console.log("admin açık");
       }
     }
     else{

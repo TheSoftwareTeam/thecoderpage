@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import "./sidebar.scss";
 import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-
+import image from "../../images/avatar.png";
 const Sidebar = () => {
   const { state } = useContext(UserContext);
   const navigate = useNavigate();
@@ -14,17 +14,26 @@ const Sidebar = () => {
       {state.problems.slice(0, 5).map((problem) => (
         <div key={problem.id} className="sidebar-list-problem">
           <div className="sidebar-user-picture">
-            <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
+            {state.users.find((user) => user.id === problem.userId)
+              ?.userPicture ? (
+              <img
+                src={
+                  "http://localhost:3001/" +
+                  state.users.find((user) => user.id === problem.userId)
+                    ?.userPicture
+                }
+                alt="res"
+              />
+            ) : (
+              <img src={image} alt="res" />
+            )}
             <h3>
-              {state.users.map((user) =>
-                user.id === problem.userId ? user.userName : ""
-              )}
+              {state.users.find((user) => user.id === problem.userId)?.userName}
             </h3>
-            
           </div>
           <div className="sidebar-problem-detail">
             <div className="sidebar-problem-head-text">
-            {problem.isCompleted?"✅ Çözüldü":"❌ Çözüm aranıyor"}
+              {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
 
               <h3>{problem.problemHead}</h3>
               <p>
@@ -44,11 +53,16 @@ const Sidebar = () => {
                 {state.activeUser !== null
                   ? problem.likesUserId.find((id) => id === state.activeUser.id)
                     ? "❤️" + problem.likesUserId.length
-                    : "🤍"+ problem.likesUserId.length
+                    : "🤍" + problem.likesUserId.length
                   : "🤍" + problem.likesUserId.length}
               </button>
               <button>✉️{problem.commentCount}</button>
-              <span>{problem.createDate.substring(0, problem.createDate.indexOf(" "))}</span>
+              <span>
+                {problem.createDate.substring(
+                  0,
+                  problem.createDate.indexOf(" ")
+                )}
+              </span>
             </div>
           </div>
         </div>
