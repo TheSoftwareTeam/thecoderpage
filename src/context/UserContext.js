@@ -11,6 +11,9 @@ export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   let url = "http://localhost:3005";
 
+
+//date
+
   const date = () => {
     const formatTwoDigits = (value) => {
       return value < 10 ? `0${value}` : value;
@@ -137,10 +140,7 @@ export const UserProvider = ({ children }) => {
   };
 
   //comment
-  const getComments = async () => {
-    const response = await axios.get(`${url}/comments`);
-    dispatch({ type: "getComments", payload: await response.data });
-  };
+  
 
   const writeProblemComment = async (data) => {
     if (state.activeUser !== null) {
@@ -216,6 +216,7 @@ export const UserProvider = ({ children }) => {
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
+    console.log(state.activeProblemDetail);
   };
 
   const createProblem = async (e) => {
@@ -353,7 +354,6 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     getProblem();
     getCategory();
-    getComments();
     getUsers();
     userCache();
     // Check user session validity every 1 minute

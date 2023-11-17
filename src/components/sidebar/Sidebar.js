@@ -56,7 +56,7 @@ const Sidebar = () => {
                     : "🤍" + problem.likesUserId.length
                   : "🤍" + problem.likesUserId.length}
               </button>
-              <button>✉️{problem.commentCount}</button>
+              <button>✉️{problem.comments.length}</button>
               <span>
                 {problem.createDate.substring(
                   0,

@@ -32,6 +32,7 @@ const initialState = {
   activeUserProblem: [],
   activeProblemDetail: {
     likesUserId: [],
+    comments: [],
   },
 };
 

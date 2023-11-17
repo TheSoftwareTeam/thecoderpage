@@ -91,14 +91,11 @@ const UserProblem = () => {
                         state.problems.find((prob) => prob.id === problem.id)
                           .likesUserId.length}
                   </button>
-                  <button>✉️{problem.commentCount}</button>
+                  <button>✉️{problem.comments.length}</button>
                 </div>
 
-                {state.comments
-                  .filter((comment) => comment.problemId === problem.id)
-                  .slice(0, 2)
+                {problem.comments.slice(0, 2)
                   .map((comment) =>
-                    comment.problemId === problem.id ? (
                       <div key={comment.id} className="user-user-comment">
                         <div className="user-comment-user-picture">
                           {state.users.find(
@@ -127,13 +124,11 @@ const UserProblem = () => {
                         </div>
                         <p>{comment.commentContent}</p>
                       </div>
-                    ) : (
-                      ""
-                    )
+                   
                   )}
                 <p>
-                  {problem.commentCount >= 3
-                    ? `+ ${problem.commentCount - 2} yorum daha`
+                  {problem.comments.length >= 3
+                    ? `+ ${problem.comments.length - 2} yorum daha`
                     : ""}
                 </p>
               </div>

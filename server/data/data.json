@@ -7,10 +7,10 @@
       "userName": "murat",
       "email": "muratokur3@icloud.com",
       "password": "123",
-      "userPicture": "",
+      "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
       "createDate": "23.11.2023 21:13:10",
-      "userToken": "Murat0.7217872377337641",
+      "userToken": "",
       "userRol": "admin"
     },
     {
@@ -22,7 +22,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "",
+      "userToken": "Mahir0.8873714531785315",
       "userRol": "admin",
       "createDate": "23.11.2023 21:13:10"
     },
@@ -74,14 +74,26 @@
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
       "commentCount": 6,
-      "likesUserId": [
-        44,
-        5,
-        6,
-        23,
-        4,
-        1,
-        2
+      "likesUserId": [44, 5, 6, 23, 4, 1, 2],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 3,
+          "commentContent": "ne la bu",
+          "createDate": "23.11.2023 21:13:10"
+        },
+        {
+          "id": 1,
+          "userId": 3,
+          "commentContent": "çözülemez vaka",
+          "createDate": "23.11.2023 21:13:10"
+        },
+        {
+          "id": 2,
+          "userId": 1,
+          "commentContent": "bu kodu yapıştır",
+          "createDate": "23.11.2023 21:13:10"
+        }
       ],
       "createDate": "23.11.2023 21:13:10",
       "isCompleted": true,
@@ -94,17 +106,16 @@
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
       "commentCount": 4,
-      "likesUserId": [
-        0,
-        44,
-        5,
-        6,
-        23,
-        88,
-        0,
-        1
-      ],
+      "likesUserId": [0, 44, 5, 6, 23, 88, 0, 1],
       "createDate": "23.11.2023 21:13:10",
+      "comments": [
+        {
+          "id": 3,
+          "userId": 1,
+          "commentContent": "bu kodu yapıştır",
+          "createDate": "23.11.2023 21:13:10"
+        }
+      ],
       "isCompleted": false,
       "isDeleted": false
     },
@@ -115,13 +126,20 @@
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
       "commentCount": 2,
-      "likesUserId": [
-        34,
-        44,
-        5,
-        6,
-        1,
-        2
+      "likesUserId": [34, 44, 5, 6, 1, 2],
+      "comments": [
+        {
+          "id": 4,
+          "userId": 3,
+          "commentContent": "bu sorunu çözen var  mı",
+          "createDate": "23.11.2023 21:13:10"
+        },
+        {
+          "id": 5,
+          "userId": 1,
+          "commentContent": "yorum",
+          "createDate": "25.11.2023 21:13:10"
+        }
       ],
       "createDate": "23.11.2023 21:13:10",
       "isCompleted": false,
@@ -134,13 +152,20 @@
       "problemHead": "CSS hata veriyor",
       "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
       "commentCount": 2,
-      "likesUserId": [
-        444,
-        44,
-        5,
-        6,
-        56,
-        1
+      "likesUserId": [444, 44, 5, 6, 56, 1],
+      "comments": [
+        {
+          "id": 6,
+          "userId": 1,
+          "commentContent": "hangi kodu yapıştırayım",
+          "createDate": "25.11.2023 21:13:10"
+        },
+        {
+          "id": 7,
+          "userId": 1,
+          "commentContent": "nasıl yani",
+          "createDate": "25.11.2023 21:13:10"
+        }
       ],
       "createDate": "23.11.2023 21:13:10",
       "isCompleted": false,
@@ -153,13 +178,20 @@
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
       "commentCount": 6,
-      "likesUserId": [
-        44,
-        5,
-        6,
-        56,
-        2,
-        1
+      "likesUserId": [44, 5, 6, 56, 2, 1],
+      "comments": [
+        {
+          "id": 8,
+          "userId": 1,
+          "commentContent": "öyle yani",
+          "createDate": "25.11.2023 21:13:10"
+        },
+        {
+          "id": 9,
+          "userId": 1,
+          "commentContent": "nerede",
+          "createDate": "25.11.2023 21:13:10"
+        }
       ],
       "createDate": "23.11.2023 21:13:10",
       "isCompleted": false,
@@ -172,16 +204,20 @@
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
       "commentCount": 2,
-      "likesUserId": [
-        3,
-        5,
-        6,
-        7,
-        8,
-        44,
-        5,
-        6,
-        1
+      "likesUserId": [3, 5, 6, 7, 8, 44, 5, 6, 1],
+      "comments": [
+        {
+          "id": 10,
+          "userId": 1,
+          "commentContent": "yeni bir yorum",
+          "createDate": "25.11.2023 21:13:10"
+        },
+        {
+          "id": 11,
+          "userId": 1,
+          "commentContent": "selam",
+          "createDate": "25.11.2023 21:13:10"
+        }
       ],
       "createDate": "23.11.2023 21:13:10",
       "isCompleted": false,
@@ -195,151 +231,26 @@
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
       "commentCount": 2,
       "likesUserId": [],
-      "createDate": "23.11.2023 21:13:10",
-      "isCompleted": false,
-      "isDeleted": false
-    },
-    {
-      "id": 7,
-      "userId": 1,
-      "categoryId": 5,
-      "problemHead": "JavaFx nedir",
-      "problemContent": "Konuyu açıklar mısın?",
-      "commentCount": 1,
-      "likesUserId": [],
+      "comments": [
+        {
+          "id": 12,
+          "userId": 1,
+          "commentContent": "Merhaba eklentiyi tekrar kurmayı denediniz mi?",
+          "createDate": "25.11.2023 21:13:10"
+        },
+        {
+          "id": 13,
+          "userId": 1,
+          "commentContent": "merhaba denedim",
+          "createDate": "25.11.2023 21:13:10"
+        }
+      ],
       "createDate": "23.11.2023 21:13:10",
       "isCompleted": false,
       "isDeleted": true
     }
   ],
-  "comments": [
-    {
-      "id": 0,
-      "problemId": 1,
-      "userId": 3,
-      "commentContent": "ne la bu",
-      "createDate": "23.11.2023 21:13:10"
-    },
-    {
-      "id": 1,
-      "problemId": 0,
-      "userId": 3,
-      "commentContent": "çözülemez vaka",
-      "createDate": "23.11.2023 21:13:10"
-    },
-    {
-      "id": 2,
-      "problemId": 1,
-      "userId": 1,
-      "commentContent": "bu kodu yapıştır",
-      "createDate": "23.11.2023 21:13:10"
-    },
-    {
-      "id": 3,
-      "problemId": 2,
-      "userId": 1,
-      "commentContent": "bu kodu yapıştır",
-      "createDate": "23.11.2023 21:13:10"
-    },
-    {
-      "id": 4,
-      "problemId": 3,
-      "userId": 3,
-      "commentContent": "bu sorunu çözen var  mı",
-      "createDate": "23.11.2023 21:13:10"
-    },
-    {
-      "id": 5,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "yorum",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 6,
-      "problemId": 0,
-      "userId": 1,
-      "commentContent": "hangi kodu yapıştırayım",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 7,
-      "problemId": 4,
-      "userId": 1,
-      "commentContent": "nasıl yani",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 8,
-      "problemId": 4,
-      "userId": 1,
-      "commentContent": "öyle yani",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 9,
-      "problemId": 4,
-      "userId": 1,
-      "commentContent": "nerede",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 10,
-      "problemId": 4,
-      "userId": 1,
-      "commentContent": "yeni bir yorum",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 11,
-      "problemId": 5,
-      "userId": 1,
-      "commentContent": "selam",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 12,
-      "problemId": 6,
-      "userId": 1,
-      "commentContent": "Merhaba eklentiyi tekrar kurmayı denediniz mi?",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 13,
-      "problemId": 6,
-      "userId": 1,
-      "commentContent": "merhaba denedim",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 14,
-      "problemId": 2,
-      "userId": 1,
-      "commentContent": "selam",
-      "createDate": "25.11.2023 21:13:10"
-    },
-    {
-      "id": 15,
-      "problemId": 5,
-      "userId": 2,
-      "commentContent": "sadasdasdads",
-      "createDate": "6.11.2023 21:12:51"
-    },
-    {
-      "id": 16,
-      "problemId": 4,
-      "userId": 1,
-      "commentContent": "asdfghjkl",
-      "createDate": "7.11.2023 20:40:56"
-    },
-    {
-      "id": 17,
-      "problemId": 0,
-      "userId": 2,
-      "commentContent": "yorum deneme",
-      "createDate": "9.11.2023 17:01:09"
-    }
-  ],
+
   "categories": [
     {
       "id": 0,

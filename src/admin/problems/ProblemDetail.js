@@ -48,15 +48,12 @@ const ProblemDetail = () => {
                💙{state.activeProblemDetail.likesUserId.length}
               </button>
 
-              <button>✉️{state.activeProblemDetail.commentCount}</button>
+              <button>✉️{state.activeProblemDetail.comments.length}</button>
             </div>
-            {console.log(state.comments)}
-            {state.comments
+            {state.activeProblemDetail.comments
               .slice()
               .reverse()
-              .map((comment) =>
-                comment.problemId === state.activeProblemDetail.id ? (
-                  <div key={comment.id} className="detail-user-comment">
+              .map((comment) =>  <div key={comment.id} className="detail-user-comment">
                     <div className="detail-comment-user-picture">
                       <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
                       <h4>
@@ -69,12 +66,10 @@ const ProblemDetail = () => {
 
                     <p>{comment.commentContent}</p>
                   </div>
-                ) : (
-                  ""
-                )
-              )
+               
+              )}
               
-              }
+              
               
           </div>
          

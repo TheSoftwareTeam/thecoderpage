@@ -102,49 +102,41 @@ const ListProblem = () => {
                           state.problems.find((prob) => prob.id === problem.id)
                             .likesUserId.length}
                     </button>
-                    <button>✉️{problem.commentCount}</button>
+                    <button>✉️{problem.comments.length}</button>
                   </div>
 
-                  {state.comments
-                    .filter((comment) => comment.problemId === problem.id)
-                    .slice(0, 2)
-                    .map((comment) =>
-                      comment.problemId === problem.id ? (
-                        <div key={comment.id} className="list-user-comment">
-                          <div className="list-comment-user-picture">
-                            {state.users.find(
+                  {problem.comments.slice(0,2).map((comment) => (
+                    <div key={comment.id} className="list-user-comment">
+                      <div className="list-comment-user-picture">
+                        {state.users.find((user) => user.id === comment.userId)
+                          ?.userPicture ? (
+                          <img
+                            src={
+                              "http://localhost:3001/" +
+                              state.users.find(
+                                (user) => user.id === comment.userId
+                              )?.userPicture
+                            }
+                            alt="res"
+                          />
+                        ) : (
+                          <img src={image} alt="res" />
+                        )}
+                        <h4>
+                          {
+                            state.users.find(
                               (user) => user.id === comment.userId
-                            )?.userPicture ? (
-                              <img
-                                src={
-                                  "http://localhost:3001/" +
-                                  state.users.find(
-                                    (user) => user.id === comment.userId
-                                  )?.userPicture
-                                }
-                                alt="res"
-                              />
-                            ) : (
-                              <img src={image} alt="res" />
-                            )}
-                            <h4>
-                              {
-                                state.users.find(
-                                  (user) => user.id === comment.userId
-                                )?.userName
-                              }
-                            </h4>
-                            <span>{comment.createDate}</span>
-                          </div>
-                          <p>{comment.commentContent}</p>
-                        </div>
-                      ) : (
-                        ""
-                      )
-                    )}
+                            )?.userName
+                          }
+                        </h4>
+                        <span>{comment.createDate}</span>
+                      </div>
+                      <p>{comment.commentContent}</p>
+                    </div>
+                  ))}
                   <p>
-                    {problem.commentCount >= 3
-                      ? `+ ${problem.commentCount - 2} yorum daha`
+                    {problem.comments.length >= 3
+                      ? `+ ${problem.comments.length-2} yorum daha`
                       : ""}
                   </p>
                 </div>

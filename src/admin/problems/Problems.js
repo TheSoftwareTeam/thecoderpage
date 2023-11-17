@@ -42,7 +42,7 @@ const Problems = () => {
                         .likesUserId.length
                     }
                   </button>
-                  <button>✉️{problem.commentCount}</button>
+                  <button>✉️{problem.comments.length}</button>
                 </div>
               </div>
             </div>

@@ -10,29 +10,36 @@ const Comments = () => {
   return (
     <div id="admin-comment-container">
       
-      {state.comments.map((comment) => (
-        <div
-          // onClick={() => navigate(`/admin/commentdetail/${comment.id}`)}
-          key={comment.id}
-          className="admin-comment"
-        >
-          <div className="admin-comment-user-picture">
-            <img src={image} />
-            <h5>
-              {state.users.map((user) =>
-                user.id === comment.userId ? user.userName : ""
-              )}
-            </h5>
-          </div>
-          <span>{comment.createDate.split(" ")[0]}</span>
-          <div className="admin-comment-comment-head-text">
-            <h6>{comment.commentContent.slice(0, 150)}...</h6>
-          </div>
-          <button onClick={(()=>navigate(`/admin/problemdetail/${comment.problemId}`))}>Problemi Gör</button>
-          <button onClick={(()=>navigate(`/admin/userdetail/${comment.userId}`))}>Kullanıcı</button>
-          <button onClick={("")}>Sil</button>
-        </div>
-      ))}
+     {
+      state.problems.map(problem=>
+        (
+          problem.comments.map((comment) => (
+            <div
+              // onClick={() => navigate(`/admin/commentdetail/${comment.id}`)}
+              key={comment.id}
+              className="admin-comment"
+            >
+              <div className="admin-comment-user-picture">
+                <img src={image} />
+                <h5>
+                  {state.users.map((user) =>
+                    user.id === comment.userId ? user.userName : ""
+                  )}
+                </h5>
+              </div>
+              <span>{comment.createDate.split(" ")[0]}</span>
+              <div className="admin-comment-comment-head-text">
+                <h6>{comment.commentContent.slice(0, 150)}...</h6>
+              </div>
+              <button onClick={(()=>navigate(`/admin/problemdetail/${comment.problemId}`))}>Problemi Gör</button>
+              <button onClick={(()=>navigate(`/admin/userdetail/${comment.userId}`))}>Kullanıcı</button>
+              <button onClick={("")}>Sil</button>
+            </div>
+          ))
+        )
+        
+        )
+     }
 
     </div>
   );

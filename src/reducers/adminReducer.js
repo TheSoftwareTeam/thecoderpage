@@ -25,6 +25,7 @@ export const initialState = {
   problems: [],
   activeProblemDetail: {
     likesUserId: [],
+    comments: [],
   },
 };
 

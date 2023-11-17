@@ -127,10 +127,7 @@ export const AdminProvider = ({ children }) => {
   };
 
   //comment
-  const getComments = async () => {
-    const response = await axios.get(`${url}/comments`);
-    dispatch({ type: "getComments", payload: await response.data });
-  };
+ 
 
   //category
   const getCategory = async () => {
@@ -185,7 +182,6 @@ export const AdminProvider = ({ children }) => {
   useEffect(() => {
     roleControl();
     getUsers();
-    getComments();
     getCategory();
     getProblem();
     // eslint-disable-next-line react-hooks/exhaustive-deps

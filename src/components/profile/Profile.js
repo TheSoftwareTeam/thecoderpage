@@ -13,7 +13,7 @@ const Profile = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.activeUser]);
 
   return (
     <div className="profile-container">

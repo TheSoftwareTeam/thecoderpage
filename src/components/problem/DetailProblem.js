@@ -13,7 +13,7 @@ const DetailProblem = () => {
 
   useEffect(() => {
     getProblemDetail(id);
-
+   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return (
@@ -79,7 +79,7 @@ const DetailProblem = () => {
                   : "🤍" + state.activeProblemDetail.likesUserId.length}
               </button>
 
-              <button>✉️{state.activeProblemDetail.commentCount}</button>
+              <button>✉️{state.activeProblemDetail.comments.length}</button>
             </div>
 
             <div className="detail-write-comment">
@@ -99,10 +99,8 @@ const DetailProblem = () => {
                 Gönder
               </button>
             </div>
-            {state.comments
-  .slice()
-  .map((comment) =>
-    comment.problemId === state.activeProblemDetail.id ? (
+            {state.activeProblemDetail.comments.map((comment) =>
+   
       <div key={comment.id} className="detail-user-comment">
         <div className="detail-comment-user-picture">
           {state.users.map((user) =>
@@ -128,10 +126,10 @@ const DetailProblem = () => {
           </h4>
           <span>{comment.createDate}</span>
         </div>
-
+          { console.log(state.activeProblemDetail)}
         <p>{comment.commentContent}</p>
       </div>
-    ) : null
+    
   )}
           </div>
         </div>
