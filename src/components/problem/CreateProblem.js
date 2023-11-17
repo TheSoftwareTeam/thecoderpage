@@ -17,12 +17,14 @@ const CreateProblem = () => {
       </div>
       <form onSubmit={createProblem}>
         <select
-          onChange={(e) =>dispatch({ type: "categoryId", payload: Number(e.target.value) })}
+          onChange={(e) =>
+            dispatch({ type: "categoryId", payload: Number(e.target.value) })
+          }
           required
         >
           <option value="">Selected Category</option>
           {state.categories.map((category) => (
-            <option value={category.id} key={category} >
+            <option value={category.id} key={category}>
               {category.categoryName}
             </option>
           ))}
@@ -47,6 +49,7 @@ const CreateProblem = () => {
         />
         <input type="submit" value="Kaydet" />
       </form>
+      
     </div>
   );
 };

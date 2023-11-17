@@ -22,7 +22,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "Mahir0.8873714531785315",
+      "userToken": "Mahir0.3946965150108712",
       "userRol": "admin",
       "createDate": "23.11.2023 21:13:10"
     },
@@ -74,7 +74,15 @@
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
       "commentCount": 6,
-      "likesUserId": [44, 5, 6, 23, 4, 1, 2],
+      "likesUserId": [
+        44,
+        5,
+        6,
+        23,
+        4,
+        1,
+        2
+      ],
       "comments": [
         {
           "id": 0,
@@ -106,7 +114,16 @@
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
       "commentCount": 4,
-      "likesUserId": [0, 44, 5, 6, 23, 88, 0, 1],
+      "likesUserId": [
+        0,
+        44,
+        5,
+        6,
+        23,
+        88,
+        0,
+        1
+      ],
       "createDate": "23.11.2023 21:13:10",
       "comments": [
         {
@@ -126,7 +143,14 @@
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
       "commentCount": 2,
-      "likesUserId": [34, 44, 5, 6, 1, 2],
+      "likesUserId": [
+        34,
+        44,
+        5,
+        6,
+        1,
+        2
+      ],
       "comments": [
         {
           "id": 4,
@@ -152,7 +176,14 @@
       "problemHead": "CSS hata veriyor",
       "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
       "commentCount": 2,
-      "likesUserId": [444, 44, 5, 6, 56, 1],
+      "likesUserId": [
+        444,
+        44,
+        5,
+        6,
+        56,
+        1
+      ],
       "comments": [
         {
           "id": 6,
@@ -178,7 +209,14 @@
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
       "commentCount": 6,
-      "likesUserId": [44, 5, 6, 56, 2, 1],
+      "likesUserId": [
+        44,
+        5,
+        6,
+        56,
+        2,
+        1
+      ],
       "comments": [
         {
           "id": 8,
@@ -204,7 +242,17 @@
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
       "commentCount": 2,
-      "likesUserId": [3, 5, 6, 7, 8, 44, 5, 6, 1],
+      "likesUserId": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        44,
+        5,
+        6,
+        1
+      ],
       "comments": [
         {
           "id": 10,
@@ -250,7 +298,6 @@
       "isDeleted": true
     }
   ],
-
   "categories": [
     {
       "id": 0,

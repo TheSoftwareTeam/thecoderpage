@@ -5,6 +5,8 @@ import "./detail-problem.scss";
 import UserContext from "../../context/UserContext";
 import { NavLink, useParams } from "react-router-dom";
 import image from "../../images/avatar.png";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const DetailProblem = () => {
   const { state, dispatch, writeProblemComment, actionLike, getProblemDetail } =
     useContext(UserContext);
@@ -13,7 +15,7 @@ const DetailProblem = () => {
 
   useEffect(() => {
     getProblemDetail(id);
-   
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return (
@@ -33,28 +35,25 @@ const DetailProblem = () => {
             </button>
           </div>
         </div>
-   
+
         <div className="detail-list-problem">
           <div className="detail-user-picture">
-          {state.users.map(
-  (user) =>
-    user.id === state.activeProblemDetail.userId && (
-      <div key={user.id}>
-        {user.userPicture ? (
-          <img
-            src={
-              "http://localhost:3001/" +
-              user.userPicture
-            }
-            alt="res"
-          />
-        ) : (
-          <img src={image} alt="res" />
-        )}
-        <h3>{user.userName}</h3>
-      </div>
-    )
-)}
+            {state.users.map(
+              (user) =>
+                user.id === state.activeProblemDetail.userId && (
+                  <div key={user.id}>
+                    {user.userPicture ? (
+                      <img
+                        src={"http://localhost:3001/" + user.userPicture}
+                        alt="res"
+                      />
+                    ) : (
+                      <img src={image} alt="res" />
+                    )}
+                    <h3>{user.userName}</h3>
+                  </div>
+                )
+            )}
             <span>{state.activeProblemDetail.createDate}</span>
           </div>
           <div className="detail-problem-detail">
@@ -99,41 +98,48 @@ const DetailProblem = () => {
                 Gönder
               </button>
             </div>
-            {state.activeProblemDetail.comments.map((comment) =>
-   
-      <div key={comment.id} className="detail-user-comment">
-        <div className="detail-comment-user-picture">
-          {state.users.map((user) =>
-            user.id === comment.userId ? (
-              user.userPicture ? (
-                <img
-                key={user.id}
-                  src={
-                    "http://localhost:3001/" +
-                    user.userPicture
-                  }
-                  alt="res"
-                />
-              ) : (
-                <img key={user.id} src={image} alt="res" />
-              )
-            ) : null
-          )}
-          <h4>
-            {state.users.map((user) =>
-              user.id === comment.userId ? user.userName : null
-            )}
-          </h4>
-          <span>{comment.createDate}</span>
-        </div>
-          { console.log(state.activeProblemDetail)}
-        <p>{comment.commentContent}</p>
-      </div>
-    
-  )}
+            {state.activeProblemDetail.comments.map((comment) => (
+              <div key={comment.id} className="detail-user-comment">
+                <div className="detail-comment-user-picture">
+                  {state.users.map((user) =>
+                    user.id === comment.userId ? (
+                      user.userPicture ? (
+                        <img
+                          key={user.id}
+                          src={"http://localhost:3001/" + user.userPicture}
+                          alt="res"
+                        />
+                      ) : (
+                        <img key={user.id} src={image} alt="res" />
+                      )
+                    ) : null
+                  )}
+                  <h4>
+                    {state.users.map((user) =>
+                      user.id === comment.userId ? user.userName : null
+                    )}
+                  </h4>
+                  <span>{comment.createDate}</span>
+                </div>
+                {console.log(state.activeProblemDetail)}
+                <p>{comment.commentContent}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <Sidebar />
     </div>
   );

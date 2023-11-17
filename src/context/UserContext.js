@@ -4,6 +4,7 @@ import { userReducer, initialState } from "../reducers/userReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import { toast } from "react-toastify";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -231,6 +232,7 @@ export const UserProvider = ({ children }) => {
         problemContent: state.problemContent,
         commentCount: 0,
         likesUserId: [],
+        comments: [],
         isCompleted: false,
         isDeleted: false,
         createDate: date(),
@@ -240,6 +242,18 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "problemHead", payload: "" });
       dispatch({ type: "problemContent", payload: "" });
       navigate(`/home/detailproblem/${newProblem.id}`);
+
+      toast.success("Problem eklendi.!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      
     } else {
       alert("Problem oluşturmak için giriş yapınız!");
     }
