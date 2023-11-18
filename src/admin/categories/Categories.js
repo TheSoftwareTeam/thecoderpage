@@ -22,8 +22,8 @@ const Categories = () => {
       </form>
 
       <div id="category-list">
-        {state.categories.map((category) => (
-          <div
+        {state.categories.map((category) => category.isDeleted === false && (
+            <div
             className="admin-categories"
             onClick={() => navigate(`/admin/categorydetail/${category.id}`)}
             key={category.id}

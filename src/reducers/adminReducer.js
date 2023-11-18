@@ -144,7 +144,13 @@ export const adminReducer = (state, action) => {
         ...state,
         categories: [...state.categories, action.payload],
       };
-  
+    case "deletedCategory":
+      return {
+        ...state,
+        categories: state.categories.filter(
+          (category) => category.isDeleted === false
+        ),
+      };
     //problem
     case "getProblems":
       return {

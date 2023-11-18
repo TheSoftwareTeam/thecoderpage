@@ -22,7 +22,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "Mahir0.3946965150108712",
+      "userToken": "Mahir0.2681366084789365",
       "userRol": "admin",
       "createDate": "23.11.2023 21:13:10"
     },
@@ -305,6 +305,19 @@
       "isCompleted": false,
       "isDeleted": false,
       "createDate": "18.11.2023 13:58:18"
+    },
+    {
+      "id": 8,
+      "userId": 2,
+      "categoryId": 3,
+      "problemHead": "For döngüsü",
+      "problemContent": "For döngüsünden çıkmak için ne kullanmalıyım if else kullandım fakat hangi değeri değiştirmem gerektiği konusunda çaresizim\n",
+      "commentCount": 0,
+      "likesUserId": [],
+      "comments": [],
+      "isCompleted": false,
+      "isDeleted": false,
+      "createDate": "18.11.2023 20:38:10"
     }
   ],
   "categories": [
@@ -329,7 +342,7 @@
     {
       "id": 3,
       "categoryName": "CSHARP",
-      "problemCount": 12,
+      "problemCount": 13,
       "isDeleted": false
     },
     {

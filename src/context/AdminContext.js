@@ -131,11 +131,16 @@ export const AdminProvider = ({ children }) => {
     const response = await axios.get(`${url}/categories`);
     dispatch({ type: "getCategory", payload: await response.data });
   };
+
   const getCategoryDetail = async (id) => {
     const response = await axios.get(`${url}/categories/?id=${id}`);
-  
+    console.log(response.data[0]);
     dispatch({ type: "getCategoryDetail", payload: await response.data[0] });
-    dispatch({ type: "categoryName", payload: await response.data[0].name });
+    console.log(response.data[0].name);
+    dispatch({
+      type: "categoryName",
+      payload: await response.data[0].categoryName,
+    });
     // Dispatch other category details here
   };
 
@@ -158,7 +163,15 @@ export const AdminProvider = ({ children }) => {
       alert("Bu kategori adı alınmış");
     }
   };
-
+  const deleteCategory = async (id) => {
+    const response = await axios.patch(`${url}/categories/${id}`, {
+      isDeleted: true,
+    });
+    if (response.status === 200) {
+      dispatch({ type: "deletedCategory", id });
+      navigate(`/admin/categories`);
+    }
+  };
   //problem
   const getProblem = async () => {
     const response = await axios.get(`${url}/problems`);
@@ -222,6 +235,7 @@ export const AdminProvider = ({ children }) => {
         getCategoryDetail,
         roleControl,
         toggleDropdown,
+        deleteCategory,
       }}
     >
       {children}

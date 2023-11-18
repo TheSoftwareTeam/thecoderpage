@@ -7,6 +7,7 @@ const CategoryDetail = () => {
   const { state, dispatch, getCategoryDetail,  deleteCategory } = useContext(AdminContext);
 
   const { id } = useParams();
+
   useEffect(() => {
     getCategoryDetail(id);
 
@@ -23,7 +24,7 @@ const CategoryDetail = () => {
             dispatch({ type: "categoryName", payload: e.target.value })
           }
           placeholder="Kategori İsmi"
-          value={state.categoryName}
+          value={state.categoryName&&state.categoryName}
           required
         />
         <button type="submit">Kategori Güncelle</button>
@@ -31,8 +32,8 @@ const CategoryDetail = () => {
   
       <div id="category-list">
         <div>
-          <h1>{state.categoryDetail.categoryName}</h1>
-          <h4>Problem Sayısı - {state.categoryDetail.problemCount}</h4>
+          <h1>{state.categoryDetail&&state.categoryDetail.categoryName}</h1>
+          <h4>Problem Sayısı - {state.categoryDetail&&state.categoryDetail.problemCount}</h4>
           <hr/> 
           <br/>
           <div className="action">
