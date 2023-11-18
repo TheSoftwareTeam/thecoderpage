@@ -12,8 +12,7 @@ export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   let url = "http://localhost:3005";
 
-
-//date
+  //date
 
   const date = () => {
     const formatTwoDigits = (value) => {
@@ -120,7 +119,10 @@ export const UserProvider = ({ children }) => {
       ...user,
       name: state.profileName,
       surName: state.profileSurname,
-      userPicture: state.profilePicture===""?state.activeUser.userPicture:state.profilePicture,
+      userPicture:
+        state.profilePicture === ""
+          ? state.activeUser.userPicture
+          : state.profilePicture,
     };
     await axios.patch(`${url}/users/${userId}`, newUser);
     dispatch({ type: "createUser", payload: newUser });
@@ -141,33 +143,26 @@ export const UserProvider = ({ children }) => {
   };
 
   //comment
-  
 
-  const writeProblemComment = async (data) => {
+  const writeProblemComment = async (problem) => {
     if (state.activeUser !== null) {
       const newProblemComment = {
-        id: state.comments.length,
-        problemId: data.id,
+        id: problem.comments.length,
         userId: state.activeUser.id,
         commentContent: state.newProblemComment,
         createDate: date(),
       };
 
-      await axios.post(`${url}/comments`, newProblemComment);
+      problem.comments.push(newProblemComment);
+
+      problem.commentCount += 1;
+
+      await axios.patch(`${url}/problems/${problem.id}`, problem);
+
       dispatch({ type: "createComment", payload: newProblemComment });
-      dispatch({
-        type: "newProblemComment",
-        payload: "",
-      });
-
-      data = {
-        ...data,
-        commentCount: (data.commentCount += 1),
-      };
-
-      await axios.patch(`${url}/problems/${data.id}`, data);
-      dispatch({ type: "activeProblemDetail", payload: data });
-      dispatch({ type: "createAndUbdateProblem", payload: data });
+      dispatch({ type: "newProblemComment", payload: "" });
+      dispatch({ type: "activeProblemDetail", payload: problem });
+      dispatch({ type: "createAndUbdateProblem", payload: problem });
     } else {
       alert("Lütfen giriş yapınız!");
     }
@@ -217,7 +212,6 @@ export const UserProvider = ({ children }) => {
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
-    console.log(state.activeProblemDetail);
   };
 
   const createProblem = async (e) => {
@@ -253,7 +247,6 @@ export const UserProvider = ({ children }) => {
         progress: undefined,
         theme: "dark",
       });
-      
     } else {
       alert("Problem oluşturmak için giriş yapınız!");
     }
@@ -347,7 +340,7 @@ export const UserProvider = ({ children }) => {
       formData.append("file", newFile);
       formData.append("userId", state.activeUser.id);
       formData.append("userName", state.activeUser.userName);
-      
+
       const response = await axios.post(
         "http://localhost:3001/upload",
         formData,
@@ -357,9 +350,8 @@ export const UserProvider = ({ children }) => {
           },
         }
       );
-      dispatch({type:"profilePicture",payload:response.data.imagePath});
-        console.log(response.data.imagePath);
-
+      dispatch({ type: "profilePicture", payload: response.data.imagePath });
+      console.log(response.data.imagePath);
     } catch (error) {
       console.error("File upload error:", error);
     }

@@ -51,19 +51,6 @@
       "userRol": "user",
       "createDate": "23.11.2023 21:13:10",
       "userToken": ""
-    },
-    {
-      "id": 6,
-      "name": "Deniz Su",
-      "surName": "Sahil",
-      "userName": "deniz",
-      "email": "deniz@su.dalga",
-      "password": "123",
-      "userPicture": "",
-      "problemCount": 0,
-      "userRol": "user",
-      "createDate": "23.11.2023 21:13:10",
-      "userToken": ""
     }
   ],
   "problems": [
@@ -73,7 +60,7 @@
       "categoryId": 2,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 6,
+      "commentCount": 10,
       "likesUserId": [
         44,
         5,
@@ -113,7 +100,7 @@
       "categoryId": 1,
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
-      "commentCount": 4,
+      "commentCount": 7,
       "likesUserId": [
         0,
         44,
@@ -127,7 +114,7 @@
       "createDate": "23.11.2023 21:13:10",
       "comments": [
         {
-          "id": 3,
+          "id": 0,
           "userId": 1,
           "commentContent": "bu kodu yapıştır",
           "createDate": "23.11.2023 21:13:10"
@@ -153,13 +140,13 @@
       ],
       "comments": [
         {
-          "id": 4,
+          "id": 0,
           "userId": 3,
           "commentContent": "bu sorunu çözen var  mı",
           "createDate": "23.11.2023 21:13:10"
         },
         {
-          "id": 5,
+          "id": 1,
           "userId": 1,
           "commentContent": "yorum",
           "createDate": "25.11.2023 21:13:10"
@@ -186,13 +173,13 @@
       ],
       "comments": [
         {
-          "id": 6,
+          "id": 0,
           "userId": 1,
           "commentContent": "hangi kodu yapıştırayım",
           "createDate": "25.11.2023 21:13:10"
         },
         {
-          "id": 7,
+          "id": 1,
           "userId": 1,
           "commentContent": "nasıl yani",
           "createDate": "25.11.2023 21:13:10"
@@ -219,13 +206,13 @@
       ],
       "comments": [
         {
-          "id": 8,
+          "id": 0,
           "userId": 1,
           "commentContent": "öyle yani",
           "createDate": "25.11.2023 21:13:10"
         },
         {
-          "id": 9,
+          "id": 1,
           "userId": 1,
           "commentContent": "nerede",
           "createDate": "25.11.2023 21:13:10"
@@ -255,13 +242,13 @@
       ],
       "comments": [
         {
-          "id": 10,
+          "id": 0,
           "userId": 1,
           "commentContent": "yeni bir yorum",
           "createDate": "25.11.2023 21:13:10"
         },
         {
-          "id": 11,
+          "id": 1,
           "userId": 1,
           "commentContent": "selam",
           "createDate": "25.11.2023 21:13:10"
@@ -281,13 +268,13 @@
       "likesUserId": [],
       "comments": [
         {
-          "id": 12,
+          "id": 0,
           "userId": 1,
           "commentContent": "Merhaba eklentiyi tekrar kurmayı denediniz mi?",
           "createDate": "25.11.2023 21:13:10"
         },
         {
-          "id": 13,
+          "id": 1,
           "userId": 1,
           "commentContent": "merhaba denedim",
           "createDate": "25.11.2023 21:13:10"
@@ -296,6 +283,28 @@
       "createDate": "23.11.2023 21:13:10",
       "isCompleted": false,
       "isDeleted": true
+    },
+    {
+      "id": 7,
+      "userId": 2,
+      "categoryId": 5,
+      "problemHead": "Java nedir?",
+      "problemContent": "Java nedir, ne işe yarar.",
+      "commentCount": 1,
+      "likesUserId": [
+        2
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 2,
+          "commentContent": "Yorum",
+          "createDate": "18.11.2023 13:58:49"
+        }
+      ],
+      "isCompleted": false,
+      "isDeleted": true,
+      "createDate": "18.11.2023 13:58:18"
     }
   ],
   "categories": [

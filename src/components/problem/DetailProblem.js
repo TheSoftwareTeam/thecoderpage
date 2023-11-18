@@ -121,7 +121,7 @@ const DetailProblem = () => {
                   </h4>
                   <span>{comment.createDate}</span>
                 </div>
-                {console.log(state.activeProblemDetail)}
+              
                 <p>{comment.commentContent}</p>
               </div>
             ))}
