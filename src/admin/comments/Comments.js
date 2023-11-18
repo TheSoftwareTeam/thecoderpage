@@ -14,7 +14,7 @@ const Comments = () => {
           problem.isDeleted === false &&
           problem.comments.map((comment) => (
             <div
-              onClick={() => navigate(`/admin/commentdetail/${comment.id}`)}
+              //onClick={() => navigate(`/admin/commentdetail/${comment.id}`)}
               key={comment.id}
               className="admin-comment"
             >
