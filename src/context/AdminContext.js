@@ -97,7 +97,7 @@ export const AdminProvider = ({ children }) => {
 
   const editUser = async (e) => {
     e.preventDefault();
-    const userId=state.userDetail.id;
+    const userId = state.userDetail.id;
     const response = await axios.get(`${url}/users/${userId}`);
     const user = await response.data;
     const ubdateUser = {
@@ -112,27 +112,51 @@ export const AdminProvider = ({ children }) => {
     };
     await axios.patch(`${url}/users/${userId}`, ubdateUser);
     if (response.status === 200) {
-
       alert("Kullanıcı bilgileri güncellendi");
-      dispatch({type:"ubdateUser",payload:ubdateUser})
-      dispatch({type:"userName",payload:""})
-      dispatch({type:"userSurname",payload:""})
-      dispatch({type:"userUserName",payload:""})
-      dispatch({type:"userEmail",payload:""})
-      dispatch({type:"userRol",payload:""})
-      dispatch({type:"userPicture",payload:""})
+      dispatch({ type: "ubdateUser", payload: ubdateUser });
+      dispatch({ type: "userName", payload: "" });
+      dispatch({ type: "userSurname", payload: "" });
+      dispatch({ type: "userUserName", payload: "" });
+      dispatch({ type: "userEmail", payload: "" });
+      dispatch({ type: "userRol", payload: "" });
+      dispatch({ type: "userPicture", payload: "" });
       navigate(`/admin/users`);
-
     }
   };
 
   //comment
- 
 
   //category
   const getCategory = async () => {
     const response = await axios.get(`${url}/categories`);
     dispatch({ type: "getCategory", payload: await response.data });
+  };
+  const getCategoryDetail = async (id) => {
+    const response = await axios.get(`${url}/categories/?id=${id}`);
+  
+    dispatch({ type: "getCategoryDetail", payload: await response.data[0] });
+    dispatch({ type: "categoryName", payload: await response.data[0].name });
+    // Dispatch other category details here
+  };
+
+  const createCategory = async (e) => {
+    e.preventDefault();
+    const response = await axios.get(
+      `${url}/categories/?categoryName=${state.categoryName}`
+    );
+    if (response.status === 200 && response.data.length === 0) {
+      const newCategory = {
+        id: state.categories.length + 1,
+        categoryName: state.categoryName,
+        problemCount: 0,
+        isDeleted: false,
+      };
+      await axios.post(`${url}/categories`, newCategory);
+      dispatch({ type: "createCategory", payload: newCategory });
+      dispatch({ type: "categoryName", payload: "" });
+    } else {
+      alert("Bu kategori adı alınmış");
+    }
   };
 
   //problem
@@ -158,23 +182,20 @@ export const AdminProvider = ({ children }) => {
 
   //other
   const roleControl = async () => {
-
     const userId = localStorage.getItem("userId");
     const userToken = localStorage.getItem("userToken");
     if (userToken) {
       const response = await axios.get(`${url}/users/?id=${userId}`);
       const userRol = response.data[0].userRol;
       if (userRol !== "admin") {
-       navigate(`/home/main`);
+        navigate(`/home/main`);
       } else {
-       // console.log("admin açık");
+        // console.log("admin açık");
       }
-    }
-    else{
+    } else {
       navigate(`/home/main`);
     }
   };
-
 
   const toggleDropdown = () => {
     dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
@@ -197,6 +218,8 @@ export const AdminProvider = ({ children }) => {
         getUserDetail,
         editUser,
         createUser,
+        createCategory,
+        getCategoryDetail,
         roleControl,
         toggleDropdown,
       }}

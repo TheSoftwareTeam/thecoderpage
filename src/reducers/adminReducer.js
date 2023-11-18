@@ -17,10 +17,10 @@ export const initialState = {
   userDetail: {},
   //navi
   isDropdownOpen: false,
-  //comment
-  comments: [],
+  
   //category
   categories: [],
+  categoryName: "",
   //problem
   problems: [],
   activeProblemDetail: {
@@ -119,6 +119,11 @@ export const adminReducer = (state, action) => {
         ...state,
         categories: action.payload,
       };
+      case "getCategoryDetail":
+        return {
+          ...state,
+          categoryDetail: action.payload,
+        };
     case "selectedCategory":
       return {
         ...state,
@@ -139,6 +144,7 @@ export const adminReducer = (state, action) => {
         ...state,
         categories: [...state.categories, action.payload],
       };
+  
     //problem
     case "getProblems":
       return {

@@ -29,10 +29,9 @@ const Categories = () => {
             key={category.id}
           >
             <h1>{category.categoryName}</h1>
-            <div className="action">
-              <button>sil</button>
-              <button>Güncelle</button>
-            </div>
+            <h4>Problem Sayısı - {category.problemCount}</h4>
+            <hr/> 
+           
           </div>
         ))}
       </div>

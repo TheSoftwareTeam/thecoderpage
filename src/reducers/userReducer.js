@@ -159,11 +159,7 @@ const userReducer = (state, action) => {
         ...state,
         categoryName: action.payload,
       };
-    case "createCategory":
-      return {
-        ...state,
-        categories: [...state.categories, action.payload],
-      };
+    
     //problem
     case "getProblems":
       return {

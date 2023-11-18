@@ -21,12 +21,21 @@ const Problems = () => {
               className="admin-problem"
             >
               <div className="admin-user-picture">
-                <img src={image} />
-                <h4>
-                  {state.users.map((user) =>
-                    user.id === problem.userId ? user.userName : ""
-                  )}
-                </h4>
+              {state.users
+                .filter((user) => user.id === problem.userId)
+                .map((user) => (
+                  <>
+                    {user.userPicture ? (
+                      <img
+                        src={"http://localhost:3001/" + user.userPicture}
+                        alt="User"
+                      />
+                    ) : (
+                      <img src={image} alt="User" />
+                    )}
+                    <h5>{user.userName}</h5>
+                  </>
+                ))}
               </div>
               <span>{problem.createDate.split(" ")[0]}</span>
               <div className="admin-problem-detail">

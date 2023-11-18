@@ -6,7 +6,7 @@ import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import image from "../../images/avatar.png";
 const Sidebar = () => {
-  const { state } = useContext(UserContext);
+  const { state,dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -40,6 +40,7 @@ const Sidebar = () => {
                 {problem.problemContent.slice(0, 50)}
                 <a
                   onClick={() => {
+                    dispatch({ type: "selectedCategory", payload: null });
                     navigate(`/home/detailproblem/${problem.id}`);
                   }}
                 >

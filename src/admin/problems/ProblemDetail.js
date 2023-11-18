@@ -2,7 +2,7 @@
 import React, { useContext, useEffect } from "react";
 import "./problem-detail.scss";
 import AdminContext from "../../context/AdminContext";
-
+import image from "../../images/avatar.png";
 import { useParams } from "react-router-dom";
 
 
@@ -26,14 +26,21 @@ const ProblemDetail = () => {
           
           <div className="detail-user-picture">
   
-            <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
-            <h3>
-              {state.users.map((user) =>
-                user.id === state.activeProblemDetail.userId
-                  ? user.userName
-                  : ""
-              )}
-            </h3>
+          {state.users
+  .filter((user) => user.id === state.activeProblemDetail.userId)
+  .map((user) => (
+    <>
+      {user.userPicture ? (
+        <img
+          src={"http://localhost:3001/" + user.userPicture}
+          alt="User"
+        />
+      ) : (
+        <img src={image} alt="User" />
+      )}
+      <h3>{user.userName}</h3>
+    </>
+  ))}
             <span>{state.activeProblemDetail.createDate}</span>
           </div>
           <div className="detail-problem-detail">
@@ -55,12 +62,21 @@ const ProblemDetail = () => {
               .reverse()
               .map((comment) =>  <div key={comment.id} className="detail-user-comment">
                     <div className="detail-comment-user-picture">
-                      <img src="https://media.licdn.com/dms/image/C4D03AQE2WJMTy32AtQ/profile-displayphoto-shrink_200_200/0/1639764302027?e=1704326400&v=beta&t=S3cw8swGln2MV0OR94LgX2l4cHw39_NiXw5Gw1NHf6w" />
-                      <h4>
-                        {state.users.map((user) =>
-                          user.id === comment.userId ? user.userName : ""
-                        )}
-                      </h4>
+                     {state.users
+                .filter((user) => user.id === comment.userId)
+                .map((user) => (
+                  <>
+                    {user.userPicture ? (
+                      <img
+                        src={"http://localhost:3001/" + user.userPicture}
+                        alt="User"
+                      />
+                    ) : (
+                      <img src={image} alt="User" />
+                    )}
+                    <h5>{user.userName}</h5>
+                  </>
+                ))}
                       <span>{comment.createDate} <button onClick={("")}>Sil</button></span>
                     </div>
 

@@ -5,10 +5,10 @@ import UserContext from "../../context/UserContext";
 import "./nav.scss";
 import image from "../../images/avatar.png";
 const Navi = () => {
-  const { state, dispatch,toggleDropdown,handleLogout } = useContext(UserContext);
+  const { state, dispatch, toggleDropdown, handleLogout } =
+    useContext(UserContext);
   const navigate = useNavigate();
 
- 
   return (
     <>
       <div className="navi-container">
@@ -20,21 +20,15 @@ const Navi = () => {
           </h3>
           {localStorage.getItem("userToken") !== null ? (
             <div>
-               {
-                    state.activeUser &&
-                    state.activeUser.userPicture ? (
-                      <img
-                      onClick={toggleDropdown}
-                        src={
-                          "http://localhost:3001/" +
-                          state.activeUser.userPicture
-                        }
-                        alt="res"
-                      />
-                    )
-                  : (
-                    <img onClick={toggleDropdown} src={image} alt="res" />
-                  )}
+              {state.activeUser && state.activeUser.userPicture ? (
+                <img
+                  onClick={toggleDropdown}
+                  src={"http://localhost:3001/" + state.activeUser.userPicture}
+                  alt="res"
+                />
+              ) : (
+                <img onClick={toggleDropdown} src={image} alt="res" />
+              )}
 
               {state.isDropdownOpen && (
                 <div onClick={toggleDropdown} className="dropdown-menu">
@@ -46,9 +40,23 @@ const Navi = () => {
 
                     <hr />
                     {state.activeUser.userRol === "admin" && (
-                      <li onClick={() => navigate(`/admin/`)}>Admin Paneli</li>
+                      <li
+                        onClick={() => {
+                          dispatch({ type: "selectedCategory", payload: null });
+                          navigate(`/admin/`);
+                        }}
+                      >
+                        Admin Paneli
+                      </li>
                     )}
-                    <li onClick={() => navigate(`/home/profile`)}>Profilim</li>
+                    <li
+                      onClick={() => {
+                        dispatch({ type: "selectedCategory", payload: null });
+                        navigate(`/home/profile`);
+                      }}
+                    >
+                      Profilim
+                    </li>
                     <li
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });

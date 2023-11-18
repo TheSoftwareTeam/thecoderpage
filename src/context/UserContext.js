@@ -184,17 +184,6 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "categoryFilterProblem", payload: response.data });
   };
 
-  const createCategory = async (e) => {
-    e.preventDefault();
-    const newCategory = {
-      id: state.categories.length,
-      categoryName: state.categoryName.toUpperCase(),
-    };
-    dispatch({ type: "createCategory", payload: newCategory });
-    await axios.post(`${url}/categories`, newCategory);
-    dispatch({ type: "categoryName", payload: "" });
-    navigate(`/admin/categories/`);
-  };
   //problem
   const getProblem = async () => {
     const response = await axios.get(`${url}/problems`);
@@ -231,6 +220,14 @@ export const UserProvider = ({ children }) => {
         isDeleted: false,
         createDate: date(),
       };
+      
+      const categoryResponse = await axios.get(
+        `${url}/categories/${state.categoryId}`
+      );
+      const category = categoryResponse.data;
+      category.problemCount += 1;
+      await axios.patch(`${url}/categories/${state.categoryId}`, category);
+
       dispatch({ type: "createAndUbdateProblem", payload: newProblem });
       await axios.post(`${url}/problems`, newProblem);
       dispatch({ type: "problemHead", payload: "" });
@@ -398,7 +395,7 @@ export const UserProvider = ({ children }) => {
         getCategoryFilterproblem,
         activeUserProblem,
         getProblemDetail,
-        createCategory,
+
         getUserDetail,
         toggleDropdown,
         handleLogout,

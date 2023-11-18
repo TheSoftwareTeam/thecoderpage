@@ -174,7 +174,7 @@
       "comments": [
         {
           "id": 0,
-          "userId": 1,
+          "userId": 2,
           "commentContent": "hangi kodu yapıştırayım",
           "createDate": "25.11.2023 21:13:10"
         },
@@ -275,14 +275,14 @@
         },
         {
           "id": 1,
-          "userId": 1,
+          "userId": 2,
           "commentContent": "merhaba denedim",
           "createDate": "25.11.2023 21:13:10"
         }
       ],
       "createDate": "23.11.2023 21:13:10",
-      "isCompleted": false,
-      "isDeleted": true
+      "isCompleted": true,
+      "isDeleted": false
     },
     {
       "id": 7,
@@ -303,7 +303,7 @@
         }
       ],
       "isCompleted": false,
-      "isDeleted": true,
+      "isDeleted": false,
       "createDate": "18.11.2023 13:58:18"
     }
   ],
@@ -311,32 +311,44 @@
     {
       "id": 0,
       "categoryName": "HTML",
-      "problemCount": 12
+      "problemCount": 12,
+      "isDeleted": false
     },
     {
       "id": 1,
       "categoryName": "CSS",
-      "problemCount": 1
+      "problemCount": 1,
+      "isDeleted": false
     },
     {
       "id": 2,
       "categoryName": "JAVASCRIPT",
-      "problemCount": 67
+      "problemCount": 67,
+      "isDeleted": false
     },
     {
       "id": 3,
       "categoryName": "CSHARP",
-      "problemCount": 12
+      "problemCount": 12,
+      "isDeleted": false
     },
     {
       "id": 4,
       "categoryName": "REACT",
-      "problemCount": 23
+      "problemCount": 23,
+      "isDeleted": false
     },
     {
       "id": 5,
       "categoryName": "JAVA",
-      "problemCount": 12
+      "problemCount": 12,
+      "isDeleted": false
+    },
+    {
+      "id": 7,
+      "categoryName": "PHYTON",
+      "problemCount": 2,
+      "isDeleted": false
     }
   ]
 }

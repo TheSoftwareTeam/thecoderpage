@@ -7,7 +7,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 const ListProblem = () => {
-  const { state, actionLike, getCategoryFilterproblem } =
+  const { state,dispatch, actionLike, getCategoryFilterproblem } =
     useContext(UserContext);
   const navigate = useNavigate();
   const { categoryName } = useParams();
@@ -74,6 +74,7 @@ const ListProblem = () => {
                       {problem.problemContent.slice(0, 150)}
                       <a
                         onClick={() => {
+                          dispatch({ type: "selectedCategory", payload: null });
                           navigate(`/home/detailproblem/${problem.id}`);
                         }}
                       >
