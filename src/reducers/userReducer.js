@@ -208,6 +208,29 @@ const userReducer = (state, action) => {
         ...state,
         activeProblemDetail: action.payload,
       };
+    case "ubdateActiveUserProblem":
+      const newActiveUserProblem = action.payload;
+      // Eğer yeni problem mevcut problemler listesinde değilse ekle
+      if (
+        !state.activeUserProblem.some(
+          (problem) => problem.id === newActiveUserProblem.id
+        )
+      ) {
+        return {
+          ...state,
+          activeUserProblem: [...state.activeUserProblem, newActiveUserProblem],
+        };
+      } else {
+        // Eğer yeni eklenmek istenen problem zaten mevcutsa, güncelle
+        return {
+          ...state,
+          activeUserProblem: state.activeUserProblem.map((problem) =>
+            problem.id === newActiveUserProblem.id
+              ? newActiveUserProblem
+              : problem
+          ),
+        };
+      }
     case "problemHead":
       return {
         ...state,

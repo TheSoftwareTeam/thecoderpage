@@ -134,9 +134,7 @@ export const AdminProvider = ({ children }) => {
 
   const getCategoryDetail = async (id) => {
     const response = await axios.get(`${url}/categories/?id=${id}`);
-    console.log(response.data[0]);
     dispatch({ type: "getCategoryDetail", payload: await response.data[0] });
-    console.log(response.data[0].name);
     dispatch({
       type: "categoryName",
       payload: await response.data[0].categoryName,

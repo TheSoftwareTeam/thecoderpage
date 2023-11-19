@@ -300,6 +300,14 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const handleCompletedProblem = async (problemId) => {
+    const problem = state.problems.find((problem) => problem.id === problemId);
+    problem.isCompleted = !problem.isCompleted;
+    await axios.patch(`${url}/problems/${problemId}`, problem);
+    dispatch({ type: "createAndUbdateProblem", payload: problem });
+    dispatch({ type: "ubdateActiveUserProblem", payload: problem });
+  }
+
   //other
   const userCache = async () => {
     const userId = localStorage.getItem("userId");
@@ -348,7 +356,6 @@ export const UserProvider = ({ children }) => {
         }
       );
       dispatch({ type: "profilePicture", payload: response.data.imagePath });
-      console.log(response.data.imagePath);
     } catch (error) {
       console.error("File upload error:", error);
     }
@@ -395,7 +402,7 @@ export const UserProvider = ({ children }) => {
         getCategoryFilterproblem,
         activeUserProblem,
         getProblemDetail,
-
+        handleCompletedProblem,
         getUserDetail,
         toggleDropdown,
         handleLogout,

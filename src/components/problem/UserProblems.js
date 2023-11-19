@@ -9,7 +9,7 @@ import image from "../../images/avatar.png";
 const UserProblem = () => {
   const { userName } = useParams();
 
-  const { state, actionLike, activeUserProblem } = useContext(UserContext);
+  const { state, actionLike, activeUserProblem,handleCompletedProblem } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,9 +34,7 @@ const UserProblem = () => {
             </button>
           </div>
         </div>
-        {state.activeUserProblem.map((problem) =>
-          problem.categoryId === state.selectedCategory ||
-          state.selectedCategory === null ? (
+        {state.activeUserProblem.map((problem) =>(
             <div key={problem.id} className="user-problem">
               <div className="user-user-picture">
                 {state.users.find((user) => user.id === problem.userId)
@@ -62,6 +60,7 @@ const UserProblem = () => {
               </div>
               <div className="user-problem-detail">
                 <div className="user-problem-head-text">
+                {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
                   <h3>{problem.problemHead}</h3>
                   <p>
                     {problem.problemContent.slice(0, 150)}
@@ -92,6 +91,7 @@ const UserProblem = () => {
                           .likesUserId.length}
                   </button>
                   <button>✉️{problem.comments.length}</button>
+                  <button className="competed-button " onClick={()=>handleCompletedProblem(problem.id)}> {problem.isCompleted===false?"✅ Çözüldü olarak işaretle":"❌ Çözülmedi olarak işaretle"}</button>
                 </div>
 
                 {problem.comments.slice(0, 2)
@@ -131,10 +131,11 @@ const UserProblem = () => {
                     ? `+ ${problem.comments.length - 2} yorum daha`
                     : ""}
                 </p>
+
               </div>
+                 
             </div>
-          ) : (
-            ""
+          
           )
         )}
       </div>

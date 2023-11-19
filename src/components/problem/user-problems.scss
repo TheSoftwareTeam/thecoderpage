@@ -112,6 +112,21 @@
             flex-direction: row;
             gap: 10px;
             padding: 5px;
+            .competed-button {
+              border-radius: 12px;
+              border: .1px solid gray;
+              transition: 0.4s;
+            background: none;
+            padding: 5px;
+            .user-link {
+                text-decoration: none;
+                color: white;
+              }
+              &:hover{
+                cursor: pointer;
+                background-color: #f4f0f0;
+              }
+            }
           } 
   
           .user-user-comment {
@@ -156,6 +171,7 @@
             }
           }
         }
+       
       }
     }
   }
