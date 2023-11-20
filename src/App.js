@@ -37,11 +37,14 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="createproblem" element={<CreateProblem />} />
+
             <Route  element={<Menu />}>
               <Route path="userproblems/:userName" element={<UserProblems />} />
                <Route path="listproblem/:categoryName" element={<ListProblem />} />
             </Route>
+
             <Route path="detailproblem/:id" element={<DetailProblem />} />
+            
           </Route>
 
           <Route path="admin/*" element={<AdminLayout />}>
