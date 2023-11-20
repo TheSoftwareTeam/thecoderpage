@@ -81,25 +81,7 @@ const Navi = () => {
           )}
         </div>
         
-        <nav>
-          <ul>
-            {state.categories.map((category) => (
-              <li
-                className={
-                  state.selectedCategory === category.id ? "navi-active" : ""
-                }
-                onClick={() => {
-                  dispatch({ type: "selectedCategory", payload: category.id });
-                }}
-                key={category.id}
-              >
-                {category.categoryName === "CSHARP"
-                  ? "C#"
-                  : category.categoryName}
-              </li>
-            ))}
-          </ul>
-        </nav>
+    
       </div>
       <div className="navi-outlet">
         <Outlet />

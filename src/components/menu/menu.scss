@@ -1,0 +1,37 @@
+nav ul {
+    height: 3.5vh;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-around;
+    gap: 5px;
+    li {
+      box-shadow: 3px 6px 9px black;
+      width: 15vw;
+      background-color: lightslategray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 20px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      transition: 0.7s;
+      cursor: pointer;
+    }
+    .navi-active {
+      height: 4.5vh;
+      box-shadow: 5px 10px 15px black;
+      background-color: rgb(88, 100, 112);
+      color: aliceblue;
+      transition: 0.7s;
+      cursor: pointer;
+
+      &:hover {
+        height: 4.5vh;
+        box-shadow: 5px 10px 15px black;
+        transition: 0.7s;
+        cursor: pointer;
+      }
+    }
+  }

@@ -23,6 +23,7 @@ import CommentDetail from "./admin/comments/CommentDetail";
 import ProblemDetail from "./admin/problems/ProblemDetail";
 import { AdminProvider } from "./context/AdminContext";
 import AdminHome from "./admin/panel/AdminHome";
+import Menu from "./components/menu/Menu";
 
 function App() {
   return (
@@ -36,14 +37,22 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="createproblem" element={<CreateProblem />} />
-            <Route path="listproblem/:categoryName" element={<ListProblem />} />
-            <Route path="userproblems/:userName" element={<UserProblems />} />
+            <Route  element={<Menu />}>
+              <Route path="userproblems/:userName" element={<UserProblems />} />
+               <Route path="listproblem/:categoryName" element={<ListProblem />} />
+            </Route>
             <Route path="detailproblem/:id" element={<DetailProblem />} />
           </Route>
 
-
           <Route path="admin/*" element={<AdminLayout />}>
-           <Route index element={<div><AdminHome/></div>} />  
+            <Route
+              index
+              element={
+                <div>
+                  <AdminHome />
+                </div>
+              }
+            />
             <Route path="users" element={<Users />} />
             <Route path="categories" element={<Categories />} />
             <Route path="problems" element={<Problems />} />

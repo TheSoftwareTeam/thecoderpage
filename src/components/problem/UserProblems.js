@@ -6,6 +6,7 @@ import "./user-problems.scss";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
+import Menu from "../menu/Menu";
 const UserProblem = () => {
   const { userName } = useParams();
 
@@ -21,6 +22,7 @@ const UserProblem = () => {
 
   return (
     <div id="user-container">
+   
       <div id="user-content">
         <div className="user-aciklama">
           <div className="user-text">
