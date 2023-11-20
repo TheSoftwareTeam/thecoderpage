@@ -7,14 +7,12 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 const ListProblem = () => {
-  const { state,dispatch, actionLike, getCategoryFilterproblem } =
+  const { state,dispatch, actionLike, } =
     useContext(UserContext);
   const navigate = useNavigate();
   const { categoryName } = useParams();
   useEffect(() => {
-    if (categoryName !== "all") {
-      getCategoryFilterproblem(categoryName);
-    }
+   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryName,state.selectedCategory]);
 
@@ -35,18 +33,10 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-
-
-
-
-
-
-
-        
-        {(categoryName === "all"
-          ? state.problems
-          : state.categoryFilterProblem
-        ).map(
+        {
+          state.problems
+       
+        .map(
           (problem) =>
             !problem.isDeleted &&
             (problem.categoryId === state.selectedCategory ||
@@ -156,7 +146,7 @@ const ListProblem = () => {
             ))
         )}
       </div>
-      <Sidebar />
+     
     </div>
   );
 };

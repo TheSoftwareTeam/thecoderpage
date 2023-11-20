@@ -174,15 +174,18 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "getCategory", payload: await response.data });
   };
 
-  const getCategoryFilterproblem = async (categoryName) => {
-    const category = await axios.get(
-      `${url}/categories?categoryName=${categoryName.toUpperCase()}`
-    );
-    const response = await axios.get(
-      `${url}/problems?categoryId=${category.data[0].id}`
-    );
-    dispatch({ type: "categoryFilterProblem", payload: response.data });
-  };
+  // const getCategoryFilterproblem = async (categoryName) => {
+
+  //   const category = await axios.get(
+  //     `${url}/categories?categoryName=${categoryName.toUpperCase()}`
+  //   );
+  //   const response = await axios.get(
+  //     `${url}/problems?categoryId=${category.data[0].id}`
+  //   );
+
+  //   dispatch({ type: "categoryFilterProblem", payload: response.data });
+      
+  // };
 
   //problem
   const getProblem = async () => {
@@ -399,7 +402,7 @@ export const UserProvider = ({ children }) => {
         login,
         signupUser,
         editProfile,
-        getCategoryFilterproblem,
+        //getCategoryFilterproblem,
         activeUserProblem,
         getProblemDetail,
         handleCompletedProblem,

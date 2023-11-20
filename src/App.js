@@ -24,6 +24,8 @@ import ProblemDetail from "./admin/problems/ProblemDetail";
 import { AdminProvider } from "./context/AdminContext";
 import AdminHome from "./admin/panel/AdminHome";
 import Menu from "./components/menu/Menu";
+import Sidebar from "./components/sidebar/Sidebar";
+
 
 function App() {
   return (
@@ -38,13 +40,18 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="createproblem" element={<CreateProblem />} />
 
-            <Route  element={<Menu />}>
+            <Route element={<Menu/>}>
               <Route path="userproblems/:userName" element={<UserProblems />} />
-               <Route path="listproblem/:categoryName" element={<ListProblem />} />
+              <Route
+                path="listproblem/:categoryName"
+                element={ <div className="listProblem-sideBar">
+                  <ListProblem />
+                  <Sidebar/>
+                </div>}
+              />
             </Route>
 
             <Route path="detailproblem/:id" element={<DetailProblem />} />
-            
           </Route>
 
           <Route path="admin/*" element={<AdminLayout />}>
