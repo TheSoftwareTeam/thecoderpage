@@ -16,7 +16,7 @@ const ListProblem = () => {
       getCategoryFilterproblem(categoryName);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryName]);
+  }, [categoryName,state.selectedCategory]);
 
   return (
     <div id="list-container">
@@ -68,7 +68,8 @@ const ListProblem = () => {
                 </div>
                 <div className="list-problem-detail">
                   <div className="list-problem-head-text">
-                    {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
+                    <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>
+                    
                     <h3> {problem.problemHead}</h3>
                     <p>
                       {problem.problemContent.slice(0, 150)}

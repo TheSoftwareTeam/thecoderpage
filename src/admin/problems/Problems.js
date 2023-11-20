@@ -35,9 +35,9 @@ const Problems = () => {
                     )}
                     <h5>{user.userName}</h5>
                   </>
-                ))}
+                ))}          <span>{problem.createDate.split(" ")[0]}</span>
               </div>
-              <span>{problem.createDate.split(" ")[0]}</span>
+    
               <div className="admin-problem-detail">
                 <div className="admin-problem-head-text">
                   <h6>{problem.problemHead.slice(0, 150)}</h6>

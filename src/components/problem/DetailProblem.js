@@ -8,7 +8,7 @@ import image from "../../images/avatar.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const DetailProblem = () => {
-  const { state, dispatch, writeProblemComment, actionLike, getProblemDetail } =
+  const { state, dispatch, writeProblemComment, actionLike, getProblemDetail,handleCompletedProblem } =
     useContext(UserContext);
 
   const { id } = useParams();
@@ -58,10 +58,13 @@ const DetailProblem = () => {
           </div>
           <div className="detail-problem-detail">
             <div className="detail-problem-head-text">
-              {state.activeProblemDetail.isCompleted
-                ? "✅ Çözüldü"
-                : "❌ Çözüm aranıyor"}
-
+            {state.problems.map((problem) => (
+              problem.id === state.activeProblemDetail.id &&  
+  <h4 key={problem.id}>
+    {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
+  </h4>
+))}         
+              
               <h3>{state.activeProblemDetail.problemHead}</h3>
               <br />
               <p>{state.activeProblemDetail.problemContent}</p>
@@ -79,6 +82,21 @@ const DetailProblem = () => {
               </button>
 
               <button>✉️{state.activeProblemDetail.comments.length}</button>
+
+              {state.problems.map((problem) => (
+  problem.id === state.activeProblemDetail.id && problem.userId === state.activeUser.id && (
+    <button
+    key={problem.id}
+      className="completed-button"
+      onClick={() => handleCompletedProblem(problem.id)}
+    >
+      {problem.isCompleted === false
+        ? "✅ Çözüldü olarak işaretle"
+        : "❌ Çözülmedi olarak işaretle"}
+    </button>
+  )
+))}
+              
             </div>
 
             <div className="detail-write-comment">

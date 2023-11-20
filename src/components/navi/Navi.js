@@ -89,7 +89,6 @@ const Navi = () => {
                 }
                 onClick={() => {
                   dispatch({ type: "selectedCategory", payload: category.id });
-                  navigate(`/home/listproblem/${category.categoryName}`);
                 }}
                 key={category.id}
               >
