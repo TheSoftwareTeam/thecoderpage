@@ -22,7 +22,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "Mahir0.825105992651108",
+      "userToken": "Mahir0.15767479974876575",
       "userRol": "admin",
       "createDate": "23.11.2023 21:13:10"
     },
@@ -67,8 +67,7 @@
         6,
         23,
         4,
-        1,
-        2
+        1
       ],
       "comments": [
         {

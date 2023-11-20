@@ -1,7 +1,4 @@
-import React from "react";
-
 import "./main.scss";
-
 import Menu from "../menu/Menu";
 import PopularProblems from "../problem/PopularProblems";
 import Banner from "../banner/Banner";
@@ -12,10 +9,7 @@ const Main = () => {
     <div id="main">
       <Banner />
       <Menu />
-   
-        <PopularProblems />
-    
-      
+      <PopularProblems />
       <div className="main-line">
         <ListProblem />
       </div>

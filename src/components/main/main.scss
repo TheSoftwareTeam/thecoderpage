@@ -1,32 +1,32 @@
-#main{
+#main {
+  .main-line {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    margin: 0 auto;
+  }
 
-    .main-line{
-        width: 70vw;
-   
-        position: relative;
-        margin: 0 auto;
-    }
-  
-    .moreProblems{
-        margin: 0 auto;
-       
-      
-        display: flex;
-        justify-content: center;
-        padding: 15px;
-        border-radius: 8px;
-        font-family: monospace;
-        font-size: 24px;
-        border: none;
-        box-shadow: 2px 4px 8px black;
-        margin-bottom: 50px;
-        &:hover{
-            cursor: pointer;
-            background-color: #555;
-            color: white;
-            transition: .4s;
-        }
-    }
+  .moreProblems {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 24px;
+    border: none;
+    box-shadow: 2px 4px 8px black;
     
+    &:hover {
+      cursor: pointer;
+      background-color: #555;
+      color: white;
+      transition: 0.4s;
+    }
+  }
+
+  
 }

@@ -6,7 +6,7 @@ import "./user-problems.scss";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
-import Menu from "../menu/Menu";
+
 const UserProblem = () => {
   const { userName } = useParams();
 
@@ -24,7 +24,7 @@ const UserProblem = () => {
     <div id="user-container">
    
       <div id="user-content">
-        <div className="user-aciklama">
+        <div className="user-state">
           <div className="user-text">
             Açıklama Lorem Ipsum is simply dummy text of the printing and
             typesetting industry. Lorem Ipsum has been the industry's standard

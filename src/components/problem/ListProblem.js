@@ -1,25 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
-import Sidebar from "../sidebar/Sidebar";
+
 import "./list-problem.scss";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 const ListProblem = () => {
-  const { state,dispatch, actionLike, } =
-    useContext(UserContext);
+  const { state, dispatch, actionLike } = useContext(UserContext);
   const navigate = useNavigate();
   const { categoryName } = useParams();
   useEffect(() => {
-   
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryName,state.selectedCategory]);
+  }, [categoryName, state.selectedCategory]);
 
   return (
     <div id="list-container">
       <div id="list-content">
-        <div className="list-aciklama">
+        <div className="list-state">
           <div className="list-text">
             Açıklama Lorem Ipsum is simply dummy text of the printing and
             typesetting industry. Lorem Ipsum has been the industry's standard
@@ -33,10 +31,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {
-          state.problems
-       
-        .map(
+        {state.problems.map(
           (problem) =>
             !problem.isDeleted &&
             (problem.categoryId === state.selectedCategory ||
@@ -66,8 +61,10 @@ const ListProblem = () => {
                 </div>
                 <div className="list-problem-detail">
                   <div className="list-problem-head-text">
-                    <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>
-                    
+                    <h4>
+                      {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
+                    </h4>
+
                     <h3> {problem.problemHead}</h3>
                     <p>
                       {problem.problemContent.slice(0, 150)}
@@ -105,7 +102,7 @@ const ListProblem = () => {
                     <button>✉️{problem.comments.length}</button>
                   </div>
 
-                  {problem.comments.slice(0,2).map((comment) => (
+                  {problem.comments.slice(0, 2).map((comment) => (
                     <div key={comment.id} className="list-user-comment">
                       <div className="list-comment-user-picture">
                         {state.users.find((user) => user.id === comment.userId)
@@ -136,17 +133,14 @@ const ListProblem = () => {
                   ))}
                   <p>
                     {problem.comments.length >= 3
-                      ? `+ ${problem.comments.length-2} yorum daha`
+                      ? `+ ${problem.comments.length - 2} yorum daha`
                       : ""}
                   </p>
                 </div>
               </div>
-            ) : (
-              ""
-            ))
+            ) : null)
         )}
       </div>
-     
     </div>
   );
 };
