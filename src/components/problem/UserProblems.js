@@ -37,8 +37,19 @@ const UserProblem = () => {
           </div>
         </div>
 
-        {state.activeUserProblem.length === 0 ? (
-          <h1>Kullanıcı henüz problem paylaşmamış</h1>
+        {state.activeUserProblem.length === 0 ||
+        !state.activeUserProblem.some(
+          (problem) =>
+            !problem.isDeleted &&
+            (problem.categoryId === state.selectedCategory ||
+              state.selectedCategory === null)
+        ) ? (
+          <div className="user-problem">
+            <div className="user-user-picture">
+              <img src={image} alt="res" />
+              <h3>Henüz problem paylaşmadınız</h3>
+            </div>
+          </div>
         ) : (
           state.activeUserProblem.map(
             (problem) =>

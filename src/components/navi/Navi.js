@@ -80,6 +80,7 @@ const Navi = () => {
             </button>
           )}
         </div>
+        
         <nav>
           <ul>
             {state.categories.map((category) => (
