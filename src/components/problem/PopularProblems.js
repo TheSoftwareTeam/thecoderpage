@@ -26,7 +26,7 @@ const PopularProblems = () => {
 
   return (
     <div className="popular">
-      {console.log(currentProblem)}
+      
 
       {currentProblem && (
         <div className="popular-content">
