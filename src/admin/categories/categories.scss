@@ -82,5 +82,35 @@
         }
       }
     }
+    .category-list-detail-content {
+      width: 30%;
+      text-align: center;
+  
+      height: auto;
+      padding: 10px ;
+      padding-bottom: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      background-color: #ccc; /* Gri tonu */
+      gap: 10px;
+ 
+
+        button {
+          width: 60%;
+       
+       
+          background-color: #aaa;
+          color: black;
+
+          padding: 10px;
+          border-radius: 10px;
+          font-size: 15px;
+          font-weight: bold;
+          font-family: "Monospace", sans-serif;
+          border: none;
+        }
+      
+    }
   }
 }

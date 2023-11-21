@@ -31,7 +31,7 @@ const CategoryDetail = () => {
       </form>
   
       <div id="category-list">
-        <div>
+        <div className='category-list-detail-content'>
           <h1>{state.categoryDetail&&state.categoryDetail.categoryName}</h1>
           <h4>Problem Sayısı - {state.categoryDetail&&state.categoryDetail.problemCount}</h4>
           <hr/> 

@@ -6,6 +6,7 @@ import { FaHtml5, FaCss3Alt, FaReact, FaJava } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 import { SiCsharp } from "react-icons/si";
 import { BiCategoryAlt } from "react-icons/bi";
+import { DiPython } from "react-icons/di";
 const Menu = () => {
   const { state, dispatch } = useContext(UserContext);
   
@@ -66,7 +67,8 @@ const Menu = () => {
               )}
               {category.categoryName === "PHYTON" && (
                 <>
-                  <span>P Phyton</span>
+                <DiPython style={{ color: "blue" }}/>
+                  <span>Phyton</span>
                 </>
               )}
               {category.categoryName === "CSHARP" && (

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./list-problem.scss";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
@@ -10,18 +10,21 @@ const ListProblem = () => {
   const { state, dispatch, actionLike } = useContext(UserContext);
   const navigate = useNavigate();
   const { categoryName } = useParams();
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryName, state.selectedCategory]);
+
+  const [visibleProblems, setVisibleProblems] = useState(5); 
+
+  const loadMoreProblems = () => {
+    setVisibleProblems(prevVisibleProblems => prevVisibleProblems + 5);
+  };
+  useEffect(() => {}, [categoryName, state.selectedCategory]);
 
   return (
     <div id="list-container">
       <div id="list-content">
         <div className="list-state">
           <div className="list-text">
-            Açıklama Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry's standard
-            dummy
+            Kod yazarken karşılaştığınız sorunları paylaşın, çözümleri birlikte
+            bulalım.
           </div>
           <div className="list-share-button">
             <button>
@@ -31,7 +34,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {state.problems.map(
+        {state.problems.slice(0,visibleProblems).map(
           (problem) =>
             !problem.isDeleted &&
             (problem.categoryId === state.selectedCategory ||
@@ -139,6 +142,11 @@ const ListProblem = () => {
                 </div>
               </div>
             ) : null)
+        )}
+        {state.problems.length > visibleProblems && (
+          <button onClick={loadMoreProblems} className="list-load-more">
+            Daha Fazla
+          </button>
         )}
       </div>
     </div>

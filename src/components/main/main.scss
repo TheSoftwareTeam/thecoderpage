@@ -8,23 +8,28 @@
     margin: 0 auto;
   }
 
-  .moreProblems {
-    margin: 0 auto;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    border-radius: 8px;
-    font-family: monospace;
-    font-size: 24px;
+  .scrollToTop {
+    position: fixed;
+    font-size: 25px;
     border: none;
-    box-shadow: 2px 4px 8px black;
+    box-shadow: 2px 4px 10px  rgba(0, 0, 0, 0.2);
+    width: 35px;
+    height: 35px;
+    font-weight: bold;
+  
+    background-color: #ccc;
     
+    bottom:20px;
+    right: 20px;
+    border-radius: 50%;
+    cursor: pointer;
     &:hover {
-      cursor: pointer;
-      background-color: #555;
-      color: white;
-      transition: 0.4s;
+      background-color: #aaa;
+      transition: 0.2s;
+    }
+    &:active {
+      transform: scale(1.4);
+      transition: 0.2s;
     }
   }
 

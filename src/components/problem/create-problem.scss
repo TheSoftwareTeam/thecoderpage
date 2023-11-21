@@ -9,13 +9,22 @@
     font-family: monospace;
     font-size: 25px;
   }
-  .aciklama {
-    background-color: rgb(133, 131, 127);
-    width: 80vw;
+  .state {
+   
+    width: 50vw;
     height: 20vh;
     margin: 10px;
     border-radius: 10px;
-    color: white;
+
+    padding: 100px;
+    text-align: center;
+    display: flex;
+    font-family: monospace;
+    font-size: 18px;
+    align-items: center;
+    background-color: #f5f5f5; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
   }
   form {
     padding-top: 30px;

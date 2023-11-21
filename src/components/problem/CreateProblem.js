@@ -8,11 +8,10 @@ const CreateProblem = () => {
   return (
     <div className="create-content">
       <h2>Problem oluştur</h2>
-      <div className="aciklama">
+      <div className="state">
         <div className="text">
-          Açıklama Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy
+        Kod yazarken karşılaştığınız sorunları paylaşın, çözümleri birlikte
+            bulalım.
         </div>
       </div>
       <form onSubmit={createProblem}>

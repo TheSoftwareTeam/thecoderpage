@@ -8,8 +8,14 @@ import image from "../../images/avatar.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const DetailProblem = () => {
-  const { state, dispatch, writeProblemComment, actionLike, getProblemDetail,handleCompletedProblem } =
-    useContext(UserContext);
+  const {
+    state,
+    dispatch,
+    writeProblemComment,
+    actionLike,
+    getProblemDetail,
+    handleCompletedProblem,
+  } = useContext(UserContext);
 
   const { id } = useParams();
 
@@ -23,9 +29,8 @@ const DetailProblem = () => {
       <div id="detail-content">
         <div className="detail-aciklama">
           <div className="detail-text">
-            Açıklama Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry's standard
-            dummy
+            Kod yazarken karşılaştığınız sorunları paylaşın, çözümleri birlikte
+            bulalım.
           </div>
           <div className="detail-share-button">
             <button>
@@ -58,13 +63,15 @@ const DetailProblem = () => {
           </div>
           <div className="detail-problem-detail">
             <div className="detail-problem-head-text">
-            {state.problems.map((problem) => (
-              problem.id === state.activeProblemDetail.id &&  
-  <h4 key={problem.id}>
-    {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
-  </h4>
-))}         
-              
+              {state.problems.map(
+                (problem) =>
+                  problem.id === state.activeProblemDetail.id && (
+                    <h4 key={problem.id}>
+                      {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
+                    </h4>
+                  )
+              )}
+
               <h3>{state.activeProblemDetail.problemHead}</h3>
               <br />
               <p>{state.activeProblemDetail.problemContent}</p>
@@ -83,20 +90,21 @@ const DetailProblem = () => {
 
               <button>✉️{state.activeProblemDetail.comments.length}</button>
 
-              {state.problems.map((problem) => (
-  problem.id === state.activeProblemDetail.id && problem.userId === state.activeUser.id && (
-    <button
-    key={problem.id}
-      className="completed-button"
-      onClick={() => handleCompletedProblem(problem.id)}
-    >
-      {problem.isCompleted === false
-        ? "✅ Çözüldü olarak işaretle"
-        : "❌ Çözülmedi olarak işaretle"}
-    </button>
-  )
-))}
-              
+              {state.problems.map(
+                (problem) =>
+                  problem.id === state.activeProblemDetail.id &&
+                  problem.userId === state.activeUser.id && (
+                    <span
+                      key={problem.id}
+                      className="completed-button"
+                      onClick={() => handleCompletedProblem(problem.id)}
+                    >
+                      {problem.isCompleted === false
+                        ? "✅ Çözüldü olarak işaretle"
+                        : "❌ Çözülmedi olarak işaretle"}
+                    </span>
+                  )
+              )}
             </div>
 
             <div className="detail-write-comment">
@@ -139,7 +147,7 @@ const DetailProblem = () => {
                   </h4>
                   <span>{comment.createDate}</span>
                 </div>
-              
+
                 <p>{comment.commentContent}</p>
               </div>
             ))}

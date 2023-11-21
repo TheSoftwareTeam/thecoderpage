@@ -34,9 +34,10 @@ const Comments = () => {
                       <h5>{user.userName}</h5>
                     </>
                   ))}
+                    <span>{comment.createDate.split(" ")[0]}</span>
               </div>
-              <span>{comment.createDate.split(" ")[0]}</span>
-              <div className="admin-comment-comment-head-text">
+            
+              <div className="admin-comment-head-text">
                 <h6>{comment.commentContent.slice(0, 150)}...</h6>
               </div>
               <button

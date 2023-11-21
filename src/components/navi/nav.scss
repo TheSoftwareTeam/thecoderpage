@@ -25,16 +25,27 @@
     button {
       margin-right: 15px;
       width: 15vw;
-      height: 2.5vh;
+      height: 3vh;
       border-radius: 8px;
       border: none;
-      background-color: darkgrey;
+      background-color: #bbb;
       font-family: monospace;
       font-size: 15px;
       font-weight: bold;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
       .navi-link {
         text-decoration: none;
-        color: white;
+        color: black;
+      }
+      &:hover{
+        background-color: #ccc;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active
+      {
+        transform: scale(1.2);
+        transition: 0.3s;
       }
     }
     .dropdown-menu {

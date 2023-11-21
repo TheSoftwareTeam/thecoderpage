@@ -22,13 +22,11 @@ const UserProblem = () => {
 
   return (
     <div id="user-container">
-   
       <div id="user-content">
         <div className="user-state">
           <div className="user-text">
-            Açıklama Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry's standard
-            dummy
+            Kod yazarken karşılaştığınız sorunları paylaşın, çözümleri birlikte
+            bulalım.
           </div>
           <div className="user-share-button">
             <button>
@@ -123,7 +121,7 @@ const UserProblem = () => {
                             ).likesUserId.length}
                       </button>
                       <button>✉️{problem.comments.length}</button>
-                      <button
+                      <span
                         className="completed-button "
                         onClick={() => handleCompletedProblem(problem.id)}
                       >
@@ -131,7 +129,7 @@ const UserProblem = () => {
                         {problem.isCompleted === false
                           ? "✅ Çözüldü olarak işaretle"
                           : "❌ Çözülmedi olarak işaretle"}
-                      </button>
+                      </span>
                     </div>
 
                     {problem.comments.slice(0, 2).map((comment) => (
