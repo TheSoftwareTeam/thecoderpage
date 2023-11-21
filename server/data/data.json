@@ -22,7 +22,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "",
+      "userToken": "Mahir0.6554486646362614",
       "userRol": "admin",
       "createDate": "23.11.2023 21:13:10"
     },
@@ -57,10 +57,10 @@
     {
       "id": 0,
       "userId": 1,
-      "categoryId": 2,
+      "categoryId": 4,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 11,
+      "commentCount": 12,
       "likesUserId": [
         44,
         5,
