@@ -92,7 +92,7 @@ const DetailProblem = () => {
 
               {state.problems.map(
                 (problem) =>
-                  problem.id === state.activeProblemDetail.id &&
+                  problem.id === state.activeProblemDetail.id && state.activeUser !== null && 
                   problem.userId === state.activeUser.id && (
                     <span
                       key={problem.id}
