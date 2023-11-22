@@ -4,11 +4,12 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import "./nav.scss";
 import image from "../../images/avatar.png";
+import { ThemeContext } from "../../context/ThemeContext";
 const Navi = () => {
   const { state, dispatch, toggleDropdown, handleLogout } =
     useContext(UserContext);
   const navigate = useNavigate();
-
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
   return (
     <>
       <div className="navi-container">
@@ -18,6 +19,13 @@ const Navi = () => {
               TheCoderPage
             </NavLink>
           </h3>
+          <button
+            className={darkMode ? "darkMode" : "lightMode"}
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? "Light" : "Dark"} mode
+          </button>
+
           {localStorage.getItem("userToken") !== null ? (
             <div>
               {state.activeUser && state.activeUser.userPicture ? (
@@ -80,8 +88,6 @@ const Navi = () => {
             </button>
           )}
         </div>
-        
-    
       </div>
       <div className="navi-outlet">
         <Outlet />

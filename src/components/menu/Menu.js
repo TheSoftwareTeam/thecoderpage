@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 import "./menu.scss";
 import { Outlet } from "react-router-dom";
@@ -9,7 +9,8 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { DiPython } from "react-icons/di";
 const Menu = () => {
   const { state, dispatch } = useContext(UserContext);
-  
+
+  useEffect(() => {}, [state.selectedCategory]);
   return (
     <>
       {" "}
@@ -20,6 +21,10 @@ const Menu = () => {
             className={state.selectedCategory === null ? "navi-active" : ""}
             onClick={() => {
               dispatch({ type: "selectedCategory", payload: null });
+              dispatch({
+                type: "loadMoreProblems",
+                payload: 5,
+              })
             }}
           >
             <BiCategoryAlt style={{ color: "sienna" }} />
@@ -31,7 +36,9 @@ const Menu = () => {
                 state.selectedCategory === category.id ? "navi-active" : ""
               }
               onClick={() => {
+              
                 dispatch({ type: "selectedCategory", payload: category.id });
+                
               }}
               key={category.id}
             >
@@ -67,7 +74,7 @@ const Menu = () => {
               )}
               {category.categoryName === "PHYTON" && (
                 <>
-                <DiPython style={{ color: "blue" }}/>
+                  <DiPython style={{ color: "blue" }} />
                   <span>Phyton</span>
                 </>
               )}
@@ -82,7 +89,6 @@ const Menu = () => {
         </ul>
       </nav>
       <Outlet />
-      
     </>
   );
 };

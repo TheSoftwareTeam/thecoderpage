@@ -1,5 +1,4 @@
 .navi-container {
-
   .navi-header {
     display: flex;
     border-bottom: 1px solid black;
@@ -37,13 +36,12 @@
         text-decoration: none;
         color: black;
       }
-      &:hover{
+      &:hover {
         background-color: #ccc;
         transition: 0.3s;
         cursor: pointer;
       }
-      &:active
-      {
+      &:active {
         transform: scale(1.2);
         transition: 0.3s;
       }
@@ -83,8 +81,50 @@
     .dropdown-menu li:hover {
       background-color: #cccccc;
     }
+    .darkMode {
+      width: 8%;
+      height:3vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 0;
+      position: absolute;
+      margin-right: 200px;
+      background-color: #666;
+      color: #fff;
+      &:hover {
+        background-color: #555;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
+    }
+    .lightMode {
+      width: 8%;
+      height: 3vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 0;
+      position: absolute;
+      right: 0;
+      margin-right: 200px;
+      background-color: #ffffff;
+    
+      &:hover {
+        background-color: #ffffff;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
+    }
   }
- 
 }
 .navi-outlet {
   min-height: 84vh;

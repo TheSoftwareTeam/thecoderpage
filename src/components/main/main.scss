@@ -10,18 +10,20 @@
 
   .scrollToTop {
     position: fixed;
-    font-size: 25px;
+    font-size: 35px;
     border: none;
     box-shadow: 2px 4px 10px  rgba(0, 0, 0, 0.2);
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     font-weight: bold;
   
     background-color: #ccc;
     
-    bottom:20px;
+
+    bottom:7.5%;
+    
     right: 20px;
-    border-radius: 50%;
+    border-radius: 100%;
     cursor: pointer;
     &:hover {
       background-color: #aaa;
