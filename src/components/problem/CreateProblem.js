@@ -35,6 +35,7 @@ const CreateProblem = () => {
           type="text"
           value={state.problemHead}
           placeholder="Başlık"
+          maxLength={50}
           required
         />
         <textarea
@@ -44,8 +45,10 @@ const CreateProblem = () => {
           type="text"
           value={state.problemContent}
           placeholder="İçerik"
+          maxLength={1500}
           required
         />
+        <p style={{color:"red"}}>{1500-state.problemContent.length}</p>
         <input type="submit" value="Kaydet" />
       </form>
       

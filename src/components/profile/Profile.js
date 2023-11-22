@@ -57,6 +57,8 @@ const Profile = () => {
             type="text"
             placeholder="Ad"
             value={state.profileName}
+            minLength={2}
+            maxLength={20}
             required
           />
 
@@ -67,6 +69,8 @@ const Profile = () => {
             type="text"
             placeholder="Soyad"
             value={state.profileSurname}
+            minLength={2}
+            maxLength={20}
             required
           />
 
