@@ -29,8 +29,18 @@ const Profile = () => {
             <img src={image} alt="res" />
           )}
 
-          <input type="file" name="file" onChange={handleFileUpload} />
+          <label for="file-upload" name="file">
+            Resim seç
+          </label>
+          <input
+            id="file-upload"
+            type="file"
 
+            onChange={handleFileUpload}
+          />
+         <h6>Seçilen resim: {state.activeUser.userPicture.split("/")[1]}</h6>
+          
+          
           <hr />
           <span>
             katılma tarihi:{" "}

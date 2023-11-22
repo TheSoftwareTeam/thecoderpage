@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
+
 import React, { useContext } from "react";
 import AdminContext from "../../context/AdminContext";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import image from "../../images/avatar.png";
 const Problems = () => {
   const { state } = useContext(AdminContext);
   const navigate = useNavigate();
+
   return (
     <div id="admin-container">
 

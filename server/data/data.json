@@ -20,9 +20,9 @@
       "userName": "mahir",
       "email": "mqhir7@icloud.com",
       "password": "123",
-      "userPicture": "uploaduserimages/mahir.jpeg",
+      "userPicture": "uploaduserimages/mahir.png",
       "problemCount": 4,
-      "userToken": "Mahir0.6554486646362614",
+      "userToken": "",
       "userRol": "admin",
       "createDate": "23.11.2023 21:13:10"
     },
@@ -67,7 +67,8 @@
         6,
         23,
         4,
-        1
+        1,
+        2
       ],
       "comments": [
         {
@@ -200,7 +201,7 @@
       "categoryId": 0,
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
-      "commentCount": 6,
+      "commentCount": 7,
       "likesUserId": [
         44,
         5,
@@ -330,7 +331,7 @@
     {
       "id": 0,
       "categoryName": "HTML",
-      "problemCount": 12,
+      "problemCount": 2,
       "isDeleted": false
     },
     {
@@ -342,31 +343,31 @@
     {
       "id": 2,
       "categoryName": "JAVASCRIPT",
-      "problemCount": 67,
+      "problemCount": 1,
       "isDeleted": false
     },
     {
       "id": 3,
       "categoryName": "CSHARP",
-      "problemCount": 13,
+      "problemCount": 2,
       "isDeleted": false
     },
     {
       "id": 4,
       "categoryName": "REACT",
-      "problemCount": 23,
+      "problemCount": 2,
       "isDeleted": false
     },
     {
       "id": 5,
       "categoryName": "JAVA",
-      "problemCount": 12,
+      "problemCount": 2,
       "isDeleted": false
     },
     {
       "id": 7,
       "categoryName": "PHYTON",
-      "problemCount": 2,
+      "problemCount": 0,
       "isDeleted": false
     }
   ]

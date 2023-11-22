@@ -337,7 +337,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const handleFileUpload = async (e) => {
-    try {
+ 
       const file = e.target.files[0];
       const newFile = new File(
         [file],
@@ -359,9 +359,7 @@ export const UserProvider = ({ children }) => {
         }
       );
       dispatch({ type: "profilePicture", payload: response.data.imagePath });
-    } catch (error) {
-      console.error("File upload error:", error);
-    }
+    
   };
 
   useEffect(() => {

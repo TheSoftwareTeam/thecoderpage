@@ -10,9 +10,11 @@ const Comments = () => {
   return (
     <div id="admin-comment-container">
       {state.problems.map(
-        (problem) =>
-          problem.isDeleted === false &&
-          problem.comments.map((comment) => (
+  (problem) =>
+    problem.isDeleted === false &&
+    problem.comments
+      .sort((a, b) =>  new Date(a.createDate) - new Date(b.createDate))
+      .map((comment) => (
             <div
               //onClick={() => navigate(`/admin/commentdetail/${comment.id}`)}
               key={comment.id}

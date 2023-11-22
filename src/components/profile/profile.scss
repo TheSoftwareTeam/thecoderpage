@@ -38,7 +38,30 @@
         font-family: monospace;
         font-size: .5rem;
       }
+      input[type="file"] {
+        display: none;
+        &:hover {
+          cursor: pointer;
+          width: 100px;
+        }
+      }
       
+      label {
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #aaa;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      h6{
+        margin-top: 10px;
+        font-family: monospace;
+        font-size: 11px;
+        font-weight: 600;
+        color: #4e4e4e;
+        text-align: center;
+      }
     }
     form {
       border-radius: 15px;
