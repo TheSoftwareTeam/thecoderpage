@@ -46,9 +46,10 @@ const CreateProblem = () => {
           value={state.problemContent}
           placeholder="İçerik"
           maxLength={1500}
+    
           required
         />
-        <p style={{color:"red"}}>{1500-state.problemContent.length}</p>
+        <p>{1500-state.problemContent.length}</p>
         <input type="submit" value="Kaydet" />
       </form>
       

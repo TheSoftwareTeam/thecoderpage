@@ -92,7 +92,8 @@ const DetailProblem = () => {
 
               {state.problems.map(
                 (problem) =>
-                  problem.id === state.activeProblemDetail.id && state.activeUser !== null && 
+                  problem.id === state.activeProblemDetail.id &&
+                  state.activeUser !== null &&
                   problem.userId === state.activeUser.id && (
                     <span
                       key={problem.id}
@@ -119,6 +120,7 @@ const DetailProblem = () => {
                 placeholder="Yorum yaz.."
               />
               <button
+                disabled={state.newProblemComment.trim().length < 5}
                 onClick={() => writeProblemComment(state.activeProblemDetail)}
               >
                 Gönder

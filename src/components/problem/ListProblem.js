@@ -11,7 +11,7 @@ const ListProblem = () => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
 
-  useEffect(() => {}, [categoryName, state.selectedCategory]);
+  useEffect(() => {}, [categoryName, state.selectedCategory, state.visibleProblems]);
 
   return (
     <div id="list-container">

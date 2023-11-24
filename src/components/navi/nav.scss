@@ -23,7 +23,8 @@
     }
     button {
       margin-right: 15px;
-      width: 15vw;
+      width: auto;
+      padding: 5px 15px;
       height: 3vh;
       border-radius: 8px;
       border: none;
@@ -82,14 +83,14 @@
       background-color: #cccccc;
     }
     .darkMode {
-      width: 8%;
+      width: auto;
       height:3vh;
       display: flex;
       justify-content: center;
       align-items: center;
       right: 0;
       position: absolute;
-      margin-right: 200px;
+      margin-right: 150px;
       background-color: #666;
       color: #fff;
       &:hover {
@@ -103,7 +104,7 @@
       }
     }
     .lightMode {
-      width: 8%;
+      width: auto;
       height: 3vh;
       display: flex;
       justify-content: center;
@@ -111,7 +112,7 @@
       right: 0;
       position: absolute;
       right: 0;
-      margin-right: 200px;
+      margin-right: 150px;
       background-color: #ffffff;
     
       &:hover {
@@ -127,5 +128,5 @@
   }
 }
 .navi-outlet {
-  min-height: 84vh;
+  min-height: 87vh;
 }
