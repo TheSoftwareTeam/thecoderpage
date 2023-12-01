@@ -11,7 +11,9 @@ const Profile = () => {
       dispatch({ type: "profileName", payload: state.activeUser.name });
       dispatch({ type: "profileSurname", payload: state.activeUser.surName });
     }
-
+    // if(state.activeUser.verify===false){
+      
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.activeUser]);
 

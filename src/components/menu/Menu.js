@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 import "./menu.scss";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { FaHtml5, FaCss3Alt, FaReact, FaJava } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 import { SiCsharp } from "react-icons/si";
@@ -9,7 +9,7 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { DiPython } from "react-icons/di";
 const Menu = () => {
   const { state, dispatch } = useContext(UserContext);
-
+  const navigate = useNavigate();
   useEffect(() => {}, [state.selectedCategory]);
   return (
     <>
@@ -38,7 +38,7 @@ const Menu = () => {
               onClick={() => {
               
                 dispatch({ type: "selectedCategory", payload: category.id });
-                
+                navigate(`/home/listproblem/${category.categoryName}`);
               }}
               key={category.id}
             >
