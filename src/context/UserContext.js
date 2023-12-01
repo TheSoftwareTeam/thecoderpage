@@ -36,22 +36,22 @@ export const UserProvider = ({ children }) => {
       `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
     );
     if (response.status === 200 && response.data.length !== 0) {
-      localStorage.setItem(
-        "userToken",
-        JSON.stringify(`${response.data[0].name}${Math.random()}`)
-      );
-      localStorage.setItem("userId", JSON.stringify(response.data[0].id));
-
       dispatch({ type: "login", payload: await response.data[0] });
       dispatch({ type: "loginUserName", payload: "" });
       dispatch({ type: "loginPassword", payload: "" });
       dispatch({ type: "selectedCategory", payload: null });
-      await axios.patch(`${url}/users/${response.data[0].id}`, {
-        userToken: JSON.parse(localStorage.getItem("userToken")),
-      });
+      
       if (response.data[0].verify === false) {
         navigate(`/home/profile/`);
       } else {
+        localStorage.setItem("userId", JSON.stringify(response.data[0].id));
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(`${response.data[0].name}${Math.random()}`)
+        );
+        await axios.patch(`${url}/users/${response.data[0].id}`, {
+        userToken: JSON.parse(localStorage.getItem("userToken")),
+      });
         navigate(`/home/listproblem/`);
       }
     } else {
@@ -112,13 +112,16 @@ export const UserProvider = ({ children }) => {
   //profile
   const editProfile = async (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem("userId");
+    const userId = state.activeUser.id;
     const response = await axios.get(`${url}/users/${userId}`);
     const user = await response.data;
+    
+   
     const newUser = {
       ...user,
       name: state.profileName,
       surName: state.profileSurname,
+      verify: true,
       userPicture:
         state.profilePicture === ""
           ? state.activeUser.userPicture
@@ -127,6 +130,13 @@ export const UserProvider = ({ children }) => {
     await axios.patch(`${url}/users/${userId}`, newUser);
     dispatch({ type: "createUser", payload: newUser });
     dispatch({ type: "login", payload: newUser });
+
+     if( state.activeUser.verify === false)
+     { localStorage.setItem("userId", JSON.stringify(userId));
+      localStorage.setItem( "userToken", JSON.stringify(`${state.profileName}${Math.random()}`));
+      await axios.patch(`${url}/users/${userId}`, {
+        userToken: JSON.parse(localStorage.getItem("userToken")),
+      });}
 
     navigate(`/home/listproblem/`);
   };
@@ -209,7 +219,7 @@ export const UserProvider = ({ children }) => {
   const createProblem = async (e) => {
     e.preventDefault();
 
-    if (state.activeUser !== null) {
+    if (localStorage.getItem("userToken")) {
       const newProblem = {
         id: state.problems.length,
         userId: state.activeUser.id,

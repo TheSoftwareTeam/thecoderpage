@@ -58,8 +58,8 @@
     },
     {
       "id": 6,
-      "name": "",
-      "surName": "",
+      "name": "mehmet",
+      "surName": "ahmet",
       "userName": "asd",
       "email": "asd@asd.asd",
       "password": "12345678",
@@ -67,8 +67,8 @@
       "problemCount": 0,
       "userRol": "user",
       "createDate": "1.12.2023 16:46:41",
-      "userToken": "0.3558612263551062",
-      "verify": false
+      "userToken": "as0.5278561569579779",
+      "verify": true
     }
   ],
   "problems": [
@@ -78,7 +78,7 @@
       "categoryId": 4,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 12,
+      "commentCount": 13,
       "likesUserId": [
         44,
         5,
@@ -113,6 +113,12 @@
           "userId": 1,
           "commentContent": "yepyeni bir yorum.",
           "createDate": "21.11.2023 17:03:40"
+        },
+        {
+          "id": 4,
+          "userId": 6,
+          "commentContent": "ferferferf",
+          "createDate": "1.12.2023 17:40:24"
         }
       ],
       "createDate": "23.11.2023 21:13:10",
@@ -361,6 +367,19 @@
       "isCompleted": false,
       "isDeleted": false,
       "createDate": "24.11.2023 15:05:19"
+    },
+    {
+      "id": 10,
+      "userId": 6,
+      "categoryId": 2,
+      "problemHead": "asd",
+      "problemContent": "asdasdasda",
+      "commentCount": 0,
+      "likesUserId": [],
+      "comments": [],
+      "isCompleted": false,
+      "isDeleted": false,
+      "createDate": "1.12.2023 17:07:52"
     }
   ],
   "categories": [
@@ -379,7 +398,7 @@
     {
       "id": 2,
       "categoryName": "JAVASCRIPT",
-      "problemCount": 2,
+      "problemCount": 3,
       "isDeleted": false
     },
     {
