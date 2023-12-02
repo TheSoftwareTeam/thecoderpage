@@ -202,13 +202,13 @@ export const UserProvider = ({ children }) => {
   const getProblem = async () => {
     const response = await axios.get(`${url}/problems`, {
       params: {
-        _limit: state.visibleProblems,
-      },
+        _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+        _limit: 1,        // Her istekte kaç veri alınacağını belirtin
+        _page: state.pages // Hangi sayfayı istediğinizi belirtin
+      }
     });
-    
+     console.log("cevap", response.data);
     dispatch({ type: "getProblems", payload: await response.data });
-    console.log("getProblem çalıştı", await response.data);
-    console.log("getProblem çalıştı", state.problems);
   };
 
   const activeUserProblem = async (userName) => {
@@ -239,7 +239,7 @@ export const UserProvider = ({ children }) => {
         comments: [],
         isCompleted: false,
         isDeleted: false,
-        createDate: date(),
+        createDate: new Date().toISOString(),
       };
 
       const categoryResponse = await axios.get(
@@ -379,7 +379,6 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getProblem();
     getCategory();
     getUsers();
     userCache();
@@ -419,6 +418,7 @@ export const UserProvider = ({ children }) => {
         //getCategoryFilterproblem,
         activeUserProblem,
         getProblemDetail,
+        getProblem,
         handleCompletedProblem,
         getUserDetail,
         toggleDropdown,

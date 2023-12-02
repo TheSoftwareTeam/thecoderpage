@@ -3,15 +3,18 @@
 import React, { useContext, useEffect } from "react";
 
 import "./list-problem.scss";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 const ListProblem = () => {
-  const { state, dispatch, actionLike } = useContext(UserContext);
+  const { state, dispatch, actionLike,getProblem } = useContext(UserContext);
   const navigate = useNavigate();
-  const { categoryName } = useParams();
+  // const { categoryName } = useParams();
 
-  useEffect(() => {}, [categoryName, state.selectedCategory, state.visibleProblems]);
+  useEffect(() => {
+    getProblem();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.pages]);
 
   return (
     <div id="list-container">
@@ -151,18 +154,21 @@ const ListProblem = () => {
                 state.selectedCategory === null)
           ) && (
             <button
-              onClick={() =>
-                dispatch({
+              onClick={ async() =>
+                { await dispatch({
                   type: "loadMoreProblems",
-                  payload: state.visibleProblems + 5,
-                })
+                  payload: 1,
+                });
+               
+              }
+
               }
               className="list-load-more"
             >
               Daha Fazla
             </button>
           )}
-        {state.problems.length > state.visibleProblems &&
+        {state.problems.length > state.pages &&
           state.problems.filter(
             (problem) =>
               !problem.isDeleted &&

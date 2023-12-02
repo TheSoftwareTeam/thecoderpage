@@ -34,7 +34,7 @@ const initialState = {
     likesUserId: [],
     comments: [],
   },
-  visibleProblems:5,
+  pages:1,
 
 };
 
@@ -166,7 +166,7 @@ const userReducer = (state, action) => {
     case "getProblems":
       return {
         ...state,
-        problems: action.payload,
+        problems: [...state.problems, ...action.payload],
       };
     case "problemContent":
       return {
@@ -241,7 +241,7 @@ const userReducer = (state, action) => {
       case 'loadMoreProblems':
         return { 
           ...state, 
-          visibleProblems:  action.payload,
+          pages: state.pages + action.payload,
         }
     default:
       return state;
