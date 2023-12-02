@@ -202,7 +202,7 @@ export const UserProvider = ({ children }) => {
   const getProblem = async () => {
     const response = await axios.get(`${url}/problems`, {
       params: {
-        limit: 3,
+        _limit: state.visibleProblems,
       },
     });
     

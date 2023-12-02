@@ -143,13 +143,13 @@ const ListProblem = () => {
             </div>
           ))}
 
-        {state.problems.length > state.visibleProblems &&
+        {
           state.problems.filter(
             (problem) =>
               !problem.isDeleted &&
               (problem.categoryId === state.selectedCategory ||
                 state.selectedCategory === null)
-          ).length > state.visibleProblems && (
+          ) && (
             <button
               onClick={() =>
                 dispatch({
