@@ -24,6 +24,7 @@ const DetailProblem = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
   return (
     <div id="detail-container">
       <div id="detail-content">
@@ -126,39 +127,45 @@ const DetailProblem = () => {
                 Gönder
               </button>
             </div>
-{state.activeProblemDetail.comments
-  .sort((a, b) => {
-    const dateA = a.createDate.split(" ")[0].split(".").reverse().join("-") + " " + a.createDate.split(" ")[1];
-    const dateB = b.createDate.split(" ")[0].split(".").reverse().join("-") + " " + b.createDate.split(" ")[1];
-    return new Date(dateB) - new Date(dateA);
-  })
-  .map((comment) => (
-    <div key={comment.id} className="detail-user-comment">
-      <div className="detail-comment-user-picture">
-        {state.users.map((user) =>
-          user.id === comment.userId ? (
-            user.userPicture ? (
-              <img
-                key={user.id}
-                src={"http://localhost:3001/" + user.userPicture}
-                alt="res"
-              />
-            ) : (
-              <img key={user.id} src={image} alt="res" />
-            )
-          ) : null
-        )}
-        <h4>
-          {state.users.map((user) =>
-            user.id === comment.userId ? user.userName : null
-          )}
-        </h4>
-        <span>{comment.createDate}</span>
-      </div>
- 
-      <p>{comment.commentContent}</p>
-    </div>
-  ))}
+            {state.activeProblemDetail.comments
+              .sort((a, b) => {
+                const dateA =
+                  a.createDate.split(" ")[0].split(".").reverse().join("-") +
+                  " " +
+                  a.createDate.split(" ")[1];
+                const dateB =
+                  b.createDate.split(" ")[0].split(".").reverse().join("-") +
+                  " " +
+                  b.createDate.split(" ")[1];
+                return new Date(dateB) - new Date(dateA);
+              })
+              .map((comment) => (
+                <div key={comment.id} className="detail-user-comment">
+                  <div className="detail-comment-user-picture">
+                    {state.users.map((user) =>
+                      user.id === comment.userId ? (
+                        user.userPicture ? (
+                          <img
+                            key={user.id}
+                            src={"http://localhost:3001/" + user.userPicture}
+                            alt="res"
+                          />
+                        ) : (
+                          <img key={user.id} src={image} alt="res" />
+                        )
+                      ) : null
+                    )}
+                    <h4>
+                      {state.users.map((user) =>
+                        user.id === comment.userId ? user.userName : null
+                      )}
+                    </h4>
+                    <span>{comment.createDate}</span>
+                  </div>
+
+                  <p>{comment.commentContent}</p>
+                </div>
+              ))}
           </div>
         </div>
       </div>
