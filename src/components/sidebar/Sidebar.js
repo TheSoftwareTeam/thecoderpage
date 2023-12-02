@@ -11,7 +11,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar-container">
-      {state.problems.slice(0, 5).map((problem) => (
+      {state.populerProblems.map((problem) => (
         <div key={problem.id} className="sidebar-list-problem">
           <div className="sidebar-user-picture">
             {state.users.find((user) => user.id === problem.userId)

@@ -30,6 +30,7 @@ const initialState = {
   problemHead: "",
   categoryFilterProblem: [],
   activeUserProblem: [],
+  populerProblems:[],
   activeProblemDetail: {
     likesUserId: [],
     comments: [],
@@ -166,6 +167,11 @@ const userReducer = (state, action) => {
     case "getProblems":
       return {
         ...state,
+        problems: action.payload,
+      };
+    case "getMoreProblems":
+      return {
+        ...state,
         problems: [...state.problems, ...action.payload],
       };
     case "problemContent":
@@ -210,6 +216,11 @@ const userReducer = (state, action) => {
         ...state,
         activeProblemDetail: action.payload,
       };
+      case "getPopularProblems":
+        return {
+          ...state,
+          populerProblems: action.payload,
+        };
     case "ubdateActiveUserProblem":
       const newActiveUserProblem = action.payload;
       // Eğer yeni problem mevcut problemler listesinde değilse ekle

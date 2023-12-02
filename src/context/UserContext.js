@@ -15,20 +15,43 @@ export const UserProvider = ({ children }) => {
   //date
 
   const date = () => {
-    const formatTwoDigits = (value) => {
-      return value < 10 ? `0${value}` : value;
-    };
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getDate()}.${
-      currentDate.getMonth() + 1
-    }.${currentDate.getFullYear()} ${formatTwoDigits(
-      currentDate.getHours()
-    )}:${formatTwoDigits(currentDate.getMinutes())}:${formatTwoDigits(
-      currentDate.getSeconds()
-    )}`;
-    return formattedDate;
+    // const formatTwoDigits = (value) => {
+    //   return value < 10 ? `0${value}` : value;
+    // };
+    // const currentDate = new Date();
+    // const formattedDate = `${currentDate.getDate()}.${
+    //   currentDate.getMonth() + 1
+    // }.${currentDate.getFullYear()} ${formatTwoDigits(
+    //   currentDate.getHours()
+    // )}:${formatTwoDigits(currentDate.getMinutes())}:${formatTwoDigits(
+    //   currentDate.getSeconds()
+    // )}`;
+    // return formattedDate;
+    return new Date().toISOString();
   };
+  function formatRelativeTime(timestamp) {
+    const now = new Date();
+    const targetDate = new Date(timestamp);
 
+    const timeDifference = now - targetDate;
+    const minutes = Math.floor(timeDifference / (1000 * 60));
+    const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+    if (days === 0) {
+      if (hours === 0) {
+        return `${minutes} dakika önce`;
+      } else {
+        return `${hours} saat önce`;
+      }
+    } else if (days === 1) {
+      return "Dün";
+    } else {
+      // Eğer bir önceki günden daha önce ise sadece tarihi döndür
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      return targetDate.toLocaleDateString("tr-TR", options);
+    }
+  }
   //login
   const login = async (e) => {
     e.preventDefault();
@@ -40,7 +63,7 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "loginUserName", payload: "" });
       dispatch({ type: "loginPassword", payload: "" });
       dispatch({ type: "selectedCategory", payload: null });
-      
+
       if (response.data[0].verify === false) {
         navigate(`/home/profile/`);
       } else {
@@ -50,8 +73,8 @@ export const UserProvider = ({ children }) => {
           JSON.stringify(`${response.data[0].name}${Math.random()}`)
         );
         await axios.patch(`${url}/users/${response.data[0].id}`, {
-        userToken: JSON.parse(localStorage.getItem("userToken")),
-      });
+          userToken: JSON.parse(localStorage.getItem("userToken")),
+        });
         navigate(`/home/listproblem/`);
       }
     } else {
@@ -116,8 +139,7 @@ export const UserProvider = ({ children }) => {
     const userId = state.activeUser.id;
     const response = await axios.get(`${url}/users/${userId}`);
     const user = await response.data;
-    
-   
+
     const newUser = {
       ...user,
       name: state.profileName,
@@ -132,12 +154,16 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "createUser", payload: newUser });
     dispatch({ type: "login", payload: newUser });
 
-     if( state.activeUser.verify === false)
-     { localStorage.setItem("userId", JSON.stringify(userId));
-      localStorage.setItem( "userToken", JSON.stringify(`${state.profileName}${Math.random()}`));
+    if (state.activeUser.verify === false) {
+      localStorage.setItem("userId", JSON.stringify(userId));
+      localStorage.setItem(
+        "userToken",
+        JSON.stringify(`${state.profileName}${Math.random()}`)
+      );
       await axios.patch(`${url}/users/${userId}`, {
         userToken: JSON.parse(localStorage.getItem("userToken")),
-      });}
+      });
+    }
 
     navigate(`/home/listproblem/`);
   };
@@ -203,13 +229,36 @@ export const UserProvider = ({ children }) => {
     const response = await axios.get(`${url}/problems`, {
       params: {
         _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
-        _order: "desc",      // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-        _limit: 1,        // Her istekte kaç veri alınacağını belirtin
-        _page: state.pages // Hangi sayfayı istediğinizi belirtin
-      }
+        _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+        _limit: 3, // Her istekte kaç veri alınacağını belirtin
+        _page: state.pages, // Hangi sayfayı istediğinizi belirtin
+      },
     });
-     console.log("cevap", response.data);
     dispatch({ type: "getProblems", payload: await response.data });
+  };
+  const getMoreProblem = async (page) => {
+     dispatch({   type: "loadMoreProblems",payload: 1,});
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+        _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+        _limit: 3, // Her istekte kaç veri alınacağını belirtin
+        _page: page, // Hangi sayfayı istediğinizi belirtin
+      },
+    });
+    dispatch({ type: "getMoreProblems", payload: await response.data });
+  };
+
+  const getPopularProblem = async () => {
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        _sort: "likesUserId.length", // Sıralama yapmak istediğiniz alanı belirtin
+        _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+        _limit: 3, // Her istekte kaç veri alınacağını belirtin
+        _page: state.pages, // Hangi sayfayı istediğinizi belirtin
+      },
+    });
+    dispatch({ type: "getPopularProblems", payload: await response.data });
   };
 
   const activeUserProblem = async (userName) => {
@@ -230,7 +279,6 @@ export const UserProvider = ({ children }) => {
 
     if (localStorage.getItem("userToken")) {
       const newProblem = {
-        id: state.problems.length,
         userId: state.activeUser.id,
         categoryId: state.categoryId,
         problemHead: state.problemHead,
@@ -240,7 +288,7 @@ export const UserProvider = ({ children }) => {
         comments: [],
         isCompleted: false,
         isDeleted: false,
-        createDate: new Date().toISOString(),
+        createDate: date(),
       };
 
       const categoryResponse = await axios.get(
@@ -380,6 +428,8 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    getProblem();
+    getPopularProblem();
     getCategory();
     getUsers();
     userCache();
@@ -399,7 +449,7 @@ export const UserProvider = ({ children }) => {
           navigate("/home/login");
         }
       }
-    }, 60000);
+    }, 240000);
 
     return () => clearInterval(loginControl);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -420,11 +470,14 @@ export const UserProvider = ({ children }) => {
         activeUserProblem,
         getProblemDetail,
         getProblem,
+        getMoreProblem,
+        getPopularProblem,
         handleCompletedProblem,
         getUserDetail,
         toggleDropdown,
         handleLogout,
         handleFileUpload,
+        formatRelativeTime,
       }}
     >
       {children}

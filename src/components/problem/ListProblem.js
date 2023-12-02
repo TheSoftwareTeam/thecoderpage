@@ -7,7 +7,7 @@ import { NavLink, useNavigate, } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 const ListProblem = () => {
-  const { state, dispatch, actionLike,getProblem } = useContext(UserContext);
+  const { state, dispatch, actionLike,getProblem,formatRelativeTime,getMoreProblem } = useContext(UserContext);
   const navigate = useNavigate();
   // const { categoryName } = useParams();
 
@@ -64,7 +64,7 @@ const ListProblem = () => {
                       ?.userName
                   }
                 </h3>
-                <span>{problem.createDate}</span>
+                <span>{formatRelativeTime(problem.createDate)}</span>
               </div>
               <div className="list-problem-detail">
                 <div className="list-problem-head-text">
@@ -154,15 +154,7 @@ const ListProblem = () => {
                 state.selectedCategory === null)
           ) && (
             <button
-              onClick={ async() =>
-                { await dispatch({
-                  type: "loadMoreProblems",
-                  payload: 1,
-                });
-               
-              }
-
-              }
+              onClick={ async() =>  getMoreProblem(state.pages)}
               className="list-load-more"
             >
               Daha Fazla
