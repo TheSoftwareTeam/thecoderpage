@@ -203,6 +203,7 @@ export const UserProvider = ({ children }) => {
     const response = await axios.get(`${url}/problems`, {
       params: {
         _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+        _order: "desc",      // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
         _limit: 1,        // Her istekte kaç veri alınacağını belirtin
         _page: state.pages // Hangi sayfayı istediğinizi belirtin
       }
