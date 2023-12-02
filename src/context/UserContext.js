@@ -76,7 +76,6 @@ export const UserProvider = ({ children }) => {
       responseEmail.data.length === 0
     ) {
       const newUser = {
-        id: state.users.length + 1,
         name: "",
         surName: "",
         userName: state.signupUserName,
@@ -85,6 +84,8 @@ export const UserProvider = ({ children }) => {
         userPicture: "",
         problemCount: 0,
         userRol: "user",
+        verify: false,
+        userToken: "",
         createDate: date(),
       };
       await axios.post(`${url}/users`, newUser);
@@ -155,7 +156,7 @@ export const UserProvider = ({ children }) => {
   //comment
 
   const writeProblemComment = async (problem) => {
-    if (state.activeUser !== null) {
+    if (localStorage.getItem("userToken")) {
       const newProblemComment = {
         id: problem.comments.length,
         userId: state.activeUser.id,
