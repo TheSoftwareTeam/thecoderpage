@@ -21,10 +21,10 @@ const Menu = () => {
             className={state.selectedCategory === null ? "navi-active" : ""}
             onClick={() => {
               dispatch({ type: "selectedCategory", payload: null });
-              dispatch({
-                type: "loadMoreProblems",
-                payload: 5,
-              })
+              // dispatch({
+              //   type: "loadMoreProblems",
+              //   payload: 5,
+              // })
             }}
           >
             <BiCategoryAlt style={{ color: "sienna" }} />

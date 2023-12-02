@@ -39,10 +39,7 @@ const ListProblem = () => {
               !problem.isDeleted &&
               (problem.categoryId === state.selectedCategory ||
                 state.selectedCategory === null)
-          )
-          .slice(0, state.visibleProblems)
-          
-          .map((problem) => (
+          ).map((problem) => (
             <div key={problem.id} className="list-problem">
               <div className="list-user-picture">
                 {state.users.find((user) => user.id === problem.userId)

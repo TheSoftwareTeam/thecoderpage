@@ -79,15 +79,7 @@
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
       "commentCount": 14,
-      "likesUserId": [
-        44,
-        23,
-        4,
-        1,
-        2,
-        3,
-        5
-      ],
+      "likesUserId": [44, 23, 4, 1, 2, 3, 5],
       "comments": [
         {
           "id": 0,
@@ -131,16 +123,7 @@
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
       "commentCount": 9,
-      "likesUserId": [
-        0,
-        44,
-        6,
-        23,
-        88,
-        0,
-        1,
-        5
-      ],
+      "likesUserId": [0, 44, 6, 23, 88, 0, 1, 5],
       "createDate": "23.11.2023 21:13:10",
       "comments": [
         {
@@ -166,14 +149,7 @@
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
       "commentCount": 14,
-      "likesUserId": [
-        34,
-        44,
-        5,
-        6,
-        1,
-        2
-      ],
+      "likesUserId": [34, 44, 5, 6, 1, 2],
       "comments": [
         {
           "id": 0,
@@ -199,15 +175,7 @@
       "problemHead": "CSS hata veriyor",
       "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
       "commentCount": 2,
-      "likesUserId": [
-        444,
-        44,
-        5,
-        6,
-        56,
-        1,
-        3
-      ],
+      "likesUserId": [444, 44, 5, 6, 56, 1, 3],
       "comments": [
         {
           "id": 0,
@@ -233,14 +201,7 @@
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
       "commentCount": 7,
-      "likesUserId": [
-        44,
-        5,
-        6,
-        56,
-        1,
-        2
-      ],
+      "likesUserId": [44, 5, 6, 56, 1, 2],
       "comments": [
         {
           "id": 0,
@@ -266,18 +227,7 @@
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
       "commentCount": 2,
-      "likesUserId": [
-        3,
-        5,
-        6,
-        7,
-        8,
-        44,
-        5,
-        6,
-        1,
-        2
-      ],
+      "likesUserId": [3, 5, 6, 7, 8, 44, 5, 6, 1, 2],
       "comments": [
         {
           "id": 0,
@@ -303,9 +253,7 @@
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
       "commentCount": 2,
-      "likesUserId": [
-        3
-      ],
+      "likesUserId": [3],
       "comments": [
         {
           "id": 0,
@@ -331,10 +279,7 @@
       "problemHead": "Java nedir?",
       "problemContent": "Java nedir, ne işe yarar.",
       "commentCount": 1,
-      "likesUserId": [
-        2,
-        3
-      ],
+      "likesUserId": [2, 3],
       "comments": [
         {
           "id": 0,

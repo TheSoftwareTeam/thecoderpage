@@ -200,8 +200,15 @@ export const UserProvider = ({ children }) => {
 
   //problem
   const getProblem = async () => {
-    const response = await axios.get(`${url}/problems`);
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        limit: 3,
+      },
+    });
+    
     dispatch({ type: "getProblems", payload: await response.data });
+    console.log("getProblem çalıştı", await response.data);
+    console.log("getProblem çalıştı", state.problems);
   };
 
   const activeUserProblem = async (userName) => {
