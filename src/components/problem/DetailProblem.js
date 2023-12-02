@@ -130,11 +130,11 @@ const DetailProblem = () => {
             {state.activeProblemDetail.comments
               .sort((a, b) => {
                 const dateA =
-                  a.createDate.split(" ")[0].split(".").reverse().join("-") +
+                  a.createDate.split(" ")[0].split(".").reverse().join("/") +
                   " " +
                   a.createDate.split(" ")[1];
                 const dateB =
-                  b.createDate.split(" ")[0].split(".").reverse().join("-") +
+                  b.createDate.split(" ")[0].split(".").reverse().join("/") +
                   " " +
                   b.createDate.split(" ")[1];
                 return new Date(dateB) - new Date(dateA);

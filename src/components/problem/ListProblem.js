@@ -29,7 +29,11 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
-        {state.problems
+        {state.problems.sort((a, b) => {
+            const dateA = a.createDate.split(" ")[0].split(".").reverse().join("/") + " " + a.createDate.split(" ")[1];
+            const dateB = b.createDate.split(" ")[0].split(".").reverse().join("/") + " " + b.createDate.split(" ")[1];
+            return new Date(dateB) - new Date(dateA);
+          })
           .filter(
             (problem) =>
               !problem.isDeleted &&
@@ -37,6 +41,7 @@ const ListProblem = () => {
                 state.selectedCategory === null)
           )
           .slice(0, state.visibleProblems)
+          
           .map((problem) => (
             <div key={problem.id} className="list-problem">
               <div className="list-user-picture">

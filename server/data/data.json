@@ -380,7 +380,9 @@
       "problemHead": "asxasxasx",
       "problemContent": "xasxasx",
       "commentCount": 0,
-      "likesUserId": [],
+      "likesUserId": [
+        2
+      ],
       "comments": [],
       "isCompleted": false,
       "isDeleted": false,
