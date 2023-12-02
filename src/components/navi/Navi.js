@@ -27,19 +27,18 @@ const Navi = () => {
           </button>
 
           {localStorage.getItem("userToken") !== null ? (
-            <div>
+            <div onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
               {state.activeUser && state.activeUser.userPicture ? (
                 <img
-                  onClick={toggleDropdown}
                   src={"http://localhost:3001/" + state.activeUser.userPicture}
                   alt="res"
                 />
               ) : (
-                <img onClick={toggleDropdown} src={image} alt="res" />
+                <img src={image} alt="res" />
               )}
 
               {state.isDropdownOpen && (
-                <div onClick={toggleDropdown} className="dropdown-menu">
+                <div className="dropdown-menu">
                   <ul>
                     <h5>
                       {state.activeUser.name} {state.activeUser.surName}
@@ -51,6 +50,7 @@ const Navi = () => {
                       <li
                         onClick={() => {
                           dispatch({ type: "selectedCategory", payload: null });
+                          toggleDropdown();
                           navigate(`/admin/`);
                         }}
                       >
@@ -60,7 +60,8 @@ const Navi = () => {
                     <li
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });
-                        navigate(`/home/profile`);
+                          toggleDropdown();
+                          navigate(`/home/profile`);
                       }}
                     >
                       Profilim
@@ -68,7 +69,8 @@ const Navi = () => {
                     <li
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });
-                        navigate(
+                          toggleDropdown();
+                          navigate(
                           `/home/userproblems/${state.activeUser.userName}`
                         );
                       }}

@@ -126,7 +126,15 @@ const DetailProblem = () => {
                 Gönder
               </button>
             </div>
-            {state.activeProblemDetail.comments.map((comment) => (
+            {state.activeProblemDetail.comments.sort((a, b) => {
+  // Convert the dates to ISO format
+  const dateA = a.createDate.split(' ').reverse().join('.') + 'T' + a.createDate.split(' ')[1];
+  const dateB = b.createDate.split(' ').reverse().join('.') + 'T' + b.createDate.split(' ')[1];
+
+  // Compare the dates
+  return new Date(dateB) - new Date(dateA);
+}).map((comment) => (
+
               <div key={comment.id} className="detail-user-comment">
                 <div className="detail-comment-user-picture">
                   {state.users.map((user) =>

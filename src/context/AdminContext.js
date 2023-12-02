@@ -211,13 +211,7 @@ export const AdminProvider = ({ children }) => {
   const toggleDropdown = () => {
     dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
   };
-  useEffect(() => {
-    roleControl();
-    getUsers();
-    getCategory();
-    getProblem();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+ 
 
   return (
     <AdminContext.Provider
@@ -234,6 +228,9 @@ export const AdminProvider = ({ children }) => {
         roleControl,
         toggleDropdown,
         deleteCategory,
+        getProblem,
+        getUsers,
+        getCategory,
       }}
     >
       {children}
