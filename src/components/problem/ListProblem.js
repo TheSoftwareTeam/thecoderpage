@@ -105,7 +105,11 @@ const ListProblem = () => {
                   <button>✉️{problem.comments.length}</button>
                 </div>
 
-                {problem.comments.slice(0, 2).map((comment) => (
+                {problem.comments.sort((a, b) => {
+                  const dateA = a.createDate.split(" ")[0].split(".").reverse().join("/") + " " + a.createDate.split(" ")[1];
+                  const dateB = b.createDate.split(" ")[0].split(".").reverse().join("/") + " " + b.createDate.split(" ")[1];
+                  return new Date(dateB) - new Date(dateA);
+                }).slice(0, 2).map((comment) => (
                   <div key={comment.id} className="list-user-comment">
                     <div className="list-comment-user-picture">
                       {state.users.find((user) => user.id === comment.userId)

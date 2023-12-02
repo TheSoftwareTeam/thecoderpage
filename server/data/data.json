@@ -120,7 +120,7 @@
           "createDate": "2.12.2023 15:12:46"
         }
       ],
-      "createDate": "23.11.2023 21:13:10",
+      "createDate": "02.12.2023 15:13:10",
       "isCompleted": true,
       "isDeleted": false
     },
@@ -146,7 +146,7 @@
         {
           "id": 0,
           "userId": 1,
-          "commentContent": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum.",
+          "commentContent": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum. lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "createDate": "23.11.2023 21:13:10"
         },
         {
@@ -359,34 +359,6 @@
       "isCompleted": false,
       "isDeleted": false,
       "createDate": "18.11.2023 20:38:10"
-    },
-    {
-      "id": 12,
-      "userId": 1,
-      "categoryId": 7,
-      "problemHead": "Deneme1",
-      "problemContent": "deneme içerik",
-      "commentCount": 0,
-      "likesUserId": [],
-      "comments": [],
-      "isCompleted": false,
-      "isDeleted": false,
-      "createDate": "2.12.2023 14:49:11"
-    },
-    {
-      "id": 10,
-      "userId": 4,
-      "categoryId": 4,
-      "problemHead": "asxasxasx",
-      "problemContent": "xasxasx",
-      "commentCount": 0,
-      "likesUserId": [
-        2
-      ],
-      "comments": [],
-      "isCompleted": false,
-      "isDeleted": false,
-      "createDate": "2.12.2023 14:51:06"
     }
   ],
   "categories": [
