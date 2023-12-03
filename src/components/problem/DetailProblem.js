@@ -15,6 +15,7 @@ const DetailProblem = () => {
     actionLike,
     getProblemDetail,
     handleCompletedProblem,
+    formatRelativeTime,
   } = useContext(UserContext);
 
   const { id } = useParams();
@@ -60,7 +61,7 @@ const DetailProblem = () => {
                   </div>
                 )
             )}
-            <span>{state.activeProblemDetail.createDate}</span>
+            <span>{formatRelativeTime(state.activeProblemDetail.createDate)}</span>
           </div>
           <div className="detail-problem-detail">
             <div className="detail-problem-head-text">
@@ -160,7 +161,7 @@ const DetailProblem = () => {
                         user.id === comment.userId ? user.userName : null
                       )}
                     </h4>
-                    <span>{comment.createDate}</span>
+                    <span>{formatRelativeTime(comment.createDate)}</span>
                   </div>
 
                   <p>{comment.commentContent}</p>
