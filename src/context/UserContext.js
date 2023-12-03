@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
+import e from "cors";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -211,21 +212,66 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "getCategory", payload: await response.data });
   };
 
-  // const getCategoryFilterproblem = async (categoryName) => {
-
-  //   const category = await axios.get(
-  //     `${url}/categories?categoryName=${categoryName.toUpperCase()}`
-  //   );
-  //   const response = await axios.get(
-  //     `${url}/problems?categoryId=${category.data[0].id}`
-  //   );
-
-  //   dispatch({ type: "categoryFilterProblem", payload: response.data });
-
-  // };
-
+ 
   //problem
   const getProblem = async () => {
+    dispatch({ type: "loadMoreProblems", payload: 2 });
+    dispatch({ type:"hideLoadMoreButton",payload:true})
+
+      if (state.selectedCategory) {
+        
+        const response = await axios.get(`${url}/problems?categoryId=${state.selectedCategory}`, {
+          params: {
+            _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+            _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+            _limit: 3, // Her istekte kaç veri alınacağını belirtin
+            _page: 1, // Hangi sayfayı istediğinizi belirtin
+          },
+        });
+        if(response.data.length<3){
+          dispatch({ type:"hideLoadMoreButton",payload:false})
+        }
+        dispatch({ type: "getProblems", payload: await response.data });
+      }
+      else
+      {
+        const response = await axios.get(`${url}/problems`, {
+          params: {
+            _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+            _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+            _limit: 3, // Her istekte kaç veri alınacağını belirtin
+            _page: 1, // Hangi sayfayı istediğinizi belirtin
+          },
+        });
+        if(response.data.length<3){
+          dispatch({ type:"hideLoadMoreButton",payload:false})
+        }
+        dispatch({ type: "getProblems", payload: await response.data });
+      }
+      
+      
+  };
+
+  const getMoreProblem = async () => {
+    if (state.selectedCategory) {
+      dispatch({ type: "loadMoreProblems", payload: state.pages+1 });
+    const response = await axios.get(`${url}/problems?categoryId=${state.selectedCategory}`, {
+      params: {
+        _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+        _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+        _limit: 3, // Her istekte kaç veri alınacağını belirtin
+        _page: state.pages, // Hangi sayfayı istediğinizi belirtin
+      },
+    });
+        if(response.data.length<3){
+          dispatch({ type:"hideLoadMoreButton",payload:false})
+        }
+
+        dispatch({ type: "getMoreProblems", payload: await response.data });
+    }
+    else
+    {
+      dispatch({ type: "loadMoreProblems", payload: state.pages+1 });
     const response = await axios.get(`${url}/problems`, {
       params: {
         _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
@@ -234,19 +280,12 @@ export const UserProvider = ({ children }) => {
         _page: state.pages, // Hangi sayfayı istediğinizi belirtin
       },
     });
-    dispatch({ type: "getProblems", payload: await response.data });
-  };
-  const getMoreProblem = async (page) => {
-     dispatch({   type: "loadMoreProblems",payload: 1,});
-    const response = await axios.get(`${url}/problems`, {
-      params: {
-        _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
-        _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-        _limit: 3, // Her istekte kaç veri alınacağını belirtin
-        _page: page, // Hangi sayfayı istediğinizi belirtin
-      },
-    });
-    dispatch({ type: "getMoreProblems", payload: await response.data });
+        if(response.data.length<3){
+          dispatch({ type:"hideLoadMoreButton",payload:false})
+        }
+        dispatch({ type: "getMoreProblems", payload: await response.data });
+    }
+    
   };
 
   const getPopularProblem = async () => {
@@ -254,8 +293,7 @@ export const UserProvider = ({ children }) => {
       params: {
         _sort: "likesUserId.length", // Sıralama yapmak istediğiniz alanı belirtin
         _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-        _limit: 3, // Her istekte kaç veri alınacağını belirtin
-        _page: state.pages, // Hangi sayfayı istediğinizi belirtin
+        _limit: 5, // Her istekte kaç veri alınacağını belirtin
       },
     });
     dispatch({ type: "getPopularProblems", payload: await response.data });
@@ -428,7 +466,6 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getProblem();
     getPopularProblem();
     getCategory();
     getUsers();

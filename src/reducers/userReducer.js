@@ -35,7 +35,8 @@ const initialState = {
     likesUserId: [],
     comments: [],
   },
-  pages:1,
+  pages:2,
+  loadMoreButton: true,
 
 };
 
@@ -173,6 +174,16 @@ const userReducer = (state, action) => {
       return {
         ...state,
         problems: [...state.problems, ...action.payload],
+      };
+      case "loadMoreProblems":
+      return {
+        ...state,
+        pages: action.payload,
+      };
+      case "hideLoadMoreButton":
+      return {
+        ...state,
+        loadMoreButton: action.payload,
       };
     case "problemContent":
       return {

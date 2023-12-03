@@ -7,15 +7,14 @@ import { NavLink, useNavigate, } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 const ListProblem = () => {
-  const { state, dispatch, actionLike,getProblem,formatRelativeTime,getMoreProblem } = useContext(UserContext);
+  const { state, dispatch, actionLike,formatRelativeTime,getMoreProblem,getProblem } = useContext(UserContext);
   const navigate = useNavigate();
   // const { categoryName } = useParams();
 
   useEffect(() => {
-    getProblem();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.pages]);
-
+    getProblem()
+  }, [state.selectedCategory]);
+ 
   return (
     <div id="list-container">
       <div id="list-content">
@@ -147,26 +146,18 @@ const ListProblem = () => {
           ))}
 
         {
-          state.problems.filter(
-            (problem) =>
-              !problem.isDeleted &&
-              (problem.categoryId === state.selectedCategory ||
-                state.selectedCategory === null)
-          ) && (
+          state.loadMoreButton&& (
             <button
-              onClick={ async() =>  getMoreProblem(state.pages)}
+              onClick={ async() =>  getMoreProblem()}
               className="list-load-more"
             >
               Daha Fazla
             </button>
-          )}
-        {state.problems.length > state.pages &&
-          state.problems.filter(
-            (problem) =>
-              !problem.isDeleted &&
-              (problem.categoryId === state.selectedCategory ||
-                state.selectedCategory === null)
-          ).length === 0 && 
+          )
+          }
+
+
+        {state.problems.length ===0 &&
           <div className="no-problem">
             <div className="list-user-picture">
               <img src={image} alt="res" />

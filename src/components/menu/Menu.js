@@ -21,6 +21,7 @@ const Menu = () => {
             className={state.selectedCategory === null ? "navi-active" : ""}
             onClick={() => {
               dispatch({ type: "selectedCategory", payload: null });
+              navigate(`/home/listproblem/all`);
               // dispatch({
               //   type: "loadMoreProblems",
               //   payload: 5,

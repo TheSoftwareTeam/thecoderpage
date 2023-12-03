@@ -15,7 +15,7 @@ const Navi = () => {
       <div className="navi-container">
         <div className="navi-header">
           <h3>
-            <NavLink className="navi-link" to="/home/main">
+            <NavLink onClick={()=>dispatch({ type: "selectedCategory", payload: null })} className="navi-link" to="/home/main">
               TheCoderPage
             </NavLink>
           </h3>

@@ -7,20 +7,17 @@ const PopularProblems = () => {
   const { state } = useContext(UserContext);
   const [currentProblemIndex, setCurrentProblemIndex] = useState(0);
   const navigate = useNavigate();
-  const sortedProblems = [...state.problems]
-    .sort((a, b) => b.likesUserId.length - a.likesUserId.length)
-    .slice(0, 5);
-  const currentProblem = sortedProblems[currentProblemIndex];
+  const currentProblem = state.populerProblems[currentProblemIndex];
   const nextProblem = () => {
     setCurrentProblemIndex(
-      (prevIndex) => (prevIndex + 1) % sortedProblems.length
+      (prevIndex) => (prevIndex + 1) % state.populerProblems.length
     );
   };
 
   const prevProblem = () => {
     setCurrentProblemIndex(
       (prevIndex) =>
-        (prevIndex - 1 + sortedProblems.length) % sortedProblems.length
+        (prevIndex - 1 + state.populerProblems.length) % state.populerProblems.length
     );
   };
 
@@ -50,7 +47,7 @@ const PopularProblems = () => {
             <FaChevronRight onClick={nextProblem} />
           </button>
           <div className="pagination">
-            {sortedProblems.map((problem, index) => (
+            {state.populerProblems.map((problem, index) => (
               <span
                 key={index}
                 className={`circle ${
