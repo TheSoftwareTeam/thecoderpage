@@ -44,10 +44,10 @@ function Layout() {
               <Route path="/*" element={<LoadingPage />} />
               <Route path="home" element={<Navi />}>
                 <Route path="main" element={<Main />} />
-                <Route path="profile/" element={<Profile />} >
+                <Route path="profile/:userName" element={<Profile />} >
 
                 <Route
-                    path="problems/:userName"
+                    path="problems"
                     element={<UserProblems />}
                   />
                   <Route path="detail" element={<ProfileDetail />} />

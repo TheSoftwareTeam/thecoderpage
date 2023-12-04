@@ -157,6 +157,11 @@ export const UserProvider = ({ children }) => {
 
     navigate(`/home/listproblem/`);
   };
+  const getProfilDetail = async (userName) => {
+    const response = await axios.get(`${url}/users/?userName=${userName}`);
+    dispatch({ type: "getProfilDetail", payload: await response.data[0] });
+  };
+
   //user
   const getUsers = async () => {
     const response = await axios.get(`${url}/users`);
@@ -506,6 +511,7 @@ export const UserProvider = ({ children }) => {
         handleLogout,
         handleFileUpload,
         formatRelativeTime,
+        getProfilDetail
       }}
     >
       {children}

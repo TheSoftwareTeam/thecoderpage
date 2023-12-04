@@ -3,59 +3,65 @@ import "./profile.scss";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import backgrounImage from "../../images/background.JPG";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 // import UserProblems from "../problem/UserProblems";
 const Profile = () => {
   const navigate = useNavigate();
+  const { userName } = useParams();
 
-  const { state, dispatch } =
-    useContext(UserContext);
+  const { state, dispatch,getProfilDetail } = useContext(UserContext);
 
-// const [selectMenu,setSelectMenu]=useState("profile");
 
+ 
   useEffect(() => {
+    getProfilDetail(userName.toLowerCase());
     if (state.activeUser !== null) {
       dispatch({ type: "profileName", payload: state.activeUser.name });
       dispatch({ type: "profileSurname", payload: state.activeUser.surName });
     }
-   
   }, [state.activeUser]);
 
   return (
     <div className="profile-container">
-       <div className="background-image">
-      <img
-              src={backgrounImage}
-              alt="Background"
-            />
+      <div className="background-image">
+        <img src={backgrounImage} alt="Background" />
       </div>
       <div className="profile-menu">
-      {state.activeUser && state.activeUser.userPicture ? (
-            <img
-              src={"http://localhost:3001/" + state.activeUser.userPicture}
-              alt="res"
-            />
-          ) : (
-            <img src={image} alt="res" />
-          )}
-          <ul>
-          <li  onClick={()=>navigate(`/home/profile/detail`)}>
-              Hakkında
-            </li>
+        <div className="picture-name">
+        {state.profileDetail && state.profileDetail.userPicture ? (
+          <img
+            src={"http://localhost:3001/" + state.profileDetail.userPicture}
+            alt="res"
+          />
+        ) : (
+          <img src={image} alt="res" />
+        )}
+        <h1>
+          {state.profileDetail && state.profileDetail.name+" "+state.profileDetail.surName}
+        </h1>
+        </div>
+       
+       
+        <ul>
+          <li onClick={() => navigate(`/home/profile/${state.profileDetail.userName}/detail`)}>Hakkında</li>
 
-            <li onClick={()=>navigate(`/home/profile/problems/${state.activeUser.userName}`)}>
-              Problemler
-            </li>
-
-            <li  onClick={()=>navigate(`/home/profile/edit`)}>
-            Profili düzenle
+          <li
+            onClick={() =>
+              navigate(`/home/profile/${state.profileDetail.userName}/problems`)
+            }
+          >
+            Problemler
           </li>
-            
-          </ul>
+          {state.activeUser && state.activeUser.userName===state.profileDetail.userName && (
+            <li onClick={() => navigate(`/home/profile/${state.activeUser.userName}/edit`)}>
+              Profili düzenle
+            </li>
+          )}
+        </ul>
       </div>
 
       <div className="profile-content">
-     <Outlet/>
+        <Outlet />
       </div>
     </div>
   );

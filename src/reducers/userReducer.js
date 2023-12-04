@@ -11,10 +11,11 @@ const initialState = {
   profileName: "",
   profileSurname: "",
   profilePicture: "",
-
+  profileDetail:{},
   //user
   users: [],
   userDetail: {},
+
   //navi
   isDropdownOpen: false,
   //comment
@@ -89,6 +90,11 @@ const userReducer = (state, action) => {
       return {
         ...state,
         profilePicture: action.payload,
+      };
+    case "getProfilDetail":
+      return {
+        ...state,
+        profileDetail: action.payload,
       };
     //user
     case "createUser":

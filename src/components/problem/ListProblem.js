@@ -43,7 +43,7 @@ const ListProblem = () => {
                 state.selectedCategory === null)
           ).map((problem) => (
             <div key={problem.id} className="list-problem">
-              <div className="list-user-picture">
+              <div className="list-user-picture" >
                 {state.users.find((user) => user.id === problem.userId)
                   ?.userPicture ? (
                   <img
@@ -57,10 +57,11 @@ const ListProblem = () => {
                 ) : (
                   <img src={image} alt="res" />
                 )}
-                <h3>
+                <h3 onClick={()=>navigate(`/home/profile/${state.users.find((user) => user.id === problem.userId)
+                    ?.userName}/detail`)}>
                   {
-                    state.users.find((user) => user.id === problem.userId)
-                      ?.userName
+                  state.users.find((user) => user.id === problem.userId)
+                  ?.userName
                   }
                 </h3>
                 <span>{formatRelativeTime(problem.createDate)}</span>
@@ -125,7 +126,8 @@ const ListProblem = () => {
                       ) : (
                         <img src={image} alt="res" />
                       )}
-                      <h4>
+                      <h4 onClick={()=>navigate(`/home/profile/${state.users.find((user) => user.id === comment.userId)
+                    ?.userName}/detail`)}>
                         {
                           state.users.find((user) => user.id === comment.userId)
                             ?.userName

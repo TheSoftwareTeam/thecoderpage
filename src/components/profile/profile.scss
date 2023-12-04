@@ -12,21 +12,21 @@
       height: 100%;
       object-fit: cover;
       object-position: endimg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center; // Resmi yukarıdan aşağıya doğru ortalar
-  background-repeat: no-repeat;
-  background-clip: content-box;
-}
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: bottom; // Resmin en altını görüntüler
-  background-repeat: no-repeat;
-  background-clip: content-box;
-}; // Resmi ortalar
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; // Resmi yukarıdan aşağıya doğru ortalar
+        background-repeat: no-repeat;
+        background-clip: content-box;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom; // Resmin en altını görüntüler
+        background-repeat: no-repeat;
+        background-clip: content-box;
+      } // Resmi ortalar
       background-repeat: no-repeat;
       background-clip: content-box;
     }
@@ -36,13 +36,21 @@ img {
     height: 5vh;
     display: flex;
     flex-direction: row;
-    img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      margin-top: -200px;
-      margin-left: 50px;
+    margin-left: 150px;
+    .picture-name {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        margin-top: -200px;
+      }
+      
     }
+
     ul {
       width: 80%;
       height: 100%;
@@ -82,7 +90,5 @@ img {
     display: flex;
     flex-direction: column;
     padding: 5%;
-
-   
   }
 }

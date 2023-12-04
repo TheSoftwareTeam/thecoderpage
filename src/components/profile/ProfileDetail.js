@@ -1,61 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext";
-import image from "../../images/avatar.png";
 import "./profile-detail.scss";
+import { useParams } from "react-router-dom";
 const ProfileDetail = () => {
-  const { state, dispatch, handleFileUpload, formatRelativeTime } =
+  const { state,getProfilDetail } =
     useContext(UserContext);
+    const { userName } = useParams();
+    useEffect(() => {
+      getProfilDetail(userName.toLowerCase());
+  
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userName]);
   return (
     <div id="profile-detail-container">
-      <div className="profile-picture">
-        {state.activeUser && state.activeUser.userPicture ? (
-          <img
-            src={"http://localhost:3001/" + state.activeUser.userPicture}
-            alt="res"
-          />
-        ) : (
-          <img src={image} alt="res" />
-        )}
-
-        <label for="file-upload" name="file">
-          Resim seç
-        </label>
-        <input id="file-upload" type="file" onChange={handleFileUpload} />
-        <h6>Seçilen resim: {state.activeUser.userPicture.split("/")[1]}</h6>
-      </div>
-
+      
       <form>
         <input
           type="text"
-          placeholder="Ad"
-          value={state.profileName}
-          minLength={2}
-          maxLength={20}
+          value={state.profileDetail.name}
           readOnly
         />
 
         <input
           type="text"
-          placeholder="Soyad"
-          value={state.profileSurname}
-          minLength={2}
-          maxLength={20}
+          value={state.profileDetail.surName}
           readOnly
         />
 
         <input
           type="text"
-          value={state.activeUser !== null ? state.activeUser.userName : ""}
-          readOnly
-        />
-        <input
-          type="email"
-          value={state.activeUser !== null ? state.activeUser.email : ""}
+          value={state.profileDetail.userName}
           readOnly
         />
         <input
           type="text"
-          value={state.activeUser !== null ? state.activeUser.createDate : ""}
+          value={state.profileDetail.email}
+          readOnly
+        />
+       
+      </form>
+      <form>
+       
+        <input
+          type="text"
+          value={state.profileDetail.createDate}
           readOnly
         />
 
