@@ -65,7 +65,7 @@
       "password": "123",
       "userPicture": "",
       "problemCount": 0,
-      "userToken": "Cem0.15021798209818038",
+      "userToken": "Cem0.21517891903198882",
       "userRol": "user",
       "createDate": "2023-12-04T11:00:00.000Z",
       "verify": true
@@ -135,8 +135,8 @@
       "commentCount": 3,
       "likesUserId": [
         2,
-        5,
-        7
+        7,
+        5
       ],
       "comments": [
         {
@@ -223,10 +223,10 @@
       "problemContent": "Python Flask kullanarak bir web uygulaması geliştiriyorum ancak CORS hatası alıyorum. Nasıl çözebilirim?",
       "commentCount": 4,
       "likesUserId": [
-        2,
         3,
         5,
-        7
+        7,
+        2
       ],
       "comments": [
         {
@@ -421,7 +421,8 @@
       "problemContent": "Python Django kullanarak bir web uygulaması geliştirmeye çalışıyorum ancak proje yapısını kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 1,
       "likesUserId": [
-        6
+        6,
+        2
       ],
       "comments": [
         {
@@ -604,8 +605,8 @@
       "problemContent": "Python Flask kullanarak basit bir web uygulaması geliştirmeye çalışıyorum. Ancak her seferinde farklı hatalar alıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 2,
       "likesUserId": [
-        2,
-        7
+        7,
+        2
       ],
       "comments": [
         {
@@ -654,7 +655,9 @@
       "problemHead": "Java Swing ile arayüz tasarımı yapmak",
       "problemContent": "Java Swing kullanarak basit bir masaüstü uygulaması geliştirmeye çalışıyorum. Ancak arayüz tasarımı konusunda sıkıntı yaşıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 0,
-      "likesUserId": [],
+      "likesUserId": [
+        2
+      ],
       "comments": [],
       "createDate": "2023-12-02T14:20:00.000Z",
       "isCompleted": false,
@@ -690,9 +693,9 @@
       "problemContent": "Java Spring Boot ile RESTful API geliştirmeye çalışıyorum. Ancak endpoint'ler arasında veri paylaşımında sorun yaşıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 2,
       "likesUserId": [
-        2,
         3,
-        5
+        5,
+        2
       ],
       "comments": [
         {
@@ -711,19 +714,44 @@
       "createDate": "2023-12-10T13:45:00.000Z",
       "isCompleted": false,
       "isDeleted": false
+    },
+    {
+      "userId": 2,
+      "categoryId": 1,
+      "problemHead": "asdasd",
+      "problemContent": "asdsadasdasdasdasdasd",
+      "commentCount": 1,
+      "likesUserId": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 2,
+          "commentContent": "dfdsfsdfsdf",
+          "createDate": "2023-12-04T12:31:42.395Z"
+        }
+      ],
+      "isCompleted": false,
+      "isDeleted": false,
+      "createDate": "2023-12-04T12:31:01.026Z",
+      "id": 24
     }
   ],
   "categories": [
     {
       "id": 1,
       "categoryName": "HTML",
-      "problemCount": 3,
+      "problemCount": 4,
       "isDeleted": false
     },
     {
       "id": 2,
       "categoryName": "CSS",
-      "problemCount": 1,
+      "problemCount": 3,
       "isDeleted": false
     },
     {

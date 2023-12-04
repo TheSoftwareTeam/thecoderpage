@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from "react";
 import "./sidebar.scss";

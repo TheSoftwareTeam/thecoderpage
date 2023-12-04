@@ -16,18 +16,7 @@ export const UserProvider = ({ children }) => {
   //date
 
   const date = () => {
-    // const formatTwoDigits = (value) => {
-    //   return value < 10 ? `0${value}` : value;
-    // };
-    // const currentDate = new Date();
-    // const formattedDate = `${currentDate.getDate()}.${
-    //   currentDate.getMonth() + 1
-    // }.${currentDate.getFullYear()} ${formatTwoDigits(
-    //   currentDate.getHours()
-    // )}:${formatTwoDigits(currentDate.getMinutes())}:${formatTwoDigits(
-    //   currentDate.getSeconds()
-    // )}`;
-    // return formattedDate;
+    
     return new Date().toISOString();
   };
   function formatRelativeTime(timestamp) {
@@ -337,10 +326,10 @@ export const UserProvider = ({ children }) => {
       await axios.patch(`${url}/categories/${state.categoryId}`, category);
 
       dispatch({ type: "createAndUbdateProblem", payload: newProblem });
-      await axios.post(`${url}/problems`, newProblem);
+      const response=await axios.post(`${url}/problems`, newProblem);
       dispatch({ type: "problemHead", payload: "" });
       dispatch({ type: "problemContent", payload: "" });
-      navigate(`/home/detailproblem/${newProblem.id}`);
+      navigate(`/home/detailproblem/${response.data.id}`);
 
       toast.success("Problem eklendi.!", {
         position: "bottom-right",

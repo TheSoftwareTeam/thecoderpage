@@ -10,7 +10,6 @@ const ListProblem = () => {
   const { state, dispatch, actionLike,formatRelativeTime,getMoreProblem,getProblem } = useContext(UserContext);
   const navigate = useNavigate();
   // const { categoryName } = useParams();
-
   useEffect(() => {
     getProblem()
   // eslint-disable-next-line react-hooks/exhaustive-deps
