@@ -22,10 +22,7 @@ const Menu = () => {
             onClick={() => {
               dispatch({ type: "selectedCategory", payload: null });
               navigate(`/home/listproblem/all`);
-              // dispatch({
-              //   type: "loadMoreProblems",
-              //   payload: 5,
-              // })
+              
             }}
           >
             <BiCategoryAlt style={{ color: "sienna" }} />

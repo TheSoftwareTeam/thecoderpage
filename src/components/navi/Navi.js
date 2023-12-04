@@ -61,7 +61,7 @@ const Navi = () => {
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });
                           toggleDropdown();
-                          navigate(`/home/profile`);
+                          navigate(`/home/profile/detail`);
                       }}
                     >
                       Profilim

@@ -10,7 +10,7 @@
       "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
       "createDate": "2023-11-15T19:00:37.148Z",
-      "userToken": "",
+      "userToken": "Murat0.6885228677280428",
       "userRol": "admin",
       "verify": true
     },
@@ -695,7 +695,8 @@
       "likesUserId": [
         3,
         5,
-        2
+        2,
+        1
       ],
       "comments": [
         {

@@ -348,9 +348,9 @@ export const UserProvider = ({ children }) => {
 
   const actionLike = async (problemId) => {
     if (state.activeUser && localStorage.getItem("userToken")) {
-      const problem = state.problems.find(
-        (problem) => problem.id === problemId
-      );
+
+      const response = await axios.get(`${url}/problems?id=${problemId}`);
+      const problem = response.data[0];
       // console.log("bu tıklanan problem problems'lerden arandı bulundu getirildi",problem);
       if (problem.likesUserId.find((id) => id === state.activeUser.id)) {
         // alert("problems'lerden arandı bakıldı bu user bu problemi beğenmiş ")
@@ -372,6 +372,7 @@ export const UserProvider = ({ children }) => {
         };
         // console.log("yeni haliyle userid silinmiş olarak problem: ",ubdateProblem);
         dispatch({ type: "activeProblemDetail", payload: ubdateProblem });
+        dispatch({ type: "ubdatePopulerProblem", payload: ubdateProblem });
         dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
       } else {
         // alert("problems'lerden arandı bakıldı bu user bu problemi beğenmemiş")
@@ -390,6 +391,7 @@ export const UserProvider = ({ children }) => {
         };
         // console.log("yeni haliyle userid eklenmiş olarak problem: ",ubdateProblem);
         dispatch({ type: "activeProblemDetail", payload: ubdateProblem });
+        dispatch({ type: "ubdatePopulerProblem", payload: ubdateProblem });
         dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
       }
     } else {

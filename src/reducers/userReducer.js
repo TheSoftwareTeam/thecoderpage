@@ -212,6 +212,7 @@ const userReducer = (state, action) => {
           ),
         };
       }
+      
     case "categoryFilterProblem":
       return {
         ...state,
@@ -232,6 +233,15 @@ const userReducer = (state, action) => {
           ...state,
           populerProblems: action.payload,
         };
+        case "ubdatePopulerProblem":
+         const ubdateProblem=action.payload;
+            return {
+              ...state,
+              populerProblems: state.populerProblems.map((problem) =>
+                problem.id === ubdateProblem.id ? ubdateProblem : problem
+              ),
+            };
+          
     case "ubdateActiveUserProblem":
       const newActiveUserProblem = action.payload;
       // Eğer yeni problem mevcut problemler listesinde değilse ekle

@@ -15,28 +15,14 @@ const UserProblem = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    activeUserProblem(userName);
+    activeUserProblem(userName.toLowerCase());
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userName, state.selectedCategory]);
+  }, [userName]);
 
   return (
     <div id="user-container">
       <div id="user-content">
-        <div className="user-state">
-          <div className="user-text">
-            Kod yazarken karşılaştığınız sorunları paylaşın, çözümleri birlikte
-            bulalım.
-          </div>
-          <div className="user-share-button">
-            <button>
-              <NavLink className="user-link" to="/home/createproblem">
-                Problem Paylaş
-              </NavLink>
-            </button>
-          </div>
-        </div>
-
         {state.activeUserProblem.length === 0 ||
         !state.activeUserProblem.some(
           (problem) =>
@@ -102,21 +88,21 @@ const UserProblem = () => {
                     <div className="user-problem-comment-view">
                       <button onClick={() => actionLike(problem.id)}>
                         {state.activeUser !== null
-                          ? state.problems
+                          ? state.activeUserProblem
                               .find((prob) => prob.id === problem.id)
                               .likesUserId.find(
                                 (id) => id === state.activeUser.id
                               )
                             ? "❤️" +
-                              state.problems.find(
+                              state.activeUserProblem.find(
                                 (prob) => prob.id === problem.id
                               ).likesUserId.length
                             : "🤍" +
-                              state.problems.find(
+                              state.activeUserProblem.find(
                                 (prob) => prob.id === problem.id
                               ).likesUserId.length
                           : "🤍" +
-                            state.problems.find(
+                            state.activeUserProblem.find(
                               (prob) => prob.id === problem.id
                             ).likesUserId.length}
                       </button>
@@ -175,7 +161,7 @@ const UserProblem = () => {
           )
         )}
       </div>
-      <Sidebar />
+    
     </div>
   );
 };

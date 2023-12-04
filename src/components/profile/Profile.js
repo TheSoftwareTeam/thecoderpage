@@ -1,28 +1,36 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./profile.scss";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
+import backgrounImage from "../../images/background.JPG";
+import { Outlet, useNavigate } from "react-router-dom";
+// import UserProblems from "../problem/UserProblems";
 const Profile = () => {
-  const { state, dispatch, editProfile, handleFileUpload,formatRelativeTime } =
+  const navigate = useNavigate();
+
+  const { state, dispatch } =
     useContext(UserContext);
+
+// const [selectMenu,setSelectMenu]=useState("profile");
 
   useEffect(() => {
     if (state.activeUser !== null) {
       dispatch({ type: "profileName", payload: state.activeUser.name });
       dispatch({ type: "profileSurname", payload: state.activeUser.surName });
     }
-    // if(state.activeUser.verify===false){
-      
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, [state.activeUser]);
 
   return (
     <div className="profile-container">
-      <h2>Profil</h2>
-      <div className="profile-content">
-        <div className="profile-picture">
-          {state.activeUser && state.activeUser.userPicture ? (
+       <div className="background-image">
+      <img
+              src={backgrounImage}
+              alt="Background"
+            />
+      </div>
+      <div className="profile-menu">
+      {state.activeUser && state.activeUser.userPicture ? (
             <img
               src={"http://localhost:3001/" + state.activeUser.userPicture}
               alt="res"
@@ -30,62 +38,24 @@ const Profile = () => {
           ) : (
             <img src={image} alt="res" />
           )}
+          <ul>
+          <li  onClick={()=>navigate(`/home/profile/detail`)}>
+              Hakkında
+            </li>
 
-          <label for="file-upload" name="file">
-            Resim seç
-          </label>
-          <input
-            id="file-upload"
-            type="file"
+            <li onClick={()=>navigate(`/home/profile/problems/${state.activeUser.userName}`)}>
+              Problemler
+            </li>
 
-            onChange={handleFileUpload}
-          />
-         <h6>Seçilen resim: {state.activeUser.userPicture.split("/")[1]}</h6>
-          
-          
-          <hr />
-          <span>
-            katılma tarihi: {" "}
-            {formatRelativeTime(state.activeUser.createDate)}
-          </span>
-        </div>
-        <form onSubmit={editProfile}>
-          <input
-            onChange={(e) =>
-              dispatch({ type: "profileName", payload: e.target.value })
-            }
-            type="text"
-            placeholder="Ad"
-            value={state.profileName}
-            minLength={2}
-            maxLength={20}
-            required
-          />
+            <li  onClick={()=>navigate(`/home/profile/edit`)}>
+            Profili düzenle
+          </li>
+            
+          </ul>
+      </div>
 
-          <input
-            onChange={(e) =>
-              dispatch({ type: "profileSurname", payload: e.target.value })
-            }
-            type="text"
-            placeholder="Soyad"
-            value={state.profileSurname}
-            minLength={2}
-            maxLength={20}
-            required
-          />
-
-          <input
-            type="text"
-            value={state.activeUser !== null ? state.activeUser.userName : ""}
-            readOnly
-          />
-          <input
-            type="email"
-            value={state.activeUser !== null ? state.activeUser.email : ""}
-            readOnly
-          />
-          <input type="submit" value="Düzenle" />
-        </form>
+      <div className="profile-content">
+     <Outlet/>
       </div>
     </div>
   );

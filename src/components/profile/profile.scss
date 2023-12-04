@@ -3,93 +3,86 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 100px;
 
-  h2 {
-    font-family: monospace;
-    font-size: 25px;
-    font-weight: bold;
+  .background-image {
+    width: 100%;
+    height: 40vh;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: endimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; // Resmi yukarıdan aşağıya doğru ortalar
+  background-repeat: no-repeat;
+  background-clip: content-box;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom; // Resmin en altını görüntüler
+  background-repeat: no-repeat;
+  background-clip: content-box;
+}; // Resmi ortalar
+      background-repeat: no-repeat;
+      background-clip: content-box;
+    }
   }
-  .profile-content {
+  .profile-menu {
+    width: 100%;
+    height: 5vh;
     display: flex;
     flex-direction: row;
-
-    .profile-picture {
-      height:auto;
-       position: relative;
-       display: flex  ;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-        img {
-          border-radius: 50%;
-          width: 150px;
-          height: 150px;
-         
-        }
-      hr{
-        width: 150px;
-        margin-top: 5px;
-
-      }
-      span{
-        margin-top: 10px;
-        font-family: monospace;
-        font-size: .5rem;
-      }
-      input[type="file"] {
-        display: none;
-        &:hover {
-          cursor: pointer;
-          width: 100px;
-        }
-      }
-      
-      label {
-        padding: 10px;
-        margin-top: 10px;
-        background-color: #aaa;
-        color: white;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-      h6{
-        margin-top: 10px;
-        font-family: monospace;
-        font-size: 11px;
-        font-weight: 600;
-        color: #4e4e4e;
-        text-align: center;
-      }
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      margin-top: -200px;
+      margin-left: 50px;
     }
-    form {
-      border-radius: 15px;
-      padding: 30px 30px 30px 0;
+    ul {
+      width: 80%;
+      height: 100%;
       display: flex;
-      flex-direction: column;
-      width: 65vw;
-      gap: 10px;
+      flex-direction: row;
+      justify-content: space-around;
+      list-style: none;
       align-items: center;
-      justify-content: center;
-      input,
-      textarea,
-      select {
-        width: 40vw;
-        height: 5vh;
-        padding: 15px;
-        border-radius: 10px;
-        border: none;
-        box-shadow: 3px 6px 9px rgb(128, 124, 124);
-      }
-      input[type="submit"] {
-        background-color: rgb(194, 191, 191);
-        width: 15vw;
-        color: aliceblue;
+      li {
+        width: 25%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
         font-family: monospace;
         font-size: 15px;
         font-weight: 700;
+        color: black;
+        text-align: center;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: #ebebeb;
+          border-radius: 10px;
+        }
       }
     }
+  }
+
+  .profile-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+
+   
   }
 }

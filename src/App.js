@@ -27,6 +27,8 @@ import Menu from "./components/menu/Menu";
 import Sidebar from "./components/sidebar/Sidebar";
 import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 import { useContext } from "react";
+import EditProfile from "./components/profile/EditProfile";
+import ProfileDetail from "./components/profile/ProfileDetail";
 
 
 function Layout() {
@@ -42,16 +44,22 @@ function Layout() {
               <Route path="/*" element={<LoadingPage />} />
               <Route path="home" element={<Navi />}>
                 <Route path="main" element={<Main />} />
-                <Route path="profile" element={<Profile />} />
+                <Route path="profile/" element={<Profile />} >
+
+                <Route
+                    path="problems/:userName"
+                    element={<UserProblems />}
+                  />
+                  <Route path="detail" element={<ProfileDetail />} />
+                  <Route path="edit" element={<EditProfile />} />
+                </Route>
+
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<SignUp />} />
                 <Route path="createproblem" element={<CreateProblem />} />
 
                 <Route element={<Menu />}>
-                  <Route
-                    path="userproblems/:userName"
-                    element={<UserProblems />}
-                  />
+                 
                   <Route
                     path="listproblem/:categoryName"
                     element={

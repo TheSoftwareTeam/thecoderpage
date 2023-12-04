@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 import { adminReducer, initialState } from "../reducers/adminReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
