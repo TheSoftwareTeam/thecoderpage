@@ -42,6 +42,7 @@ const Sidebar = () => {
                   onClick={() => {
                     dispatch({ type: "selectedCategory", payload: null });
                     navigate(`/home/detailproblem/${problem.id}`);
+             
                   }}
                 >
                   ...Daha fazlası

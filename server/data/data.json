@@ -19,305 +19,107 @@
       "name": "Mahir",
       "surName": "KURŞUN",
       "userName": "mahir",
-      "email": "mqhir7@icloud.com",
+      "email": "mqhir7@gmail.com",
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "Mahir0.6321376260182523",
+      "userToken": "",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true
     },
     {
       "id": 3,
-      "name": "Ali",
-      "surName": "Korkmaz",
-      "userName": "ali",
-      "email": "mqhir7@icloud.com",
+      "name": "Emre",
+      "surName": "YILMAZ",
+      "userName": "emre",
+      "email": "emre.yilmaz@gmail.com",
       "password": "123",
-      "userPicture": "uploaduserimages/ali.png",
+      "userPicture": "",
       "problemCount": 0,
-      "userRol": "user",
-      "createDate": "2023-12-04T12:35:37.148Z",
       "userToken": "",
+      "userRol": "user",
+      "createDate": "2023-12-04T10:00:00.000Z",
       "verify": true
     },
     {
       "id": 4,
-      "name": "Zeynep",
-      "surName": "Kaya",
-      "userName": "zeynep",
-      "email": "zeynep@z.z",
+      "name": "Ayşe",
+      "surName": "ÇELİK",
+      "userName": "ayse",
+      "email": "ayse.celik@gmail.com",
       "password": "123",
-      "userPicture": "uploaduserimages/zeynep.jpeg",
+      "userPicture": "",
       "problemCount": 0,
+      "userToken": "",
       "userRol": "user",
-      "createDate": "2023-11-15T19:00:37.148Z",
-      "userToken": "Zeynep0.9346463612492749",
+      "createDate": "2023-12-04T10:30:00.000Z",
       "verify": true
     },
     {
-      "name": "Ahmet",
-      "surName": "Kaya",
-      "userName": "ahmet123",
-      "email": "ahmet@mehmet.com",
-      "password": "12345678",
+      "id": 5,
+      "name": "Cem",
+      "surName": "ARSLAN",
+      "userName": "cem",
+      "email": "cem.arslan@gmail.com",
+      "password": "123",
       "userPicture": "",
       "problemCount": 0,
+      "userToken": "Cem0.15021798209818038",
       "userRol": "user",
-      "verify": true,
-      "userToken": "Ahmet0.2983127222703368",
-      "createDate": "2023-11-15T19:00:37.148Z",
-      "id": 5
+      "createDate": "2023-12-04T11:00:00.000Z",
+      "verify": true
+    },
+    {
+      "id": 6,
+      "name": "Gizem",
+      "surName": "DEMİR",
+      "userName": "gizem",
+      "email": "gizem.demir@gmail.com",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 0,
+      "userToken": "",
+      "userRol": "user",
+      "createDate": "2023-12-04T11:30:00.000Z",
+      "verify": true
+    },
+    {
+      "id": 7,
+      "name": "Can",
+      "surName": "YILDIZ",
+      "userName": "can",
+      "email": "can.yildiz@gmail.com",
+      "password": "123",
+      "userPicture": "",
+      "problemCount": 0,
+      "userToken": "",
+      "userRol": "user",
+      "createDate": "2023-12-04T12:00:00.000Z",
+      "verify": true
     }
   ],
   "problems": [
     {
-      "id": 0,
-      "userId": 1,
-      "categoryId": 3,
-      "problemHead": "React proje derleme problemi",
-      "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
-      "commentCount": 14,
-      "likesUserId": [
-        44,
-        23,
-        4,
-        1,
-        2,
-        3,
-        5
-      ],
-      "comments": [
-        {
-          "id": 0,
-          "userId": 3,
-          "commentContent": "ne la bu",
-          "createDate": "2023-11-15T19:00:37.148Z"
-        },
-        {
-          "id": 1,
-          "userId": 3,
-          "commentContent": "çözülemez vaka",
-          "createDate": "2022-04-22T19:00:37.148Z"
-        },
-        {
-          "id": 2,
-          "userId": 1,
-          "commentContent": "bu kodu yapıştır",
-          "createDate": "2023-04-26T19:00:37.148Z"
-        },
-        {
-          "id": 3,
-          "userId": 1,
-          "commentContent": "yepyeni bir yorum.",
-          "createDate": "2023-06-02T19:00:37.148Z"
-        },
-        {
-          "id": 4,
-          "userId": 1,
-          "commentContent": "2 aralık",
-          "createDate": "2023-12-11T19:00:37.148Z"
-        }
-      ],
-      "createDate": "2023-11-07T19:00:37.148Z",
-      "isCompleted": true,
-      "isDeleted": false
-    },
-    {
       "id": 1,
-      "userId": 1,
-      "categoryId": 3,
-      "problemHead": "Python syntax hatası",
-      "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
-      "commentCount": 9,
-      "likesUserId": [
-        0,
-        44,
-        6,
-        23,
-        88,
-        0,
-        1,
-        5
-      ],
-      "createDate": "2023-10-22T19:00:37.148Z",
-      "comments": [
-        {
-          "id": 0,
-          "userId": 1,
-          "commentContent": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam voluptatum. Quisquam, quibusdam voluptatum. lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "createDate": "23.11.2023 21:13:10"
-        },
-        {
-          "id": 1,
-          "userId": 5,
-          "commentContent": "ilk Ahmet yorumu",
-          "createDate": "2022-12-08T19:00:37.148Z"
-        }
-      ],
-      "isCompleted": false,
-      "isDeleted": false
-    },
-    {
-      "id": 2,
-      "userId": 2,
-      "categoryId": 3,
-      "problemHead": "Database bağlantı sorunu",
-      "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
-      "commentCount": 14,
-      "likesUserId": [
-        34,
-        44,
-        5,
-        6,
-        1,
-        2
-      ],
-      "comments": [
-        {
-          "id": 0,
-          "userId": 3,
-          "commentContent": "bu sorunu çözen var  mı",
-          "createDate": "2022-12-11T19:00:37.148Z"
-        },
-        {
-          "id": 1,
-          "userId": 1,
-          "commentContent": "yorum",
-          "createDate": "2023-8-08T19:00:37.148Z"
-        }
-      ],
-      "createDate": "2023-01-09T19:00:37.148Z",
-      "isCompleted": true,
-      "isDeleted": false
-    },
-    {
-      "id": 3,
-      "userId": 1,
-      "categoryId": 3,
-      "problemHead": "CSS hata veriyor",
-      "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
-      "commentCount": 2,
-      "likesUserId": [
-        444,
-        44,
-        5,
-        6,
-        56,
-        1,
-        3
-      ],
-      "comments": [
-        {
-          "id": 0,
-          "userId": 2,
-          "commentContent": "hangi kodu yapıştırayım",
-          "createDate": "2023-05-05T19:00:37.148Z"
-        },
-        {
-          "id": 1,
-          "userId": 1,
-          "commentContent": "nasıl yani",
-          "createDate": "2023-11-08T19:00:37.148Z"
-        }
-      ],
-      "createDate": "2023-12-01T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
-    },
-    {
-      "id": 4,
-      "userId": 2,
-      "categoryId": 3,
-      "problemHead": "html neden var",
-      "problemContent": "neden olamsın ki",
-      "commentCount": 7,
-      "likesUserId": [
-        44,
-        5,
-        6,
-        56,
-        1,
-        2
-      ],
-      "comments": [
-        {
-          "id": 0,
-          "userId": 1,
-          "commentContent": "öyle yani",
-          "createDate": "2023-01-28T19:00:37.148Z"
-        },
-        {
-          "id": 1,
-          "userId": 1,
-          "commentContent": "nerede",
-          "createDate": "2023-3-09T19:00:37.148Z"
-        }
-      ],
-      "createDate": "2023-11-05T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
-    },
-    {
-      "id": 5,
-      "userId": 2,
-      "categoryId": 3,
-      "problemHead": "React Projesi, çalışmıyor",
-      "problemContent": "nedenini bilmiyorum ki",
-      "commentCount": 2,
-      "likesUserId": [
-        3,
-        5,
-        6,
-        7,
-        8,
-        44,
-        5,
-        6,
-        1,
-        2
-      ],
-      "comments": [
-        {
-          "id": 0,
-          "userId": 1,
-          "commentContent": "yeni bir yorum",
-          "createDate": "2023-12-02T20:00:37.148Z"
-        },
-        {
-          "id": 1,
-          "userId": 1,
-          "commentContent": "selam",
-          "createDate": "2023-12-05T19:00:37.148Z"
-        }
-      ],
-      "createDate": "2022-12-24T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
-    },
-    {
-      "id": 6,
       "userId": 3,
-      "categoryId": 3,
+      "categoryId": 4,
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
-      "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
+      "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?",
       "commentCount": 2,
-      "likesUserId": [
-        3
-      ],
+      "likesUserId": [],
       "comments": [
         {
           "id": 0,
           "userId": 1,
           "commentContent": "Merhaba eklentiyi tekrar kurmayı denediniz mi?",
-          "createDate": "2023-10-13T19:00:37.148Z"
+          "createDate": "2023-11-06T19:00:37.148Z"
         },
         {
           "id": 1,
           "userId": 2,
           "commentContent": "merhaba denedim",
-          "createDate": "2023-12-17T19:00:37.148Z"
+          "createDate": "2023-11-05T19:00:37.148Z"
         }
       ],
       "createDate": "2023-10-19T19:00:37.148Z",
@@ -325,78 +127,429 @@
       "isDeleted": false
     },
     {
-      "id": 7,
-      "userId": 2,
-      "categoryId": 5,
-      "problemHead": "Java nedir?",
-      "problemContent": "Java nedir, ne işe yarar.",
-      "commentCount": 1,
+      "id": 2,
+      "userId": 4,
+      "categoryId": 4,
+      "problemHead": "React uygulamamda hata alıyorum",
+      "problemContent": "Merhaba, React uygulamamda bir hata alıyorum. Console'da 'TypeError: undefined is not a function' hatası alıyorum. Bu hatayı nasıl çözebilirim?",
+      "commentCount": 3,
       "likesUserId": [
         2,
-        3
+        5,
+        7
       ],
       "comments": [
         {
           "id": 0,
           "userId": 2,
-          "commentContent": "Yorum",
-          "createDate": "2021-12-7T19:00:37.148Z"
+          "commentContent": "Merhaba, hatanın tam olarak nerede olduğunu belirleyebildiniz mi?",
+          "createDate": "2023-10-19T18:30:00.000Z"
+        },
+        {
+          "id": 1,
+          "userId": 5,
+          "commentContent": "Hatanın stack trace'ini paylaşabilir misiniz?",
+          "createDate": "2023-10-02T11:00:00.000Z"
+        },
+        {
+          "id": 2,
+          "userId": 7,
+          "commentContent": "Component'ler arasındaki iletişime dikkat edin, belki de orada bir sorun var.",
+          "createDate": "2023-11-01T12:00:00.000Z"
         }
       ],
+      "createDate": "2023-10-20T10:00:00.000Z",
       "isCompleted": false,
-      "isDeleted": false,
-      "createDate": "2020-12-06T19:00:37.148Z"
+      "isDeleted": false
+    },
+    {
+      "id": 3,
+      "userId": 6,
+      "categoryId": 4,
+      "problemHead": "Redux state güncelleme sorunu",
+      "problemContent": "Redux ile state güncelleme konusunda sorun yaşıyorum. Action'ı tetikliyorum ancak state güncellenmiyor. Yardımcı olabilecek var mı?",
+      "commentCount": 2,
+      "likesUserId": [
+        1,
+        3,
+        6
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 1,
+          "commentContent": "Reducer'ınızı kontrol ettiniz mi? Belki orada bir hata vardır.",
+          "createDate": "2023-10-21T09:30:00.000Z"
+        },
+        {
+          "id": 1,
+          "userId": 3,
+          "commentContent": "Middleware kullanıyor musunuz? Eğer kullanıyorsanız, onu kontrol etmenizde fayda var.",
+          "createDate": "2023-10-21T10:00:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-21T09:00:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "categoryId": 5,
+      "problemHead": "Visual Studio Code'da Intellisense çalışmıyor",
+      "problemContent": "Visual Studio Code'da Intellisense çalışmıyor. Neden olabilir ve nasıl çözebilirim?",
+      "commentCount": 1,
+      "likesUserId": [
+        4,
+        6
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 4,
+          "commentContent": "VS Code'unuz güncel mi? Ayrıca, dil eklentilerinizi kontrol edin.",
+          "createDate": "2023-10-22T18:30:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-22T14:00:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 5,
+      "userId": 7,
+      "categoryId": 7,
+      "problemHead": "Python Flask uygulamasında CORS hatası",
+      "problemContent": "Python Flask kullanarak bir web uygulaması geliştiriyorum ancak CORS hatası alıyorum. Nasıl çözebilirim?",
+      "commentCount": 4,
+      "likesUserId": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 2,
+          "commentContent": "Flask uygulamanızdaki CORS ayarlarını kontrol ettiğinizden emin olun.",
+          "createDate": "2023-10-23T11:00:00.000Z"
+        },
+        {
+          "id": 1,
+          "userId": 3,
+          "commentContent": "Frontend tarafında da CORS ayarlarını kontrol etmeyi unutmayın.",
+          "createDate": "2023-10-23T02:30:00.000Z"
+        },
+        {
+          "id": 2,
+          "userId": 5,
+          "commentContent": "İlgili endpoint'lere doğru HTTP başlıklarını eklediğinizden emin olun.",
+          "createDate": "2023-10-23T18:30:00.000Z"
+        },
+        {
+          "id": 3,
+          "userId": 7,
+          "commentContent": "CORS hatası alınan request'in detaylarını paylaşabilir misiniz?",
+          "createDate": "2023-10-23T15:00:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-23T10:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "categoryId": 7,
+      "problemHead": "Django ORM ile veri tabanına veri ekleme",
+      "problemContent": "Django ORM kullanarak veri tabanına veri eklemek istiyorum. Hangi adımları takip etmeliyim?",
+      "commentCount": 3,
+      "likesUserId": [
+        2,
+        4,
+        6
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 2,
+          "commentContent": "Modelinizi oluşturduktan sonra migration işlemi yapmayı unutmayın.",
+          "createDate": "2023-11-24T09:00:00.000Z"
+        },
+        {
+          "id": 1,
+          "userId": 4,
+          "commentContent": "Makemigrations ve migrate komutlarını sırasıyla çalıştırdığınızdan emin olun.",
+          "createDate": "2023-10-26T09:30:00.000Z"
+        },
+        {
+          "id": 2,
+          "userId": 6,
+          "commentContent": "Veritabanındaki değişiklikleri uygulamak için migrate komutunu kullanın.",
+          "createDate": "2023-10-24T10:00:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-24T08:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 7,
+      "userId": 3,
+      "categoryId": 3,
+      "problemHead": "JavaScript Fetch API kullanımı",
+      "problemContent": "JavaScript Fetch API ile bir API'ye GET ve POST istekleri nasıl yapılır? Örnek kodlarla yardımcı olabilir misiniz?",
+      "commentCount": 2,
+      "likesUserId": [
+        1,
+        3,
+        7
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 1,
+          "commentContent": "Fetch API'yi kullanarak hangi endpoint'e istek yapmayı planlıyorsunuz?",
+          "createDate": "2023-10-25T19:00:00.000Z"
+        },
+        {
+          "id": 1,
+          "userId": 3,
+          "commentContent": "GET ve POST isteklerini ayırmak için hangi metodları kullanmayı planlıyorsunuz?",
+          "createDate": "2023-10-25T18:30:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-25T13:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
     },
     {
       "id": 8,
-      "userId": 2,
+      "userId": 5,
       "categoryId": 3,
-      "problemHead": "For döngüsü",
-      "problemContent": "For döngüsünden çıkmak için ne kullanmalıyım if else kullandım fakat hangi değeri değiştirmem gerektiği konusunda çaresizim\n",
+      "problemHead": "Angular Router kullanımı",
+      "problemContent": "Angular uygulamamda Router'ı nasıl kullanabilirim? Yönlendirme işlemlerini nasıl gerçekleştirebilirim?",
+      "commentCount": 1,
+      "likesUserId": [
+        1,
+        2
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 1,
+          "commentContent": "Angular Router'ı kullanmak için önce RouterModule'yu eklemeyi unutmayın.",
+          "createDate": "2023-10-27T11:00:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-26T10:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 9,
+      "userId": 7,
+      "categoryId": 4,
+      "problemHead": "React uygulamasında veri paylaşımı",
+      "problemContent": "React uygulamamda farklı bileşenler arasında veri paylaşımını nasıl sağlayabilirim? Context API mi kullanmalıyım?",
+      "commentCount": 3,
+      "likesUserId": [
+        3,
+        4,
+        7
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 3,
+          "commentContent": "Context API kullanarak global state yönetimi yapabilirsiniz.",
+          "createDate": "2023-10-27T09:30:00.000Z"
+        },
+        {
+          "id": 1,
+          "userId": 4,
+          "commentContent": "Redux gibi state yönetim kütüphanelerini de düşünebilirsiniz.",
+          "createDate": "2023-10-28T10:00:00.000Z"
+        },
+        {
+          "id": 2,
+          "userId": 7,
+          "commentContent": "Props drilling konusunu da inceleyebilirsiniz.",
+          "createDate": "2023-10-27T11:00:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-27T09:00:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 10,
+      "userId": 3,
+      "categoryId": 4,
+      "problemHead": "Vue.js ile form doğrulama",
+      "problemContent": "Vue.js kullanarak bir formu nasıl doğrulayabilirim? Validation işlemlerini nasıl yapabilirim?",
+      "commentCount": 2,
+      "likesUserId": [
+        1,
+        2,
+        5
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 1,
+          "commentContent": "Vue.js'de form validasyonu için VeeValidate gibi kütüphaneleri düşünebilirsiniz.",
+          "createDate": "2023-10-28T15:00:00.000Z"
+        },
+        {
+          "id": 1,
+          "userId": 2,
+          "commentContent": "Form validasyonu için hangi tarz hataları kontrol etmeyi planlıyorsunuz?",
+          "createDate": "2023-10-29T12:30:00.000Z"
+        }
+      ],
+      "createDate": "2023-10-28T11:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 11,
+      "userId": 2,
+      "categoryId": 7,
+      "problemHead": "Python Django ile web uygulaması geliştirme",
+      "problemContent": "Python Django kullanarak bir web uygulaması geliştirmeye çalışıyorum ancak proje yapısını kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
+      "commentCount": 1,
+      "likesUserId": [
+        6
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 6,
+          "commentContent": "Projeyi oluştururken kullandığınız komutları paylaşabilir misiniz?",
+          "createDate": "2023-12-16T19:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-12-15T17:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 12,
+      "userId": 3,
+      "categoryId": 6,
+      "problemHead": "Java Hibernate ile veritabanı işlemleri",
+      "problemContent": "Java Hibernate kullanarak bir veritabanı işlemi gerçekleştirmeye çalışıyorum ancak her seferinde hata alıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 0,
       "likesUserId": [],
       "comments": [],
+      "createDate": "2023-12-20T11:00:00.000Z",
       "isCompleted": false,
-      "isDeleted": false,
-      "createDate": "2023-12-02T19:00:37.148Z"
+      "isDeleted": false
     },
     {
+      "id": 13,
+      "userId": 5,
+      "categoryId": 2,
+      "problemHead": "CSS Flexbox kullanımında sıkıntı yaşıyorum",
+      "problemContent": "Sayfamda bir dizi öğeyi düzenlemek için Flexbox kullanmaya çalıştım ancak bir türlü istediğim sonuca ulaşamadım. Yardım edebilecek birisi var mı?",
+      "commentCount": 2,
+      "likesUserId": [
+        1,
+        4,
+        6
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 6,
+          "commentContent": "Flexbox özelliklerini doğru bir şekilde mi kullanıyorsunuz?",
+          "createDate": "2023-12-13T13:00:37.148Z"
+        },
+        {
+          "id": 1,
+          "userId": 4,
+          "commentContent": "Kodu paylaşabilir misiniz?",
+          "createDate": "2023-12-13T19:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-11-02T15:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 14,
+      "userId": 2,
+      "categoryId": 2,
+      "problemHead": "CSS Grid sistemi nasıl kullanılır?",
+      "problemContent": "CSS Grid ile sayfamı düzenlemeye çalışıyorum ancak kavramları tam olarak anlamış gibi değilim. Birisi bana bu konuda yardımcı olabilir mi?",
+      "commentCount": 2,
+      "likesUserId": [
+        3,
+        7
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 3,
+          "commentContent": "Grid template areas kullanmayı denediniz mi?",
+          "createDate": "2023-10-13T09:00:37.148Z"
+        },
+        {
+          "id": 1,
+          "userId": 7,
+          "commentContent": "Dökümantasyonu incelediniz mi?",
+          "createDate": "2023-10-10T19:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-11-05T12:45:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 15,
       "userId": 1,
-      "categoryId": 7,
-      "problemHead": "bugünün tarihi  için son problem",
-      "problemContent": "denemelere devam",
+      "categoryId": 6,
+      "problemHead": "Java'da hata ayıklama nasıl yapılır?",
+      "problemContent": "Java projemde hata ayıklama yapmaya çalışıyorum ancak nasıl başlayacağımı bilmiyorum. Yardımcı olabilecek birisi var mı?",
+      "commentCount": 1,
+      "likesUserId": [
+        2
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 2,
+          "commentContent": "IDE'nizdeki hata ayıklama araçlarını kullandınız mı?",
+          "createDate": "2023-11-13T15:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-11-10T09:15:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 16,
+      "userId": 4,
+      "categoryId": 6,
+      "problemHead": "Java'da veritabanı bağlantısı nasıl yapılır?",
+      "problemContent": "Java projemde veritabanına bağlanmaya çalışıyorum ancak bir türlü başarılı olamadım. Yardım edebilecek birisi var mı?",
       "commentCount": 0,
       "likesUserId": [
-        4,
-        5,
-        6,
-        3,
-        23,
-        23,
-        34,
-        5,
-        3,
-        5,
-        4564,
-        565,
-        34,
-        212,
-        12,
-        12,
-        23,
-        32
+        5
       ],
       "comments": [],
+      "createDate": "2023-11-12T18:20:00.000Z",
       "isCompleted": false,
-      "isDeleted": false,
-      "createDate": "2023-12-02T20:57:41.719Z",
-      "id": 9
+      "isDeleted": false
     },
     {
-      "userId": 1,
-      "categoryId": 2,
-      "problemHead": "bu deneme state kontrolu amacıyla oluşturuluyor",
-      "problemContent": "aynı şey",
+      "id": 17,
+      "userId": 6,
+      "categoryId": 1,
+      "problemHead": "HTML form işlemlerinde hata alıyorum",
+      "problemContent": "HTML form kullanırken sürekli hata alıyorum. Form elemanlarını doğru bir şekilde oluşturuyorum gibi görünüyor, ancak neden hata aldığımı anlayamıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 1,
       "likesUserId": [
         1
@@ -405,14 +558,159 @@
         {
           "id": 0,
           "userId": 1,
-          "commentContent": "sorun şu ki oluştururken server tarafından atanamsı için id girilmedi. ve oluşturulduğu gibi detay sayfasına id'si ile sorgulanıyor. fakat id buradan verilmediğinden hali hazırda elde id olmadığından undifend olarak sorguluyor ve hata alıyoruz.",
-          "createDate": "2023-12-02T21:24:51.271Z"
+          "commentContent": "Form etiketinin action ve method özelliklerini kontrol ettiniz mi?",
+          "createDate": "2023-11-19T15:00:37.148Z"
         }
       ],
-      "isCompleted": true,
-      "isDeleted": false,
-      "createDate": "2023-12-02T21:22:22.958Z",
-      "id": 10
+      "createDate": "2023-11-18T14:10:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 18,
+      "userId": 3,
+      "categoryId": 1,
+      "problemHead": "HTML ve CSS ile responsive tasarım yapmak",
+      "problemContent": "Web sitemi mobil cihazlara uyumlu hale getirmeye çalışıyorum. HTML ve CSS ile responsive tasarım konusunda önerileriniz var mı?",
+      "commentCount": 2,
+      "likesUserId": [
+        4,
+        6,
+        7
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 4,
+          "commentContent": "Media queries kullanmayı denediniz mi?",
+          "createDate": "2023-11-23T10:00:37.148Z"
+        },
+        {
+          "id": 1,
+          "userId": 6,
+          "commentContent": "Flexbox ve Grid'i kullanabilirsiniz.",
+          "createDate": "2023-11-22T09:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-11-22T11:30:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 19,
+      "userId": 5,
+      "categoryId": 7,
+      "problemHead": "Python Flask ile web uygulaması geliştirme",
+      "problemContent": "Python Flask kullanarak basit bir web uygulaması geliştirmeye çalışıyorum. Ancak her seferinde farklı hatalar alıyorum. Yardım edebilecek birisi var mı?",
+      "commentCount": 2,
+      "likesUserId": [
+        2,
+        7
+      ],
+      "comments": [
+        {
+          "id": 10,
+          "userId": 2,
+          "commentContent": "Hata mesajlarını paylaşabilir misiniz?",
+          "createDate": "2023-11-25T17:00:37.148Z"
+        },
+        {
+          "id": 11,
+          "userId": 7,
+          "commentContent": "Uygulama yapısını anlatabilir misiniz?",
+          "createDate": "2023-11-25T17:56:37.148Z"
+        }
+      ],
+      "createDate": "2023-11-25T16:45:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 20,
+      "userId": 7,
+      "categoryId": 7,
+      "problemHead": "Python ile veritabanı bağlantısı",
+      "problemContent": "Python kullanarak bir veritabanına bağlanmaya çalışıyorum. Ancak bağlantıyı kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
+      "commentCount": 1,
+      "likesUserId": [
+        3
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 3,
+          "commentContent": "Kullandığınız kütüphaneyi kontrol ettiniz mi?",
+          "createDate": "2023-12-01T18:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-11-30T09:00:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "categoryId": 6,
+      "problemHead": "Java Swing ile arayüz tasarımı yapmak",
+      "problemContent": "Java Swing kullanarak basit bir masaüstü uygulaması geliştirmeye çalışıyorum. Ancak arayüz tasarımı konusunda sıkıntı yaşıyorum. Yardım edebilecek birisi var mı?",
+      "commentCount": 0,
+      "likesUserId": [],
+      "comments": [],
+      "createDate": "2023-12-02T14:20:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 22,
+      "userId": 4,
+      "categoryId": 2,
+      "problemHead": "CSS Animasyonları kullanma",
+      "problemContent": "Web sitemde CSS animasyonları kullanmak istiyorum ancak bir türlü istediğim gibi çalıştıramıyorum. Yardım edebilecek birisi var mı?",
+      "commentCount": 1,
+      "likesUserId": [
+        5
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 5,
+          "commentContent": "Keyframe animasyonlarını denediniz mi?",
+          "createDate": "2023-12-06T19:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-12-05T10:10:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 23,
+      "userId": 6,
+      "categoryId": 6,
+      "problemHead": "Java Spring Boot REST API",
+      "problemContent": "Java Spring Boot ile RESTful API geliştirmeye çalışıyorum. Ancak endpoint'ler arasında veri paylaşımında sorun yaşıyorum. Yardım edebilecek birisi var mı?",
+      "commentCount": 2,
+      "likesUserId": [
+        2,
+        3,
+        5
+      ],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 2,
+          "commentContent": "DTO kullanmayı düşündünüz mü?",
+          "createDate": "2023-12-11T10:00:37.148Z"
+        },
+        {
+          "id": 1,
+          "userId": 3,
+          "commentContent": "Hata mesajlarını paylaşabilir misiniz?",
+          "createDate": "2023-12-13T12:00:37.148Z"
+        }
+      ],
+      "createDate": "2023-12-10T13:45:00.000Z",
+      "isCompleted": false,
+      "isDeleted": false
     }
   ],
   "categories": [
@@ -442,20 +740,20 @@
     },
     {
       "id": 5,
-      "categoryName": "JAVA",
+      "categoryName": "CSHARP",
       "problemCount": 3,
       "isDeleted": false
     },
     {
       "id": 6,
-      "categoryName": "PHYTON",
-      "problemCount": 1,
+      "categoryName": "JAVA",
+      "problemCount": 3,
       "isDeleted": false
     },
     {
       "id": 7,
-      "categoryName": "CSHARP",
-      "problemCount": 3,
+      "categoryName": "PHYTON",
+      "problemCount": 1,
       "isDeleted": false
     }
   ]

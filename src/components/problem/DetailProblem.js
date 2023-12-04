@@ -78,7 +78,7 @@ const DetailProblem = () => {
               <br />
               <p>{state.activeProblemDetail.problemContent}</p>
             </div>
-
+              
             <div className="detail-problem-comment-view">
               <button onClick={() => actionLike(state.activeProblemDetail.id)}>
                 {state.activeUser !== null
