@@ -37,7 +37,7 @@ const Navi = () => {
                 <img src={image} alt="res" />
               )}
 
-              {state.isDropdownOpen && (
+              {state.isDropdownOpen && state.activeUser && (
                 <div className="dropdown-menu">
                   <ul>
                     <h5>

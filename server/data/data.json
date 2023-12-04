@@ -9,8 +9,8 @@
       "password": "123",
       "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
-      "createDate": "23.11.2023 21:13:10",
-      "userToken": "Murat0.596657209033908",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "userToken": "",
       "userRol": "admin",
       "verify": true
     },
@@ -23,9 +23,9 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 4,
-      "userToken": "Mahir0.02578556240930885",
+      "userToken": "Mahir0.6321376260182523",
       "userRol": "admin",
-      "createDate": "23.11.2023 21:13:10",
+      "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true
     },
     {
@@ -38,7 +38,7 @@
       "userPicture": "uploaduserimages/ali.png",
       "problemCount": 0,
       "userRol": "user",
-      "createDate": "23.11.2023 21:13:10",
+      "createDate": "2023-12-04T12:35:37.148Z",
       "userToken": "",
       "verify": true
     },
@@ -52,7 +52,7 @@
       "userPicture": "uploaduserimages/zeynep.jpeg",
       "problemCount": 0,
       "userRol": "user",
-      "createDate": "23.11.2023 21:13:10",
+      "createDate": "2023-11-15T19:00:37.148Z",
       "userToken": "Zeynep0.9346463612492749",
       "verify": true
     },
@@ -67,7 +67,7 @@
       "userRol": "user",
       "verify": true,
       "userToken": "Ahmet0.2983127222703368",
-      "createDate": "1.12.2023 18:11:42",
+      "createDate": "2023-11-15T19:00:37.148Z",
       "id": 5
     }
   ],
@@ -75,11 +75,19 @@
     {
       "id": 0,
       "userId": 1,
-      "categoryId":3,
+      "categoryId": 3,
       "problemHead": "React proje derleme problemi",
       "problemContent": "React proje derleme problemi React proje derleme problemi React proje derleme problemi",
       "commentCount": 14,
-      "likesUserId": [44, 23, 4, 1, 2, 3, 5],
+      "likesUserId": [
+        44,
+        23,
+        4,
+        1,
+        2,
+        3,
+        5
+      ],
       "comments": [
         {
           "id": 0,
@@ -91,19 +99,19 @@
           "id": 1,
           "userId": 3,
           "commentContent": "çözülemez vaka",
-          "createDate": "2022-4-22T19:00:37.148Z"
+          "createDate": "2022-04-22T19:00:37.148Z"
         },
         {
           "id": 2,
           "userId": 1,
           "commentContent": "bu kodu yapıştır",
-          "createDate": "2023-4-26T19:00:37.148Z"
+          "createDate": "2023-04-26T19:00:37.148Z"
         },
         {
           "id": 3,
           "userId": 1,
           "commentContent": "yepyeni bir yorum.",
-          "createDate": "2023-6-02T19:00:37.148Z"
+          "createDate": "2023-06-02T19:00:37.148Z"
         },
         {
           "id": 4,
@@ -123,7 +131,16 @@
       "problemHead": "Python syntax hatası",
       "problemContent": "Python syntax hatası Python syntax hatası Python syntax hatası",
       "commentCount": 9,
-      "likesUserId": [0, 44, 6, 23, 88, 0, 1, 5],
+      "likesUserId": [
+        0,
+        44,
+        6,
+        23,
+        88,
+        0,
+        1,
+        5
+      ],
       "createDate": "2023-10-22T19:00:37.148Z",
       "comments": [
         {
@@ -149,7 +166,14 @@
       "problemHead": "Database bağlantı sorunu",
       "problemContent": "Database bağlantı sorunu Database bağlantı sorunu Database bağlantı sorunu",
       "commentCount": 14,
-      "likesUserId": [34, 44, 5, 6, 1, 2],
+      "likesUserId": [
+        34,
+        44,
+        5,
+        6,
+        1,
+        2
+      ],
       "comments": [
         {
           "id": 0,
@@ -175,13 +199,21 @@
       "problemHead": "CSS hata veriyor",
       "problemContent": "CSS hata veriyor CSS hata veriyor CSS hata veriyor",
       "commentCount": 2,
-      "likesUserId": [444, 44, 5, 6, 56, 1, 3],
+      "likesUserId": [
+        444,
+        44,
+        5,
+        6,
+        56,
+        1,
+        3
+      ],
       "comments": [
         {
           "id": 0,
           "userId": 2,
           "commentContent": "hangi kodu yapıştırayım",
-          "createDate": "2023-5-05T19:00:37.148Z"
+          "createDate": "2023-05-05T19:00:37.148Z"
         },
         {
           "id": 1,
@@ -201,13 +233,20 @@
       "problemHead": "html neden var",
       "problemContent": "neden olamsın ki",
       "commentCount": 7,
-      "likesUserId": [44, 5, 6, 56, 1, 2],
+      "likesUserId": [
+        44,
+        5,
+        6,
+        56,
+        1,
+        2
+      ],
       "comments": [
         {
           "id": 0,
           "userId": 1,
           "commentContent": "öyle yani",
-          "createDate": "2023-1-28T19:00:37.148Z"
+          "createDate": "2023-01-28T19:00:37.148Z"
         },
         {
           "id": 1,
@@ -227,7 +266,18 @@
       "problemHead": "React Projesi, çalışmıyor",
       "problemContent": "nedenini bilmiyorum ki",
       "commentCount": 2,
-      "likesUserId": [3, 5, 6, 7, 8, 44, 5, 6, 1, 2],
+      "likesUserId": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        44,
+        5,
+        6,
+        1,
+        2
+      ],
       "comments": [
         {
           "id": 0,
@@ -253,7 +303,9 @@
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?\n\n Lütfen bu problem konusunda bana çözüm getirecek bu prettier uzantısından kurtaracak bir şey önerin.\n\n Şimdiden herkese çok teşekkürlerimi iletiyorum sevgi ile kalın.\n\nMurat..",
       "commentCount": 2,
-      "likesUserId": [3],
+      "likesUserId": [
+        3
+      ],
       "comments": [
         {
           "id": 0,
@@ -279,7 +331,10 @@
       "problemHead": "Java nedir?",
       "problemContent": "Java nedir, ne işe yarar.",
       "commentCount": 1,
-      "likesUserId": [2, 3],
+      "likesUserId": [
+        2,
+        3
+      ],
       "comments": [
         {
           "id": 0,
@@ -312,7 +367,24 @@
       "problemContent": "denemelere devam",
       "commentCount": 0,
       "likesUserId": [
-        4, 5, 6, 3, 23, 23, 34, 5, 2, 3, 5, 4564, 565, 34, 212, 12, 12, 23, 32
+        4,
+        5,
+        6,
+        3,
+        23,
+        23,
+        34,
+        5,
+        3,
+        5,
+        4564,
+        565,
+        34,
+        212,
+        12,
+        12,
+        23,
+        32
       ],
       "comments": [],
       "isCompleted": false,
@@ -326,7 +398,9 @@
       "problemHead": "bu deneme state kontrolu amacıyla oluşturuluyor",
       "problemContent": "aynı şey",
       "commentCount": 1,
-      "likesUserId": [1],
+      "likesUserId": [
+        1
+      ],
       "comments": [
         {
           "id": 0,
@@ -342,7 +416,6 @@
     }
   ],
   "categories": [
-
     {
       "id": 1,
       "categoryName": "HTML",
@@ -361,7 +434,6 @@
       "problemCount": 7,
       "isDeleted": false
     },
-    
     {
       "id": 4,
       "categoryName": "REACT",

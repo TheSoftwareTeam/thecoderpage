@@ -13,6 +13,7 @@ const ListProblem = () => {
 
   useEffect(() => {
     getProblem()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.selectedCategory]);
  
   return (
@@ -131,7 +132,7 @@ const ListProblem = () => {
                             ?.userName
                         }
                       </h4>
-                      <span>{comment.createDate}</span>
+                      <span>{formatRelativeTime(comment.createDate)}</span>
                     </div>
                     <p>{comment.commentContent}</p>
                   </div>

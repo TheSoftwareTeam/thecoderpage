@@ -5,9 +5,9 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./admin-layout.scss";
 import UserContext from "../../context/UserContext";
 import { FaHome, FaUsers, FaComments } from "react-icons/fa";
-import { MdReportProblem,MdContactMail } from "react-icons/md";
+import { MdReportProblem, MdContactMail } from "react-icons/md";
 import { BiSolidCategoryAlt } from "react-icons/bi";
-import { IoSettings,IoNewspaperSharp ,IoLogOut} from "react-icons/io5";
+import { IoSettings, IoNewspaperSharp, IoLogOut } from "react-icons/io5";
 import image from "../../images/avatar.png";
 import AdminContext from "../../context/AdminContext";
 const AdminPanel = () => {
@@ -17,7 +17,8 @@ const AdminPanel = () => {
     toggleDropdown,
     handleLogout,
   } = useContext(UserContext);
-  const { roleControl,getUsers,getCategory,getProblem } = useContext(AdminContext);
+  const { roleControl, getUsers, getCategory, getProblem } =
+    useContext(AdminContext);
 
   useEffect(() => {
     roleControl();
@@ -28,45 +29,41 @@ const AdminPanel = () => {
   }, []);
   return (
     <>
-      <div  className="navi-header">
+      <div className="navi-header">
         <h3 onClick={() => navigate("/admin")}>
           TheCoderPage <h5>Administrator Panel</h5>
         </h3>
-    <div id="navi-context" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-        {
-                    userState.activeUser &&
-                    userState.activeUser.userPicture ? (
-                      <img
-                      
-                        src={
-                          "http://localhost:3001/" +
-                          userState.activeUser.userPicture
-                        }
-                        alt="res"
-                      />
-                    )
-                  : (
-                    <img  src={image} alt="res" />
-                  )}
+        <div
+          id="navi-context"
+          onMouseEnter={toggleDropdown}
+          onMouseLeave={toggleDropdown}
+        >
+          {userState.activeUser && userState.activeUser.userPicture ? (
+            <img
+              src={"http://localhost:3001/" + userState.activeUser.userPicture}
+              alt="res"
+            />
+          ) : (
+            <img src={image} alt="res" />
+          )}
 
-        {userState.isDropdownOpen && (
-          <div  className="dropdown-menu">
-            <ul>
-              <h4>{userState.activeUser.userName}</h4>
-              <hr />
-              <li
-                onClick={() =>
-                 { toggleDropdown();
-                  navigate(`/admin/userdetail/${userState.activeUser.id}`)
-                }
-                }
-              >
-                Profilim
-              </li>
-              <li onClick={handleLogout}>Çıkış Yap</li>
-            </ul>
-          </div>
-        )}
+          {userState.activeUser &&userState.isDropdownOpen && (
+            <div className="dropdown-menu">
+              <ul>
+                <h4>{userState.activeUser.userName}</h4>
+                <hr />
+                <li
+                  onClick={() => {
+                    toggleDropdown();
+                    navigate(`/admin/userdetail/${userState.activeUser.id}`);
+                  }}
+                >
+                  Profilim
+                </li>
+                <li onClick={handleLogout}>Çıkış Yap</li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
 
@@ -86,7 +83,6 @@ const AdminPanel = () => {
               className="navlink"
               activeClassName="active"
               to="/admin/problems"
-      
             >
               <MdReportProblem />
               Problemler
@@ -120,7 +116,7 @@ const AdminPanel = () => {
               activeClassName="active"
               to="/admin/categori"
             >
-             <IoNewspaperSharp />
+              <IoNewspaperSharp />
               Şikayetler
             </NavLink>
             <NavLink
@@ -128,7 +124,7 @@ const AdminPanel = () => {
               activeClassName="active"
               to="/admin/categor"
             >
-          <MdContactMail />
+              <MdContactMail />
               İletişim Formları
             </NavLink>
             <NavLink className="navlink" activeClassName="active" to="/admina">

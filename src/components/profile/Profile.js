@@ -3,7 +3,7 @@ import "./profile.scss";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 const Profile = () => {
-  const { state, dispatch, editProfile, handleFileUpload } =
+  const { state, dispatch, editProfile, handleFileUpload,formatRelativeTime } =
     useContext(UserContext);
 
   useEffect(() => {
@@ -45,10 +45,8 @@ const Profile = () => {
           
           <hr />
           <span>
-            katılma tarihi:{" "}
-            {state.activeUser !== null
-              ? state.activeUser.createDate.split(" ")[0]
-              : ""}
+            katılma tarihi: {" "}
+            {formatRelativeTime(state.activeUser.createDate)}
           </span>
         </div>
         <form onSubmit={editProfile}>
