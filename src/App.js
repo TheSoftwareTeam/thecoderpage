@@ -30,71 +30,63 @@ import { useContext } from "react";
 import EditProfile from "./components/profile/EditProfile";
 import ProfileDetail from "./components/profile/ProfileDetail";
 
-
 function Layout() {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <div style={{
-      backgroundColor: darkMode ? "#aaa" : '#fff'
-    }}>
+    <div
+      style={{
+        backgroundColor: darkMode ? "#aaa" : "#fff",
+      }}
+    >
       <UserProvider>
         <AdminProvider>
-        <Routes>
-              <Route path="/*" element={<LoadingPage />} />
-              <Route path="home" element={<Navi />}>
-                <Route path="main" element={<Main />} />
-                <Route path="profile/:userName" element={<Profile />} >
-
-                <Route
-                    path="problems"
-                    element={<UserProblems />}
-                  />
-                  <Route path="detail" element={<ProfileDetail />} />
-                  <Route path="edit" element={<EditProfile />} />
-                </Route>
-
-                <Route path="login" element={<Login />} />
-                <Route path="signup" element={<SignUp />} />
-                <Route path="createproblem" element={<CreateProblem />} />
-
-                <Route element={<Menu />}>
-                 
-                  <Route
-                    path="listproblem/:categoryName"
-                    element={
-                      <div className="listProblem-sideBar">
-                        <ListProblem />
-                        <Sidebar />
-                      </div>
-                    }
-                  />
-                </Route>
-
-                <Route path="detailproblem/:id" element={<DetailProblem />} />
+          <Routes>
+            <Route path="/*" element={<LoadingPage />} />
+            <Route path="home" element={<Navi />}>
+              <Route path="main" element={<Main />} />
+              <Route path="profile/:userName" element={<Profile />}>
+                <Route path="problems" element={<UserProblems />} />
+                <Route path="detail" element={<ProfileDetail />} />
+                <Route path="edit" element={<EditProfile />} />
               </Route>
-
-              <Route path="admin/*" element={<AdminLayout />}>
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="createproblem" element={<CreateProblem />} />
+              <Route element={<Menu />}>
                 <Route
-                  index
+                  path="listproblem/:categoryName"
                   element={
-                    <div>
-                      <AdminHome />
+                    <div className="listProblem-sideBar">
+                      <ListProblem />
+                      <Sidebar />
                     </div>
                   }
                 />
-                <Route path="users" element={<Users />} />
-                <Route path="categories" element={<Categories />} />
-                <Route path="problems" element={<Problems />} />
-                <Route path="comments" element={<Comments />} />
-
-                <Route path="userdetail/:id" element={<UserDetail />} />
-                <Route path="categorydetail/:id" element={<CategoryDetail />} />
-                <Route path="commentdetail/:id" element={<CommentDetail />} />
-                <Route path="problemdetail/:id" element={<ProblemDetail />} />
               </Route>
-            </Routes>
-            <Footer />
+              <Route path="detailproblem/:id" element={<DetailProblem />} />
+            </Route>
+
+            <Route path="admin/*" element={<AdminLayout />}>
+              <Route
+                index
+                element={
+                  <div>
+                    <AdminHome />
+                  </div>
+                }
+              />
+              <Route path="users" element={<Users />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="problems" element={<Problems />} />
+              <Route path="comments" element={<Comments />} />
+              <Route path="userdetail/:id" element={<UserDetail />} />
+              <Route path="categorydetail/:id" element={<CategoryDetail />} />
+              <Route path="commentdetail/:id" element={<CommentDetail />} />
+              <Route path="problemdetail/:id" element={<ProblemDetail />} />
+            </Route>
+          </Routes>
+          <Footer />
         </AdminProvider>
       </UserProvider>
     </div>
@@ -102,7 +94,6 @@ function Layout() {
 }
 
 function App() {
- 
   return (
     <ThemeProvider>
       <Layout />

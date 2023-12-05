@@ -27,13 +27,13 @@ const EditProfile = () => {
 
             onChange={handleFileUpload}
           />
-         <h6>Seçilen resim: {state.activeUser.userPicture.split("/")[1]}</h6>
+         <h6>Seçilen resim: {state.activeUser && state.activeUser.userPicture.split("/")[1]}</h6>
           
           
           <hr />
           <span>
             katılma tarihi: {" "}
-            {formatRelativeTime(state.activeUser.createDate)}
+            {state.activeUser && formatRelativeTime(state.activeUser.createDate)}
           </span>
         </div>
         

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./profile.scss";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
@@ -19,6 +19,7 @@ const Profile = () => {
       dispatch({ type: "profileName", payload: state.activeUser.name });
       dispatch({ type: "profileSurname", payload: state.activeUser.surName });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.activeUser]);
 
   return (
@@ -53,7 +54,7 @@ const Profile = () => {
             Problemler
           </li>
           {state.activeUser && state.activeUser.userName===state.profileDetail.userName && (
-            <li onClick={() => navigate(`/home/profile/${state.activeUser.userName}/edit`)}>
+            <li  disabled={state.activeUser.userName} onClick={() => navigate(`/home/profile/${state.activeUser.userName}/edit`)}>
               Profili düzenle
             </li>
           )}

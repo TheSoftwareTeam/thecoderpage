@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
-import Sidebar from "../sidebar/Sidebar";
+
 import "./user-problems.scss";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 

@@ -71,7 +71,7 @@ const Navi = () => {
                         dispatch({ type: "selectedCategory", payload: null });
                           toggleDropdown();
                           navigate(
-                          `/home/userproblems/${state.activeUser.userName}`
+                          `/home/profile/${state.activeUser.userName}/problems`
                         );
                       }}
                     >

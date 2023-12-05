@@ -16,7 +16,6 @@ export const UserProvider = ({ children }) => {
   //date
 
   const date = () => {
-    
     return new Date().toISOString();
   };
   function formatRelativeTime(timestamp) {
@@ -55,7 +54,8 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "selectedCategory", payload: null });
 
       if (response.data[0].verify === false) {
-        navigate(`/home/profile/`);
+        console.log(response.data[0].userName);
+        navigate(`/home/profile/${response.data[0].userName}/edit`);
       } else {
         localStorage.setItem("userId", JSON.stringify(response.data[0].id));
         localStorage.setItem(
@@ -65,7 +65,7 @@ export const UserProvider = ({ children }) => {
         await axios.patch(`${url}/users/${response.data[0].id}`, {
           userToken: JSON.parse(localStorage.getItem("userToken")),
         });
-        navigate(`/home/listproblem/`);
+        navigate(`/home/main`);
       }
     } else {
       alert("Kullanıcı adı veya şifre yanlış");
@@ -126,36 +126,46 @@ export const UserProvider = ({ children }) => {
   //profile
   const editProfile = async (e) => {
     e.preventDefault();
+
     const userId = state.activeUser.id;
     const response = await axios.get(`${url}/users/${userId}`);
     const user = await response.data;
 
-    const newUser = {
-      ...user,
-      name: state.profileName,
-      surName: state.profileSurname,
-      verify: true,
-      userPicture:
-        state.profilePicture === ""
-          ? state.activeUser.userPicture
-          : state.profilePicture,
-    };
-    await axios.patch(`${url}/users/${userId}`, newUser);
-    dispatch({ type: "createUser", payload: newUser });
-    dispatch({ type: "login", payload: newUser });
+    //resim içinde düzenlenecek
+    if (
+      state.profileName !== state.activeUser.name &&
+      state.profileSurname !== state.activeUser.surName
+    ) {
+      const newUser = {
+        ...user,
+        name: state.profileName,
+        surName: state.profileSurname,
+        verify: true,
+        userPicture:
+          state.profilePicture === ""
+            ? state.activeUser.userPicture
+            : state.profilePicture,
+      };
 
-    if (state.activeUser.verify === false) {
-      localStorage.setItem("userId", JSON.stringify(userId));
-      localStorage.setItem(
-        "userToken",
-        JSON.stringify(`${state.profileName}${Math.random()}`)
-      );
-      await axios.patch(`${url}/users/${userId}`, {
-        userToken: JSON.parse(localStorage.getItem("userToken")),
-      });
+      await axios.patch(`${url}/users/${userId}`, newUser);
+      dispatch({ type: "createUser", payload: newUser });
+      dispatch({ type: "login", payload: newUser });
+
+      if (state.activeUser.verify === false) {
+        localStorage.setItem("userId", JSON.stringify(userId));
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(`${state.profileName}${Math.random()}`)
+        );
+        await axios.patch(`${url}/users/${userId}`, {
+          userToken: JSON.parse(localStorage.getItem("userToken")),
+        });
+      }
+      navigate(`/home/listproblem/`);
     }
-
-    navigate(`/home/listproblem/`);
+    else{
+      alert("Değişiklik yapılmadı!")
+    }
   };
   const getProfilDetail = async (userName) => {
     const response = await axios.get(`${url}/users/?userName=${userName}`);
@@ -206,80 +216,77 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "getCategory", payload: await response.data });
   };
 
- 
   //problem
   const getProblem = async () => {
     dispatch({ type: "loadMoreProblems", payload: 2 });
-    dispatch({ type:"hideLoadMoreButton",payload:true})
+    dispatch({ type: "hideLoadMoreButton", payload: true });
 
-      if (state.selectedCategory) {
-        
-        const response = await axios.get(`${url}/problems?categoryId=${state.selectedCategory}`, {
+    if (state.selectedCategory) {
+      const response = await axios.get(
+        `${url}/problems?categoryId=${state.selectedCategory}`,
+        {
           params: {
             _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
             _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
             _limit: 3, // Her istekte kaç veri alınacağını belirtin
             _page: 1, // Hangi sayfayı istediğinizi belirtin
           },
-        });
-        if(response.data.length<3){
-          dispatch({ type:"hideLoadMoreButton",payload:false})
         }
-        dispatch({ type: "getProblems", payload: await response.data });
+      );
+      if (response.data.length < 3) {
+        dispatch({ type: "hideLoadMoreButton", payload: false });
       }
-      else
-      {
-        const response = await axios.get(`${url}/problems`, {
-          params: {
-            _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
-            _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-            _limit: 3, // Her istekte kaç veri alınacağını belirtin
-            _page: 1, // Hangi sayfayı istediğinizi belirtin
-          },
-        });
-        if(response.data.length<3){
-          dispatch({ type:"hideLoadMoreButton",payload:false})
-        }
-        dispatch({ type: "getProblems", payload: await response.data });
+      dispatch({ type: "getProblems", payload: await response.data });
+    } else {
+      const response = await axios.get(`${url}/problems`, {
+        params: {
+          _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+          _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+          _limit: 3, // Her istekte kaç veri alınacağını belirtin
+          _page: 1, // Hangi sayfayı istediğinizi belirtin
+        },
+      });
+      if (response.data.length < 3) {
+        dispatch({ type: "hideLoadMoreButton", payload: false });
       }
-      
-      
+      dispatch({ type: "getProblems", payload: await response.data });
+    }
   };
 
   const getMoreProblem = async () => {
     if (state.selectedCategory) {
-      dispatch({ type: "loadMoreProblems", payload: state.pages+1 });
-    const response = await axios.get(`${url}/problems?categoryId=${state.selectedCategory}`, {
-      params: {
-        _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
-        _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-        _limit: 3, // Her istekte kaç veri alınacağını belirtin
-        _page: state.pages, // Hangi sayfayı istediğinizi belirtin
-      },
-    });
-        if(response.data.length<3){
-          dispatch({ type:"hideLoadMoreButton",payload:false})
+      dispatch({ type: "loadMoreProblems", payload: state.pages + 1 });
+      const response = await axios.get(
+        `${url}/problems?categoryId=${state.selectedCategory}`,
+        {
+          params: {
+            _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+            _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+            _limit: 3, // Her istekte kaç veri alınacağını belirtin
+            _page: state.pages, // Hangi sayfayı istediğinizi belirtin
+          },
         }
+      );
+      if (response.data.length < 3) {
+        dispatch({ type: "hideLoadMoreButton", payload: false });
+      }
 
-        dispatch({ type: "getMoreProblems", payload: await response.data });
+      dispatch({ type: "getMoreProblems", payload: await response.data });
+    } else {
+      dispatch({ type: "loadMoreProblems", payload: state.pages + 1 });
+      const response = await axios.get(`${url}/problems`, {
+        params: {
+          _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
+          _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
+          _limit: 3, // Her istekte kaç veri alınacağını belirtin
+          _page: state.pages, // Hangi sayfayı istediğinizi belirtin
+        },
+      });
+      if (response.data.length < 3) {
+        dispatch({ type: "hideLoadMoreButton", payload: false });
+      }
+      dispatch({ type: "getMoreProblems", payload: await response.data });
     }
-    else
-    {
-      dispatch({ type: "loadMoreProblems", payload: state.pages+1 });
-    const response = await axios.get(`${url}/problems`, {
-      params: {
-        _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
-        _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-        _limit: 3, // Her istekte kaç veri alınacağını belirtin
-        _page: state.pages, // Hangi sayfayı istediğinizi belirtin
-      },
-    });
-        if(response.data.length<3){
-          dispatch({ type:"hideLoadMoreButton",payload:false})
-        }
-        dispatch({ type: "getMoreProblems", payload: await response.data });
-    }
-    
   };
 
   const getPopularProblem = async () => {
@@ -331,7 +338,7 @@ export const UserProvider = ({ children }) => {
       await axios.patch(`${url}/categories/${state.categoryId}`, category);
 
       dispatch({ type: "createAndUbdateProblem", payload: newProblem });
-      const response=await axios.post(`${url}/problems`, newProblem);
+      const response = await axios.post(`${url}/problems`, newProblem);
       dispatch({ type: "problemHead", payload: "" });
       dispatch({ type: "problemContent", payload: "" });
       navigate(`/home/detailproblem/${response.data.id}`);
@@ -353,7 +360,6 @@ export const UserProvider = ({ children }) => {
 
   const actionLike = async (problemId) => {
     if (state.activeUser && localStorage.getItem("userToken")) {
-
       const response = await axios.get(`${url}/problems?id=${problemId}`);
       const problem = response.data[0];
       // console.log("bu tıklanan problem problems'lerden arandı bulundu getirildi",problem);
@@ -511,7 +517,7 @@ export const UserProvider = ({ children }) => {
         handleLogout,
         handleFileUpload,
         formatRelativeTime,
-        getProfilDetail
+        getProfilDetail,
       }}
     >
       {children}

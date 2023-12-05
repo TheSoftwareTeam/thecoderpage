@@ -22,8 +22,8 @@
       "email": "mqhir7@gmail.com",
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
-      "problemCount": 4,
-      "userToken": "",
+      "problemCount": 3,
+      "userToken": "Mahir0.6193614595394263",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true
@@ -36,7 +36,7 @@
       "email": "emre.yilmaz@gmail.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 0,
+      "problemCount": 5,
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-12-04T10:00:00.000Z",
@@ -50,7 +50,7 @@
       "email": "ayse.celik@gmail.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 0,
+      "problemCount": 3,
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-12-04T10:30:00.000Z",
@@ -64,8 +64,8 @@
       "email": "cem.arslan@gmail.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 0,
-      "userToken": "Cem0.21517891903198882",
+      "problemCount": 3,
+      "userToken": "",
       "userRol": "user",
       "createDate": "2023-12-04T11:00:00.000Z",
       "verify": true
@@ -78,7 +78,7 @@
       "email": "gizem.demir@gmail.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 0,
+      "problemCount": 3,
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-12-04T11:30:00.000Z",
@@ -87,16 +87,30 @@
     {
       "id": 7,
       "name": "Can",
-      "surName": "YILDIZ",
+      "surName": "Yılmaz",
       "userName": "can",
       "email": "can.yildiz@gmail.com",
       "password": "123",
       "userPicture": "",
-      "problemCount": 0,
+      "problemCount": 3,
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-12-04T12:00:00.000Z",
       "verify": true
+    },
+    {
+      "name": "",
+      "surName": "",
+      "userName": "asd",
+      "email": "asd@asd.a",
+      "password": "12345678",
+      "userPicture": "",
+      "problemCount": 0,
+      "userRol": "user",
+      "verify": false,
+      "userToken": "",
+      "createDate": "2023-12-05T10:57:22.450Z",
+      "id": 8
     }
   ],
   "problems": [
@@ -134,7 +148,6 @@
       "problemContent": "Merhaba, React uygulamamda bir hata alıyorum. Console'da 'TypeError: undefined is not a function' hatası alıyorum. Bu hatayı nasıl çözebilirim?",
       "commentCount": 3,
       "likesUserId": [
-        2,
         7,
         5
       ],
@@ -225,8 +238,7 @@
       "likesUserId": [
         3,
         5,
-        7,
-        2
+        7
       ],
       "comments": [
         {
@@ -266,7 +278,6 @@
       "problemContent": "Django ORM kullanarak veri tabanına veri eklemek istiyorum. Hangi adımları takip etmeliyim?",
       "commentCount": 3,
       "likesUserId": [
-        2,
         4,
         6
       ],
@@ -488,7 +499,8 @@
       "commentCount": 2,
       "likesUserId": [
         3,
-        7
+        7,
+        2
       ],
       "comments": [
         {
@@ -695,7 +707,6 @@
       "likesUserId": [
         3,
         5,
-        2,
         1
       ],
       "comments": [
@@ -715,31 +726,6 @@
       "createDate": "2023-12-10T13:45:00.000Z",
       "isCompleted": false,
       "isDeleted": false
-    },
-    {
-      "userId": 2,
-      "categoryId": 1,
-      "problemHead": "asdasd",
-      "problemContent": "asdsadasdasdasdasdasd",
-      "commentCount": 1,
-      "likesUserId": [
-        2,
-        3,
-        4,
-        1
-      ],
-      "comments": [
-        {
-          "id": 0,
-          "userId": 2,
-          "commentContent": "dfdsfsdfsdf",
-          "createDate": "2023-12-04T12:31:42.395Z"
-        }
-      ],
-      "isCompleted": false,
-      "isDeleted": false,
-      "createDate": "2023-12-04T12:31:01.026Z",
-      "id": 24
     }
   ],
   "categories": [
