@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./create-problem.scss";
+import "./scss/create-problem.scss";
 import UserContext from "../../context/UserContext";
 
 const CreateProblem = () => {

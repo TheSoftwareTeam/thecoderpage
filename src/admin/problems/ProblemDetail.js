@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
-import "./problem-detail.scss";
+import "./scss/problem-detail.scss";
 import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
 import { useParams } from "react-router-dom";

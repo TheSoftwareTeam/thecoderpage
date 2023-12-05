@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
 import AdminContext from "../../context/AdminContext";
-import "./users.scss";
+import "./scss/users.scss";
 import image from "../../images/avatar.png";
 import { useNavigate } from "react-router-dom";
 

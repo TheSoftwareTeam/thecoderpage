@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import "./popular-problems.scss";
+import "./scss/popular-problems.scss";
 import { useNavigate } from "react-router-dom";
 const PopularProblems = () => {
   const { state } = useContext(UserContext);

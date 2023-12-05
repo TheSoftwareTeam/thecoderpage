@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext";
-import "./profile-detail.scss";
+import "./scss/profile-detail.scss";
 import { useParams } from "react-router-dom";
 const ProfileDetail = () => {
   const { state, getProfilDetail } = useContext(UserContext);

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
 
-import "./user-problems.scss";
+import "./scss/user-problems.scss";
 import {  useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";

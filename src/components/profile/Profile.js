@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import "./profile.scss";
+import "./scss/profile.scss";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import backgrounImage from "../../images/background.JPG";

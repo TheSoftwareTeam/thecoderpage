@@ -57,7 +57,7 @@ function Layout() {
                 <Route
                   path="listproblem/:categoryName"
                   element={
-                    <div className="listProblem-sideBar">
+                    <div className="listProblem-sidebar">
                       <ListProblem />
                       <Sidebar />
                     </div>

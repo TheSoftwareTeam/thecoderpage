@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import AdminContext from "../../context/AdminContext";
 import { useNavigate } from "react-router-dom";
-import "./problems.scss";
+import "./scss/problems.scss";
 import image from "../../images/avatar.png";
 const Problems = () => {
   const { state } = useContext(AdminContext);

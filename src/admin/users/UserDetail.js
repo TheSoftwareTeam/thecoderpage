@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import "./user-detail.scss";
+import "./scss/user-detail.scss";
 import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
 import { useParams } from "react-router-dom";

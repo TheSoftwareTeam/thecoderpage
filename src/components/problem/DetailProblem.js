@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
-import "./detail-problem.scss";
+import "./scss/detail-problem.scss";
 import UserContext from "../../context/UserContext";
 import { NavLink, useParams } from "react-router-dom";
 import image from "../../images/avatar.png";
@@ -22,7 +22,7 @@ const DetailProblem = () => {
 
   useEffect(() => {
     getProblemDetail(id);
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 

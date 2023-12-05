@@ -214,7 +214,8 @@
       "commentCount": 1,
       "likesUserId": [
         4,
-        6
+        6,
+        2
       ],
       "comments": [
         {
@@ -403,7 +404,6 @@
       "commentCount": 2,
       "likesUserId": [
         1,
-        2,
         5
       ],
       "comments": [
@@ -432,8 +432,7 @@
       "problemContent": "Python Django kullanarak bir web uygulaması geliştirmeye çalışıyorum ancak proje yapısını kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 1,
       "likesUserId": [
-        6,
-        2
+        6
       ],
       "comments": [
         {

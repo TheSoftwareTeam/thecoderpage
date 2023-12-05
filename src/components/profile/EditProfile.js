@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import UserContext from '../../context/UserContext';
 import image from "../../images/avatar.png";
-import "./edit-profile.scss";
+import "./scss/edit-profile.scss";
 const EditProfile = () => {
     const { state, dispatch, editProfile, handleFileUpload,formatRelativeTime } =
     useContext(UserContext);
