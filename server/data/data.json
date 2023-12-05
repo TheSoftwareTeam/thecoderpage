@@ -23,7 +23,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 3,
-      "userToken": "Mahir0.6193614595394263",
+      "userToken": "Mahir0.5559245624560436",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true
@@ -432,7 +432,8 @@
       "problemContent": "Python Django kullanarak bir web uygulaması geliştirmeye çalışıyorum ancak proje yapısını kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 1,
       "likesUserId": [
-        6
+        6,
+        2
       ],
       "comments": [
         {
@@ -498,8 +499,7 @@
       "commentCount": 2,
       "likesUserId": [
         3,
-        7,
-        2
+        7
       ],
       "comments": [
         {
@@ -516,7 +516,7 @@
         }
       ],
       "createDate": "2023-11-05T12:45:00.000Z",
-      "isCompleted": false,
+      "isCompleted": true,
       "isDeleted": false
     },
     {

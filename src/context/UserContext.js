@@ -385,6 +385,7 @@ export const UserProvider = ({ children }) => {
         dispatch({ type: "activeProblemDetail", payload: ubdateProblem });
         dispatch({ type: "ubdatePopulerProblem", payload: ubdateProblem });
         dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
+        dispatch({ type: "ubdateActiveUserProblem", payload: ubdateProblem });
       } else {
         // alert("problems'lerden arandı bakıldı bu user bu problemi beğenmemiş")
         const response = await axios.get(`${url}/problems?id=${problemId}`);
@@ -411,11 +412,14 @@ export const UserProvider = ({ children }) => {
   };
 
   const handleCompletedProblem = async (problemId) => {
-    const problem = state.problems.find((problem) => problem.id === problemId);
+    const response = await axios.get(`${url}/problems/${problemId}`);
+    const problem= response.data;
     problem.isCompleted = !problem.isCompleted;
     await axios.patch(`${url}/problems/${problemId}`, problem);
-    dispatch({ type: "createAndUbdateProblem", payload: problem });
+    dispatch({ type: "activeProblemDetail", payload: problem });
+    dispatch({ type: "ubdatePopulerProblem", payload: problem });
     dispatch({ type: "ubdateActiveUserProblem", payload: problem });
+    
   };
 
   //other

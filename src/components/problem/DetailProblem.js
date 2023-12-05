@@ -65,14 +65,14 @@ const DetailProblem = () => {
           </div>
           <div className="detail-problem-detail">
             <div className="detail-problem-head-text">
-              {state.problems.map(
-                (problem) =>
-                  problem.id === state.activeProblemDetail.id && (
-                    <h4 key={problem.id}>
-                      {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
+              {
+                   state.activeUser !== null &&
+                   state.activeProblemDetail.userId === state.activeUser.id && (
+                    <h4>
+                      {state.activeProblemDetail.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
                     </h4>
                   )
-              )}
+              }
 
               <h3>{state.activeProblemDetail.problemHead}</h3>
               <br />
@@ -92,22 +92,19 @@ const DetailProblem = () => {
 
               <button>✉️{state.activeProblemDetail.comments.length}</button>
 
-              {state.problems.map(
-                (problem) =>
-                  problem.id === state.activeProblemDetail.id &&
+              {
                   state.activeUser !== null &&
-                  problem.userId === state.activeUser.id && (
+                  state.activeProblemDetail.userId === state.activeUser.id && (
                     <span
-                      key={problem.id}
                       className="completed-button"
-                      onClick={() => handleCompletedProblem(problem.id)}
+                      onClick={() => handleCompletedProblem(state.activeProblemDetail.id)}
                     >
-                      {problem.isCompleted === false
+                      {state.activeProblemDetail.isCompleted === false
                         ? "✅ Çözüldü olarak işaretle"
                         : "❌ Çözülmedi olarak işaretle"}
                     </span>
                   )
-              )}
+              }
             </div>
 
             <div className="detail-write-comment">
