@@ -23,7 +23,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 3,
-      "userToken": "Mahir0.5559245624560436",
+      "userToken": "Mahir0.8770530260011296",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true
@@ -430,10 +430,9 @@
       "categoryId": 7,
       "problemHead": "Python Django ile web uygulaması geliştirme",
       "problemContent": "Python Django kullanarak bir web uygulaması geliştirmeye çalışıyorum ancak proje yapısını kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
-      "commentCount": 1,
+      "commentCount": 2,
       "likesUserId": [
-        6,
-        2
+        6
       ],
       "comments": [
         {
@@ -441,10 +440,16 @@
           "userId": 6,
           "commentContent": "Projeyi oluştururken kullandığınız komutları paylaşabilir misiniz?",
           "createDate": "2023-12-16T19:00:37.148Z"
+        },
+        {
+          "id": 1,
+          "userId": 2,
+          "commentContent": "asdasdsad",
+          "createDate": "2023-12-05T14:12:10.387Z"
         }
       ],
       "createDate": "2023-12-15T17:30:00.000Z",
-      "isCompleted": false,
+      "isCompleted": true,
       "isDeleted": false
     },
     {
@@ -516,7 +521,7 @@
         }
       ],
       "createDate": "2023-11-05T12:45:00.000Z",
-      "isCompleted": true,
+      "isCompleted": false,
       "isDeleted": false
     },
     {
@@ -564,7 +569,8 @@
       "problemContent": "HTML form kullanırken sürekli hata alıyorum. Form elemanlarını doğru bir şekilde oluşturuyorum gibi görünüyor, ancak neden hata aldığımı anlayamıyorum. Yardım edebilecek birisi var mı?",
       "commentCount": 1,
       "likesUserId": [
-        1
+        1,
+        2
       ],
       "comments": [
         {
@@ -614,23 +620,23 @@
       "categoryId": 7,
       "problemHead": "Python Flask ile web uygulaması geliştirme",
       "problemContent": "Python Flask kullanarak basit bir web uygulaması geliştirmeye çalışıyorum. Ancak her seferinde farklı hatalar alıyorum. Yardım edebilecek birisi var mı?",
-      "commentCount": 2,
+      "commentCount": 4,
       "likesUserId": [
         7,
         2
       ],
       "comments": [
         {
-          "id": 10,
-          "userId": 2,
-          "commentContent": "Hata mesajlarını paylaşabilir misiniz?",
-          "createDate": "2023-11-25T17:00:37.148Z"
-        },
-        {
-          "id": 11,
+          "id": 0,
           "userId": 7,
           "commentContent": "Uygulama yapısını anlatabilir misiniz?",
           "createDate": "2023-11-25T17:56:37.148Z"
+        },
+        {
+          "id": 1,
+          "userId": 2,
+          "commentContent": "Hata mesajlarını paylaşabilir misiniz?",
+          "createDate": "2023-11-25T17:00:37.148Z"
         }
       ],
       "createDate": "2023-11-25T16:45:00.000Z",

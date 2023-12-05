@@ -405,6 +405,7 @@ export const UserProvider = ({ children }) => {
         dispatch({ type: "activeProblemDetail", payload: ubdateProblem });
         dispatch({ type: "ubdatePopulerProblem", payload: ubdateProblem });
         dispatch({ type: "createAndUbdateProblem", payload: ubdateProblem });
+        dispatch({ type: "ubdateActiveUserProblem", payload: ubdateProblem });
       }
     } else {
       alert("lütfen beğenmek için giriş yapınız!");
@@ -418,6 +419,7 @@ export const UserProvider = ({ children }) => {
     await axios.patch(`${url}/problems/${problemId}`, problem);
     dispatch({ type: "activeProblemDetail", payload: problem });
     dispatch({ type: "ubdatePopulerProblem", payload: problem });
+    
     dispatch({ type: "ubdateActiveUserProblem", payload: problem });
     
   };

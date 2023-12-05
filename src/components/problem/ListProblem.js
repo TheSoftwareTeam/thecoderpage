@@ -31,15 +31,13 @@ const ListProblem = () => {
           </div>
         </div>
         {state.problems.sort((a, b) => {
-            const dateA = a.createDate.split(" ")[0].split(".").reverse().join("/") + " " + a.createDate.split(" ")[1];
-            const dateB = b.createDate.split(" ")[0].split(".").reverse().join("/") + " " + b.createDate.split(" ")[1];
-            return new Date(dateB) - new Date(dateA);
+            const dateA = new Date(a.createDate);
+            const dateB = new Date(b.createDate);
+            return dateB - dateA;
           })
           .filter(
             (problem) =>
-              !problem.isDeleted &&
-              (problem.categoryId === state.selectedCategory ||
-                state.selectedCategory === null)
+              !problem.isDeleted
           ).map((problem) => (
             <Problem key={problem.id} problem={problem} />
           ))}
