@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
 import "./signup.scss";
-import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 
 const SignUp = () => {
   const { dispatch, signupUser } = useContext(UserContext);
-  const navigate = useNavigate();
   return (
     <div className="signup-container">
       <form onSubmit={signupUser}>
+      <button
+          className="exit"
+          onClick={() => dispatch({ type: "isSignUpPage" })}
+        >
+          x
+        </button>
         <h2>Kaydol</h2>
         <input
           onChange={(e) =>
@@ -39,7 +43,8 @@ const SignUp = () => {
           required
         />
         <input type="submit" value="Kaydol" />
-        <button onClick={() => navigate("/home/login")}>Giriş Yap</button>
+        <button onClick={()=>{dispatch({type:"isLoginPage"})
+      dispatch({type:"isSignUpPage"})}}>Giriş Yap</button>
       </form>
     </div>
   );

@@ -1,77 +1,97 @@
-.login-container{
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.81);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  h2 {
+    font-family: monospace;
+  }
+  form {
+    background-color: #454141;
+    border-radius: 15px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top:100px ;
-    h2{
+    width: 70vw;
+    height: 50vh;
+    gap: 10px;
+  align-items: center;
+    justify-content: center;
+    position: relative;
+    .exit{
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      &:hover{
+        cursor: pointer;
+        color: #ccc;
+        transition: 0.3s;
+      }
+    }
+    input,
+    textarea,
+    select {
+      width: 50vw;
+      height: 5vh;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 17px;
       font-family: monospace;
+      color: black;
+      font-weight: 600;
+      box-shadow: 3px 6px 9px rgb(128, 124, 124);
     }
-    form {
-      background-color:#ccc;
-      border-radius: 15px;
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        width: 80vw;
-        gap: 10px;
-        align-items: center;
-        justify-content: center;
-        input,
-        textarea,
-        select {
-          width: 50vw;
-          height: 5vh;
-          padding: 15px;
-          border-radius: 10px;
-          border: none;
-          font-size: 17px;
-          font-family: monospace ;
-          color: black;
-          font-weight: 600;
-          box-shadow: 3px 6px 9px rgb(128, 124, 124);
-        }
-        input[type="submit"] {
-          background-color: #aaa;
-          width: 15vw;
-          color: black;
-          font-family: monospace;
-          font-size: 17px;
-          font-weight: 700;
-          &:hover{
-            background-color: #ccc;
-            transition: 0.3s;
-            cursor: pointer;
-          }
-          &:active
-          {
-            transform: scale(1.2);
-            transition: 0.3s;
-          }
-        }
-        
-        
-        button{
-          background-color: #aaa;
-          width: 15vw;
-          color: black;
-          font-family: monospace;
-          font-size: 17px;
-          font-weight: 700;
-          border: none;
-          height: 5vh;
-          border-radius: 10px;
-          box-shadow: 3px 6px 9px rgb(128, 124, 124);
-          &:hover{
-            background-color: #ccc;
-            transition: 0.3s;
-            cursor: pointer;
-          }
-          &:active
-          {
-            transform: scale(1.2);
-            transition: 0.3s;
-          }
-        }
+    input[type="submit"] {
+      background-color: #aaa;
+      width: 15vw;
+      color: black;
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      &:hover {
+        background-color: #ccc;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
     }
+
+    button {
+      background-color: #aaa;
+      width: 15vw;
+      color: black;
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      border: none;
+      height: 5vh;
+      border-radius: 10px;
+      box-shadow: 3px 6px 9px rgb(128, 124, 124);
+      &:hover {
+        background-color: #ccc;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
+    }
+  }
 }

@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import { useNavigate, useParams } from "react-router-dom";
 import "./scss/problem.scss";
+import Comment from "./Comment";
 const Problem = ({ problem }) => {
   const { userName } = useParams();
   const { id } = useParams();
@@ -17,6 +18,10 @@ const Problem = ({ problem }) => {
     writeProblemComment,
   } = useContext(UserContext);
   const navigate = useNavigate();
+useEffect(()=>{
+  dispatch({type:"newProblemComment",payload:""})
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[state.activeProblemDetail])
 
   return (
     <div key={problem.id} className="problem">
@@ -76,7 +81,7 @@ const Problem = ({ problem }) => {
           <button>✉️{problem.comments.length}</button>
 
           {(userName ||
-            state.activeProblemDetail.userId === state.activeUser.id) &&
+           (state.activeUser &&state.activeProblemDetail.userId === state.activeUser.id)) &&
           state.activeUser !== null &&
           state.activeUser.id === problem.userId ? (
             <span
@@ -92,7 +97,7 @@ const Problem = ({ problem }) => {
             ""
           )}
         </div>
-        {(userName || id) && (
+        {(  id) && (
           <div className="problem-write-comment">
             <textarea
               value={state.newProblemComment}
@@ -113,55 +118,33 @@ const Problem = ({ problem }) => {
           </div>
         )}
 
-        {problem.comments
-          .sort((a, b) => {
+        {!id&& problem.comments.sort((a, b) => {
             const dateA = new Date(a.createDate);
             const dateB = new Date(b.createDate);
             return dateB - dateA;
           })
           .slice(0, 2)
-          .reverse()
           .map((comment) => (
-            <div key={comment.id} className="user-comment">
-              <div className="comment-user-picture">
-                {state.users.find((user) => user.id === comment.userId)
-                  ?.userPicture ? (
-                  <img
-                    src={
-                      "http://localhost:3001/" +
-                      state.users.find((user) => user.id === comment.userId)
-                        ?.userPicture
-                    }
-                    alt="res"
-                  />
-                ) : (
-                  <img src={image} alt="res" />
-                )}
-                <h4
-                  onClick={() =>
-                    navigate(
-                      `/home/profile/${
-                        state.users.find((user) => user.id === comment.userId)
-                          ?.userName
-                      }/detail`
-                    )
-                  }
-                >
-                  {
-                    state.users.find((user) => user.id === comment.userId)
-                      ?.userName
-                  }
-                </h4>
-                <span>{formatRelativeTime(comment.createDate)}</span>
-              </div>
-              <p>{comment.commentContent}</p>
-            </div>
-          ))}
-        <p>
-          {problem.comments.length >= 3
-            ? `+ ${problem.comments.length - 2} yorum daha`
+          <Comment comment={comment} />
+          ))
+          }
+
+          {id&&
+          problem.comments.sort((a, b) => {
+            const dateA = new Date(a.createDate);
+            const dateB = new Date(b.createDate);
+            return dateB - dateA;
+          })
+          .map((comment) => (
+          <Comment comment={comment} />
+          )) }
+
+       
+          {!id&&problem.comments.length >= 3
+            ? <p className="more-comments-p">+{problem.comments.length - 2} yorum daha </p>
             : ""}
-        </p>
+            
+       
       </div>
     </div>
   );

@@ -1,15 +1,24 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import "./nav.scss";
 import image from "../../images/avatar.png";
 import { ThemeContext } from "../../context/ThemeContext";
+import Login from "../login/Login";
+import SignUp from "../signup/SignUp";
 const Navi = () => {
   const { state, dispatch, toggleDropdown, handleLogout } =
     useContext(UserContext);
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useContext(ThemeContext);
+
+  useEffect(() => {
+    state.isLoginPage||state.isSignUpPage?
+    document.body.style.overflow = 'hidden'
+    :document.body.style.overflow = 'unset'
+    
+  }, [state.isLoginPage,state.isSignUpPage]);
   return (
     <>
       <div className="navi-container">
@@ -83,15 +92,20 @@ const Navi = () => {
               )}
             </div>
           ) : (
-            <button>
-              <NavLink className="navi-link" to="login">
+            <button onClick={()=>dispatch({type:"isLoginPage"})}>
+              {/* <NavLink className="navi-link" to="login"> */}
                 Giriş Yap
-              </NavLink>
+              {/* </NavLink> */}
             </button>
           )}
+          
+             {state.isLoginPage && <Login/>}
+             {state.isSignUpPage && <SignUp/>}
+          
+         
         </div>
       </div>
-      <div className="navi-outlet">
+      <div className="navi-outlet" >
         <Outlet />
       </div>
     </>

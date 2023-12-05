@@ -1,9 +1,15 @@
 .signup-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top:100px ;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.81);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
     form {
       background-color:#ccc;
       border-radius: 15px;
@@ -14,6 +20,20 @@
         gap: 10px;
         align-items: center;
         justify-content: center;
+        position: relative;
+        .exit{
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 10px;
+          font-size: 20px;
+          font-weight: 700;
+          color: white;
+          &:hover{
+            cursor: pointer;
+            color: #ccc;
+            transition: 0.3s;
+          }}
         input,
         textarea,
         select {

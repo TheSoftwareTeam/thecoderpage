@@ -50,8 +50,6 @@ function Layout() {
                 <Route path="detail" element={<ProfileDetail />} />
                 <Route path="edit" element={<EditProfile />} />
               </Route>
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<SignUp />} />
               <Route path="createproblem" element={<CreateProblem />} />
               <Route element={<Menu />}>
                 <Route

@@ -52,7 +52,7 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "loginUserName", payload: "" });
       dispatch({ type: "loginPassword", payload: "" });
       dispatch({ type: "selectedCategory", payload: null });
-
+      dispatch({ type: "isLoginPage" });
       if (response.data[0].verify === false) {
         console.log(response.data[0].userName);
         navigate(`/home/profile/${response.data[0].userName}/edit`);
@@ -79,6 +79,9 @@ export const UserProvider = ({ children }) => {
     const responseUserName = await axios.get(
       `${url}/users/?userName=${state.signupUserName}`
     );
+    dispatch({ type: "isSignUpPage" });
+    dispatch({ type: "isLoginPage" });
+    
     const responseEmail = await axios.get(
       `${url}/users/?email=${state.signupEmail}`
     );
@@ -511,7 +514,6 @@ export const UserProvider = ({ children }) => {
         login,
         signupUser,
         editProfile,
-        //getCategoryFilterproblem,
         activeUserProblem,
         getProblemDetail,
         getProblem,

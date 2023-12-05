@@ -23,8 +23,6 @@ const PopularProblems = () => {
 
   return (
     <div className="popular">
-      
-
       {currentProblem && (
         <div className="popular-content">
           <h1>

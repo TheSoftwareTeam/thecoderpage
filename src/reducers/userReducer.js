@@ -18,6 +18,8 @@ const initialState = {
 
   //navi
   isDropdownOpen: false,
+  isLoginPage:false,
+  isSignUpPage:false,
   //comment
   comments: [],
   newProblemComment: "",
@@ -132,6 +134,16 @@ const userReducer = (state, action) => {
         ...state,
         isDropdownOpen: action.payload,
       };
+      case "isLoginPage":
+        return {
+          ...state,
+          isLoginPage: state.isLoginPage?false:true,
+        };
+        case "isSignUpPage":
+        return {
+          ...state,
+          isSignUpPage: state.isSignUpPage?false:true,
+        };
     //comment
     case "getComments":
       return {

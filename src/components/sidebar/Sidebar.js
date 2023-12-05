@@ -26,7 +26,15 @@ const Sidebar = () => {
             ) : (
               <img src={image} alt="res" />
             )}
-            <h3>
+            <h3
+            onClick={() =>
+              navigate(
+                `/home/profile/${
+                  state.users.find((user) => user.id === problem.userId)?.userName
+                }/detail`
+              )
+            }
+            >
               {state.users.find((user) => user.id === problem.userId)?.userName}
             </h3>
           </div>

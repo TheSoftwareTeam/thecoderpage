@@ -1,11 +1,13 @@
 #user-container {
   display: flex;
+
+  justify-content: center ;
   flex-direction: row;
   min-height: 95vh;
 
   #user-content {
     margin: 50px;
-    width: 100vw;
+    max-width: 70vw;
     display: flex;
     flex-direction: column;
   }
