@@ -29,13 +29,7 @@ const UserDetail = () => {
           )}
           
 
-          <hr />
-          {/* <span>
-            katılma tarihi:{" "}
-            {state.userDetail !== null
-              ? state.userDetail.createDate.split(" ")[0]
-              : ""}
-          </span> */}
+         
         </div>
         <form onSubmit={editUser}>
           <input

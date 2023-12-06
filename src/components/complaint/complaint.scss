@@ -1,0 +1,78 @@
+.complaint-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.258);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  h2 {
+    font-family: monospace;
+  }
+  form {
+    background-color: #454141;
+    border-radius: 15px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 50vh;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .exit {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      &:hover {
+        cursor: pointer;
+        color: #ccc;
+        transition: 0.3s;
+      }
+    }
+  
+    textarea,
+    select {
+      min-width: 50vw;
+      max-width: 50vw;
+      min-height: 15vh;
+      padding: 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 17px;
+      font-family: monospace;
+      color: black;
+      font-weight: 600;
+      box-shadow: 3px 6px 9px rgb(128, 124, 124);
+    }
+    input[type="submit"] {
+      background-color: #aaa;
+      width: 15vw;
+      height: 50px;
+      color: black;
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 30px;
+      border: none;
+      &:hover {
+        background-color: #ccc;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
+    }
+  }
+}

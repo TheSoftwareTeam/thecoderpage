@@ -3,12 +3,13 @@ import React, { useContext, useEffect } from "react";
 import "./scss/comment-detail.scss";
 import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CommentDetail = () => {
-  const { state, deleteComment, getCommentDetail } = useContext(AdminContext);
+  const { state, deleteComment, getCommentDetail,formatRelativeTime } = useContext(AdminContext);
 
   const { problemId,commentId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCommentDetail(problemId,commentId);
@@ -31,16 +32,22 @@ const CommentDetail = () => {
                   ) : (
                     <img src={image} alt="Admin" />
                   )}
-                  <h3>{user.userName}</h3>
+                  <h3
+          onClick={() =>
+            navigate(
+              `/admin/userdetail/${user.userName}`
+            )
+          }
+        >
+         {user.userName}
+        </h3>
                 </>
               ))}
-            <span>{state.activeCommentDetail.createDate}</span>
+            <span>{formatRelativeTime(state.activeCommentDetail.createDate)}</span>
           </div>
           <div className="adetail-problem-detail">
             <div className="adetail-problem-head-text">
-              <h3>{state.activeCommentDetail.problemHead}</h3>
-              <br />
-              <p>{state.activeCommentDetail.problemContent}</p>
+              <p>{state.activeCommentDetail.commentContent}</p>
             </div>
 
            

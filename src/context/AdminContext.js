@@ -149,16 +149,31 @@ export const AdminProvider = ({ children }) => {
       navigate(`/admin/users`);
     }
   };
-
+ 
   //comment
+  //  const getComments = async (limit, isMore) => {
+  //   let page = 1;
+  //   if (isMore) {
+  //     dispatch({ type: "loadMoreProblems", payload: (await state.pages) + 1 });
+  //     page = state.pages;
+  //   }
+  //   dispatch({ type: "hideLoadMoreButton", payload: true });
+  //   const response = await axios.get(`${url}/problems`, {
+  //     params: {
+  //       _sort: "createDate",
+  //       _order: "desc",
+  //       _limit: limit,
+  //       _page: page,
+  //     },
+  //   });
+  //  dispatch({ type: "getComments", payload: await response.data });
+  // };
+
   const getCommentDetail = async (problemId,commentId) => {
-        const response = await axios.get(`${url}/problems/${problemId}/comments/${commentId}`, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        console.log(response.data);
-        dispatch({ type: "getCommentDetail", payload: await response.data });
+        const response = await axios.get(`${url}/problems/${problemId}`); 
+        const comment = await response.data.comments.filter((comment) => comment.id === Number(commentId));
+        console.log(comment[0]);
+        dispatch({ type: "getCommentDetail", payload: comment[0] });
   };
   //category
   const getCategory = async () => {
@@ -244,7 +259,32 @@ export const AdminProvider = ({ children }) => {
       navigate(`/admin/problems`);
     }
   };
-
+//complaints
+  const getComplaints = async (limit, isMore) => {
+    let page = 1;
+    if (isMore) {
+      dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
+      page = state.pages;
+    }
+    dispatch({ type: "hideLoadMoreButton", payload: true });
+    const response = await axios.get(`${url}/complaints`, {
+      params: {
+        _sort: "createDate",
+        _order: "desc",
+        _limit: limit,
+        _page: page,
+      },
+    });
+    console.log(response.data);
+    response.data.length < limit &&
+      dispatch({ type: "hideLoadMoreButton", payload: false });
+    if (isMore) {
+      dispatch({ type: "getMoreComplaints", payload: await response.data });
+    } else {
+      dispatch({ type: "getComplaints", payload: await response.data });
+      dispatch({ type: "loadMorePages", payload: 2 });
+    }
+  };
   //other
   const roleControl = async () => {
     const userId = localStorage.getItem("userId");
@@ -282,10 +322,12 @@ export const AdminProvider = ({ children }) => {
         toggleDropdown,
         deleteCategory,
         getProblem,
+        // getComments,
+        getCommentDetail,
         getUsers,
         getCategory,
         formatRelativeTime,
-        getCommentDetail,
+        getComplaints,
       }}
     >
       {children}

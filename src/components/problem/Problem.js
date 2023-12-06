@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
+import Complaint from "../complaint/Complaint";
 import { useNavigate, useParams } from "react-router-dom";
 import "./scss/problem.scss";
 import Comment from "./Comment";
@@ -25,6 +26,8 @@ useEffect(()=>{
 
   return (
     <div key={problem.id} className="problem">
+      {state.isComplaintPage && <Complaint/>}
+       <a onClick={()=>dispatch({type:"isComplaintPage"})}>Şikayet et</a>
       <div className="user-picture">
         {state.users.find((user) => user.id === problem.userId)?.userPicture ? (
           <img
@@ -50,6 +53,7 @@ useEffect(()=>{
           {state.users.find((user) => user.id === problem.userId)?.userName}
         </h3>
         <span>{formatRelativeTime(problem.createDate)}</span>
+       
       </div>
       <div className="problem-detail">
         <div className="problem-head-text">
@@ -58,14 +62,14 @@ useEffect(()=>{
           <h3> {problem.problemHead}</h3>
           <p>
             {problem.problemContent}
-            <a
+            <span
               onClick={() => {
                 dispatch({ type: "selectedCategory", payload: null });
                 navigate(`/home/detailproblem/${problem.id}`);
               }}
             >
               ...Daha fazlası
-            </a>
+            </span>
           </p>
         </div>
 

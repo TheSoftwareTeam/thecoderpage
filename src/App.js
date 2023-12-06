@@ -27,6 +27,7 @@ import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 import { useContext } from "react";
 import EditProfile from "./components/profile/EditProfile";
 import ProfileDetail from "./components/profile/ProfileDetail";
+import Complaints from "./admin/complaints/Complaints";
 
 function Layout() {
   const { darkMode } = useContext(ThemeContext);
@@ -76,6 +77,7 @@ function Layout() {
               <Route path="categories" element={<Categories />} />
               <Route path="problems" element={<Problems />} />
               <Route path="comments" element={<Comments />} />
+              <Route path="complaints" element={<Complaints />} />
               <Route path="userdetail/:userName" element={<UserDetail />} />
               <Route path="categorydetail/:id" element={<CategoryDetail />} />
               <Route path="commentdetail/:problemId/:commentId" element={<CommentDetail />} />

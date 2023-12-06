@@ -11,15 +11,16 @@ const initialState = {
   profileName: "",
   profileSurname: "",
   profilePicture: "",
-  profileDetail:{},
+  profileDetail: {},
   //user
   users: [],
   userDetail: {},
 
   //navi
   isDropdownOpen: false,
-  isLoginPage:false,
-  isSignUpPage:false,
+  isLoginPage: false,
+  isSignUpPage: false,
+  isComplaintPage: false,
   //comment
   comments: [],
   newProblemComment: "",
@@ -33,18 +34,22 @@ const initialState = {
   problemHead: "",
   categoryFilterProblem: [],
   activeUserProblem: [],
-  populerProblems:[],
+  populerProblems: [],
   activeProblemDetail: {
     likesUserId: [],
     comments: [],
   },
-  pages:2,
+  pages: 2,
   loadMoreButton: true,
-
 };
 
 const userReducer = (state, action) => {
   switch (action.type) {
+    case "isComplaintPage":
+      return {
+        ...state,
+        isComplaintPage: state.isComplaintPage ? false : true,
+      };
     //login
     case "login":
       return {
@@ -134,16 +139,16 @@ const userReducer = (state, action) => {
         ...state,
         isDropdownOpen: action.payload,
       };
-      case "isLoginPage":
-        return {
-          ...state,
-          isLoginPage: state.isLoginPage?false:true,
-        };
-        case "isSignUpPage":
-        return {
-          ...state,
-          isSignUpPage: state.isSignUpPage?false:true,
-        };
+    case "isLoginPage":
+      return {
+        ...state,
+        isLoginPage: state.isLoginPage ? false : true,
+      };
+    case "isSignUpPage":
+      return {
+        ...state,
+        isSignUpPage: state.isSignUpPage ? false : true,
+      };
     //comment
     case "getComments":
       return {
@@ -181,7 +186,7 @@ const userReducer = (state, action) => {
         ...state,
         categoryName: action.payload,
       };
-    
+
     //problem
     case "getProblems":
       return {
@@ -193,7 +198,7 @@ const userReducer = (state, action) => {
         ...state,
         problems: [...state.problems, ...action.payload],
       };
-    case "loadMoreProblems":
+    case "loadMorePages":
       return {
         ...state,
         pages: action.payload,
@@ -230,7 +235,7 @@ const userReducer = (state, action) => {
           ),
         };
       }
-      
+
     case "categoryFilterProblem":
       return {
         ...state,
@@ -246,20 +251,20 @@ const userReducer = (state, action) => {
         ...state,
         activeProblemDetail: action.payload,
       };
-      case "getPopularProblems":
-        return {
-          ...state,
-          populerProblems: action.payload,
-        };
-        case "ubdatePopulerProblem":
-         const ubdateProblem=action.payload;
-            return {
-              ...state,
-              populerProblems: state.populerProblems.map((problem) =>
-                problem.id === ubdateProblem.id ? ubdateProblem : problem
-              ),
-            };
-          
+    case "getPopularProblems":
+      return {
+        ...state,
+        populerProblems: action.payload,
+      };
+    case "ubdatePopulerProblem":
+      const ubdateProblem = action.payload;
+      return {
+        ...state,
+        populerProblems: state.populerProblems.map((problem) =>
+          problem.id === ubdateProblem.id ? ubdateProblem : problem
+        ),
+      };
+
     case "ubdateActiveUserProblem":
       const newActiveUserProblem = action.payload;
       // Eğer yeni problem mevcut problemler listesinde değilse ekle
@@ -288,7 +293,8 @@ const userReducer = (state, action) => {
         ...state,
         problemHead: action.payload,
       };
-   
+    
+      
     default:
       return state;
   }

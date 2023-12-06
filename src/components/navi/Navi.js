@@ -29,10 +29,10 @@ const Navi = () => {
             </NavLink>
           </h3>
           <button
-            className={darkMode ? "darkMode" : "lightMode"}
+            className={darkMode ? "lightMode" : "darkMode"}
             onClick={() => setDarkMode(!darkMode)}
           >
-            {darkMode ? "Light" : "Dark"} mode
+            {darkMode ? "🔆" : "🌙"}
           </button>
 
           {localStorage.getItem("userToken") !== null ? (

@@ -84,15 +84,14 @@
     }
     .darkMode {
       width: auto;
-      height:3vh;
+      height: 3vh;
       display: flex;
       justify-content: center;
       align-items: center;
       right: 0;
       position: absolute;
-      margin-right: 150px;
+      right: 150px;
       background-color: #666;
-      color: #fff;
       &:hover {
         background-color: #555;
         transition: 0.3s;
@@ -111,10 +110,9 @@
       align-items: center;
       right: 0;
       position: absolute;
-      right: 0;
-      margin-right: 150px;
+      right: 150px;
       background-color: #ffffff;
-    
+   
       &:hover {
         background-color: #ffffff;
         transition: 0.3s;

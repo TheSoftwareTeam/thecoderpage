@@ -224,7 +224,7 @@ export const UserProvider = ({ children }) => {
   const getProblem = async (limit,isMore) => {
     let page = 1;
     if (isMore) {
-      dispatch({ type: "loadMoreProblems", payload:await state.pages + 1 });
+      dispatch({ type: "loadMorePages", payload:await state.pages + 1 });
       page = state.pages;
     }
     dispatch({ type: "hideLoadMoreButton", payload: true });
@@ -242,13 +242,13 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "getMoreProblems", payload: await response.data });
     } else {
       dispatch({ type: "getProblems", payload: await response.data });
-      dispatch({ type: "loadMoreProblems", payload: 2 });
+      dispatch({ type: "loadMorePages", payload: 2 });
     }
   };
 
   // const getMoreProblem = async () => {
   //   if (state.selectedCategory) {
-  //     dispatch({ type: "loadMoreProblems", payload: state.pages + 1 });
+  //     dispatch({ type: "loadMorePages", payload: state.pages + 1 });
   //     const response = await axios.get(
   //       `${url}/problems?categoryId=${state.selectedCategory}`,
   //       {
@@ -266,7 +266,7 @@ export const UserProvider = ({ children }) => {
 
   //     dispatch({ type: "getMoreProblems", payload: await response.data });
   //   } else {
-  //     dispatch({ type: "loadMoreProblems", payload: state.pages + 1 });
+  //     dispatch({ type: "loadMorePages", payload: state.pages + 1 });
   //     const response = await axios.get(`${url}/problems`, {
   //       params: {
   //         _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin

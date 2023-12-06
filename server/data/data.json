@@ -10,7 +10,7 @@
       "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
       "createDate": "2023-11-15T19:00:37.148Z",
-      "userToken": "Murat0.7472996052047062",
+      "userToken": "",
       "userRol": "admin",
       "verify": true
     },
@@ -766,6 +766,71 @@
       "id": 7,
       "categoryName": "PHYTON",
       "problemCount": 1,
+      "isDeleted": false
+    }
+  ],
+  "complaints": [
+    {
+      "id": 1,
+      "userId": 4,
+      "problemId": 8,
+      "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "problemId": 20,
+      "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 3,
+      "userId": 4,
+      "problemId": 13,
+      "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "problemId": 11,
+      "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 5,
+      "userId": 3,
+      "problemId": 1,
+      "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 6,
+      "userId": 4,
+      "problemId": 7,
+      "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "isCompleted": false,
+      "isDeleted": false
+    },
+    {
+      "id": 7,
+      "userId": 3,
+      "problemId": 12,
+      "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
+      "createDate": "2023-11-15T19:00:37.148Z",
+      "isCompleted": false,
       "isDeleted": false
     }
   ]

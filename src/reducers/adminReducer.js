@@ -31,6 +31,8 @@ export const initialState = {
   loadMoreButton: true,
   //comment
   activeCommentDetail: {},
+  //complaint
+  complaints: [],
 };
 
 export const adminReducer = (state, action) => {
@@ -182,7 +184,7 @@ export const adminReducer = (state, action) => {
         ...state,
         activeProblemDetail: action.payload,
       };
-    case "loadMoreProblems":
+    case "loadMorePages":
         return {
           ...state,
           pages: action.payload,
@@ -192,6 +194,17 @@ export const adminReducer = (state, action) => {
             ...state,
             loadMoreButton: action.payload,
           };      
+  //complaint
+  case "getComplaints":
+    return {
+      ...state,
+      complaints: action.payload,
+    };
+  case "getMoreComplaints":
+    return {
+      ...state,
+      complaints: [...state.complaints, ...action.payload],
+    };
     default:
       return state;
   }

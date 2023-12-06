@@ -114,7 +114,7 @@ const AdminPanel = () => {
             <NavLink
               className="navlink"
               activeClassName="active"
-              to="/admin/categori"
+              to="/admin/complaints"
             >
               <IoNewspaperSharp />
               Şikayetler
@@ -122,7 +122,7 @@ const AdminPanel = () => {
             <NavLink
               className="navlink"
               activeClassName="active"
-              to="/admin/categor"
+              to="/admin/complaints"
             >
               <MdContactMail />
               İletişim Formları
