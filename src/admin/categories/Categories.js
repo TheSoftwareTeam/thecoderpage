@@ -1,11 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import "./categories.scss";
 const Categories = () => {
   const { state, dispatch, createCategory } = useContext(AdminContext);
   const navigate = useNavigate();
+  useEffect(() => {
+    dispatch({ type: "categoryName", payload: "" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div id="admin-categories-container">
       <form onSubmit={createCategory}>
