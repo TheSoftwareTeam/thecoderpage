@@ -24,7 +24,7 @@ const AdminPanel = () => {
     roleControl();
     getUsers();
     getCategory();
-    getProblem();
+    getProblem(8);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

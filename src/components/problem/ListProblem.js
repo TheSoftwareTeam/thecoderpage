@@ -6,10 +6,10 @@ import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import Problem from "./Problem";
 const ListProblem = () => {
-  const { state,getMoreProblem,getProblem } = useContext(UserContext);
+  const { state,getProblem } = useContext(UserContext);
 
   useEffect(() => {
-    getProblem()
+    getProblem(5)
     window.scrollTo({ top: 0, behavior: 'smooth' });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.selectedCategory]);
@@ -45,7 +45,7 @@ const ListProblem = () => {
         {
           state.loadMoreButton&& (
             <button
-              onClick={ async() =>  getMoreProblem()}
+              onClick={ async() =>  getProblem(3,true)}
               className="list-load-more"
             >
               Daha Fazla

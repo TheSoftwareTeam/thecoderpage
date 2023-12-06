@@ -3,10 +3,11 @@ import React, { useContext, useEffect } from "react";
 import "./scss/problem-detail.scss";
 import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ProblemDetail = () => {
-  const { state, deleteProblem, getProblemDetail } = useContext(AdminContext);
+  const { state, deleteProblem, getProblemDetail,formatRelativeTime } = useContext(AdminContext);
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -32,10 +33,15 @@ const ProblemDetail = () => {
                   ) : (
                     <img src={image} alt="Admin" />
                   )}
-                  <h3>{user.userName}</h3>
+                  <h3 
+                  onClick={() =>
+                    navigate(
+                      `/admin/userdetail/${user.userName}`
+                    )
+                  }>{user.userName}</h3>
                 </>
               ))}
-            <span>{state.activeProblemDetail.createDate}</span>
+             <span>{formatRelativeTime(state.activeProblemDetail.createDate)}</span>
           </div>
           <div className="adetail-problem-detail">
             <div className="adetail-problem-head-text">
@@ -67,15 +73,20 @@ const ProblemDetail = () => {
                           ) : (
                             <img src={image} alt="Admin" />
                           )}
-                          <h4>{user.userName}</h4>
+                          <h3 
+                  onClick={() =>
+                    navigate(
+                      `/admin/userdetail/${user.userName}`
+                    )
+                  }>{user.userName}</h3>
                         </>
                       ))}
-                    <span>
-                      {comment.createDate} <button onClick={""}>Sil</button>
-                    </span>
+                    
+                    <span>{formatRelativeTime(comment.createDate)}
+                    <button onClick={""}>Sil</button></span>
                   </div>
 
-                  <p>{comment.commentContent}</p>
+                  <p  onClick={() => navigate(`/admin/commentdetail/${state.activeProblemDetail.id +"/"+ comment.id}`)} >{comment.commentContent}</p>
                 </div>
               ))}
           </div>

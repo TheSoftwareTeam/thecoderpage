@@ -27,6 +27,10 @@ export const initialState = {
     likesUserId: [],
     comments: [],
   },
+  pages:2,
+  loadMoreButton: true,
+  //comment
+  activeCommentDetail: {},
 };
 
 export const adminReducer = (state, action) => {
@@ -113,6 +117,12 @@ export const adminReducer = (state, action) => {
         ...state,
         comments: action.payload,
       };
+    case "getCommentDetail":
+      return {
+        ...state,
+        activeCommentDetail: action.payload,
+      };
+
     //category
     case "getCategory":
       return {
@@ -157,6 +167,11 @@ export const adminReducer = (state, action) => {
         ...state,
         problems: action.payload,
       };
+    case "getMoreProblems":
+      return {
+        ...state,
+        problems: [...state.problems, ...action.payload],
+      };  
     case "problemSil":
       return {
         ...state,
@@ -167,6 +182,16 @@ export const adminReducer = (state, action) => {
         ...state,
         activeProblemDetail: action.payload,
       };
+    case "loadMoreProblems":
+        return {
+          ...state,
+          pages: action.payload,
+        };
+    case "hideLoadMoreButton":
+          return {
+            ...state,
+            loadMoreButton: action.payload,
+          };      
     default:
       return state;
   }

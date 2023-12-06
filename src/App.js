@@ -4,8 +4,6 @@ import LoadingPage from "./components/loading/LoadingPage";
 import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
 import Profile from "./components/profile/Profile";
-import Login from "./components/login/Login";
-import SignUp from "./components/signup/SignUp";
 import CreateProblem from "./components/problem/CreateProblem";
 import ListProblem from "./components/problem/ListProblem";
 import DetailProblem from "./components/problem/DetailProblem";
@@ -78,9 +76,9 @@ function Layout() {
               <Route path="categories" element={<Categories />} />
               <Route path="problems" element={<Problems />} />
               <Route path="comments" element={<Comments />} />
-              <Route path="userdetail/:id" element={<UserDetail />} />
+              <Route path="userdetail/:userName" element={<UserDetail />} />
               <Route path="categorydetail/:id" element={<CategoryDetail />} />
-              <Route path="commentdetail/:id" element={<CommentDetail />} />
+              <Route path="commentdetail/:problemId/:commentId" element={<CommentDetail />} />
               <Route path="problemdetail/:id" element={<ProblemDetail />} />
             </Route>
           </Routes>

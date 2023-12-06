@@ -1,65 +1,37 @@
 
 import React, { useContext } from "react";
 import AdminContext from "../../context/AdminContext";
-import { useNavigate } from "react-router-dom";
 import "./scss/problems.scss";
-import image from "../../images/avatar.png";
+import Problem from "./Problem";
 const Problems = () => {
-  const { state } = useContext(AdminContext);
-  const navigate = useNavigate();
+  const { state,getProblem } = useContext(AdminContext);
 
   return (
-    <div id="admin-container">
+    <div id="container">
 
       <div id="problem-list">
 
-      {state.problems.map(
+      {state.problems.sort((a, b) => {
+            const dateA = new Date(a.createDate);
+            const dateB = new Date(b.createDate);
+            return dateB - dateA;
+          }).map(
         (problem) =>
           !problem.isDeleted && (
-            <div
-              onClick={() => navigate(`/admin/problemdetail/${problem.id}`)}
-              key={problem.id}
-              className="admin-problem"
-            >
-              <div className="admin-user-picture">
-              {state.users
-                .filter((user) => user.id === problem.userId)
-                .map((user) => (
-                  <>
-                    {user.userPicture ? (
-                      <img
-                        src={"http://localhost:3001/" + user.userPicture}
-                        alt="User"
-                      />
-                    ) : (
-                      <img src={image} alt="User" />
-                    )}
-                    <h5>{user.userName}</h5>
-                  </>
-                ))}          <span>{problem.createDate.split(" ")[0]}</span>
-              </div>
-    
-              <div className="admin-problem-detail">
-                <div className="admin-problem-head-text">
-                  <h6>{problem.problemHead.slice(0, 150)}</h6>
-                </div>
-
-                <div className="admin-problem-comment-view">
-                  <button>
-                    💙
-                    {
-                      state.problems.find((prob) => prob.id === problem.id)
-                        .likesUserId.length
-                    }
-                  </button>
-                  <button>✉️{problem.comments.length}</button>
-                </div>
-              </div>
-            </div>
+           <Problem problem={problem}/>
           )
       )}
       </div>
-     
+      {
+          state.loadMoreButton&& (
+            <button
+              onClick={ async() =>  getProblem(4,true)}
+              className="list-load-more"
+            >
+              Daha Fazla
+            </button>
+          )
+          }
     </div>
   );
 };

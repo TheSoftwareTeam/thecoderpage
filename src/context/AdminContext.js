@@ -25,15 +25,41 @@ export const AdminProvider = ({ children }) => {
     )}`;
     return formattedDate;
   };
+  function formatRelativeTime(timestamp) {
+    const now = new Date();
+    const targetDate = new Date(timestamp);
 
+    const timeDifference = now - targetDate;
+    const minutes = Math.floor(timeDifference / (1000 * 60));
+    const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+    if (days === 0) {
+      if (hours === 0) {
+        return `${minutes} dakika önce`;
+      } else {
+        return `${hours} saat önce`;
+      }
+    } else if (days === 1) {
+      return "Dün";
+    } else {
+      // Eğer bir önceki günden daha önce ise sadece tarihi döndür
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      return targetDate.toLocaleDateString("tr-TR", options);
+    }
+  }
   //user
   const getUsers = async () => {
     const response = await axios.get(`${url}/users`);
     dispatch({ type: "getUsers", payload: await response.data });
   };
 
-  const getUserDetail = async (id) => {
-    const response = await axios.get(`${url}/users/?id=${id}`);
+  const getUserDetail = async (userName) => {
+    const response = await axios.get(`${url}/users/`, {
+      params: {
+        userName: userName,
+      },
+    });
 
     dispatch({ type: "getUserDetail", payload: await response.data[0] });
     dispatch({ type: "userName", payload: await response.data[0].name });
@@ -125,7 +151,15 @@ export const AdminProvider = ({ children }) => {
   };
 
   //comment
-
+  const getCommentDetail = async (problemId,commentId) => {
+        const response = await axios.get(`${url}/problems/${problemId}/comments/${commentId}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log(response.data);
+        dispatch({ type: "getCommentDetail", payload: await response.data });
+  };
   //category
   const getCategory = async () => {
     const response = await axios.get(`${url}/categories`);
@@ -171,9 +205,29 @@ export const AdminProvider = ({ children }) => {
     }
   };
   //problem
-  const getProblem = async () => {
-    const response = await axios.get(`${url}/problems`);
-    dispatch({ type: "getProblems", payload: await response.data });
+  const getProblem = async (limit, isMore) => {
+    let page = 1;
+    if (isMore) {
+      dispatch({ type: "loadMoreProblems", payload: (await state.pages) + 1 });
+      page = state.pages;
+    }
+    dispatch({ type: "hideLoadMoreButton", payload: true });
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        _sort: "createDate",
+        _order: "desc",
+        _limit: limit,
+        _page: page,
+      },
+    });
+    response.data.length < limit &&
+      dispatch({ type: "hideLoadMoreButton", payload: false });
+    if (isMore) {
+      dispatch({ type: "getMoreProblems", payload: await response.data });
+    } else {
+      dispatch({ type: "getProblems", payload: await response.data });
+      dispatch({ type: "loadMoreProblems", payload: 2 });
+    }
   };
 
   const getProblemDetail = async (id) => {
@@ -211,7 +265,6 @@ export const AdminProvider = ({ children }) => {
   const toggleDropdown = () => {
     dispatch({ type: "isDropdownOpen", payload: !state.isDropdownOpen });
   };
- 
 
   return (
     <AdminContext.Provider
@@ -231,6 +284,8 @@ export const AdminProvider = ({ children }) => {
         getProblem,
         getUsers,
         getCategory,
+        formatRelativeTime,
+        getCommentDetail,
       }}
     >
       {children}

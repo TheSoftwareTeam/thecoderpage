@@ -193,12 +193,12 @@ const userReducer = (state, action) => {
         ...state,
         problems: [...state.problems, ...action.payload],
       };
-      case "loadMoreProblems":
+    case "loadMoreProblems":
       return {
         ...state,
         pages: action.payload,
       };
-      case "hideLoadMoreButton":
+    case "hideLoadMoreButton":
       return {
         ...state,
         loadMoreButton: action.payload,
@@ -288,11 +288,7 @@ const userReducer = (state, action) => {
         ...state,
         problemHead: action.payload,
       };
-      case 'loadMoreProblems':
-        return { 
-          ...state, 
-          pages: state.pages + action.payload,
-        }
+   
     default:
       return state;
   }
