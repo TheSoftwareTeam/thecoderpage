@@ -9,7 +9,7 @@ const ListProblem = () => {
   const { state,getProblem } = useContext(UserContext);
 
   useEffect(() => {
-    getProblem(5)
+    getProblem()
     window.scrollTo({ top: 0, behavior: 'smooth' });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.selectedCategory]);
@@ -45,7 +45,7 @@ const ListProblem = () => {
         {
           state.loadMoreButton&& (
             <button
-              onClick={ async() =>  getProblem(3,true)}
+              onClick={ async() =>  getProblem(true)}
               className="list-load-more"
             >
               Daha Fazla

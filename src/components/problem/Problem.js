@@ -24,6 +24,11 @@ useEffect(()=>{
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[state.activeProblemDetail])
 
+useEffect(()=>{
+  state.isComplaintPage?
+  document.body.style.overflow = 'hidden'
+  :document.body.style.overflow = 'unset'
+  },[state.isComplaintPage])
   return (
     <div key={problem.id} className="problem">
       {state.isComplaintPage && <Complaint/>}

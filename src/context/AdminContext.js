@@ -151,7 +151,7 @@ export const AdminProvider = ({ children }) => {
   };
  
   //comment
-  //  const getComments = async (limit, isMore) => {
+  //  const getComments = async (isMore) => {
   //   let page = 1;
   //   if (isMore) {
   //     dispatch({ type: "loadMoreProblems", payload: (await state.pages) + 1 });
@@ -162,7 +162,7 @@ export const AdminProvider = ({ children }) => {
   //     params: {
   //       _sort: "createDate",
   //       _order: "desc",
-  //       _limit: limit,
+  //       _limit: 5,
   //       _page: page,
   //     },
   //   });
@@ -220,7 +220,7 @@ export const AdminProvider = ({ children }) => {
     }
   };
   //problem
-  const getProblem = async (limit, isMore) => {
+  const getProblem = async (isMore) => {
     let page = 1;
     if (isMore) {
       dispatch({ type: "loadMoreProblems", payload: (await state.pages) + 1 });
@@ -231,11 +231,11 @@ export const AdminProvider = ({ children }) => {
       params: {
         _sort: "createDate",
         _order: "desc",
-        _limit: limit,
+        _limit: 12,
         _page: page,
       },
     });
-    response.data.length < limit &&
+    response.data.length < 12 &&
       dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {
       dispatch({ type: "getMoreProblems", payload: await response.data });
@@ -260,7 +260,7 @@ export const AdminProvider = ({ children }) => {
     }
   };
 //complaints
-  const getComplaints = async (limit, isMore) => {
+  const getComplaints = async ( isMore) => {
     let page = 1;
     if (isMore) {
       dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
@@ -271,12 +271,12 @@ export const AdminProvider = ({ children }) => {
       params: {
         _sort: "createDate",
         _order: "desc",
-        _limit: limit,
+        _limit: 8,
         _page: page,
       },
     });
     console.log(response.data);
-    response.data.length < limit &&
+    response.data.length < 8 &&
       dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {
       dispatch({ type: "getMoreComplaints", payload: await response.data });

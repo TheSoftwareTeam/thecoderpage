@@ -24,7 +24,7 @@ const AdminPanel = () => {
     roleControl();
     getUsers();
     getCategory();
-    getProblem(8);
+    getProblem();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -127,9 +127,9 @@ const AdminPanel = () => {
               <MdContactMail />
               İletişim Formları
             </NavLink>
-            <NavLink className="navlink" activeClassName="active" to="/admina">
+            <NavLink className="navlink" activeClassName="active" to="/home/main">
               <IoSettings />
-              Site Ayarları
+              Siteyi Görüntüle
             </NavLink>
             <NavLink
               onClick={handleLogout}

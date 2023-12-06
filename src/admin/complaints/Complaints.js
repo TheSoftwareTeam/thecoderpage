@@ -8,7 +8,7 @@ const Complaints = () => {
     useContext(AdminContext);
     useEffect(() => {
         document.title = 'Complaints | Admin'
-        getComplaints(4,false);
+        getComplaints(false);
     }, []
     )
   return (
@@ -31,7 +31,7 @@ const Complaints = () => {
     {
         state.loadMoreButton&& (
           <button
-            onClick={ async() =>  getComplaints(2,true)}
+            onClick={ async() =>  getComplaints(true)}
             className="list-load-more"
           >
             Daha Fazla

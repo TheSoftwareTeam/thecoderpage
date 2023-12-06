@@ -1,14 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./complaint.scss";
 import UserContext from "../../context/UserContext";
 const Complaint = () => {
-  const { dispatch, state } = useContext(UserContext);
-useEffect(()=>{
-    dispatch({type:"complaintTextarea",payload:""})
-    state.isComplaintPage?
-    document.body.style.overflow = 'hidden'
-    :document.body.style.overflow = 'unset'
-    },[state.isComplaintPage])
+  const { dispatch } = useContext(UserContext);
+
   return (
     <div className="complaint-container">
       <form>

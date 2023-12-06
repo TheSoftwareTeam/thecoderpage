@@ -221,7 +221,7 @@ export const UserProvider = ({ children }) => {
 
 
   //problem
-  const getProblem = async (limit,isMore) => {
+  const getProblem = async (isMore) => {
     let page = 1;
     if (isMore) {
       dispatch({ type: "loadMorePages", payload:await state.pages + 1 });
@@ -233,11 +233,11 @@ export const UserProvider = ({ children }) => {
         categoryId: state.selectedCategory && state.selectedCategory,
         _sort: "createDate",
         _order: "desc",
-        _limit: limit,
+        _limit: 4,
         _page: page,
       },
     });
-    response.data.length < limit &&  dispatch({ type: "hideLoadMoreButton", payload: false });
+    response.data.length < 4 &&  dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {
       dispatch({ type: "getMoreProblems", payload: await response.data });
     } else {
@@ -246,42 +246,7 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  // const getMoreProblem = async () => {
-  //   if (state.selectedCategory) {
-  //     dispatch({ type: "loadMorePages", payload: state.pages + 1 });
-  //     const response = await axios.get(
-  //       `${url}/problems?categoryId=${state.selectedCategory}`,
-  //       {
-  //         params: {
-  //           _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
-  //           _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-  //           _limit: 3, // Her istekte kaç veri alınacağını belirtin
-  //           _page: state.pages, // Hangi sayfayı istediğinizi belirtin
-  //         },
-  //       }
-  //     );
-  //     if (response.data.length < 3) {
-  //       dispatch({ type: "hideLoadMoreButton", payload: false });
-  //     }
-
-  //     dispatch({ type: "getMoreProblems", payload: await response.data });
-  //   } else {
-  //     dispatch({ type: "loadMorePages", payload: state.pages + 1 });
-  //     const response = await axios.get(`${url}/problems`, {
-  //       params: {
-  //         _sort: "createDate", // Sıralama yapmak istediğiniz alanı belirtin
-  //         _order: "desc", // Sıralama yöntemini belirtin (desc: azalan, asc: artan)
-  //         _limit: 3, // Her istekte kaç veri alınacağını belirtin
-  //         _page: state.pages, // Hangi sayfayı istediğinizi belirtin
-  //       },
-  //     });
-  //     if (response.data.length < 3) {
-  //       dispatch({ type: "hideLoadMoreButton", payload: false });
-  //     }
-  //     dispatch({ type: "getMoreProblems", payload: await response.data });
-  //   }
-  // };
-
+ 
   const getPopularProblem = async () => {
     const response = await axios.get(`${url}/problems`, {
       params: {

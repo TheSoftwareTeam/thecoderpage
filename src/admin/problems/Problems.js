@@ -25,7 +25,7 @@ const Problems = () => {
       {
           state.loadMoreButton&& (
             <button
-              onClick={ async() =>  getProblem(4,true)}
+              onClick={ async() =>  getProblem(true)}
               className="list-load-more"
             >
               Daha Fazla

@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import image from "../../images/avatar.png";
 import "./scss/complaint.scss";
 const Complaint = ({complaint}) => {
-    const { state } =
+    const { state,dispatch } =
     useContext(UserContext);
   const navigate = useNavigate();
-
+  useEffect(()=>{
+    dispatch({type:"complaintTextarea",payload:""})
+    },[])
  
   return (
     <div
