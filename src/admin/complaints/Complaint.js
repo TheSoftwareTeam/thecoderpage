@@ -9,6 +9,7 @@ const Complaint = ({complaint}) => {
   const navigate = useNavigate();
   useEffect(()=>{
     dispatch({type:"complaintTextarea",payload:""})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
  
   return (

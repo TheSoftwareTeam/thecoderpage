@@ -55,7 +55,7 @@ export const AdminProvider = ({ children }) => {
   };
 
   const getUserDetail = async (userName) => {
-    const response = await axios.get(`${url}/users/`, {
+    const response = await axios.get(`${url}/users`, {
       params: {
         userName: userName,
       },
@@ -126,35 +126,45 @@ export const AdminProvider = ({ children }) => {
     const userId = state.userDetail.id;
     const response = await axios.get(`${url}/users/${userId}`);
     const user = await response.data;
-    const ubdateUser = {
-      ...user,
-      id: userId,
-      name: state.userName,
-      surName: state.userSurname,
-      userName: state.userUserName,
-      email: state.userEmail,
-      userRol: state.userRol,
-      userToken: "",
-    };
-    await axios.patch(`${url}/users/${userId}`, ubdateUser);
-    if (response.status === 200) {
-      alert("Kullanıcı bilgileri güncellendi");
-      dispatch({ type: "ubdateUser", payload: ubdateUser });
-      dispatch({ type: "userName", payload: "" });
-      dispatch({ type: "userSurname", payload: "" });
-      dispatch({ type: "userUserName", payload: "" });
-      dispatch({ type: "userEmail", payload: "" });
-      dispatch({ type: "userRol", payload: "" });
-      dispatch({ type: "userPicture", payload: "" });
-      navigate(`/admin/users`);
+    if (
+      state.userName !== user.name ||
+      state.userSurname !== user.surName ||
+      state.userUserName !== user.userName ||
+      state.userEmail !== user.email ||
+      state.userRol !== user.userRol
+    ) {
+      const ubdateUser = {
+        ...user,
+        id: userId,
+        name: state.userName,
+        surName: state.userSurname,
+        userName: state.userUserName,
+        email: state.userEmail,
+        userRol: state.userRol,
+        userToken: "",
+      };
+      await axios.patch(`${url}/users/${userId}`, ubdateUser);
+      if (response.status === 200) {
+        alert("Kullanıcı bilgileri güncellendi");
+        dispatch({ type: "ubdateUser", payload: ubdateUser });
+        dispatch({ type: "userName", payload: "" });
+        dispatch({ type: "userSurname", payload: "" });
+        dispatch({ type: "userUserName", payload: "" });
+        dispatch({ type: "userEmail", payload: "" });
+        dispatch({ type: "userRol", payload: "" });
+        dispatch({ type: "userPicture", payload: "" });
+        navigate(`/admin/users`);
+      }
+    } else {
+      alert("Değişiklik yapmadınız");
     }
   };
- 
+
   //comment
   //  const getComments = async (isMore) => {
   //   let page = 1;
   //   if (isMore) {
-  //     dispatch({ type: "loadMoreProblems", payload: (await state.pages) + 1 });
+  //     dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
   //     page = state.pages;
   //   }
   //   dispatch({ type: "hideLoadMoreButton", payload: true });
@@ -162,18 +172,28 @@ export const AdminProvider = ({ children }) => {
   //     params: {
   //       _sort: "createDate",
   //       _order: "desc",
-  //       _limit: 5,
+  //       _limit: 12,
   //       _page: page,
   //     },
   //   });
-  //  dispatch({ type: "getComments", payload: await response.data });
+  //   response.data.length < 12 &&
+  //     dispatch({ type: "hideLoadMoreButton", payload: false });
+  //   if (isMore) {
+  //     dispatch({ type: "getMoreComments", payload: await response.data });
+  //   } else {
+
+  //     dispatch({ type: "loadMorePages", payload: 2 });
+  //   }
+
   // };
 
-  const getCommentDetail = async (problemId,commentId) => {
-        const response = await axios.get(`${url}/problems/${problemId}`); 
-        const comment = await response.data.comments.filter((comment) => comment.id === Number(commentId));
-        console.log(comment[0]);
-        dispatch({ type: "getCommentDetail", payload: comment[0] });
+  const getCommentDetail = async (problemId, commentId) => {
+    const response = await axios.get(`${url}/problems/${problemId}`);
+    const comment = await response.data.comments.filter(
+      (comment) => comment.id === Number(commentId)
+    );
+    console.log(comment[0]);
+    dispatch({ type: "getCommentDetail", payload: comment[0] });
   };
   //category
   const getCategory = async () => {
@@ -223,7 +243,7 @@ export const AdminProvider = ({ children }) => {
   const getProblem = async (isMore) => {
     let page = 1;
     if (isMore) {
-      dispatch({ type: "loadMoreProblems", payload: (await state.pages) + 1 });
+      dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
       page = state.pages;
     }
     dispatch({ type: "hideLoadMoreButton", payload: true });
@@ -241,7 +261,7 @@ export const AdminProvider = ({ children }) => {
       dispatch({ type: "getMoreProblems", payload: await response.data });
     } else {
       dispatch({ type: "getProblems", payload: await response.data });
-      dispatch({ type: "loadMoreProblems", payload: 2 });
+      dispatch({ type: "loadMorePages", payload: 2 });
     }
   };
 
@@ -259,8 +279,8 @@ export const AdminProvider = ({ children }) => {
       navigate(`/admin/problems`);
     }
   };
-//complaints
-  const getComplaints = async ( isMore) => {
+  //complaints
+  const getComplaints = async (isMore) => {
     let page = 1;
     if (isMore) {
       dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
@@ -322,7 +342,7 @@ export const AdminProvider = ({ children }) => {
         toggleDropdown,
         deleteCategory,
         getProblem,
-        // getComments,
+        //getComments,
         getCommentDetail,
         getUsers,
         getCategory,

@@ -1,37 +1,37 @@
-
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import "./scss/problems.scss";
 import Problem from "./Problem";
 const Problems = () => {
-  const { state,getProblem } = useContext(AdminContext);
+  const { state, dispatch, getProblem } = useContext(AdminContext);
 
+  useEffect(() => {
+    dispatch({ type: "loadMorePages", payload: 1 }); // Sayfa numarasını sıfırlar
+    getProblem(false);
+    dispatch({ type: "hideLoadMoreButton", payload: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div id="container">
-
       <div id="problem-list">
-
-      {state.problems.sort((a, b) => {
+        {state.problems
+          .sort((a, b) => {
             const dateA = new Date(a.createDate);
             const dateB = new Date(b.createDate);
             return dateB - dateA;
-          }).map(
-        (problem) =>
-          !problem.isDeleted && (
-           <Problem problem={problem}/>
-          )
-      )}
+          })
+          .map(
+            (problem) => !problem.isDeleted && <Problem problem={problem} />
+          )}
       </div>
-      {
-          state.loadMoreButton&& (
-            <button
-              onClick={ async() =>  getProblem(true)}
-              className="list-load-more"
-            >
-              Daha Fazla
-            </button>
-          )
-          }
+      {state.loadMoreButton && (
+        <button
+          onClick={async () => getProblem(true)}
+          className="list-load-more"
+        >
+          Daha Fazla
+        </button>
+      )}
     </div>
   );
 };

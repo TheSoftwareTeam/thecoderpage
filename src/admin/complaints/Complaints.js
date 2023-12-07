@@ -9,6 +9,7 @@ const Complaints = () => {
     useEffect(() => {
         document.title = 'Complaints | Admin'
         getComplaints(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []
     )
   return (

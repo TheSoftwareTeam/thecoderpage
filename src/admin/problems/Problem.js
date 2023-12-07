@@ -40,7 +40,7 @@ const Problem = ({ problem }) => {
         >
           {state.users.find((user) => user.id === problem.userId)?.userName}
         </h5>
-          <span>{problem.isCompleted ? "✅ True" : "❌ False"}</span>
+          <span>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözülmedi"}</span>
       </div>
 
       <div className="problem-detail">

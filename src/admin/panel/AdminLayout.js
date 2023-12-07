@@ -5,7 +5,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./admin-layout.scss";
 import UserContext from "../../context/UserContext";
 import { FaHome, FaUsers, FaComments } from "react-icons/fa";
-import { MdReportProblem, MdContactMail } from "react-icons/md";
+import { MdReportProblem } from "react-icons/md";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { IoSettings, IoNewspaperSharp, IoLogOut } from "react-icons/io5";
 import image from "../../images/avatar.png";
@@ -47,7 +47,7 @@ const AdminPanel = () => {
             <img src={image} alt="res" />
           )}
 
-          {userState.activeUser &&userState.isDropdownOpen && (
+          {userState.activeUser && userState.isDropdownOpen && (
             <div className="dropdown-menu">
               <ul>
                 <h4>{userState.activeUser.userName}</h4>
@@ -55,7 +55,7 @@ const AdminPanel = () => {
                 <li
                   onClick={() => {
                     toggleDropdown();
-                    navigate(`/admin/userdetail/${userState.activeUser.id}`);
+                    navigate(`/admin/userdetail/${userState.activeUser.userName}`);
                   }}
                 >
                   Profilim
@@ -119,15 +119,12 @@ const AdminPanel = () => {
               <IoNewspaperSharp />
               Şikayetler
             </NavLink>
+
             <NavLink
               className="navlink"
               activeClassName="active"
-              to="/admin/complaints"
+              to="/home/main"
             >
-              <MdContactMail />
-              İletişim Formları
-            </NavLink>
-            <NavLink className="navlink" activeClassName="active" to="/home/main">
               <IoSettings />
               Siteyi Görüntüle
             </NavLink>

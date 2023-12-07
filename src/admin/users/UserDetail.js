@@ -18,7 +18,6 @@ const UserDetail = () => {
       <h2>Kullanıcı Bilgileri</h2>
       <div className="user-profile-content">
         <div className="user-profile-picture">
-         
           {state.userDetail.userPicture !== "" ? (
             <img
               src={"http://localhost:3001/" + state.userDetail.userPicture}
@@ -27,9 +26,6 @@ const UserDetail = () => {
           ) : (
             <img src={image} alt="User" />
           )}
-          
-
-         
         </div>
         <form onSubmit={editUser}>
           <input

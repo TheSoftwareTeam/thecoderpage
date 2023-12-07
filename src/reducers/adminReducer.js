@@ -17,7 +17,7 @@ export const initialState = {
   userDetail: {},
   //navi
   isDropdownOpen: false,
-  
+
   //category
   categories: [],
   categoryName: "",
@@ -27,7 +27,7 @@ export const initialState = {
     likesUserId: [],
     comments: [],
   },
-  pages:2,
+  pages: 2,
   loadMoreButton: true,
   //comment
   activeCommentDetail: {},
@@ -114,11 +114,12 @@ export const adminReducer = (state, action) => {
         isDropdownOpen: action.payload,
       };
     //comment
-    case "getComments":
-      return {
-        ...state,
-        comments: action.payload,
-      };
+
+    // case "getMoreComments":
+    // return {
+    //   ...state,
+    //   problems: [...state.problems, ...action.payload],
+    // };
     case "getCommentDetail":
       return {
         ...state,
@@ -131,11 +132,11 @@ export const adminReducer = (state, action) => {
         ...state,
         categories: action.payload,
       };
-      case "getCategoryDetail":
-        return {
-          ...state,
-          categoryDetail: action.payload,
-        };
+    case "getCategoryDetail":
+      return {
+        ...state,
+        categoryDetail: action.payload,
+      };
     case "selectedCategory":
       return {
         ...state,
@@ -173,7 +174,7 @@ export const adminReducer = (state, action) => {
       return {
         ...state,
         problems: [...state.problems, ...action.payload],
-      };  
+      };
     case "problemSil":
       return {
         ...state,
@@ -185,26 +186,26 @@ export const adminReducer = (state, action) => {
         activeProblemDetail: action.payload,
       };
     case "loadMorePages":
-        return {
-          ...state,
-          pages: action.payload,
-        };
+      return {
+        ...state,
+        pages: action.payload,
+      };
     case "hideLoadMoreButton":
-          return {
-            ...state,
-            loadMoreButton: action.payload,
-          };      
-  //complaint
-  case "getComplaints":
-    return {
-      ...state,
-      complaints: action.payload,
-    };
-  case "getMoreComplaints":
-    return {
-      ...state,
-      complaints: [...state.complaints, ...action.payload],
-    };
+      return {
+        ...state,
+        loadMoreButton: action.payload,
+      };
+    //complaint
+    case "getComplaints":
+      return {
+        ...state,
+        complaints: action.payload,
+      };
+    case "getMoreComplaints":
+      return {
+        ...state,
+        complaints: [...state.complaints, ...action.payload],
+      };
     default:
       return state;
   }
