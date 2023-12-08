@@ -103,6 +103,7 @@ export const UserProvider = ({ children }) => {
         verify: false,
         userToken: "",
         createDate: date(),
+        isActive:true
       };
       await axios.post(`${url}/users`, newUser);
       dispatch({ type: "createUser", payload: newUser });

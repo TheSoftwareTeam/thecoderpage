@@ -9,7 +9,7 @@ const UserDetail = () => {
   const { userName } = useParams();
   useEffect(() => {
     getUserDetail(userName);
-
+    console.log(state.userIsActive);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userName]);
 
@@ -73,6 +73,15 @@ const UserDetail = () => {
             <option value="">Rol Seçiniz</option>
             <option value="admin">Yönetici</option>
             <option value="user">Kullanıcı</option>
+          </select>
+
+          <select
+            onChange={(e) =>
+              dispatch({ type: "userIsActive", payload: e.target.value })}
+            value={state.userIsActive}
+          >
+            <option value={true}>Aktif</option>
+            <option value={false}>Pasif</option>
           </select>
           <input type="submit" value="Düzenle" />
         </form>

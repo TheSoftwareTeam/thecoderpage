@@ -6,7 +6,13 @@ import image from "../../images/avatar.png";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ProblemDetail = () => {
-  const { state, deleteProblem, getProblemDetail,formatRelativeTime } = useContext(AdminContext);
+  const {
+    state,
+    deleteProblem,
+    deleteComment,
+    getProblemDetail,
+    formatRelativeTime,
+  } = useContext(AdminContext);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -33,15 +39,18 @@ const ProblemDetail = () => {
                   ) : (
                     <img src={image} alt="Admin" />
                   )}
-                  <h3 
-                  onClick={() =>
-                    navigate(
-                      `/admin/userdetail/${user.userName}`
-                    )
-                  }>{user.userName}</h3>
+                  <h3
+                    onClick={() =>
+                      navigate(`/admin/userdetail/${user.userName}`)
+                    }
+                  >
+                    {user.userName}
+                  </h3>
                 </>
               ))}
-             <span>{formatRelativeTime(state.activeProblemDetail.createDate)}</span>
+            <span>
+              {formatRelativeTime(state.activeProblemDetail.createDate)}
+            </span>
           </div>
           <div className="adetail-problem-detail">
             <div className="adetail-problem-head-text">
@@ -53,42 +62,69 @@ const ProblemDetail = () => {
             <div className="adetail-problem-comment-view">
               <button>💙{state.activeProblemDetail.likesUserId.length}</button>
 
-              <button>✉️{state.activeProblemDetail.comments.length}</button>
+              <button>✉️{state.activeProblemDetail.commentCount}</button>
             </div>
             {state.activeProblemDetail.comments
               .slice()
               .reverse()
-              .map((comment) => (
-                <div key={comment.id} className="adetail-user-comment">
-                  <div className="adetail-comment-user-picture">
-                    {state.users
-                      .filter((user) => user.id === comment.userId)
-                      .map((user) => (
-                        <>
-                          {user.userPicture ? (
-                            <img
-                              src={"http://localhost:3001/" + user.userPicture}
-                              alt="Admin"
-                            />
-                          ) : (
-                            <img src={image} alt="Admin" />
-                          )}
-                          <h3 
-                  onClick={() =>
-                    navigate(
-                      `/admin/userdetail/${user.userName}`
-                    )
-                  }>{user.userName}</h3>
-                        </>
-                      ))}
-                    
-                    <span>{formatRelativeTime(comment.createDate)}
-                    <button onClick={""}>Sil</button></span>
-                  </div>
+              .map(
+                (comment) =>
+                  !comment.isDeleted && (
+                    <div key={comment.id} className="adetail-user-comment">
+                      <div className="adetail-comment-user-picture">
+                        {state.users
+                          .filter((user) => user.id === comment.userId)
+                          .map((user) => (
+                            <>
+                              {user.userPicture ? (
+                                <img
+                                  src={
+                                    "http://localhost:3001/" + user.userPicture
+                                  }
+                                  alt="Admin"
+                                />
+                              ) : (
+                                <img src={image} alt="Admin" />
+                              )}
+                              <h3
+                                onClick={() =>
+                                  navigate(`/admin/userdetail/${user.userName}`)
+                                }
+                              >
+                                {user.userName}
+                              </h3>
+                            </>
+                          ))}
 
-                  <p  onClick={() => navigate(`/admin/commentdetail/${state.activeProblemDetail.id +"/"+ comment.id}`)} >{comment.commentContent}</p>
-                </div>
-              ))}
+                        <span>
+                          {formatRelativeTime(comment.createDate)}
+                          <button
+                            onClick={() => {
+                              deleteComment(
+                                state.activeProblemDetail.id,
+                                comment.id
+                              );
+                            }}
+                          >
+                            Sil
+                          </button>
+                        </span>
+                      </div>
+
+                      <p
+                        onClick={() =>
+                          navigate(
+                            `/admin/commentdetail/${
+                              state.activeProblemDetail.id + "/" + comment.id
+                            }`
+                          )
+                        }
+                      >
+                        {comment.commentContent}
+                      </p>
+                    </div>
+                  )
+              )}
           </div>
         </div>
         <div className="action">

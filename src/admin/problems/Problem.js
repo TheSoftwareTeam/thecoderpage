@@ -54,7 +54,7 @@ const Problem = ({ problem }) => {
             
             {"💙"+problem.likesUserId.length}
           </button>
-          <button>✉️{problem.comments.length}</button>
+          <button>✉️{problem.commentCount}</button>
         </div>
       </div>
     </div>

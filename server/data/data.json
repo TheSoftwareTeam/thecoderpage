@@ -12,7 +12,8 @@
       "createDate": "2023-11-15T19:00:37.148Z",
       "userToken": "",
       "userRol": "admin",
-      "verify": true
+      "verify": true,
+      "isActive": true
     },
     {
       "id": 2,
@@ -23,10 +24,11 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 3,
-      "userToken": "Mahir0.1628965498295618",
+      "userToken": "Mahir0.7125888815539425",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "verify": true
+      "verify": true,
+      "isActive": true
     },
     {
       "id": 3,
@@ -40,7 +42,8 @@
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-03-04T10:00:00.000Z",
-      "verify": true
+      "verify": true,
+      "isActive": true
     },
     {
       "id": 4,
@@ -54,7 +57,8 @@
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-03-04T10:30:00.000Z",
-      "verify": true
+      "verify": true,
+      "isActive": true
     },
     {
       "id": 5,
@@ -68,7 +72,8 @@
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-03-04T11:00:00.000Z",
-      "verify": true
+      "verify": true,
+      "isActive": true
     },
     {
       "id": 6,
@@ -82,7 +87,8 @@
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-11-04T11:30:00.000Z",
-      "verify": true
+      "verify": true,
+      "isActive": true
     },
     {
       "id": 7,
@@ -96,7 +102,8 @@
       "userToken": "",
       "userRol": "user",
       "createDate": "2023-11-04T12:00:00.000Z",
-      "verify": true
+      "verify": true,
+      "isActive": true
     }
   ],
   "problems": [
@@ -471,7 +478,7 @@
           "createDate": "2023-06-13T13:00:37.148Z"
         },
         {
-          "id": 1,
+          "id": 11,
           "userId": 4,
           "commentContent": "Kodu paylaşabilir misiniz?",
           "createDate": "2023-11-13T19:00:37.148Z"
@@ -723,6 +730,27 @@
       "createDate": "2023-03-10T13:45:00.000Z",
       "isCompleted": false,
       "isDeleted": false
+    },
+    {
+      "userId": 2,
+      "categoryId": 6,
+      "problemHead": "Java nerelerde kullanılır",
+      "problemContent": "Unity olabilir.",
+      "commentCount": 0,
+      "likesUserId": [],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 2,
+          "commentContent": "Unity doğru.",
+          "createDate": "2023-12-08T12:13:19.717Z",
+          "isDeleted": true
+        }
+      ],
+      "isCompleted": false,
+      "isDeleted": false,
+      "createDate": "2023-12-08T12:12:58.404Z",
+      "id": 24
     }
   ],
   "categories": [
@@ -759,7 +787,7 @@
     {
       "id": 6,
       "categoryName": "JAVA",
-      "problemCount": 3,
+      "problemCount": 4,
       "isDeleted": false
     },
     {

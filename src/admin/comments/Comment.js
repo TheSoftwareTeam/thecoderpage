@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import image from "../../images/avatar.png";
 import "./scss/comment.scss";
 const Comment = ({ comment, problem }) => {
-  const { state,  formatRelativeTime } = useContext(AdminContext);
+  const { state, deleteComment, getProblem, formatRelativeTime } =
+    useContext(AdminContext);
   const navigate = useNavigate();
 
   return (
@@ -45,7 +46,13 @@ const Comment = ({ comment, problem }) => {
           Problem
         </button>
 
-        <button onClick={""}>Sil</button>
+        <button
+          onClick={() => {
+            deleteComment(problem.id, comment.id);
+          }}
+        >
+          Sil
+        </button>
       </div>
     </div>
   );

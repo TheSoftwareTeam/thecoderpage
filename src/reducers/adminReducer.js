@@ -12,6 +12,7 @@ export const initialState = {
   userEmail: "",
   userRol: "",
   userPicture: "",
+  userIsActive:true,
   //user
   users: [],
   userDetail: {},
@@ -84,6 +85,11 @@ export const adminReducer = (state, action) => {
         ...state,
         userPicture: action.payload,
       };
+      case "userIsActive":
+      return {
+        ...state,
+        userIsActive: action.payload,
+      };
     //user
     case "createUser":
       return {
@@ -115,11 +121,7 @@ export const adminReducer = (state, action) => {
       };
     //comment
 
-    // case "getMoreComments":
-    // return {
-    //   ...state,
-    //   problems: [...state.problems, ...action.payload],
-    // };
+    
     case "getCommentDetail":
       return {
         ...state,

@@ -98,6 +98,7 @@ export const AdminProvider = ({ children }) => {
         userRol: "user",
         createDate: date(),
         userToken: "",
+        isActive:true
       };
       await axios.post(`${url}/users`, newUser);
       dispatch({ type: "createUser", payload: newUser });
@@ -131,7 +132,9 @@ export const AdminProvider = ({ children }) => {
       state.userSurname !== user.surName ||
       state.userUserName !== user.userName ||
       state.userEmail !== user.email ||
-      state.userRol !== user.userRol
+      state.userRol !== user.userRol||
+      state.userIsActive !== user.isActive
+
     ) {
       const ubdateUser = {
         ...user,
@@ -142,6 +145,7 @@ export const AdminProvider = ({ children }) => {
         email: state.userEmail,
         userRol: state.userRol,
         userToken: "",
+        isActive:state.userIsActive
       };
       await axios.patch(`${url}/users/${userId}`, ubdateUser);
       if (response.status === 200) {
@@ -153,6 +157,7 @@ export const AdminProvider = ({ children }) => {
         dispatch({ type: "userEmail", payload: "" });
         dispatch({ type: "userRol", payload: "" });
         dispatch({ type: "userPicture", payload: "" });
+        dispatch({ type: "userIsActive", payload: true });
         navigate(`/admin/users`);
       }
     } else {
@@ -186,13 +191,39 @@ export const AdminProvider = ({ children }) => {
   //   }
 
   // };
+  const deleteComment = async (problemId, commentId) => {
+    const response = await axios.get(`${url}/problems/${problemId}`);
+    const problem = response.data;
 
+    const updatedComments = problem.comments.map((comment) => {
+      if (comment.id === Number(commentId)) {
+        return {
+          ...comment,
+          isDeleted: true,
+        };
+      }
+
+      return comment;
+    });
+
+    // Yeni yorum listesini kullanarak problemi güncelle
+    const updatedProblem = {
+      ...problem,
+      comments: updatedComments,
+      commentCount: problem.commentCount - 1,
+    };
+
+    // Güncellenmiş problemi API'ye gönder
+    await axios.put(`${url}/problems/${problemId}`, updatedProblem);
+    dispatch({ type: "activeProblemDetail", payload: updatedProblem });
+    getProblem(false);
+  };
   const getCommentDetail = async (problemId, commentId) => {
     const response = await axios.get(`${url}/problems/${problemId}`);
     const comment = await response.data.comments.filter(
       (comment) => comment.id === Number(commentId)
     );
-    console.log(comment[0]);
+
     dispatch({ type: "getCommentDetail", payload: comment[0] });
   };
   //category
@@ -295,7 +326,7 @@ export const AdminProvider = ({ children }) => {
         _page: page,
       },
     });
-    console.log(response.data);
+
     response.data.length < 8 &&
       dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {
@@ -344,6 +375,7 @@ export const AdminProvider = ({ children }) => {
         getProblem,
         //getComments,
         getCommentDetail,
+        deleteComment,
         getUsers,
         getCategory,
         formatRelativeTime,

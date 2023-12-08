@@ -56,7 +56,8 @@ const CommentDetail = () => {
         <div className="action">
           <button
             onClick={() => {
-              deleteComment(state.activeCommentDetail.id);
+              deleteComment(problemId,commentId);
+              window.history.back();
             }}
           >
             Yorumu Sil

@@ -6,9 +6,9 @@ const Problems = () => {
   const { state, dispatch, getProblem } = useContext(AdminContext);
 
   useEffect(() => {
-    dispatch({ type: "loadMorePages", payload: 1 }); // Sayfa numarasını sıfırlar
+   
     getProblem(false);
-    dispatch({ type: "hideLoadMoreButton", payload: true });
+   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
