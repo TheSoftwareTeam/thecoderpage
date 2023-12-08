@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: aliceblue;
+    
     h3 {
       margin-left: 15px;
       font-family: monospace;
@@ -20,8 +21,9 @@
       width: 40px;
       height: 40px;
       margin: 15px 10px 10px 0px;
+      box-shadow: 2px 4px 6px #33333379;
     }
-    button {
+    .naviLoginButton {
       margin-right: 15px;
       width: auto;
       padding: 5px 15px;
@@ -85,6 +87,7 @@
     .darkMode {
       width: auto;
       height: 3vh;
+      width: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -92,6 +95,8 @@
       position: absolute;
       right: 150px;
       background-color: #666;
+      box-shadow: 2px 4px 6px #33333379;
+      border-radius: 8px;
       &:hover {
         background-color: #555;
         transition: 0.3s;
@@ -105,6 +110,7 @@
     .lightMode {
       width: auto;
       height: 3vh;
+      width: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -112,7 +118,8 @@
       position: absolute;
       right: 150px;
       background-color: #ffffff;
-   
+      box-shadow: 2px 4px 6px #33333379;
+      border-radius: 8px;
       &:hover {
         background-color: #ffffff;
         transition: 0.3s;

@@ -21,7 +21,10 @@ const Profile = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.activeUser]);
-
+  const handleMenuClick = (tab) => {
+    dispatch({ type: 'activeTab', payload: tab });
+    navigate(`/home/profile/${state.profileDetail.userName}/${tab}`);
+  };
   return (
     <div className="profile-container">
       <div className="background-image">
@@ -44,17 +47,18 @@ const Profile = () => {
        
        
         <ul>
-          <li onClick={() => navigate(`/home/profile/${state.profileDetail.userName}/detail`)}>Hakkında</li>
+          <li onClick={() => handleMenuClick('detail')}
+            className={state.activeTab === 'detail' ? 'active' : ''}>Hakkında</li>
 
           <li
-            onClick={() =>
-              navigate(`/home/profile/${state.profileDetail.userName}/problems`)
-            }
+           onClick={() => handleMenuClick('problems')}
+           className={state.activeTab === 'problems' ? 'active' : ''}
           >
             Problemler
           </li>
           {state.activeUser && state.activeUser.userName===state.profileDetail.userName && (
-            <li  disabled={state.activeUser.userName} onClick={() => navigate(`/home/profile/${state.activeUser.userName}/edit`)}>
+            <li  disabled={state.activeUser.userName} onClick={() => handleMenuClick('edit')}
+            className={state.activeTab === 'edit' ? 'active' : ''}>
               Profili düzenle
             </li>
           )}

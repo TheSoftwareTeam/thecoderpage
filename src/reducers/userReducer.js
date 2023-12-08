@@ -103,6 +103,11 @@ const userReducer = (state, action) => {
         ...state,
         profileDetail: action.payload,
       };
+      case 'activeTab':
+      return {
+        ...state,
+        activeTab: action.payload,
+      };
     //user
     case "createUser":
       const userIndex = state.users.findIndex(

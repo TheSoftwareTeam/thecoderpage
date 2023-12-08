@@ -63,11 +63,7 @@
       // box-shadow: 35px 1px 40px 10px rgba(0, 0, 0, 0.75);
       align-items: center;
       border-radius: 15px;
-      &:hover {
-        cursor: pointer;
-        box-shadow: 35px 1px 40px 10px rgba(113, 111, 111, 0.75);
-
-      }
+      
       
       li {
         width: 33%;
@@ -81,14 +77,21 @@
         font-weight: 700;
         color: black;
         text-align: center;
-       
+        transition: box-shadow 0.3s ease, border-radius 0.3s ease;
+    
         a {
           text-decoration: none;
           color: black;
         }
+    
         &:hover {
           cursor: pointer;
           box-shadow: 1px 1px 10px 1px rgba(151, 148, 148, 0.75);
+          border-radius: 10px;
+        }
+    
+        &.active {
+          box-shadow: 1px 1px 10px 1px black;
           border-radius: 10px;
         }
       }
@@ -100,6 +103,6 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    padding: 5%;
+    padding: 3%;
   }
 }

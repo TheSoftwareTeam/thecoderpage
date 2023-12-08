@@ -5,6 +5,9 @@ import UserContext from "../../context/UserContext";
 import "./nav.scss";
 import image from "../../images/avatar.png";
 import { ThemeContext } from "../../context/ThemeContext";
+import { IoSunnyOutline } from "react-icons/io5";
+import { FaMoon } from "react-icons/fa";
+
 import Login from "../login/Login";
 import SignUp from "../signup/SignUp";
 const Navi = () => {
@@ -30,9 +33,10 @@ const Navi = () => {
           </h3>
           <button
             className={darkMode ? "lightMode" : "darkMode"}
+            style={{ marginRight: state.activeUser ? '-60px' : '0' }}
             onClick={() => setDarkMode(!darkMode)}
           >
-            {darkMode ? "🔆" : "🌙"}
+            {darkMode ? <IoSunnyOutline size={18} color="black"/> : <FaMoon size={16} color="yellow"/>}
           </button>
 
           {localStorage.getItem("userToken") !== null ? (
@@ -92,10 +96,10 @@ const Navi = () => {
               )}
             </div>
           ) : (
-            <button onClick={()=>dispatch({type:"isLoginPage"})}>
-              {/* <NavLink className="navi-link" to="login"> */}
+            <button className="naviLoginButton" onClick={()=>dispatch({type:"isLoginPage"})}>
+         
                 Giriş Yap
-              {/* </NavLink> */}
+        
             </button>
           )}
           

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import "./login.scss";
 import UserContext from "../../context/UserContext";
+import { FaRegWindowClose } from "react-icons/fa";
+
 const Login = () => {
   const { dispatch, login } = useContext(UserContext);
 
@@ -11,7 +13,7 @@ const Login = () => {
           className="exit"
           onClick={() => dispatch({ type: "isLoginPage" })}
         >
-          x
+          <FaRegWindowClose size={25}/>
         </button>
         <h2>Giriş Yap</h2>
         <input
@@ -32,6 +34,7 @@ const Login = () => {
         />
         <input type="submit" value="Giriş yap" />
         <button
+          className="signUpButton"
           onClick={() => {
             dispatch({ type: "isLoginPage" });
             dispatch({ type: "isSignUpPage" });
