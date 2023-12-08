@@ -70,6 +70,10 @@ export const AdminProvider = ({ children }) => {
     });
     dispatch({ type: "userEmail", payload: await response.data[0].email });
     dispatch({ type: "userRol", payload: await response.data[0].userRol });
+    dispatch({
+      type: "userIsActive",
+      payload: String(response.data[0].isActive) ,
+    });
   };
 
   const createUser = async (e) => {
@@ -157,7 +161,7 @@ export const AdminProvider = ({ children }) => {
         dispatch({ type: "userEmail", payload: "" });
         dispatch({ type: "userRol", payload: "" });
         dispatch({ type: "userPicture", payload: "" });
-        dispatch({ type: "userIsActive", payload: true });
+        dispatch({ type: "userIsActive", payload: "" });
         navigate(`/admin/users`);
       }
     } else {

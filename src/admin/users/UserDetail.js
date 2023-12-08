@@ -8,12 +8,10 @@ const UserDetail = () => {
 
   const { userName } = useParams();
   useEffect(() => {
-    
     getUserDetail(userName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userName]);
-const aktif=true;
-const pasif=false;
+
 
   return (
     <div className="user-profile-container">
@@ -82,8 +80,8 @@ const pasif=false;
               dispatch({ type: "userIsActive", payload: e.target.value })}
             value={state.userIsActive}
           >
-            <option value={aktif}>Aktif</option>
-            <option value={pasif}>Pasif</option>
+            <option value="true">Aktif</option>
+            <option value="false">Pasif</option>
           </select>
           
           <input type="submit" value="Düzenle" />

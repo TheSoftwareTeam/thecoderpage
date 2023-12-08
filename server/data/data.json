@@ -10,7 +10,7 @@
       "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
       "createDate": "2023-11-15T19:00:37.148Z",
-      "userToken": "Murat0.35244950955689447",
+      "userToken": "",
       "userRol": "admin",
       "verify": true,
       "isActive": true
@@ -88,7 +88,7 @@
       "userRol": "user",
       "createDate": "2023-11-04T11:30:00.000Z",
       "verify": true,
-      "isActive": true
+      "isActive": "false"
     },
     {
       "id": 7,

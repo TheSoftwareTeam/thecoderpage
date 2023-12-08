@@ -12,7 +12,7 @@ export const initialState = {
   userEmail: "",
   userRol: "",
   userPicture: "",
-  userIsActive:true,
+  userIsActive:"",
   //user
   users: [],
   userDetail: {},
@@ -86,9 +86,10 @@ export const adminReducer = (state, action) => {
         userPicture: action.payload,
       };
       case "userIsActive":
+       const aktif=action.payload==="true" ? true : false
       return {
         ...state,
-        userIsActive: action.payload,
+        userIsActive: aktif,
       };
     //user
     case "createUser":
