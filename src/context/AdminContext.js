@@ -191,6 +191,7 @@ export const AdminProvider = ({ children }) => {
   //   }
 
   // };
+ 
   const deleteComment = async (problemId, commentId) => {
     const response = await axios.get(`${url}/problems/${problemId}`);
     const problem = response.data;
@@ -218,6 +219,7 @@ export const AdminProvider = ({ children }) => {
     dispatch({ type: "activeProblemDetail", payload: updatedProblem });
     getProblem(false);
   };
+
   const getCommentDetail = async (problemId, commentId) => {
     const response = await axios.get(`${url}/problems/${problemId}`);
     const comment = await response.data.comments.filter(
