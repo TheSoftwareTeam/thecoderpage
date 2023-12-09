@@ -34,6 +34,8 @@ export const initialState = {
   activeCommentDetail: {},
   //complaint
   complaints: [],
+  complaintDetail:{},
+  complaintStatus:"",
 };
 
 export const adminReducer = (state, action) => {
@@ -208,6 +210,16 @@ export const adminReducer = (state, action) => {
       return {
         ...state,
         complaints: [...state.complaints, ...action.payload],
+      };
+     case "getComplaintDetail":
+      return {
+        ...state,
+        complaintDetail: action.payload,
+      };
+    case "complaintStatus":
+      return {
+        ...state,
+        complaintStatus: action.payload,
       };
     default:
       return state;

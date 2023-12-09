@@ -4,6 +4,7 @@ import { adminReducer, initialState } from "../reducers/adminReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
@@ -12,18 +13,7 @@ export const AdminProvider = ({ children }) => {
   let url = "http://localhost:3005";
 
   const date = () => {
-    const formatTwoDigits = (value) => {
-      return value < 10 ? `0${value}` : value;
-    };
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getDate()}.${
-      currentDate.getMonth() + 1
-    }.${currentDate.getFullYear()} ${formatTwoDigits(
-      currentDate.getHours()
-    )}:${formatTwoDigits(currentDate.getMinutes())}:${formatTwoDigits(
-      currentDate.getSeconds()
-    )}`;
-    return formattedDate;
+    return new Date().toISOString();
   };
   function formatRelativeTime(timestamp) {
     const now = new Date();
@@ -72,7 +62,7 @@ export const AdminProvider = ({ children }) => {
     dispatch({ type: "userRol", payload: await response.data[0].userRol });
     dispatch({
       type: "userIsActive",
-      payload: String(response.data[0].isActive) ,
+      payload: String(response.data[0].isActive),
     });
   };
 
@@ -102,7 +92,7 @@ export const AdminProvider = ({ children }) => {
         userRol: "user",
         createDate: date(),
         userToken: "",
-        isActive:true
+        isActive: true,
       };
       await axios.post(`${url}/users`, newUser);
       dispatch({ type: "createUser", payload: newUser });
@@ -136,9 +126,8 @@ export const AdminProvider = ({ children }) => {
       state.userSurname !== user.surName ||
       state.userUserName !== user.userName ||
       state.userEmail !== user.email ||
-      state.userRol !== user.userRol||
+      state.userRol !== user.userRol ||
       state.userIsActive !== user.isActive
-
     ) {
       const ubdateUser = {
         ...user,
@@ -149,11 +138,13 @@ export const AdminProvider = ({ children }) => {
         email: state.userEmail,
         userRol: state.userRol,
         userToken: "",
-        isActive:state.userIsActive
+        isActive: state.userIsActive,
       };
       await axios.patch(`${url}/users/${userId}`, ubdateUser);
       if (response.status === 200) {
-        alert("Kullanıcı bilgileri güncellendi");
+     
+          pasifUserToPasifProblem(ubdateUser.id,state.userIsActive?false:true);
+        
         dispatch({ type: "ubdateUser", payload: ubdateUser });
         dispatch({ type: "userName", payload: "" });
         dispatch({ type: "userSurname", payload: "" });
@@ -162,6 +153,7 @@ export const AdminProvider = ({ children }) => {
         dispatch({ type: "userRol", payload: "" });
         dispatch({ type: "userPicture", payload: "" });
         dispatch({ type: "userIsActive", payload: "" });
+        alert("Kullanıcı bilgileri güncellendi");
         navigate(`/admin/users`);
       }
     } else {
@@ -195,7 +187,7 @@ export const AdminProvider = ({ children }) => {
   //   }
 
   // };
- 
+
   const deleteComment = async (problemId, commentId) => {
     const response = await axios.get(`${url}/problems/${problemId}`);
     const problem = response.data;
@@ -302,6 +294,16 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
+  const pasifUserToPasifProblem = async (id,action) => {
+    const response = await axios.get(`${url}/problems/?userId=${id}`);
+    const problems = await response.data;
+    problems.map(async (problem) => {
+      await axios.patch(`${url}/problems/${problem.id}`, {
+        isDeleted: action,
+      });
+    });
+  };
+
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
@@ -342,6 +344,22 @@ export const AdminProvider = ({ children }) => {
       dispatch({ type: "loadMorePages", payload: 2 });
     }
   };
+  const getComplaintDetail = async (id) => {
+    const response = await axios.get(`${url}/complaints/${Number(id)}`);
+    dispatch({ type: "getComplaintDetail", payload: await response.data });
+    dispatch({ type: "complaintStatus", payload: await response.data.status });
+  }
+  const ubdateComplaint = async (newubdateComplaint) => {
+   const response=  await axios.patch(`${url}/complaints/${newubdateComplaint.id}`, {
+      status:state.complaintStatus,
+    });
+    if (response.status === 200) {
+    dispatch({ type: "ubdateComplaint", payload: "" });
+      alert("Şikayet durumu güncellendi");
+      navigate(`/admin/complaints`);
+    }
+    
+  }
   //other
   const roleControl = async () => {
     const userId = localStorage.getItem("userId");
@@ -379,13 +397,14 @@ export const AdminProvider = ({ children }) => {
         toggleDropdown,
         deleteCategory,
         getProblem,
-        //getComments,
         getCommentDetail,
         deleteComment,
         getUsers,
         getCategory,
         formatRelativeTime,
+        getComplaintDetail,
         getComplaints,
+        ubdateComplaint
       }}
     >
       {children}

@@ -20,7 +20,9 @@ const initialState = {
   isDropdownOpen: false,
   isLoginPage: false,
   isSignUpPage: false,
+  //complaint
   isComplaintPage: false,
+  complaintTextarea: "",
   //comment
   comments: [],
   newProblemComment: "",
@@ -50,6 +52,12 @@ const userReducer = (state, action) => {
         ...state,
         isComplaintPage: state.isComplaintPage ? false : true,
       };
+    case "complaintTextarea":
+      return {
+        ...state,
+        complaintTextarea: action.payload,
+      };
+
     //login
     case "login":
       return {
@@ -103,7 +111,7 @@ const userReducer = (state, action) => {
         ...state,
         profileDetail: action.payload,
       };
-      case 'activeTab':
+    case "activeTab":
       return {
         ...state,
         activeTab: action.payload,
@@ -298,8 +306,7 @@ const userReducer = (state, action) => {
         ...state,
         problemHead: action.payload,
       };
-    
-      
+
     default:
       return state;
   }

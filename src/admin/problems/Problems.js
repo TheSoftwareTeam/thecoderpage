@@ -3,7 +3,7 @@ import AdminContext from "../../context/AdminContext";
 import "./scss/problems.scss";
 import Problem from "./Problem";
 const Problems = () => {
-  const { state, dispatch, getProblem } = useContext(AdminContext);
+  const { state, getProblem } = useContext(AdminContext);
 
   useEffect(() => {
    

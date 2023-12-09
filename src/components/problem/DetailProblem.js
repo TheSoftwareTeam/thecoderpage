@@ -11,7 +11,6 @@ import Problem from "./Problem";
 const DetailProblem = () => {
   const {
     state,
-
     getProblemDetail,
   } = useContext(UserContext);
 
@@ -26,6 +25,7 @@ const DetailProblem = () => {
   return (
     <div id="detail-container">
       <div id="detail-content">
+      
         <div className="detail-aciklama">
           <div className="detail-text">
             Kod yazarken karşılaştığınız sorunları paylaşın, çözümleri birlikte

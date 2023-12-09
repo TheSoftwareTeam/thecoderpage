@@ -28,6 +28,7 @@ import { useContext } from "react";
 import EditProfile from "./components/profile/EditProfile";
 import ProfileDetail from "./components/profile/ProfileDetail";
 import Complaints from "./admin/complaints/Complaints";
+import DetailComplaint from "./admin/complaints/DetailComplaint";
 
 function Layout() {
   const { darkMode } = useContext(ThemeContext);
@@ -82,6 +83,7 @@ function Layout() {
               <Route path="categorydetail/:id" element={<CategoryDetail />} />
               <Route path="commentdetail/:problemId/:commentId" element={<CommentDetail />} />
               <Route path="problemdetail/:id" element={<ProblemDetail />} />
+              <Route path="complaintdetail/:id" element={<DetailComplaint />} />
             </Route>
           </Routes>
           <Footer />

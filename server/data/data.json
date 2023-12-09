@@ -10,7 +10,7 @@
       "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
       "createDate": "2023-11-15T19:00:37.148Z",
-      "userToken": "",
+      "userToken": "Murat0.7377704346113804",
       "userRol": "admin",
       "verify": true,
       "isActive": true
@@ -91,7 +91,7 @@
       "isActive": "false"
     },
     {
-      "id": 7,
+      "id": 8,
       "name": "Can",
       "surName": "Yılmaz",
       "userName": "can",
@@ -109,7 +109,7 @@
   "problems": [
     {
       "id": 1,
-      "userId": 3,
+      "userId": 8,
       "categoryId": 4,
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?",
@@ -135,7 +135,7 @@
     },
     {
       "id": 2,
-      "userId": 4,
+      "userId": 8,
       "categoryId": 4,
       "problemHead": "React uygulamamda hata alıyorum",
       "problemContent": "Merhaba, React uygulamamda bir hata alıyorum. Console'da 'TypeError: undefined is not a function' hatası alıyorum. Bu hatayı nasıl çözebilirim?",
@@ -736,7 +736,7 @@
       "categoryId": 6,
       "problemHead": "Java nerelerde kullanılır",
       "problemContent": "Unity olabilir.",
-      "commentCount": 0,
+      "commentCount": -1,
       "likesUserId": [],
       "comments": [
         {
@@ -744,7 +744,7 @@
           "userId": 2,
           "commentContent": "Unity doğru.",
           "createDate": "2023-12-08T12:13:19.717Z",
-          "isDeleted": true
+          "isDeleted": false
         }
       ],
       "isCompleted": false,
@@ -804,8 +804,7 @@
       "problemId": 8,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
+      "status": "submitted"
     },
     {
       "id": 2,
@@ -813,8 +812,7 @@
       "problemId": 20,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
+      "status": "resolved"
     },
     {
       "id": 3,
@@ -822,8 +820,7 @@
       "problemId": 13,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
+      "status": "submitted"
     },
     {
       "id": 4,
@@ -831,8 +828,7 @@
       "problemId": 11,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
+      "status": "submitted"
     },
     {
       "id": 5,
@@ -840,8 +836,7 @@
       "problemId": 1,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
+      "status": "inProgress"
     },
     {
       "id": 6,
@@ -849,8 +844,7 @@
       "problemId": 7,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
+      "status": "resolved"
     },
     {
       "id": 7,
@@ -858,8 +852,31 @@
       "problemId": 12,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
-      "isCompleted": false,
-      "isDeleted": false
+      "status": "inProgress"
+    },
+    {
+      "userId": 1,
+      "complaintContent": "Php diline karşı uygunsuz kelimeler kullanılmış.",
+      "status": "resolved",
+      "createDate": "2023-12-08T22:20:19.315Z",
+      "problemId": 12,
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "complaintContent": "Python bir yılan imiş gibi konuşmuş.",
+      "status": "submitted",
+      "createDate": "2023-12-08T22:39:28.980Z",
+      "problemId": 12,
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "problemId": 3,
+      "complaintContent": "asdfghjk",
+      "status": "inProgress",
+      "createDate": "2023-12-09T20:18:21.359Z",
+      "id": 10
     }
   ]
 }

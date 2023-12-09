@@ -31,8 +31,11 @@ useEffect(()=>{
   },[state.isComplaintPage])
   return (
     <div key={problem.id} className="problem">
-      {state.isComplaintPage && <Complaint/>}
-       <a onClick={()=>dispatch({type:"isComplaintPage"})}>Şikayet et</a>
+      {state.isComplaintPage && <Complaint problemId={problem.id}/>}
+
+      {id&&problem.userId!==state.activeUser.id&&
+      <a onClick={()=>dispatch({type:"isComplaintPage"})}>Şikayet et</a>}
+
       <div className="user-picture">
         {state.users.find((user) => user.id === problem.userId)?.userPicture ? (
           <img

@@ -44,8 +44,9 @@ const Complaint = ({complaint}) => {
     <div className="complaint-detail">
       <div  onClick={() => navigate(`/admin/complaintdetail/${complaint.id}`)} className="complaint-head-text">
         
-        <h6>{complaint.complaintContent.slice(0, 150)}</h6>
+        <h6 onClick={() => navigate(`/complaintdetail/${complaint.id}`)}>{complaint.complaintContent.slice(0, 150)}</h6>
       </div>
+      <h4 className={complaint.status}>{complaint.status}</h4>
 
      
     </div>

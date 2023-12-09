@@ -382,7 +382,19 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "ubdateActiveUserProblem", payload: problem });
     
   };
-
+const sendComplaint = async (problemId) => {
+    const newComplaint = {
+      userId: state.activeUser.id,
+      problemId: problemId,
+      complaintContent: state.complaintTextarea,
+      status: "submitted",
+      createDate: date(),
+    };
+    dispatch({ type: "complaintTextarea", payload: "" });
+    dispatch({ type: "isComplaintPage" });
+    await axios.post(`${url}/complaints`, newComplaint);
+    alert("Şikayetiniz gönderildi. En kısa sürede incelenecektir.");
+  }
   //other
   const userCache = async () => {
     const userId = localStorage.getItem("userId");
@@ -473,7 +485,7 @@ export const UserProvider = ({ children }) => {
         activeUserProblem,
         getProblemDetail,
         getProblem,
-        // getMoreProblem,
+        sendComplaint,
         getPopularProblem,
         handleCompletedProblem,
         getUserDetail,

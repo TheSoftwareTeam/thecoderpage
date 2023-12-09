@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
 import "./complaint.scss";
 import UserContext from "../../context/UserContext";
-const Complaint = () => {
-  const { dispatch } = useContext(UserContext);
+const Complaint = ({problemId}) => {
+  const {dispatch,sendComplaint } = useContext(UserContext);
 
   return (
     <div className="complaint-container">
-      <form>
+      <form onSubmit={()=>sendComplaint(problemId)}>
         <button
           className="exit"
           onClick={()=>dispatch({type:"isComplaintPage"})}
         >
           x
         </button>
-        <h2>Şikayet Et</h2>
+        <h2>Şikayet Et{problemId}</h2>
         <textarea
           onChange={(e) =>
             dispatch({ type: "complaintTextarea", payload: e.target.value })

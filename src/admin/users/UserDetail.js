@@ -76,8 +76,8 @@ const UserDetail = () => {
           </select>
 
           <select
-            onChange={(e) =>
-              dispatch({ type: "userIsActive", payload: e.target.value })}
+            onChange={(e) =>{
+             window.confirm(`Kullanıcıyı ${e.target.value==="true"?"Aktif":"Pasif"} yapmak istediğinize emin misiniz?`)&&dispatch({ type: "userIsActive", payload: e.target.value })}}
             value={state.userIsActive}
           >
             <option value="true">Aktif</option>

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import AdminContext from "../../context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import image from "../../images/avatar.png";
 import "./scss/comment.scss";
 const Comment = ({ comment, problem }) => {
-  const { state, deleteComment, getProblem, formatRelativeTime } =
+  const { state, deleteComment, formatRelativeTime } =
     useContext(AdminContext);
   const navigate = useNavigate();
 
