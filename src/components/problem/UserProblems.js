@@ -7,6 +7,7 @@ import {  useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import Problem from "./Problem";
+import FilterProblem from "../filters/FilterProblem";
 
 const UserProblem = () => {
   const { userName } = useParams();
@@ -24,6 +25,7 @@ const UserProblem = () => {
   return (
     <div id="user-container">
       <div id="user-content">
+        <FilterProblem />
         {state.activeUserProblem.length === 0 ||
         !state.activeUserProblem.some(
           (problem) =>

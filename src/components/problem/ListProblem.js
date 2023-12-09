@@ -5,6 +5,7 @@ import { NavLink,  } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import Problem from "./Problem";
+import FilterProblem from "../filters/FilterProblem";
 const ListProblem = () => {
   const { state,getProblem } = useContext(UserContext);
 
@@ -30,6 +31,7 @@ const ListProblem = () => {
             </button>
           </div>
         </div>
+        <FilterProblem />
         {state.problems.sort((a, b) => {
             const dateA = new Date(a.createDate);
             const dateB = new Date(b.createDate);
