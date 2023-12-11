@@ -272,6 +272,22 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "activeProblemDetail", payload: await response.data });
   };
 
+  const getFilterProblem = async (filter) => {
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        categoryId: filter.category,
+        userId: filter.to==="user"?state.activeUser.id:null,
+        _sort: "createDate",
+        _order: "desc",
+        _limit: 4,
+        isCompleted: filter.cozuldu==="true"?true:filter.cozuldu==="false"?false:null,
+        createDate_gte: filter.date,
+        q: filter.search,
+      },
+    });
+    dispatch({ type: filter.to==="user"?"activeUserProblem":"getProblems", payload: await response.data });
+  };
+
   const createProblem = async (e) => {
     e.preventDefault();
 
@@ -494,6 +510,7 @@ const sendComplaint = async (problemId) => {
         handleFileUpload,
         formatRelativeTime,
         getProfilDetail,
+        getFilterProblem
       }}
     >
       {children}
