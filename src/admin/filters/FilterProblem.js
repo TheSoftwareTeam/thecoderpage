@@ -1,25 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
-import UserContext from "../../context/UserContext";
+import AdminContext from "../../context/AdminContext";
 import "./scss/filter-problem.scss";
-import { useParams } from "react-router-dom";
+
 function FilterProblem() {
-  const { state, getFilterProblem } = useContext(UserContext);
+  const { state, getFilterProblem } = useContext(AdminContext);
   const [iscomplated, setIscomplated] = useState("0");
+  const [isdeleted, setIsDeleted] = useState("0");
   const [category, setCategory] = useState([]);
   const [dates, setDates] = useState("0");
   const [search, setSearch] = useState("");
-  const {userName}=useParams();
+
   useEffect(() => {
     const currentFilter = {
       cozuldu: iscomplated,
-      category: state.selectedCategory===null?category:state.selectedCategory,
+      category:category,
+      isdeleted:isdeleted,
       date: calculateDate(dates),
-      search: search,
-      to:userName?"user":"problem"
+      search: search
     };
     getFilterProblem(currentFilter);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iscomplated, category, dates, search]);
+  }, [iscomplated, category,isdeleted, dates, search]);
 
   function calculateDate(value) {
     const now = new Date();
@@ -47,21 +48,6 @@ function FilterProblem() {
 
   return (
     <form className="FilterProblem">
-      {/* <select>
-        <option value="0">Tüm Konular</option>
-        <option value="1">Algoritma</option>
-        <option value="2">Veri Yapıları</option>
-        <option value="3">Programlama Dilleri</option>
-        <option value="4">Veritabanı</option>
-        <option value="5">Ağ</option>
-        <option value="6">Web</option>
-        <option value="7">Mobil</option>
-        <option value="8">Gömülü Sistemler</option>
-        <option value="9">Robotik</option>
-        <option value="10">Yapay Zeka</option>
-        <option value="11">Oyun Geliştirme</option>
-        <option value="12">Diğer</option>
-      </select> */}
 
       <select onChange={(e) => setDates(e.target.value)}>
         <option value="0">Tüm Zamanlar</option>
@@ -70,6 +56,12 @@ function FilterProblem() {
         <option value="3">Son 30 Gün</option>
         <option value="4">Son 90 Gün</option>
         <option value="5">Son 1 Yıl</option>
+      </select>
+
+      <select onChange={(e) => setIsDeleted(e.target.value)}>
+        <option value="false">Silinmemiş</option>
+        <option value="true">Silinmiş</option>
+        <option value="0">Tümü</option>
       </select>
 
       <select onChange={(e) => setIscomplated(e.target.value)}>
@@ -84,7 +76,7 @@ function FilterProblem() {
           placeholder="Arama Kelimesi"
         />
       <div>
-        {state.selectedCategory===null&&state.categories.map((category) => (
+        {state.categories.map((category) => (
           <label key={category.id}>
             <input
               type="checkbox"

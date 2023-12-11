@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import AdminContext from '../../context/AdminContext';
+import FilterComplaint from "../filters/FilterComplaint";
 import Complaint from './Complaint';
 import './scss/complaints.scss'
 
@@ -17,7 +18,7 @@ const Complaints = () => {
     <div id="complaints-container">
 
     <div id="complaints-list">
-
+    <FilterComplaint />
     {state.complaints.sort((a, b) => {
           const dateA = new Date(a.createDate);
           const dateB = new Date(b.createDate);

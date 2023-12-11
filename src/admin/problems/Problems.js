@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import "./scss/problems.scss";
 import Problem from "./Problem";
+import FilterProblem from "../filters/FilterProblem";
 const Problems = () => {
   const { state, getProblem } = useContext(AdminContext);
 
@@ -14,6 +15,7 @@ const Problems = () => {
   return (
     <div id="container">
       <div id="problem-list">
+        <FilterProblem />
         {state.problems
           .sort((a, b) => {
             const dateA = new Date(a.createDate);
@@ -21,7 +23,7 @@ const Problems = () => {
             return dateB - dateA;
           })
           .map(
-            (problem) => !problem.isDeleted && <Problem problem={problem} />
+            (problem) => <Problem problem={problem} />
           )}
       </div>
       {state.loadMoreButton && (

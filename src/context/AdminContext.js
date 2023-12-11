@@ -304,6 +304,23 @@ export const AdminProvider = ({ children }) => {
     });
   };
 
+  const getFilterProblem = async (filter) => {
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        categoryId: filter.category,
+        // userId: filter.to==="user"?state.activeUser.id:null,
+        _sort: "createDate",
+        _order: "desc",
+        _limit: 12,
+        isDeleted: filter.isdeleted==="true"?true:filter.isdeleted==="false"?false:null,
+        isCompleted: filter.cozuldu==="true"?true:filter.cozuldu==="false"?false:null,
+        createDate_gte: filter.date,
+        q: filter.search,
+      },
+    });
+    dispatch({ type:"getProblems", payload: await response.data });
+  };
+
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
@@ -343,6 +360,20 @@ export const AdminProvider = ({ children }) => {
       dispatch({ type: "getComplaints", payload: await response.data });
       dispatch({ type: "loadMorePages", payload: 2 });
     }
+  };
+
+  const getComplaintProblem = async (filter) => {
+    const response = await axios.get(`${url}/complaints`, {
+      params: {
+        _sort: "createDate",
+        _order: "desc",
+        _limit: 12,
+        status: filter.status!==""?filter.status:null,
+        createDate_gte: filter.date,
+        q: filter.search,
+      },
+    });
+    dispatch({ type:"getComplaints", payload: await response.data });
   };
   const getComplaintDetail = async (id) => {
     const response = await axios.get(`${url}/complaints/${Number(id)}`);
@@ -397,6 +428,7 @@ export const AdminProvider = ({ children }) => {
         toggleDropdown,
         deleteCategory,
         getProblem,
+        getFilterProblem,
         getCommentDetail,
         deleteComment,
         getUsers,
@@ -404,6 +436,7 @@ export const AdminProvider = ({ children }) => {
         formatRelativeTime,
         getComplaintDetail,
         getComplaints,
+        getComplaintProblem,
         ubdateComplaint
       }}
     >
