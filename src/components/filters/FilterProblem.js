@@ -42,14 +42,14 @@ useEffect(() => {
 
   return (
     <form className="filter-problem">
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-      >
-        Kategorileri Göster
-      </button>
+  {state.selectedCategory == null && <button
+          onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }}
+        >
+          Kategorileri Göster
+        </button>} 
 
       <div className={`${isOpen ? "menu" : "hidden-menu"}`}>
         {state.selectedCategory === null &&

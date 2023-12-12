@@ -497,7 +497,8 @@
       "commentCount": 2,
       "likesUserId": [
         3,
-        7
+        7,
+        1
       ],
       "comments": [
         {
@@ -525,7 +526,8 @@
       "problemContent": "Java projemde hata ayıklama yapmaya çalışıyorum ancak nasıl başlayacağımı bilmiyorum. Yardımcı olabilecek birisi var mı?",
       "commentCount": 2,
       "likesUserId": [
-        2
+        2,
+        1
       ],
       "comments": [
         {
@@ -878,6 +880,14 @@
       "status": "inProgress",
       "createDate": "2023-12-09T20:18:21.359Z",
       "id": 10
+    },
+    {
+      "userId": 1,
+      "problemId": 5,
+      "complaintContent": "yılanları severim",
+      "status": "resolved",
+      "createDate": "2023-12-12T13:52:57.436Z",
+      "id": 11
     }
   ]
 }

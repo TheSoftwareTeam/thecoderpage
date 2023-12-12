@@ -92,7 +92,7 @@ useEffect(()=>{
           </button>
           <button>✉️{problem.comments.length}</button>
 
-          {(userName ||
+          {(userName &&
            (state.activeUser &&state.activeProblemDetail.userId === state.activeUser.id)) &&
           state.activeUser !== null &&
           state.activeUser.id === problem.userId ? (

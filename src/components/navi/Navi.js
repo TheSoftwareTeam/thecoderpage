@@ -45,6 +45,7 @@ const {userName}=useParams();
             </NavLink>
           </h3>
           <input
+          value={state.filterSearch}
           onChange={(e) => dispatch({ type: "filterSearch", payload: e.target.value})}
           type="search"
           placeholder="Arama Kelimesi"

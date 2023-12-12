@@ -106,6 +106,7 @@
       background-color: #666;
       box-shadow: 2px 4px 6px #33333379;
       border-radius: 8px;
+      border:none;
       &:hover {
         background-color: #555;
         transition: 0.3s;
@@ -118,6 +119,7 @@
     }
     .lightMode {
       width: auto;
+      border:none;
       height: 3vh;
       width: 30px;
       display: flex;
