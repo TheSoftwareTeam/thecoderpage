@@ -1,42 +1,50 @@
-.FilterProblem {
+.filter-problem {
+  height: auto;
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
   padding: 20px;
   margin-top: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  select {
+  button {
     width: 30%;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
     border: 1px solid #ccc;
-    font-size: 16px;
   }
-  input[type="search"] {
+  .hidden-menu {
+    display: none;
+  }
+  .menu {
+    top: 60px;
     width: 30%;
-    height: 35px;
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-size: 20px;
-    border: 0.1px solid gray;
-  }
-  div {
-    width: 100%;
-    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    background-color: white;
+    position: absolute;
+    width: 20%;
+    height: auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    z-index: 3;
     input[type="checkbox"] {
       width: 20px;
       height: 20px;
     }
-    label {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+  }
+
+  select {
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
   }
 }

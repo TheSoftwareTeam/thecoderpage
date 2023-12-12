@@ -12,13 +12,15 @@ import FilterProblem from "../filters/FilterProblem";
 const UserProblem = () => {
   const { userName } = useParams();
 
-  const { state, activeUserProblem } =
+  const { state, activeUserProblem,dispatch } =
     useContext(UserContext);
 
 
   useEffect(() => {
-    activeUserProblem(userName.toLowerCase());
-
+    dispatch({ type: "filterCategory", payload: [] });
+    dispatch({ type: "filterDate", payload: null });
+    dispatch({ type: "filterIscompleted", payload: null });
+    dispatch({ type: "filterSearch", payload: "" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userName]);
 
@@ -52,8 +54,18 @@ const UserProblem = () => {
               ) 
           )
         )}
+        {
+          state.loadMoreButton&& (
+            <button
+              onClick={ async() =>activeUserProblem(true,userName.toLowerCase())}
+              className="list-load-more"
+            >
+              Daha Fazla
+            </button>
+          )
+          }
       </div>
-    
+     
     </div>
   );
 };

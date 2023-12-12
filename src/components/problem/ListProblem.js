@@ -7,9 +7,15 @@ import image from "../../images/avatar.png";
 import Problem from "./Problem";
 import FilterProblem from "../filters/FilterProblem";
 const ListProblem = () => {
-  const { state,getProblem } = useContext(UserContext);
+  const { state,getProblem ,dispatch} = useContext(UserContext);
 
   useEffect(() => {
+  
+    dispatch({ type: "filterCategory", payload: [] });
+    dispatch({ type: "filterDate", payload: null });
+    dispatch({ type: "filterIscompleted", payload: null });
+    dispatch({ type: "filterSearch", payload: "" });
+
     getProblem()
     window.scrollTo({ top: 0, behavior: 'smooth' });
   // eslint-disable-next-line react-hooks/exhaustive-deps

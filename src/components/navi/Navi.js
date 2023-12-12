@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import "./nav.scss";
 import image from "../../images/avatar.png";
@@ -11,10 +11,22 @@ import { FaMoon } from "react-icons/fa";
 import Login from "../login/Login";
 import SignUp from "../signup/SignUp";
 const Navi = () => {
-  const { state, dispatch, toggleDropdown, handleLogout } =
+  const { state, dispatch, toggleDropdown, handleLogout,getProblem,activeUserProblem } =
     useContext(UserContext);
   const navigate = useNavigate();
-  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { darkMode, setDarkMode, } = useContext(ThemeContext);
+const {userName}=useParams();
+ useEffect(() => {
+  if(userName)
+  {
+    activeUserProblem(false,userName)
+  }
+  else
+  {
+    getProblem(false);
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.filterSearch,userName]);
 
   useEffect(() => {
     state.isLoginPage||state.isSignUpPage?
@@ -22,6 +34,7 @@ const Navi = () => {
     :document.body.style.overflow = 'unset'
     
   }, [state.isLoginPage,state.isSignUpPage]);
+ 
   return (
     <>
       <div className="navi-container">
@@ -31,6 +44,11 @@ const Navi = () => {
               TheCoderPage
             </NavLink>
           </h3>
+          <input
+          onChange={(e) => dispatch({ type: "filterSearch", payload: e.target.value})}
+          type="search"
+          placeholder="Arama Kelimesi"
+        />
           <button
             className={darkMode ? "lightMode" : "darkMode"}
             style={{ marginRight: state.activeUser ? '-60px' : '0' }}

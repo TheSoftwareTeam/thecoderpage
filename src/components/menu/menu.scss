@@ -20,7 +20,7 @@ nav ul {
     align-items: center;
     justify-content: center;
     font-family: monospace;
-    font-size: 30px;
+    font-size: 27px;
 
     transition: 0.7s;
     cursor: pointer;
@@ -28,7 +28,7 @@ nav ul {
       margin-left: 5px;
     }
     &:hover {
-      font-size: 40px;
+      font-size: 33px;
       transition: 0.7s;
       cursor: pointer;
     }
@@ -36,7 +36,7 @@ nav ul {
   .navi-active {
     color: black;
     font-weight: bolder;
-    font-size: 40px;
+    font-size: 33px;
     transition: 0.7s;
     cursor: pointer;
 

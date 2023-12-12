@@ -1,10 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import UserContext from '../../context/UserContext';
 import image from "../../images/avatar.png";
 import "./scss/edit-profile.scss";
 const EditProfile = () => {
     const { state, dispatch, editProfile, handleFileUpload,formatRelativeTime } =
     useContext(UserContext);
+    useEffect(() => {
+       
+      dispatch({ type: "profilePicture", payload: state.activeUser.userPicture });
+   
+}
+// eslint-disable-next-line react-hooks/exhaustive-deps
+, [state.activeUser.userPicture]);
   return (
     <div id='edit-profile-container'>
 

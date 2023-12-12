@@ -10,5 +10,30 @@
     max-width: 70vw;
     display: flex;
     flex-direction: column;
+    .list-load-more {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: -30px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 20px;
+    border: none;
+    box-shadow: 2px 4px 8px black;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #aaa;
+      padding: 10px 20px;
+      transition: 0.1s;
+    }
+    &:active {
+      transform: scale(1.1);
+      transition: 0.2s;
+    }
   }
+  }
+  
 }

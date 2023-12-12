@@ -137,8 +137,9 @@ export const UserProvider = ({ children }) => {
 
     //resim içinde düzenlenecek
     if (
-      state.profileName !== state.activeUser.name &&
-      state.profileSurname !== state.activeUser.surName
+      (state.profileName !== state.activeUser.name &&
+        state.profileSurname !== state.activeUser.surName)||
+        state.profilePicture !== state.activeUser.userPicture
     ) {
       const newUser = {
         ...user,
@@ -231,11 +232,14 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "hideLoadMoreButton", payload: true });
     const response = await axios.get(`${url}/problems`, {
       params: {
-        categoryId: state.selectedCategory && state.selectedCategory,
+        categoryId: state.selectedCategory ? state.selectedCategory:(state.filterCategory.length!==0?state.filterCategory:null),
         _sort: "createDate",
         _order: "desc",
         _limit: 4,
         _page: page,
+         isCompleted:state.filterIscompleted&&state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
+         createDate_gte:state.filterDate&&state.filterDate,
+         q:state.filterSearch&&state.filterSearch,
       },
     });
     response.data.length < 4 &&  dispatch({ type: "hideLoadMoreButton", payload: false });
@@ -247,7 +251,38 @@ export const UserProvider = ({ children }) => {
     }
   };
 
- 
+  const activeUserProblem = async (isMore,userName) => {
+    const user = await axios.get(`${url}/users?userName=${userName}`);
+
+    let page = 1;
+    if (isMore) {
+      dispatch({ type: "loadMorePages", payload:await state.pages + 1 });
+      page = state.pages;
+    }
+    dispatch({ type: "hideLoadMoreButton", payload: true });
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        userId: user.data[0].id,
+        categoryId: state.filterCategory.length!==0?state.filterCategory:null,
+        _sort: "createDate",
+        _order: "desc",
+        _limit: 4,
+        _page: page,
+         isCompleted:state.filterIscompleted&&state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
+         createDate_gte:state.filterDate&&state.filterDate,
+         q:state.filterSearch&&state.filterSearch,
+      },
+    });
+    response.data.length < 4 &&  dispatch({ type: "hideLoadMoreButton", payload: false });
+    if (isMore) {
+      dispatch({ type: "moreActiveUserProblem", payload: await response.data });
+    } else {
+      dispatch({ type: "activeUserProblem", payload: response.data });
+      dispatch({ type: "loadMorePages", payload: 2 });
+    }
+  };
+
+
   const getPopularProblem = async () => {
     const response = await axios.get(`${url}/problems`, {
       params: {
@@ -259,34 +294,28 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "getPopularProblems", payload: await response.data });
   };
 
-  const activeUserProblem = async (userName) => {
-    const user = await axios.get(`${url}/users?userName=${userName}`);
-    const response = await axios.get(
-      `${url}/problems?userId=${user.data[0].id}`
-    );
-    dispatch({ type: "activeUserProblem", payload: response.data });
-  };
+ 
 
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
   };
 
-  const getFilterProblem = async (filter) => {
-    const response = await axios.get(`${url}/problems`, {
-      params: {
-        categoryId: filter.category,
-        userId: filter.to==="user"?state.activeUser.id:null,
-        _sort: "createDate",
-        _order: "desc",
-        _limit: 4,
-        isCompleted: filter.cozuldu==="true"?true:filter.cozuldu==="false"?false:null,
-        createDate_gte: filter.date,
-        q: filter.search,
-      },
-    });
-    dispatch({ type: filter.to==="user"?"activeUserProblem":"getProblems", payload: await response.data });
-  };
+  // const getFilterProblem = async (filter) => {
+  //   const response = await axios.get(`${url}/problems`, {
+  //     params: {
+  //       categoryId: filter.category,
+  //       userId: filter.to==="user"?state.activeUser.id:null,
+  //       _sort: "createDate",
+  //       _order: "desc",
+  //       _limit: 4,
+  //       isCompleted: filter.cozuldu==="true"?true:filter.cozuldu==="false"?false:null,
+  //       createDate_gte: filter.date,
+  //       q: filter.search,
+  //     },
+  //   });
+  //   dispatch({ type: filter.to==="user"?"activeUserProblem":"getProblems", payload: await response.data });
+  // };
 
   const createProblem = async (e) => {
     e.preventDefault();
@@ -509,8 +538,7 @@ const sendComplaint = async (problemId) => {
         handleLogout,
         handleFileUpload,
         formatRelativeTime,
-        getProfilDetail,
-        getFilterProblem
+        getProfilDetail
       }}
     >
       {children}

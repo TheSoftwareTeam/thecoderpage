@@ -43,6 +43,12 @@ const initialState = {
   },
   pages: 2,
   loadMoreButton: true,
+  //filterProblem
+  filterCategory: [],
+  filterDate: null,
+  filterIscompleted: null,
+  filterSearch: "",
+
 };
 
 const userReducer = (state, action) => {
@@ -259,6 +265,12 @@ const userReducer = (state, action) => {
         ...state,
         activeUserProblem: action.payload,
       };
+
+    case "moreActiveUserProblem":
+      return {
+        ...state,
+        activeUserProblem: [...state.activeUserProblem, ...action.payload],
+      };
     case "activeProblemDetail":
       return {
         ...state,
@@ -306,9 +318,31 @@ const userReducer = (state, action) => {
         ...state,
         problemHead: action.payload,
       };
-
-    default:
+//FilterProblem
+case "filterCategory":
+  return {
+    ...state,
+    filterCategory: action.payload,
+  };
+case "filterDate":
+  return {
+    ...state,
+    filterDate: action.payload,
+  };
+case "filterIscompleted":
+  return {
+    ...state,
+    filterIscompleted: action.payload,
+  };
+case "filterSearch":
+  return {
+    ...state,
+    filterSearch: action.payload,
+  };
+  default:
       return state;
   }
+
+
 };
 module.exports = { initialState, userReducer };

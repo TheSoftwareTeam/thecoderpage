@@ -91,7 +91,7 @@
       "isActive": "false"
     },
     {
-      "id": 8,
+      "id": 7,
       "name": "Can",
       "surName": "Yılmaz",
       "userName": "can",
@@ -109,7 +109,7 @@
   "problems": [
     {
       "id": 1,
-      "userId": 8,
+      "userId": 7,
       "categoryId": 4,
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
       "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?",
@@ -135,7 +135,7 @@
     },
     {
       "id": 2,
-      "userId": 8,
+      "userId": 7,
       "categoryId": 4,
       "problemHead": "React uygulamamda hata alıyorum",
       "problemContent": "Merhaba, React uygulamamda bir hata alıyorum. Console'da 'TypeError: undefined is not a function' hatası alıyorum. Bu hatayı nasıl çözebilirim?",
@@ -296,7 +296,7 @@
         }
       ],
       "createDate": "2023-10-24T08:30:00.000Z",
-      "isCompleted": false,
+      "isCompleted": true,
       "isDeleted": false
     },
     {
@@ -611,7 +611,7 @@
         }
       ],
       "createDate": "2023-11-22T11:30:00.000Z",
-      "isCompleted": false,
+      "isCompleted": true,
       "isDeleted": false
     },
     {
