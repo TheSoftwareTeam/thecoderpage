@@ -48,7 +48,7 @@ const initialState = {
   filterDate: null,
   filterIscompleted: null,
   filterSearch: "",
-
+  searchList: []
 };
 
 const userReducer = (state, action) => {
@@ -338,6 +338,12 @@ case "filterSearch":
   return {
     ...state,
     filterSearch: action.payload,
+  };
+
+case "searchList":
+  return {
+    ...state,
+    searchList: action.payload,
   };
   default:
       return state;

@@ -391,6 +391,8 @@ export const AdminProvider = ({ children }) => {
     }
     
   }
+
+  
   //other
   const roleControl = async () => {
     const userId = localStorage.getItem("userId");
@@ -437,7 +439,7 @@ export const AdminProvider = ({ children }) => {
         getComplaintDetail,
         getComplaints,
         getComplaintProblem,
-        ubdateComplaint
+        ubdateComplaint,
       }}
     >
       {children}

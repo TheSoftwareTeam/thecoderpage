@@ -137,7 +137,7 @@
       "id": 2,
       "userId": 7,
       "categoryId": 4,
-      "problemHead": "React uygulamamda hata alıyorum",
+      "problemHead": "React uygulamamda hata alıyorum bu konuda çok acil yardıma ihtiyacım var",
       "problemContent": "Merhaba, React uygulamamda bir hata alıyorum. Console'da 'TypeError: undefined is not a function' hatası alıyorum. Bu hatayı nasıl çözebilirim?",
       "commentCount": 3,
       "likesUserId": [
@@ -673,11 +673,19 @@
       "categoryId": 6,
       "problemHead": "Java Swing ile arayüz tasarımı yapmak",
       "problemContent": "Java Swing kullanarak basit bir masaüstü uygulaması geliştirmeye çalışıyorum. Ancak arayüz tasarımı konusunda sıkıntı yaşıyorum. Yardım edebilecek birisi var mı?",
-      "commentCount": 0,
+      "commentCount": 1,
       "likesUserId": [
-        2
+        2,
+        1
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": 0,
+          "userId": 1,
+          "commentContent": "tasarımda renkler çok önemli",
+          "createDate": "2023-12-13T08:52:08.073Z"
+        }
+      ],
       "createDate": "2023-11-02T14:20:00.000Z",
       "isCompleted": false,
       "isDeleted": false
@@ -888,6 +896,14 @@
       "status": "resolved",
       "createDate": "2023-12-12T13:52:57.436Z",
       "id": 11
+    },
+    {
+      "userId": 1,
+      "problemId": 18,
+      "complaintContent": "burada hakaret görüyorum",
+      "status": "resolved",
+      "createDate": "2023-12-13T08:52:31.255Z",
+      "id": 12
     }
   ]
 }

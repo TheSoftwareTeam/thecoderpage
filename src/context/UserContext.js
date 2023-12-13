@@ -239,7 +239,6 @@ export const UserProvider = ({ children }) => {
         _page: page,
          isCompleted:state.filterIscompleted&&state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
          createDate_gte:state.filterDate&&state.filterDate,
-         q:state.filterSearch&&state.filterSearch,
       },
     });
     response.data.length < 4 &&  dispatch({ type: "hideLoadMoreButton", payload: false });
@@ -300,6 +299,11 @@ export const UserProvider = ({ children }) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
   };
+
+  const getSearchList=async()=>{
+    const response = await axios.get(`${url}/problems`,{params:{q:state.filterSearch,_limit:10}});
+    dispatch({ type: "searchList", payload: await response.data });
+  }
 
   // const getFilterProblem = async (filter) => {
   //   const response = await axios.get(`${url}/problems`, {
@@ -538,7 +542,8 @@ const sendComplaint = async (problemId) => {
         handleLogout,
         handleFileUpload,
         formatRelativeTime,
-        getProfilDetail
+        getProfilDetail,
+        getSearchList
       }}
     >
       {children}

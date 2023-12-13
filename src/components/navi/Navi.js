@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
-import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import "./nav.scss";
 import image from "../../images/avatar.png";
@@ -10,23 +10,13 @@ import { FaMoon } from "react-icons/fa";
 
 import Login from "../login/Login";
 import SignUp from "../signup/SignUp";
+import Search from "../filters/Search";
 const Navi = () => {
-  const { state, dispatch, toggleDropdown, handleLogout,getProblem,activeUserProblem } =
+  const { state, dispatch, toggleDropdown, handleLogout } =
     useContext(UserContext);
   const navigate = useNavigate();
   const { darkMode, setDarkMode, } = useContext(ThemeContext);
-const {userName}=useParams();
- useEffect(() => {
-  if(userName)
-  {
-    activeUserProblem(false,userName)
-  }
-  else
-  {
-    getProblem(false);
-  }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.filterSearch,userName]);
+
 
   useEffect(() => {
     state.isLoginPage||state.isSignUpPage?
@@ -44,12 +34,7 @@ const {userName}=useParams();
               TheCoderPage
             </NavLink>
           </h3>
-          <input
-          value={state.filterSearch}
-          onChange={(e) => dispatch({ type: "filterSearch", payload: e.target.value})}
-          type="search"
-          placeholder="Arama Kelimesi"
-        />
+         <Search/>
           <button
             className={darkMode ? "lightMode" : "darkMode"}
             style={{ marginRight: state.activeUser ? '-60px' : '0' }}

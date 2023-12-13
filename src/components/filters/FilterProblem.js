@@ -2,19 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import "./scss/filter-problem.scss";
 import UserContext from "../../context/UserContext";
 import { useParams } from "react-router-dom";
+
 function FilterProblem() {
   const { state, dispatch,getProblem,activeUserProblem } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const {userName}=useParams();
 useEffect(() => {
-  
   if(userName)
   {
     activeUserProblem(false,userName);
   }
   else getProblem(false);
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [state.filterCategory,state.filterDate,state.filterIscompleted]);
+}, [state.filterCategory,state.filterDate,state.filterIscompleted,state.filterSearch]);
 
   function calculateDate(value) {
     const now = new Date();
@@ -43,15 +43,13 @@ useEffect(() => {
   return (
     <form className="filter-problem">
   {state.selectedCategory == null && <button
-          onClick={(e) => {
+          disabled="disabled"
+        >
+          <h6 onClick={(e) => {
             e.preventDefault();
             setIsOpen(!isOpen);
-          }}
-        >
-          Kategorileri Göster
-        </button>} 
-
-      <div className={`${isOpen ? "menu" : "hidden-menu"}`}>
+          }}>Kategorileri Göster</h6>
+          <div className={`${isOpen ? "menu" : "hidden-menu"}`}>
         {state.selectedCategory === null &&
           state.categories.map((category) => (
             <label key={category.id}>
@@ -70,8 +68,10 @@ useEffect(() => {
             </label>
           ))}{" "}
       </div>
+        </button>} 
+     
 
-      <select onChange={(e) => dispatch({type:"filterDate",payload:calculateDate(e.target.value)})}>
+      <select value={state.filterDate} onChange={(e) => dispatch({type:"filterDate",payload:calculateDate(e.target.value)})}>
         <option value="0">Tüm Zamanlar</option>
         <option value="1">Son 24 Saat</option>
         <option value="2">Son 7 Gün</option>
@@ -80,11 +80,22 @@ useEffect(() => {
         <option value="5">Son 1 Yıl</option>
       </select>
 
-      <select onChange={(e) => dispatch({type:"filterIscompleted",payload:e.target.value})}>
+      <select value={state.filterIscompleted} onChange={(e) => dispatch({type:"filterIscompleted",payload:e.target.value})}>
         <option value="0">Tüm Durumlar</option>
         <option value="true">Çözülmüş</option>
         <option value="false">Çözülmemiş</option>
       </select>
+      {userName && <input type="search" placeholder="Aranacak kelimeyi yazın.." value={state.filterSearch} onChange={(e) => dispatch({type:"filterSearch",payload:e.target.value})} />}
+      <button className="clear-filter" onClick={(e) => {
+        console.log(state.filterCategory);
+         !state.filterCategory.length>0&&e.preventDefault();
+        dispatch({type:"filterCategory",payload:[]});
+        dispatch({type:"filterDate",payload:null});
+        dispatch({type:"filterIscompleted",payload:"0"});
+        dispatch({type:"filterSearch",payload:""});
+        setIsOpen(false);
+      }
+      }>Filtreyi Temizle</button>
     </form>
   );
 }
