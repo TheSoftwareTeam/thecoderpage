@@ -5,12 +5,14 @@
 
   #detail-content {
     margin: 50px;
+
     width: 70vw;
     display: flex;
     flex-direction: column;
     .detail-aciklama {
       width: 100%;
       height: 180px;
+      margin-bottom: 40px;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -51,192 +53,6 @@
           &:hover {
             width: 170px;
             cursor: pointer;
-          }
-        }
-      }
-    }
-
-    hr {
-      height: 2px;
-      margin-top: 15px;
-      background-color: gray;
-    }
-
-    .detail-list-problem {
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      margin-top: 15px;
-      border-radius: 10px;
-      &:nth-child(even) {
-        background-color: #f5f5f5;
-        box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
-        border: 0.1px solid #919191;
-      }
-
-      &:nth-child(odd) {
-        background-color: #fff; /* Gri */
-        box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
-        border: 0.1px solid #919191;
-      }
-      .detail-user-picture {
-        width: 100%;
-        position: relative;
-        height: 50px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        img {
-          width: 30px;
-          height: 30px;
-          border-radius: 25px;
-        }
-        h3 {
-          color: rgb(42, 90, 131);
-          float: right;
-          margin-top: 8px;
-          margin-left: 10px;
-        }
-        span{
-          position: absolute;
-          right: 5px;
-         
-          padding: 5px 10px;
-          border-radius: 15px;
-          font-family: monospace;
-          font-size: 12px;
-        }
-      }
-
-      .detail-problem-detail {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        .detail-problem-head-text {
-          padding: 15px;
-          padding-bottom: 50px;
-          background-color: #ddd;
-          border-radius: 10px 10px 0 0;
-          position: relative  ;
-          h3{
-            font-size: 18px;
-            max-width: 80%;
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-family: monospace;
-          }
-          h4{
-            position: absolute;
-            max-width: 20%;
-            margin-right: 5px;
-            margin-top: -10px;
-            right: 0;
-            font-family: monospace;
-            font-size: 15px;
-            font-weight: 600;
-          }
-        }
-
-        .detail-problem-comment-view {
-          width: 100%;
-          height: 32px;
-       
-          display: flex;
-          flex-direction: row;
-          position: relative;
-          gap: 10px;
-          padding: 5px;
-          border-radius: 0px 0px 10px 10px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
-          button{
-            width: 45px;
-            font-size: 14px;
-            border: none;
-            background-color: transparent;
-            box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            &:hover{
-              cursor: pointer;
-
-            }
-            &:active{
-              transform: scale(1.2);
-              transition: 0.2s;
-            }
-          }
-          .completed-button {
-            border-radius: 12px;
-            box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
-            position: absolute;
-            margin-right: 10px;
-            right: 0;
-            transition: 0.4s;
-            background: none;
-            padding: 3px 10px;
-           
-            
-            &:hover {
-              cursor: pointer;
-              background-color: #f4f0f0;
-              transform: scale(1.05);
-            }
-        
-            &:active {
-              transform: scale(1.1);
-              transition: 0.2s;
-            }
-        
-          }
-        }
-        
-
-        .detail-user-comment {
-          margin-top: 10px;
-          width: 100%;
-          height: auto;
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          background-color: #ccc;
-          border-radius: 10px;
-          .detail-comment-user-picture {
-            position: relative;
-            width: 100%;
-            height: 40px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            background-color: #bbb;
-            border-radius: 10px 10px 0 0 ;
-            box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
-            gap: 10px;
-            img {
-              width: 30px;
-              height: 30px;
-              border-radius: 25px;
-              margin-left: 10px;
-            }
-            h4 {
-              color: rgb(42, 90, 131);
-            }
-            span{
-              position: absolute;
-              right: 5px;
-           
-              padding: 5px 10px;
-             
-              font-family: monospace;
-              font-size: 12px;
-            }
-          }
-
-          p {
-            width: 100%;
-            padding: 10px;
           }
         }
       }
