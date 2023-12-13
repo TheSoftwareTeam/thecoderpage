@@ -48,6 +48,7 @@ const initialState = {
   filterDate: null,
   filterIscompleted: null,
   filterSearch: "",
+  naviFilterSearch: "",
   searchList: []
 };
 
@@ -339,7 +340,11 @@ case "filterSearch":
     ...state,
     filterSearch: action.payload,
   };
-
+case "naviFilterSearch":
+  return {
+    ...state,
+    naviFilterSearch: action.payload,
+  };
 case "searchList":
   return {
     ...state,
@@ -348,7 +353,6 @@ case "searchList":
   default:
       return state;
   }
-
 
 };
 module.exports = { initialState, userReducer };

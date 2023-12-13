@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import "./scss/filter-problem.scss";
 import UserContext from "../../context/UserContext";
 import { useParams } from "react-router-dom";
+import { isVisible } from "@testing-library/user-event/dist/utils";
+import e from "cors";
 
 function FilterProblem() {
   const { state, dispatch,getProblem,activeUserProblem } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const {userName}=useParams();
 useEffect(() => {
+  console.log("filterCategory",state.filterCategory);
   if(userName)
   {
     activeUserProblem(false,userName);
@@ -16,39 +19,21 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [state.filterCategory,state.filterDate,state.filterIscompleted,state.filterSearch]);
 
-  function calculateDate(value) {
-    const now = new Date();
-    switch (value) {
-      case "1": // Son 24 Saat
-        now.setHours(now.getHours() - 24);
-        break;
-      case "2": // Son 7 Gün
-        now.setDate(now.getDate() - 7);
-        break;
-      case "3": // Son 30 Gün
-        now.setDate(now.getDate() - 30);
-        break;
-      case "4": // Son 90 Gün
-        now.setDate(now.getDate() - 90);
-        break;
-      case "5": // Son 1 Yıl
-        now.setFullYear(now.getFullYear() - 1);
-        break;
-      default: // Tüm Zamanlar
-        return null;
-    }
-    return now.toISOString();
-  }
+ 
 
   return (
     <form className="filter-problem">
   {state.selectedCategory == null && <button
-          disabled="disabled"
+          onMouseEnter={(e) => {
+            setIsOpen(true);
+       
+          }}
+        onclick={()=>e.preventDefault()}
+          onMouseLeave={(e) => {
+            setIsOpen(false);
+          }}
         >
-          <h6 onClick={(e) => {
-            e.preventDefault();
-            setIsOpen(!isOpen);
-          }}>Kategorileri Göster</h6>
+         Kategorileri Göster
           <div className={`${isOpen ? "menu" : "hidden-menu"}`}>
         {state.selectedCategory === null &&
           state.categories.map((category) => (
@@ -56,6 +41,7 @@ useEffect(() => {
               <input
                 type="checkbox"
                 value={category.id}
+                checked={state.filterCategory.find((id)=>Number(id)===category.id)}
                 onChange={(e) => {
                   if (e.target.checked) {
                     dispatch({ type: "filterCategory", payload: [...state.filterCategory, e.target.value] });
@@ -71,7 +57,7 @@ useEffect(() => {
         </button>} 
      
 
-      <select value={state.filterDate} onChange={(e) => dispatch({type:"filterDate",payload:calculateDate(e.target.value)})}>
+      <select value={state.filterDate} onChange={(e) => dispatch({type:"filterDate",payload:e.target.value})}>
         <option value="0">Tüm Zamanlar</option>
         <option value="1">Son 24 Saat</option>
         <option value="2">Son 7 Gün</option>
@@ -85,12 +71,15 @@ useEffect(() => {
         <option value="true">Çözülmüş</option>
         <option value="false">Çözülmemiş</option>
       </select>
+
       {userName && <input type="search" placeholder="Aranacak kelimeyi yazın.." value={state.filterSearch} onChange={(e) => dispatch({type:"filterSearch",payload:e.target.value})} />}
+
+      
       <button className="clear-filter" onClick={(e) => {
         console.log(state.filterCategory);
-         !state.filterCategory.length>0&&e.preventDefault();
+         e.preventDefault();
         dispatch({type:"filterCategory",payload:[]});
-        dispatch({type:"filterDate",payload:null});
+        dispatch({type:"filterDate",payload:"0"});
         dispatch({type:"filterIscompleted",payload:"0"});
         dispatch({type:"filterSearch",payload:""});
         setIsOpen(false);

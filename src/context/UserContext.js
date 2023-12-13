@@ -221,7 +221,29 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "getCategory", payload: await response.data });
   };
 
-
+  function calculateDate(value) {
+    const now = new Date();
+    switch (value) {
+      case "1": // Son 24 Saat
+        now.setHours(now.getHours() - 24);
+        break;
+      case "2": // Son 7 Gün
+        now.setDate(now.getDate() - 7);
+        break;
+      case "3": // Son 30 Gün
+        now.setDate(now.getDate() - 30);
+        break;
+      case "4": // Son 90 Gün
+        now.setDate(now.getDate() - 90);
+        break;
+      case "5": // Son 1 Yıl
+        now.setFullYear(now.getFullYear() - 1);
+        break;
+      default: // Tüm Zamanlar
+        return null;
+    }
+    return now.toISOString();
+  }
   //problem
   const getProblem = async (isMore) => {
     let page = 1;
@@ -238,7 +260,7 @@ export const UserProvider = ({ children }) => {
         _limit: 4,
         _page: page,
          isCompleted:state.filterIscompleted&&state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
-         createDate_gte:state.filterDate&&state.filterDate,
+         createDate_gte:state.filterDate&&calculateDate(state.filterDate),
       },
     });
     response.data.length < 4 &&  dispatch({ type: "hideLoadMoreButton", payload: false });
@@ -268,7 +290,7 @@ export const UserProvider = ({ children }) => {
         _limit: 4,
         _page: page,
          isCompleted:state.filterIscompleted&&state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
-         createDate_gte:state.filterDate&&state.filterDate,
+         createDate_gte:state.filterDate&&calculateDate(state.filterDate),
          q:state.filterSearch&&state.filterSearch,
       },
     });
@@ -301,7 +323,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const getSearchList=async()=>{
-    const response = await axios.get(`${url}/problems`,{params:{q:state.filterSearch,_limit:10}});
+    const response = await axios.get(`${url}/problems`,{params:{q:state.naviFilterSearch,_limit:10}});
     dispatch({ type: "searchList", payload: await response.data });
   }
 

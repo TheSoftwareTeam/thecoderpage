@@ -65,6 +65,7 @@
     
       .problem-head-text {
         padding: 15px;
+        height: auto;
         padding-bottom: 50px;
         background-color: #ddd;
         border-radius: 10px 10px 0 0;
@@ -88,11 +89,7 @@
         }
         p{
           cursor: pointer;
-          span{
-            font-size: 14px;
-            font-weight: 600;
-            
-          }
+          font-family: monospace;
         }
       }
       .problem-write-comment {
@@ -122,9 +119,7 @@
           height: 90%;
           border-radius: 0 10px 10px 0;
           box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
-          &:hover{
-            cursor: pointer;
-          }
+          
 
           &:active{
             transform: scale(1.1);

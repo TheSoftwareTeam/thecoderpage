@@ -112,8 +112,8 @@
       "userId": 7,
       "categoryId": 4,
       "problemHead": "Visual studio React projesi kodlarken kod formatının çok zor okunabilir olması",
-      "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?",
-      "commentCount": 2,
+      "problemContent": "kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim.kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim.kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim.kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim.kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim.kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim.kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim.kod yazarken formatlama işlemi yapıyorum.\nFakat çok daha karmaşık bir yapıya dönüşüyor ne yapsam da halledemedim. benzer eklentiler denedim am başaramadım.\n\n Bu konuda bana yardımcı olabilecek kimse var mı acaba?",
+      "commentCount": 3,
       "likesUserId": [],
       "comments": [
         {
@@ -127,11 +127,17 @@
           "userId": 2,
           "commentContent": "merhaba denedim",
           "createDate": "2023-11-05T19:00:37.148Z"
+        },
+        {
+          "id": 2,
+          "userId": 1,
+          "commentContent": "yeni bir yorum",
+          "createDate": "2023-12-13T11:12:35.980Z"
         }
       ],
       "createDate": "2023-10-19T19:00:37.148Z",
       "isCompleted": true,
-      "isDeleted": true
+      "isDeleted": false
     },
     {
       "id": 2,

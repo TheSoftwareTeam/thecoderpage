@@ -17,16 +17,9 @@
     position: relative;
     background-color: rgb(102, 107, 107);
     color: #fff;
-    :disabled {
-      background-color: rgb(102, 107, 107);
-    }
-    h6{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+   background-color: rgb(102, 107, 107);
+    
+    
     .hidden-menu {
       display: none;
     }

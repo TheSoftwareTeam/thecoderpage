@@ -19,22 +19,23 @@ const Problem = ({ problem }) => {
     writeProblemComment,
   } = useContext(UserContext);
   const navigate = useNavigate();
-useEffect(()=>{
-  dispatch({type:"newProblemComment",payload:""})
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[state.activeProblemDetail])
+  useEffect(() => {
+    dispatch({ type: "newProblemComment", payload: "" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.activeProblemDetail]);
 
-useEffect(()=>{
-  state.isComplaintPage?
-  document.body.style.overflow = 'hidden'
-  :document.body.style.overflow = 'unset'
-  },[state.isComplaintPage])
+  useEffect(() => {
+    state.isComplaintPage
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [state.isComplaintPage]);
   return (
     <div key={problem.id} className="problem">
-      {state.isComplaintPage && <Complaint problemId={problem.id}/>}
+      {state.isComplaintPage && <Complaint problemId={problem.id} />}
 
-      {id&&problem.userId!==state.activeUser.id&&
-      <a onClick={()=>dispatch({type:"isComplaintPage"})}>Şikayet et</a>}
+      {id && problem.userId !== state.activeUser.id && (
+        <a onClick={() => dispatch({ type: "isComplaintPage" })}>Şikayet et</a>
+      )}
 
       <div className="user-picture">
         {state.users.find((user) => user.id === problem.userId)?.userPicture ? (
@@ -61,23 +62,23 @@ useEffect(()=>{
           {state.users.find((user) => user.id === problem.userId)?.userName}
         </h3>
         <span>{formatRelativeTime(problem.createDate)}</span>
-       
       </div>
       <div className="problem-detail">
         <div className="problem-head-text">
           <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>
-
           <h3> {problem.problemHead}</h3>
-          <p>
-            {problem.problemContent}
-            <span
-              onClick={() => {
-                dispatch({ type: "selectedCategory", payload: null });
-                navigate(`/home/detailproblem/${problem.id}`);
-              }}
-            >
-              ...Daha fazlası
-            </span>
+          <p onClick={() => {
+            dispatch({ type: "selectedCategory", payload: null });
+            navigate(`/home/detailproblem/${problem.id}`);
+          }}>
+            {id ? (
+              problem.problemContent
+            ) : (
+              <>
+                {problem.problemContent.slice(0, 150) + "..."}
+                <p>Devamını oku</p>
+              </>
+            )}
           </p>
         </div>
 
@@ -92,8 +93,9 @@ useEffect(()=>{
           </button>
           <button>✉️{problem.comments.length}</button>
 
-          {(userName &&
-           (state.activeUser &&state.activeProblemDetail.userId === state.activeUser.id)) &&
+          {userName &&
+          state.activeUser &&
+          state.activeProblemDetail.userId === state.activeUser.id &&
           state.activeUser !== null &&
           state.activeUser.id === problem.userId ? (
             <span
@@ -109,7 +111,7 @@ useEffect(()=>{
             ""
           )}
         </div>
-        {(  id) && (
+        {id && (
           <div className="problem-write-comment">
             <textarea
               value={state.newProblemComment}
@@ -130,33 +132,32 @@ useEffect(()=>{
           </div>
         )}
 
-        {!id&& problem.comments.sort((a, b) => {
-            const dateA = new Date(a.createDate);
-            const dateB = new Date(b.createDate);
-            return dateB - dateA;
-          })
-          .slice(0, 2)
-          .map((comment) => (
-          <Comment comment={comment} />
-          ))
-          }
+        {!id &&
+          problem.comments
+            .sort((a, b) => {
+              const dateA = new Date(a.createDate);
+              const dateB = new Date(b.createDate);
+              return dateB - dateA;
+            })
+            .slice(0, 2)
+            .map((comment) => <Comment comment={comment} />)}
 
-          {id&&
-          problem.comments.sort((a, b) => {
-            const dateA = new Date(a.createDate);
-            const dateB = new Date(b.createDate);
-            return dateB - dateA;
-          })
-          .map((comment) => (
-          <Comment comment={comment} />
-          )) }
+        {id &&
+          problem.comments
+            .sort((a, b) => {
+              const dateA = new Date(a.createDate);
+              const dateB = new Date(b.createDate);
+              return dateB - dateA;
+            })
+            .map((comment) => <Comment comment={comment} />)}
 
-       
-          {!id&&problem.comments.length >= 3
-            ? <p className="more-comments-p">+{problem.comments.length - 2} yorum daha </p>
-            : ""}
-            
-       
+        {!id && problem.comments.length >= 3 ? (
+          <p className="more-comments-p">
+            +{problem.comments.length - 2} yorum daha{" "}
+          </p>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
