@@ -131,9 +131,9 @@
 #panel-content {
   width: 80%;
   min-height: 88vh;
+  height: auto;
   display: flex;
   flex-direction: row;
- 
   justify-content: center;
   padding: 50px 70px;
 }

@@ -1,51 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import "./scss/filter-complaint.scss";
 
 function FilterProblem() {
-  const { state, getComplaintProblem } = useContext(AdminContext);
-  const [status, setStatus] = useState("0");
-  const [dates, setDates] = useState("0");
-  const [search, setSearch] = useState("");
+  const { state, getComplaints,dispatch } = useContext(AdminContext);
 
   useEffect(() => {
-    const currentFilter = {
-      status: status,
-      date: calculateDate(dates),
-      search: search
-    };
-    getComplaintProblem(currentFilter);
+    getComplaints(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status, dates, search]);
-
-  function calculateDate(value) {
-    const now = new Date();
-    switch (value) {
-      case "1": // Son 24 Saat
-        now.setHours(now.getHours() - 24);
-        break;
-      case "2": // Son 7 Gün
-        now.setDate(now.getDate() - 7);
-        break;
-      case "3": // Son 30 Gün
-        now.setDate(now.getDate() - 30);
-        break;
-      case "4": // Son 90 Gün
-        now.setDate(now.getDate() - 90);
-        break;
-      case "5": // Son 1 Yıl
-        now.setFullYear(now.getFullYear() - 1);
-        break;
-      default: // Tüm Zamanlar
-        return null;
-    }
-    return now.toISOString();
-  }
+  }, [
+    state.filterDate,
+    state.filterSearch,
+    state.filterStatus,
+    state.filterUserName,
+  ]);
 
   return (
     <form className="filter-complaint">
-
-      <select onChange={(e) => setDates(e.target.value)}>
+      <select value={state.filterDate}
+        onChange={(e) =>
+          dispatch({ type: "filterDate", payload: e.target.value })
+        }>
         <option value="0">Tüm Zamanlar</option>
         <option value="1">Son 24 Saat</option>
         <option value="2">Son 7 Gün</option>
@@ -54,7 +29,10 @@ function FilterProblem() {
         <option value="5">Son 1 Yıl</option>
       </select>
 
-      <select onChange={(e) => setStatus(e.target.value)}>
+      <select value={state.filterStatus}
+        onChange={(e) =>
+          dispatch({ type: "filterStatus", payload: e.target.value })
+        }>
         <option value="">Tüm Durumlar</option>
         <option value="submitted">Alındı</option>
         <option value="inProgress">İşleniyor</option>
@@ -62,11 +40,34 @@ function FilterProblem() {
       </select>
 
       <input
-          onChange={(e) => setSearch(e.target.value)}
-          type="search"
-          placeholder="Arama Kelimesi"
-        />
-     
+       value={state.filterSearch}
+       onChange={(e) =>
+         dispatch({ type: "filterSearch", payload: e.target.value })
+       }
+        type="search"
+        placeholder="Arama Kelimesi"
+      />
+       <input
+       value={state.filterUserName}
+       onChange={(e) =>
+         dispatch({ type: "filterUserName", payload: e.target.value })
+       }
+        type="search"
+        placeholder="Kullanıcı adı Arama"
+      />
+         <button
+      onClick={
+        (e) => {
+          e.preventDefault();
+          dispatch({ type: "filterUserName", payload: "" });
+          dispatch({ type: "filterStatus", payload: "" });
+          dispatch({ type: "filterSearch", payload: "" });
+          dispatch({ type: "filterDate", payload: "0" });
+
+        }
+      }>
+Temizle
+      </button>
     </form>
   );
 }

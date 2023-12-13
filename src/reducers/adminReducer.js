@@ -43,6 +43,9 @@ export const initialState = {
   filterSearch: "",
   searchList: [],
   filterIsdeleted: false,
+  filterUserName: "",
+  filterStatus: "",
+  
 };
 
 export const adminReducer = (state, action) => {
@@ -263,6 +266,16 @@ export const adminReducer = (state, action) => {
       return {
         ...state,
         filterIsdeleted: action.payload,
+      };
+    case "filterUserName":
+      return {
+        ...state,
+        filterUserName: action.payload,
+      };
+    case "filterStatus":
+      return {
+        ...state,
+        filterStatus: action.payload,
       };
     default:
       return state;

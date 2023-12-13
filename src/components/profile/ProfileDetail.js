@@ -3,7 +3,7 @@ import UserContext from "../../context/UserContext";
 import "./scss/profile-detail.scss";
 import { useParams } from "react-router-dom";
 const ProfileDetail = () => {
-  const { state, getProfilDetail } = useContext(UserContext);
+  const { state, getProfilDetail,formatRelativeTime } = useContext(UserContext);
   const { userName } = useParams();
   useEffect(() => {
     getProfilDetail(userName.toLowerCase());
@@ -21,7 +21,7 @@ const ProfileDetail = () => {
         <input type="text" value={state.profileDetail.email} readOnly />
       </form>
       <form>
-        <input type="text" value={state.profileDetail.createDate} readOnly />
+        <input type="text" value={formatRelativeTime(state.profileDetail.createDate)} readOnly />
 
         <input
           type="text"
@@ -29,7 +29,7 @@ const ProfileDetail = () => {
           readOnly
         />
 
-        <input type="text" value="Verdiği Yanıt Sayısı: 20" readOnly />
+        <input type="text" value={`Verdiği Yanıt Sayısı: ${"20"}`} readOnly />
 
         <input type="text" value="Aldığı Beğeni Sayısı: 465" readOnly />
       </form>

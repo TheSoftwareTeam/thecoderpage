@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
-import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import image from "../../images/avatar.png";
 import "./scss/problem.scss";
+import AdminContext from "../../context/AdminContext";
 
 const Problem = ({ problem }) => {
-  const { state, dispatch, actionLike } =
-    useContext(UserContext);
+  const { state, dispatch,formatRelativeTime } =
+    useContext(AdminContext);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch({ type: "newProblemComment", payload: "" });
@@ -47,10 +47,11 @@ const Problem = ({ problem }) => {
         <div  onClick={() => navigate(`/admin/problemdetail/${problem.id}`)} className="problem-head-text">
           
           <h6>{problem.problemHead.slice(0, 150)}</h6>
+          <p>{formatRelativeTime(problem.createDate)}</p>
         </div>
 
         <div className="problem-comment-view">
-          <button onClick={() => actionLike(problem.id)}>
+          <button>
             
             {"💙"+problem.likesUserId.length}
           </button>

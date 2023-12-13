@@ -2,11 +2,12 @@ import React, { useContext, useEffect } from "react";
 import "./scss/user-detail.scss";
 import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const UserDetail = () => {
   const { state, getUserDetail, dispatch, editUser } = useContext(AdminContext);
 
   const { userName } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     getUserDetail(userName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,6 +87,24 @@ const UserDetail = () => {
           
           <input type="submit" value="Düzenle" />
         </form>
+        <button 
+        onClick={
+          (e) => {
+            e.preventDefault();
+            
+            dispatch({ type: "filterUserName", payload: state.userDetail.userName });
+            navigate("/admin/problems")
+          }
+        }>Kullanıcı Problemlerini Gör</button>
+         <button 
+        onClick={
+          (e) => {
+            e.preventDefault();
+            
+            dispatch({ type: "filterUserName", payload: state.userDetail.userName });
+            navigate("/admin/complaints")
+          }
+        }>Kullanıcı Şikayetlerini Gör</button>
       </div>
     </div>
   );

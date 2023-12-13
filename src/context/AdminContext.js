@@ -11,7 +11,7 @@ export const AdminProvider = ({ children }) => {
   const [state, dispatch] = useReducer(adminReducer, initialState);
   const navigate = useNavigate();
   let url = "http://localhost:3005";
-
+//date
   const date = () => {
     return new Date().toISOString();
   };
@@ -37,6 +37,29 @@ export const AdminProvider = ({ children }) => {
       const options = { year: "numeric", month: "numeric", day: "numeric" };
       return targetDate.toLocaleDateString("tr-TR", options);
     }
+  }
+  function calculateDate(value) {
+    const now = new Date();
+    switch (value) {
+      case "1": // Son 24 Saat
+        now.setHours(now.getHours() - 24);
+        break;
+      case "2": // Son 7 Gün
+        now.setDate(now.getDate() - 7);
+        break;
+      case "3": // Son 30 Gün
+        now.setDate(now.getDate() - 30);
+        break;
+      case "4": // Son 90 Gün
+        now.setDate(now.getDate() - 90);
+        break;
+      case "5": // Son 1 Yıl
+        now.setFullYear(now.getFullYear() - 1);
+        break;
+      default: // Tüm Zamanlar
+        return null;
+    }
+    return now.toISOString();
   }
   //user
   const getUsers = async () => {
@@ -161,33 +184,7 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
-  //comment
-  //  const getComments = async (isMore) => {
-  //   let page = 1;
-  //   if (isMore) {
-  //     dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
-  //     page = state.pages;
-  //   }
-  //   dispatch({ type: "hideLoadMoreButton", payload: true });
-  //   const response = await axios.get(`${url}/problems`, {
-  //     params: {
-  //       _sort: "createDate",
-  //       _order: "desc",
-  //       _limit: 12,
-  //       _page: page,
-  //     },
-  //   });
-  //   response.data.length < 12 &&
-  //     dispatch({ type: "hideLoadMoreButton", payload: false });
-  //   if (isMore) {
-  //     dispatch({ type: "getMoreComments", payload: await response.data });
-  //   } else {
-
-  //     dispatch({ type: "loadMorePages", payload: 2 });
-  //   }
-
-  // };
-
+ 
   const deleteComment = async (problemId, commentId) => {
     const response = await axios.get(`${url}/problems/${problemId}`);
     const problem = response.data;
@@ -268,29 +265,7 @@ export const AdminProvider = ({ children }) => {
       navigate(`/admin/categories`);
     }
   };
-  function calculateDate(value) {
-    const now = new Date();
-    switch (value) {
-      case "1": // Son 24 Saat
-        now.setHours(now.getHours() - 24);
-        break;
-      case "2": // Son 7 Gün
-        now.setDate(now.getDate() - 7);
-        break;
-      case "3": // Son 30 Gün
-        now.setDate(now.getDate() - 30);
-        break;
-      case "4": // Son 90 Gün
-        now.setDate(now.getDate() - 90);
-        break;
-      case "5": // Son 1 Yıl
-        now.setFullYear(now.getFullYear() - 1);
-        break;
-      default: // Tüm Zamanlar
-        return null;
-    }
-    return now.toISOString();
-  }
+
   //problem
   const getProblem = async (isMore) => {
     let page = 1;
@@ -306,6 +281,7 @@ export const AdminProvider = ({ children }) => {
         _order: "desc",
         _limit: 12,
         _page: page,
+        userId: state.users.map((user) => user.userName===state.filterUserName?user.id:null),
         isDeleted: state.filterIsdeleted==="true"?true:state.filterIsdeleted==="false"?false:null,
         isCompleted: state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
         createDate_gte: calculateDate(state.filterDate),
@@ -333,22 +309,7 @@ export const AdminProvider = ({ children }) => {
     });
   };
 
-  const getFilterProblem = async (filter) => {
-    const response = await axios.get(`${url}/problems`, {
-      params: {
-        categoryId: filter.category,
-        // userId: filter.to==="user"?state.activeUser.id:null,
-        _sort: "createDate",
-        _order: "desc",
-        _limit: 12,
-        isDeleted: filter.isdeleted==="true"?true:filter.isdeleted==="false"?false:null,
-        isCompleted: filter.cozuldu==="true"?true:filter.cozuldu==="false"?false:null,
-        createDate_gte: filter.date,
-        q: filter.search,
-      },
-    });
-    dispatch({ type:"getProblems", payload: await response.data });
-  };
+  
 
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
@@ -376,8 +337,12 @@ export const AdminProvider = ({ children }) => {
       params: {
         _sort: "createDate",
         _order: "desc",
-        _limit: 8,
         _page: page,
+        _limit: 12,
+        status: state.filterStatus!==""?state.filterStatus:null,
+        createDate_gte: calculateDate(state.filterDate),
+        q: state.filterSearch,
+        userId: state.users.map((user) => user.userName===state.filterUserName?user.id:null),
       },
     });
 
@@ -391,15 +356,16 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
-  const getComplaintProblem = async (filter) => {
+  const getComplaintProblem = async () => {
     const response = await axios.get(`${url}/complaints`, {
       params: {
         _sort: "createDate",
         _order: "desc",
         _limit: 12,
-        status: filter.status!==""?filter.status:null,
-        createDate_gte: filter.date,
-        q: filter.search,
+        status: state.filterStatus!==""?state.filterStatus:null,
+        createDate_gte: state.filterDate,
+        q: state.filterSearch,
+        userId: state.users.map((user) => user.userName===state.filterUserName?user.id:null),
       },
     });
     dispatch({ type:"getComplaints", payload: await response.data });
@@ -459,7 +425,6 @@ export const AdminProvider = ({ children }) => {
         toggleDropdown,
         deleteCategory,
         getProblem,
-        getFilterProblem,
         getCommentDetail,
         deleteComment,
         getUsers,

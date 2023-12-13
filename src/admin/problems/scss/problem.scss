@@ -63,6 +63,13 @@
           font-weight: 600;
           font-family: monospace;
         }
+        p{
+          font-size: 12px;
+          font-family: monospace;
+          position: absolute;
+          right:5px;
+          bottom: 5px;
+        }
       }
 
       .problem-comment-view {

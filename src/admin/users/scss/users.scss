@@ -1,5 +1,6 @@
 #users-container {
   width: 100%;
+  height: auto;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -49,6 +50,8 @@
 
   #user-list {
     width: 100%;
+    height: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
