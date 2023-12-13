@@ -42,7 +42,7 @@ export const initialState = {
   filterIscompleted: null,
   filterSearch: "",
   searchList: [],
-  isDeleted: false,
+  filterIsdeleted: false,
 };
 
 export const adminReducer = (state, action) => {
@@ -259,10 +259,10 @@ export const adminReducer = (state, action) => {
         ...state,
         naviFilterSearch: action.payload,
       };
-    case "isDeleted":
+    case "filterIsdeleted":
       return {
         ...state,
-        isDeleted: action.payload,
+        filterIsdeleted: action.payload,
       };
     default:
       return state;

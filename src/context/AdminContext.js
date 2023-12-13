@@ -306,7 +306,7 @@ export const AdminProvider = ({ children }) => {
         _order: "desc",
         _limit: 12,
         _page: page,
-        isDeleted: state.isDeleted==="true"?true:state.isDeleted==="false"?false:null,
+        isDeleted: state.filterIsdeleted==="true"?true:state.filterIsdeleted==="false"?false:null,
         isCompleted: state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
         createDate_gte: calculateDate(state.filterDate),
         q: state.filterSearch,

@@ -9,14 +9,14 @@ function FilterProblem() {
   useEffect(() => {
     getProblem(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.filterCategory,state.filterDate,state.filterIscompleted,state.filterSearch]);
+  }, [state.filterCategory,state.filterDate,state.filterIscompleted,state.filterSearch,state.filterIsdeleted]);
 
 
 
   return (
     <form className="FilterProblem">
 
-      <select onChange={(e) => dispatch({type:"filterDate",payload:e.target.value})}>
+      <select onChange={(e) => dispatch({type:"filterIsdeleted",payload:e.target.value})}>
         <option value="0">Tüm Zamanlar</option>
         <option value="1">Son 24 Saat</option>
         <option value="2">Son 7 Gün</option>
