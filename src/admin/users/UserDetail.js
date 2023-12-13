@@ -4,7 +4,7 @@ import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
 import { useNavigate, useParams } from "react-router-dom";
 const UserDetail = () => {
-  const { state, getUserDetail, dispatch, editUser } = useContext(AdminContext);
+  const { state, getUserDetail, dispatch, editUser,formatRelativeTime} = useContext(AdminContext);
 
   const { userName } = useParams();
   const navigate = useNavigate();
@@ -13,10 +13,38 @@ const UserDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userName]);
 
-
   return (
     <div className="user-profile-container">
       <h2>Kullanıcı Bilgileri</h2>
+      <div className="button-container">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+
+            dispatch({
+              type: "filterUserName",
+              payload: state.userDetail.userName,
+            });
+            navigate("/admin/problems");
+          }}
+        >
+          Kullanıcı Problemlerini Gör
+        </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+
+            dispatch({
+              type: "filterUserName",
+              payload: state.userDetail.userName,
+            });
+            navigate("/admin/complaints");
+          }}
+        >
+          Kullanıcı Şikayetlerini Gör
+        </button>
+      </div>
+
       <div className="user-profile-content">
         <div className="user-profile-picture">
           {state.userDetail.userPicture !== "" ? (
@@ -24,9 +52,14 @@ const UserDetail = () => {
               src={"http://localhost:3001/" + state.userDetail.userPicture}
               alt="User"
             />
+            
           ) : (
             <img src={image} alt="User" />
           )}
+           <span>
+          katılma tarihi: {" "}
+          {formatRelativeTime(state.userDetail.createDate)}
+        </span>
         </div>
         <form onSubmit={editUser}>
           <input
@@ -77,34 +110,21 @@ const UserDetail = () => {
           </select>
 
           <select
-            onChange={(e) =>{
-             window.confirm(`Kullanıcıyı ${e.target.value==="true"?"Aktif":"Pasif"} yapmak istediğinize emin misiniz?`)&&dispatch({ type: "userIsActive", payload: e.target.value })}}
+            onChange={(e) => {
+              window.confirm(
+                `Kullanıcıyı ${
+                  e.target.value === "true" ? "Aktif" : "Pasif"
+                } yapmak istediğinize emin misiniz?`
+              ) && dispatch({ type: "userIsActive", payload: e.target.value });
+            }}
             value={state.userIsActive}
           >
             <option value="true">Aktif</option>
             <option value="false">Pasif</option>
           </select>
-          
+
           <input type="submit" value="Düzenle" />
         </form>
-        <button 
-        onClick={
-          (e) => {
-            e.preventDefault();
-            
-            dispatch({ type: "filterUserName", payload: state.userDetail.userName });
-            navigate("/admin/problems")
-          }
-        }>Kullanıcı Problemlerini Gör</button>
-         <button 
-        onClick={
-          (e) => {
-            e.preventDefault();
-            
-            dispatch({ type: "filterUserName", payload: state.userDetail.userName });
-            navigate("/admin/complaints")
-          }
-        }>Kullanıcı Şikayetlerini Gör</button>
       </div>
     </div>
   );

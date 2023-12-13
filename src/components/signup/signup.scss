@@ -1,4 +1,4 @@
-.signup-container{
+.signup-container {
   width: 100vw;
   height: 100vh;
   background-color: rgba(128, 128, 128, 0.81);
@@ -14,91 +14,91 @@
     font-family: monospace;
     margin-bottom: 10px;
   }
-    form {
-      background-color: #ddd;
-      border-radius: 15px;
-      padding: 50px;
-      display: flex;
-      flex-direction: column;
-      width: 70vw;
-      height: 50vh;
-      gap: 15px;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-        .exit {
-          position: absolute;
-          border: none;
-          background-color: transparent;
-          top: 0;
-          right: 0;
-          margin: 10px;
-    
-          
-          color: rgb(0, 0, 0);
-          &:hover {
-            cursor: pointer;
-            border-radius: 15px;
-            color: rgb(200, 0, 0);
-            transition: 0.3s;
-          }
-          &:active {
-            transform: scale(1.2);
-            transition: 0.3s;
-          }}
-        input,
-        textarea,
-        select {
-          width: 50vw;
-          height: 5vh;
-          padding: 15px;
-          border-radius: 10px;
-          border: none;
-          font-size: 17px;
-          font-family: monospace ;
-          color: black;
-          font-weight: 600;
-          box-shadow: 3px 6px 9px rgb(128, 124, 124);
-        }
-        input[type="submit"] {
-          background-color: #aaa;
-          width: 15vw;
-          color: black;
-          font-family: monospace;
-          font-size: 17px;
-          font-weight: 700;
-          &:hover{
-            background-color: #ccc;
-            transition: 0.3s;
-            cursor: pointer;
-          }
-          &:active
-          {
-            transform: scale(1.2);
-            transition: 0.3s;
-          }
-        }
-        .loginButton{
-          background-color: #aaa;
-          width: 14.8vw;
-          color: black;
-          font-family: monospace;
-          font-size: 17px;
-          font-weight: 700;
-          border: none;
-          height: 5vh;
-          border-radius: 10px;
-          box-shadow: 3px 6px 9px rgb(128, 124, 124);
-          &:hover{
-            background-color: #ccc;
-            transition: 0.3s;
-            cursor: pointer;
-          }
-          &:active
-          {
-            transform: scale(1.2);
-            transition: 0.3s;
-          }
-        }
+  form {
+    background-color: #eee;
+    border-radius: 15px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 50vh;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    .exit {
+      position: absolute;
+      border: none;
+      background-color: transparent;
+      top: 0;
+      right: 0;
+      margin: 10px;
+
+      color: rgb(0, 0, 0);
+      &:hover {
+        cursor: pointer;
+        border-radius: 15px;
+        color: rgb(200, 0, 0);
+        transition: 0.3s;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
     }
+    input,
+    textarea,
+    select {
+      width: 50vw;
+      height: 5vh;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 17px;
+      font-family: monospace;
+      color: black;
+      font-weight: 600;
+      box-shadow: 3px 6px 9px rgb(128, 124, 124);
+    }
+    input[type="submit"] {
+      background-color: rgb(255, 255, 255);
+      border: 1px solid #16b6de;
+      color: black;
+      width: 15vw;
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      &:hover {
+        background-color: #ccc;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
+    }
+    .loginButton {
+      background-color: rgb(255, 255, 255);
+      border: 1px solid #16b6de;
+      color: black;
+      width: 14.8vw;
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      height: 5vh;
+      border-radius: 10px;
+      box-shadow: 3px 6px 9px rgb(128, 124, 124);
+      &:hover {
+        background-color: #ccc;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.2);
+        transition: 0.3s;
+      }
+    }
+  }
 }

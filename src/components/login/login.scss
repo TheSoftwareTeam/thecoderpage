@@ -15,7 +15,7 @@
     margin-bottom: 20px;
   }
   form {
-    background-color: #ddd;
+    background-color: #eee;
     border-radius: 15px;
     padding: 50px;
     display: flex;
@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     .exit {
       position: absolute;
       border: none;
@@ -63,9 +64,11 @@
       box-shadow: 3px 6px 9px rgb(128, 124, 124);
     }
     input[type="submit"] {
-      background-color: #aaa;
-      width: 15vw;
+      background-color: rgb(255, 255, 255);
+      border: 1px solid #16b6de;
       color: black;
+      width: 15vw;
+   
       font-family: monospace;
       font-size: 17px;
       font-weight: 700;
@@ -81,13 +84,13 @@
     }
 
     .signUpButton {
-      background-color: #aaa;
-      width: 14.8vw;
+      background-color: rgb(255, 255, 255);
+      border: 1px solid #16b6de;
       color: black;
+      width: 14.8vw;
       font-family: monospace;
       font-size: 17px;
       font-weight: 700;
-      border: none;
       height: 5vh;
       border-radius: 10px;
       box-shadow: 3px 6px 9px rgb(128, 124, 124);

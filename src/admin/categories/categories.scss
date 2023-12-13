@@ -4,43 +4,59 @@
   min-height: 90vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   gap: 10px;
 
   form {
-    width: 100%;
+    width: 92%;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-
+    padding: 20px 0;
+    background-color: #ffffff;
+    box-shadow: 3px 0px 9px rgb(128, 124, 124);
+    border-radius: 10px;
     input {
-      width: 80%;
+      width: 70%;
       min-width: 24%;
       max-width: 90%;
+      height: 6vh;
       background-color: #ffffff;
       padding: 20px;
       border-radius: 10px;
       font-size: 2vw;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
     }
 
     button {
+      background-color: rgb(255, 255, 255);
+      border: 1px solid #16b6de;
+      color: black;
       width: 50%;
       min-width: 24%;
       max-width: 60%;
-      background-color: #ccc;
+      cursor: pointer;
       padding: 10px;
       border-radius: 10px;
       font-size: 1.5vw;
       font-family: "Monospace", sans-serif;
-      border: none;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+      &:hover {
+        background-color: #ddd;
+      }
+      &:active {
+        transform: scale(1.1);
+      }
     }
   }
 
   #category-list {
     width: 100%;
-    
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -59,7 +75,7 @@
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      background-color: #ccc; /* Gri tonu */
+      background-color: #ddd;
       gap: 10px;
       .action {
         width: 100%;
@@ -85,32 +101,27 @@
     .category-list-detail-content {
       width: 30%;
       text-align: center;
-  
       height: auto;
-      padding: 10px ;
+      padding: 10px;
       padding-bottom: 20px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      background-color: #ccc; /* Gri tonu */
+      background-color: #ddd;
       gap: 10px;
- 
 
-        button {
-          width: 60%;
-       
-       
-          background-color: #aaa;
-          color: black;
+      button {
+        width: 60%;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid #16b6de;
+        color: black;
 
-          padding: 10px;
-          border-radius: 10px;
-          font-size: 15px;
-          font-weight: bold;
-          font-family: "Monospace", sans-serif;
-          border: none;
-        }
-      
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: "Monospace", sans-serif;
+      }
     }
   }
 }

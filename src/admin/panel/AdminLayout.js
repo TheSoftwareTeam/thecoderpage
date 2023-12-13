@@ -21,6 +21,7 @@ const AdminPanel = () => {
     useContext(AdminContext);
 
   useEffect(() => {
+   
     roleControl();
     getUsers();
     getCategory();

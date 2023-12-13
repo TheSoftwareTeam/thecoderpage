@@ -1,27 +1,32 @@
 .filter-complaint {
-  width: 100%;
+  width: 99%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  border-radius: 10px;
+  gap: 20px;
   padding: 20px;
-  margin: 40px 0px;
+  margin: 20px 0px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   select {
     width: 40%;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #16b6de;
     font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   }
   input[type="search"] {
-    width: 35%;
-    height: 35px;
+    width: 40%;
+    height: 40px;
     padding: 5px 15px;
-    border-radius: 15px;
+    border-radius: 10px;
     font-size: 20px;
-    border: 0.1px solid gray;
+    border: 1px solid #16b6de;
+    cursor: pointer;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   }
   div {
     width: 100%;
@@ -30,9 +35,12 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
+    font-family: monospace;
+    font-weight: 600;
     input[type="checkbox"] {
       width: 20px;
       height: 20px;
+      cursor: pointer;
     }
     label {
       display: flex;
@@ -40,19 +48,23 @@
       gap: 5px;
     }
   }
-  button{
-    width: 60%;
-    height: 30px;
+  button {
+    width: 82%;
+    height: 35px;
     border-radius: 5px;
-    border: 0.1px solid gray;
-    background-color: #5386d8;
-    color: white;
+    border: 1px solid #16b6de;
+    background-color: rgb(255, 255, 255);
+    color: black;
     font-weight: bold;
     font-family: monospace;
     font-size: 1rem;
     cursor: pointer;
-    &:hover{
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    &:hover {
       background-color: #ddd;
     }
-}
+    &:active {
+      transform: scale(1.03);
+    }
+  }
 }
