@@ -1,55 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import "./scss/filter-problem.scss";
 
 function FilterProblem() {
-  const { state, getFilterProblem } = useContext(AdminContext);
-  const [iscomplated, setIscomplated] = useState("0");
-  const [isdeleted, setIsDeleted] = useState("0");
-  const [category, setCategory] = useState([]);
-  const [dates, setDates] = useState("0");
-  const [search, setSearch] = useState("");
+  const { state,dispatch,getProblem } = useContext(AdminContext);
+ 
 
   useEffect(() => {
-    const currentFilter = {
-      cozuldu: iscomplated,
-      category:category,
-      isdeleted:isdeleted,
-      date: calculateDate(dates),
-      search: search
-    };
-    getFilterProblem(currentFilter);
+    getProblem(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iscomplated, category,isdeleted, dates, search]);
+  }, [state.filterCategory,state.filterDate,state.filterIscompleted,state.filterSearch]);
 
-  function calculateDate(value) {
-    const now = new Date();
-    switch (value) {
-      case "1": // Son 24 Saat
-        now.setHours(now.getHours() - 24);
-        break;
-      case "2": // Son 7 Gün
-        now.setDate(now.getDate() - 7);
-        break;
-      case "3": // Son 30 Gün
-        now.setDate(now.getDate() - 30);
-        break;
-      case "4": // Son 90 Gün
-        now.setDate(now.getDate() - 90);
-        break;
-      case "5": // Son 1 Yıl
-        now.setFullYear(now.getFullYear() - 1);
-        break;
-      default: // Tüm Zamanlar
-        return null;
-    }
-    return now.toISOString();
-  }
+
 
   return (
     <form className="FilterProblem">
 
-      <select onChange={(e) => setDates(e.target.value)}>
+      <select onChange={(e) => dispatch({type:"filterDate",payload:e.target.value})}>
         <option value="0">Tüm Zamanlar</option>
         <option value="1">Son 24 Saat</option>
         <option value="2">Son 7 Gün</option>
@@ -58,20 +25,20 @@ function FilterProblem() {
         <option value="5">Son 1 Yıl</option>
       </select>
 
-      <select onChange={(e) => setIsDeleted(e.target.value)}>
+      <select onChange={(e) => dispatch({type:"filterIsdeleted",payload:e.target.value})}>
         <option value="false">Silinmemiş</option>
         <option value="true">Silinmiş</option>
         <option value="0">Tümü</option>
       </select>
 
-      <select onChange={(e) => setIscomplated(e.target.value)}>
+      <select onChange={(e) => dispatch({type:"filterIscompleted",payload:e.target.value})}>
         <option value="0">Tüm Durumlar</option>
         <option value="true">Çözülmüş</option>
         <option value="false">Çözülmemiş</option>
       </select>
 
       <input
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => dispatch({type:"filterSearch",payload:e.target.value})}
           type="search"
           placeholder="Arama Kelimesi"
         />
@@ -83,11 +50,9 @@ function FilterProblem() {
               value={category.id}
               onChange={(e) => {
                 if (e.target.checked) {
-                  setCategory((prevState) => [...prevState, e.target.value]);
+                  dispatch({ type: "filterCategory", payload: [...state.filterCategory, e.target.value] });
                 } else {
-                  setCategory((prevState) =>
-                    prevState.filter((cat) => cat !== e.target.value)
-                  );
+                  dispatch({ type: "filterCategory", payload: state.filterCategory.filter((cat) => cat !== e.target.value) });
                 }
               }}
               />

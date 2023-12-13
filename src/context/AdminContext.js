@@ -268,6 +268,29 @@ export const AdminProvider = ({ children }) => {
       navigate(`/admin/categories`);
     }
   };
+  function calculateDate(value) {
+    const now = new Date();
+    switch (value) {
+      case "1": // Son 24 Saat
+        now.setHours(now.getHours() - 24);
+        break;
+      case "2": // Son 7 Gün
+        now.setDate(now.getDate() - 7);
+        break;
+      case "3": // Son 30 Gün
+        now.setDate(now.getDate() - 30);
+        break;
+      case "4": // Son 90 Gün
+        now.setDate(now.getDate() - 90);
+        break;
+      case "5": // Son 1 Yıl
+        now.setFullYear(now.getFullYear() - 1);
+        break;
+      default: // Tüm Zamanlar
+        return null;
+    }
+    return now.toISOString();
+  }
   //problem
   const getProblem = async (isMore) => {
     let page = 1;
@@ -278,10 +301,16 @@ export const AdminProvider = ({ children }) => {
     dispatch({ type: "hideLoadMoreButton", payload: true });
     const response = await axios.get(`${url}/problems`, {
       params: {
+        categoryId: state.filterCategory.length > 0 ? state.filterCategory : null,
         _sort: "createDate",
         _order: "desc",
         _limit: 12,
         _page: page,
+        isDeleted: state.isDeleted==="true"?true:state.isDeleted==="false"?false:null,
+        isCompleted: state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
+        createDate_gte: calculateDate(state.filterDate),
+        q: state.filterSearch,
+        
       },
     });
     response.data.length < 12 &&

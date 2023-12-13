@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import "./scss/filter-problem.scss";
 import UserContext from "../../context/UserContext";
 import { useParams } from "react-router-dom";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 import e from "cors";
 
 function FilterProblem() {
@@ -10,7 +9,7 @@ function FilterProblem() {
   const [isOpen, setIsOpen] = useState(false);
   const {userName}=useParams();
 useEffect(() => {
-  console.log("filterCategory",state.filterCategory);
+  
   if(userName)
   {
     activeUserProblem(false,userName);

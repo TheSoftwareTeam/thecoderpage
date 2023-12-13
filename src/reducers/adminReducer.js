@@ -36,6 +36,13 @@ export const initialState = {
   complaints: [],
   complaintDetail:{},
   complaintStatus:"",
+  //filterProblem
+  filterCategory: [],
+  filterDate: null,
+  filterIscompleted: null,
+  filterSearch: "",
+  searchList: [],
+  isDeleted: false,
 };
 
 export const adminReducer = (state, action) => {
@@ -220,6 +227,42 @@ export const adminReducer = (state, action) => {
       return {
         ...state,
         complaintStatus: action.payload,
+      };
+    //filterProblem
+    case "filterCategory":
+      return {
+        ...state,
+        filterCategory: action.payload,
+      };
+    case "filterDate":
+      return {
+        ...state,
+        filterDate: action.payload,
+      };
+    case "filterIscompleted":
+      return {
+        ...state,
+        filterIscompleted: action.payload,
+      };
+    case "filterSearch":
+      return {
+        ...state,
+        filterSearch: action.payload,
+      };
+    case "searchList":
+      return {
+        ...state,
+        searchList: action.payload,
+      };
+    case "naviFilterSearch":
+      return {
+        ...state,
+        naviFilterSearch: action.payload,
+      };
+    case "isDeleted":
+      return {
+        ...state,
+        isDeleted: action.payload,
       };
     default:
       return state;
