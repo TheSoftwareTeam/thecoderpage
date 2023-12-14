@@ -22,6 +22,7 @@ export const initialState = {
   //category
   categories: [],
   categoryName: "",
+  categoryDetail: {},
   //problem
   problems: [],
   activeProblemDetail: {
@@ -31,21 +32,29 @@ export const initialState = {
   pages: 2,
   loadMoreButton: true,
   //comment
+  problemComments:[],
   activeCommentDetail: {},
   //complaint
   complaints: [],
   complaintDetail:{},
   complaintStatus:"",
   //filterProblem
-  filterCategory: [],
-  filterDate: null,
-  filterIscompleted: null,
-  filterSearch: "",
-  searchList: [],
-  filterIsdeleted: false,
-  filterUserName: "",
-  filterStatus: "",
-  
+  fltProblemCategory: [],
+  fltProblemDate: null,
+  fltProblemIscompleted: null,
+  fltProblemSearch: "",
+  fltProblemIsdeleted: false,
+  fltProblemUserName: "",
+  //filterComments
+  fltrCommentDate: null,
+  fltrCommentSearch: "",
+  fltrCommentIsdeleted: false,
+  fltrCommentUserName: "",
+  //filterComplaints
+  fltrComplaintDate: null,
+  fltrComplaintSearch: "",
+  fltrComplaintUserName: "",
+  fltrComplaintStatus: "",
 };
 
 export const adminReducer = (state, action) => {
@@ -172,13 +181,7 @@ export const adminReducer = (state, action) => {
         ...state,
         categories: [...state.categories, action.payload],
       };
-    case "deletedCategory":
-      return {
-        ...state,
-        categories: state.categories.filter(
-          (category) => category.isDeleted === false
-        ),
-      };
+   
     //problem
     case "getProblems":
       return {
@@ -210,6 +213,17 @@ export const adminReducer = (state, action) => {
         ...state,
         loadMoreButton: action.payload,
       };
+  //comment
+    case "getproblemComments":
+      return {
+        ...state,
+        problemComments: action.payload,
+      };
+    case "getMoreproblemComments":
+      return {
+        ...state,
+        problemComments: [...state.problemComments, ...action.payload],
+      };
     //complaint
     case "getComplaints":
       return {
@@ -232,50 +246,88 @@ export const adminReducer = (state, action) => {
         complaintStatus: action.payload,
       };
     //filterProblem
-    case "filterCategory":
+    case "fltProblemCategory":
       return {
         ...state,
-        filterCategory: action.payload,
+        fltProblemCategory: action.payload,
       };
-    case "filterDate":
+    case "fltProblemDate":
       return {
         ...state,
-        filterDate: action.payload,
+        fltProblemDate: action.payload,
       };
-    case "filterIscompleted":
+    case "fltProblemIscompleted":
       return {
         ...state,
-        filterIscompleted: action.payload,
+        fltProblemIscompleted: action.payload,
       };
-    case "filterSearch":
+    case "fltProblemSearch":
       return {
         ...state,
-        filterSearch: action.payload,
+        fltProblemSearch: action.payload,
       };
-    case "searchList":
+    
+    case "fltProblemIsdeleted":
       return {
         ...state,
-        searchList: action.payload,
+        fltProblemIsdeleted: action.payload,
       };
-    case "naviFilterSearch":
+    case "fltProblemUserName":
       return {
         ...state,
-        naviFilterSearch: action.payload,
-      };
-    case "filterIsdeleted":
-      return {
-        ...state,
-        filterIsdeleted: action.payload,
-      };
-    case "filterUserName":
-      return {
-        ...state,
-        filterUserName: action.payload,
+        fltProblemUserName: action.payload,
       };
     case "filterStatus":
       return {
         ...state,
         filterStatus: action.payload,
+      };
+    //filterComment
+    case "fltrCommentDate":
+      return {
+        ...state,
+        fltrCommentDate: action.payload,
+      };
+    case "fltrCommentSearch":
+      return {
+        ...state,
+        fltrCommentSearch: action.payload,
+      };
+    case "fltrCommentIsdeleted":
+      return {
+        ...state,
+        fltrCommentIsdeleted: action.payload,
+      };
+    case "fltrCommentUserName":
+      return {
+        ...state,
+        fltrCommentUserName: action.payload,
+      };
+    //filterComplaint
+    case "fltrComplaintDate":
+      return {
+        ...state,
+        fltrComplaintDate: action.payload,
+      };
+    case "fltrComplaintSearch":
+      return {
+        ...state,
+        fltrComplaintSearch: action.payload,
+      };
+    case "fltrComplaintIsdeleted":
+      return {
+        ...state,
+        fltrComplaintIsdeleted: action.payload,
+      };
+    case "fltrComplaintUserName":
+      return {
+        ...state,
+        fltrComplaintUserName: action.payload,
+      };
+    case "fltrComplaintStatus":
+      return {
+        ...state,
+        fltrComplaintStatus: action.payload,
       };
     default:
       return state;

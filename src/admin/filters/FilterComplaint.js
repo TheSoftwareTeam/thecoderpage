@@ -9,17 +9,17 @@ function FilterProblem() {
     getComplaints(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    state.filterDate,
-    state.filterSearch,
-    state.filterStatus,
-    state.filterUserName,
+    state.fltrComplaintDate,
+    state.fltrComplaintSearch,
+    state.fltrComplaintStatus,
+    state.fltrComplaintUserName,
   ]);
 
   return (
     <form className="filter-complaint">
-      <select value={state.filterDate}
+      <select value={state.fltrComplaintDate}
         onChange={(e) =>
-          dispatch({ type: "filterDate", payload: e.target.value })
+          dispatch({ type: "fltrComplaintDate", payload: e.target.value })
         }>
         <option value="0">Tüm Zamanlar</option>
         <option value="1">Son 24 Saat</option>
@@ -29,9 +29,9 @@ function FilterProblem() {
         <option value="5">Son 1 Yıl</option>
       </select>
 
-      <select value={state.filterStatus}
+      <select value={state.fltrComplaintStatus}
         onChange={(e) =>
-          dispatch({ type: "filterStatus", payload: e.target.value })
+          dispatch({ type: "fltrComplaintStatus", payload: e.target.value })
         }>
         <option value="">Tüm Durumlar</option>
         <option value="submitted">Alındı</option>
@@ -40,17 +40,17 @@ function FilterProblem() {
       </select>
 
       <input
-       value={state.filterSearch}
+       value={state.fltrComplaintSearch}
        onChange={(e) =>
-         dispatch({ type: "filterSearch", payload: e.target.value })
+         dispatch({ type: "fltrComplaintSearch", payload: e.target.value })
        }
         type="search"
         placeholder="Arama Kelimesi"
       />
        <input
-       value={state.filterUserName}
+       value={state.fltrComplaintUserName}
        onChange={(e) =>
-         dispatch({ type: "filterUserName", payload: e.target.value })
+         dispatch({ type: "fltrComplaintUserName", payload: e.target.value })
        }
         type="search"
         placeholder="Kullanıcı adı Arama"
@@ -59,10 +59,10 @@ function FilterProblem() {
       onClick={
         (e) => {
           e.preventDefault();
-          dispatch({ type: "filterUserName", payload: "" });
-          dispatch({ type: "filterStatus", payload: "" });
-          dispatch({ type: "filterSearch", payload: "" });
-          dispatch({ type: "filterDate", payload: "0" });
+          dispatch({ type: "fltrComplaintUserName", payload: "" });
+          dispatch({ type: "fltrComplaintStatus", payload: "" });
+          dispatch({ type: "fltrComplaintSearch", payload: "" });
+          dispatch({ type: "fltrComplaintDate", payload: "0" });
 
         }
       }>

@@ -10,20 +10,20 @@ function FilterProblem() {
     getProblem(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    state.filterCategory,
-    state.filterDate,
-    state.filterIscompleted,
-    state.filterSearch,
-    state.filterIsdeleted,
-    state.filterUserName,
+    state.fltProblemCategory,
+    state.fltProblemDate,
+    state.fltProblemIscompleted,
+    state.fltProblemSearch,
+    state.fltProblemIsdeleted,
+    state.fltProblemUserName,
   ]);
 
   return (
     <form className="filterProblem">
       <select
-        value={state.filterDate}
+        value={state.fltProblemDate}
         onChange={(e) =>
-          dispatch({ type: "filterDate", payload: e.target.value })
+          dispatch({ type: "fltProblemDate", payload: e.target.value })
         }
       >
         <option value="0">Tüm Zamanlar</option>
@@ -34,9 +34,9 @@ function FilterProblem() {
         <option value="5">Son 1 Yıl</option>
       </select>
       <select
-        value={state.filterIsdeleted}
+        value={state.fltProblemIsdeleted}
         onChange={(e) =>
-          dispatch({ type: "filterIsdeleted", payload: e.target.value })
+          dispatch({ type: "fltProblemIsdeleted", payload: e.target.value })
         }
       >
         <option value="false">Silinmemiş</option>
@@ -44,9 +44,9 @@ function FilterProblem() {
         <option value="0">Tümü</option>
       </select>
       <select
-        value={state.filterIscompleted}
+        value={state.fltProblemIscompleted}
         onChange={(e) =>
-          dispatch({ type: "filterIscompleted", payload: e.target.value })
+          dispatch({ type: "fltProblemIscompleted", payload: e.target.value })
         }
       >
         <option value="0">Tüm Durumlar</option>
@@ -55,39 +55,39 @@ function FilterProblem() {
       </select>
       <input
         onChange={(e) =>
-          dispatch({ type: "filterSearch", payload: e.target.value })
+          dispatch({ type: "fltProblemSearch", payload: e.target.value })
         }
-        value={state.filterSearch}
+        value={state.fltProblemSearch}
         type="search"
         placeholder="Genel arama"
       />{" "}
       <input
         onChange={(e) =>
-          dispatch({ type: "filterUserName", payload: e.target.value })
+          dispatch({ type: "fltProblemUserName", payload: e.target.value })
         }
         type="search"
-        value={state.filterUserName}
+        value={state.fltProblemUserName}
         placeholder="Kullanıcı adı ile arama"
       />
       <div>
         {state.categories.map((category) => (
-          <label key={category.id}>
+          category.isDeleted === false&& <label key={category.id}>
             <input
               type="checkbox"
               value={category.id}
-              checked={state.filterCategory.find(
+              checked={state.fltProblemCategory.find(
                 (id) => Number(id) === category.id
               )}
               onChange={(e) => {
                 if (e.target.checked) {
                   dispatch({
-                    type: "filterCategory",
-                    payload: [...state.filterCategory, e.target.value],
+                    type: "fltProblemCategory",
+                    payload: [...state.fltProblemCategory, e.target.value],
                   });
                 } else {
                   dispatch({
-                    type: "filterCategory",
-                    payload: state.filterCategory.filter(
+                    type: "fltProblemCategory",
+                    payload: state.fltProblemCategory.filter(
                       (cat) => cat !== e.target.value
                     ),
                   });
@@ -101,12 +101,12 @@ function FilterProblem() {
       <button
         onClick={(e) => {
           e.preventDefault();
-          dispatch({ type: "filterIsdeleted", payload: "false" });
-          dispatch({ type: "filterIscompleted", payload: "0" });
-          dispatch({ type: "filterUserName", payload: "" });
-          dispatch({ type: "filterSearch", payload: "" });
-          dispatch({ type: "filterCategory", payload: [] });
-          dispatch({ type: "filterDate", payload: "0" });
+          dispatch({ type: "fltProblemIsdeleted", payload: "false" });
+          dispatch({ type: "fltProblemIscompleted", payload: "0" });
+          dispatch({ type: "fltProblemUserName", payload: "" });
+          dispatch({ type: "fltProblemSearch", payload: "" });
+          dispatch({ type: "fltProblemCategory", payload: [] });
+          dispatch({ type: "fltProblemDate", payload: "0" });
         }}
       >
         Temizle

@@ -26,7 +26,7 @@ const Categories = () => {
       </form>
 
       <div id="category-list">
-        {state.categories.map((category) => category.isDeleted === false && (
+        {state.categories.map((category) => (
             <div
             className="admin-categories"
             onClick={() => navigate(`/admin/categorydetail/${category.id}`)}
@@ -35,7 +35,7 @@ const Categories = () => {
             <h1>{category.categoryName}</h1>
             <h4>Problem Sayısı - {category.problemCount}</h4>
             <hr/> 
-           
+           <p>Durumu: {category.isDeleted===true?"❌":"✅"}</p>
           </div>
         ))}
       </div>

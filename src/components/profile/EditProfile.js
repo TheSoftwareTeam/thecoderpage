@@ -11,7 +11,7 @@ const EditProfile = () => {
    
 }
 // eslint-disable-next-line react-hooks/exhaustive-deps
-, [state.activeUser.userPicture]);
+, [state.activeUser&&state.activeUser.userPicture]);
   return (
     <div id='edit-profile-container'>
 
@@ -25,7 +25,7 @@ const EditProfile = () => {
             <img src={image} alt="res" />
           )}
 
-          <label for="file-upload" name="file">
+          <label htmlFor="file-upload" name="file">
             Resim seç
           </label>
           <input

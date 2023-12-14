@@ -9,12 +9,12 @@ const Login = () => {
   return (
     <div className="login-container">
       <form onSubmit={login}>
-        <button
+        <span
           className="exit"
           onClick={() => dispatch({ type: "isLoginPage" })}
         >
           <FaRegWindowClose size={25}/>
-        </button>
+        </span>
         <h2>Giriş Yap</h2>
         <input
           onChange={(e) =>

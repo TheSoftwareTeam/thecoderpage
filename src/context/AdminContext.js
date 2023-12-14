@@ -4,14 +4,13 @@ import { adminReducer, initialState } from "../reducers/adminReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
   const [state, dispatch] = useReducer(adminReducer, initialState);
   const navigate = useNavigate();
   let url = "http://localhost:3005";
-//date
+  //date
   const date = () => {
     return new Date().toISOString();
   };
@@ -165,9 +164,11 @@ export const AdminProvider = ({ children }) => {
       };
       await axios.patch(`${url}/users/${userId}`, ubdateUser);
       if (response.status === 200) {
-     
-          pasifUserToPasifProblem(ubdateUser.id,state.userIsActive?false:true);
-        
+        pasifUserToPasifProblem(
+          ubdateUser.id,
+          state.userIsActive ? false : true
+        );
+
         dispatch({ type: "ubdateUser", payload: ubdateUser });
         dispatch({ type: "userName", payload: "" });
         dispatch({ type: "userSurname", payload: "" });
@@ -184,7 +185,6 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
- 
   const deleteComment = async (problemId, commentId) => {
     const response = await axios.get(`${url}/problems/${problemId}`);
     const problem = response.data;
@@ -244,8 +244,7 @@ export const AdminProvider = ({ children }) => {
     );
     if (response.status === 200 && response.data.length === 0) {
       const newCategory = {
-        id: state.categories.length + 1,
-        categoryName: state.categoryName,
+        categoryName: state.categoryName.toUpperCase(),
         problemCount: 0,
         isDeleted: false,
       };
@@ -256,12 +255,27 @@ export const AdminProvider = ({ children }) => {
       alert("Bu kategori adı alınmış");
     }
   };
+
   const deleteCategory = async (id) => {
+    const category = await axios.get(`${url}/categories/${id}`);
+    const deleted = category.data.isDeleted ? false : true;
     const response = await axios.patch(`${url}/categories/${id}`, {
-      isDeleted: true,
+      isDeleted: deleted,
     });
     if (response.status === 200) {
-      dispatch({ type: "deletedCategory", id });
+      getCategory();
+      navigate(`/admin/categories`);
+    }
+  };
+
+  const ubdateCategory = async (e) => {
+    e.preventDefault();
+    const id = state.categoryDetail.id;
+    const response = await axios.patch(`${url}/categories/${id}`, {
+      categoryName: state.categoryName.toUpperCase(),
+    });
+    if (response.status === 200) {
+      getCategory();
       navigate(`/admin/categories`);
     }
   };
@@ -276,17 +290,29 @@ export const AdminProvider = ({ children }) => {
     dispatch({ type: "hideLoadMoreButton", payload: true });
     const response = await axios.get(`${url}/problems`, {
       params: {
-        categoryId: state.filterCategory.length > 0 ? state.filterCategory : null,
+        categoryId:
+          state.fltProblemCategory.length > 0 ? state.fltProblemCategory : null,
         _sort: "createDate",
         _order: "desc",
         _limit: 12,
         _page: page,
-        userId: state.users.map((user) => user.userName===state.filterUserName?user.id:null),
-        isDeleted: state.filterIsdeleted==="true"?true:state.filterIsdeleted==="false"?false:null,
-        isCompleted: state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
-        createDate_gte: calculateDate(state.filterDate),
-        q: state.filterSearch,
-        
+        userId: state.users.map((user) =>
+          user.userName === state.fltProblemUserName ? user.id : null
+        ),
+        isDeleted:
+          state.fltProblemIsdeleted === "true"
+            ? true
+            : state.fltProblemIsdeleted === "false"
+            ? false
+            : null,
+        isCompleted:
+          state.fltProblemIscompleted === "true"
+            ? true
+            : state.fltProblemIscompleted === "false"
+            ? false
+            : null,
+        createDate_gte: calculateDate(state.fltProblemDate),
+        q: state.fltProblemSearch,
       },
     });
     response.data.length < 12 &&
@@ -299,7 +325,7 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
-  const pasifUserToPasifProblem = async (id,action) => {
+  const pasifUserToPasifProblem = async (id, action) => {
     const response = await axios.get(`${url}/problems/?userId=${id}`);
     const problems = await response.data;
     problems.map(async (problem) => {
@@ -308,8 +334,6 @@ export const AdminProvider = ({ children }) => {
       });
     });
   };
-
-  
 
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
@@ -325,6 +349,45 @@ export const AdminProvider = ({ children }) => {
       navigate(`/admin/problems`);
     }
   };
+
+  //comment
+  const getComments = async (isMore) => {
+    let page = 1;
+    if (isMore) {
+      dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
+      page = state.pages;
+    }
+    dispatch({ type: "hideLoadMoreButton", payload: true });
+    const response = await axios.get(`${url}/problems`, {
+      params: {
+        _sort: "createDate",
+        _order: "desc",
+        _limit: 12,
+        _page: page,
+        isDeleted:
+          state.fltrCommentIsdeleted === "true"
+            ? true
+            : state.fltrCommentIsdeleted === "false"
+            ? false
+            : null,
+        q: state.fltrCommentSearch,
+        createDate_gte: calculateDate(state.fltrCommentDate),
+      },
+    });
+
+    response.data.length < 12 &&
+      dispatch({ type: "hideLoadMoreButton", payload: false });
+    if (isMore) {
+      dispatch({
+        type: "getMoreproblemComments",
+        payload: await response.data,
+      });
+    } else {
+      dispatch({ type: "getproblemComments", payload: await response.data });
+      dispatch({ type: "loadMorePages", payload: 2 });
+    }
+  };
+
   //complaints
   const getComplaints = async (isMore) => {
     let page = 1;
@@ -339,10 +402,13 @@ export const AdminProvider = ({ children }) => {
         _order: "desc",
         _page: page,
         _limit: 12,
-        status: state.filterStatus!==""?state.filterStatus:null,
-        createDate_gte: calculateDate(state.filterDate),
-        q: state.filterSearch,
-        userId: state.users.map((user) => user.userName===state.filterUserName?user.id:null),
+        status:
+          state.fltrComplaintStatus !== "" ? state.fltrComplaintStatus : null,
+        createDate_gte: calculateDate(state.fltrComplaintDate),
+        q: state.fltrComplaintSearch,
+        userId: state.users.map((user) =>
+          user.userName === state.fltrComplaintUserName ? user.id : null
+        ),
       },
     });
 
@@ -362,32 +428,35 @@ export const AdminProvider = ({ children }) => {
         _sort: "createDate",
         _order: "desc",
         _limit: 12,
-        status: state.filterStatus!==""?state.filterStatus:null,
+        status: state.filterStatus !== "" ? state.filterStatus : null,
         createDate_gte: state.filterDate,
-        q: state.filterSearch,
-        userId: state.users.map((user) => user.userName===state.filterUserName?user.id:null),
+        q: state.fltrCommentSearch,
+        userId: state.users.map((user) =>
+          user.userName === state.filterUserName ? user.id : null
+        ),
       },
     });
-    dispatch({ type:"getComplaints", payload: await response.data });
+    dispatch({ type: "getComplaints", payload: await response.data });
   };
   const getComplaintDetail = async (id) => {
     const response = await axios.get(`${url}/complaints/${Number(id)}`);
     dispatch({ type: "getComplaintDetail", payload: await response.data });
     dispatch({ type: "complaintStatus", payload: await response.data.status });
-  }
+  };
   const ubdateComplaint = async (newubdateComplaint) => {
-   const response=  await axios.patch(`${url}/complaints/${newubdateComplaint.id}`, {
-      status:state.complaintStatus,
-    });
+    const response = await axios.patch(
+      `${url}/complaints/${newubdateComplaint.id}`,
+      {
+        status: state.complaintStatus,
+      }
+    );
     if (response.status === 200) {
-    dispatch({ type: "ubdateComplaint", payload: "" });
+      dispatch({ type: "ubdateComplaint", payload: "" });
       alert("Şikayet durumu güncellendi");
       navigate(`/admin/complaints`);
     }
-    
-  }
+  };
 
-  
   //other
   const roleControl = async () => {
     const userId = localStorage.getItem("userId");
@@ -434,6 +503,8 @@ export const AdminProvider = ({ children }) => {
         getComplaints,
         getComplaintProblem,
         ubdateComplaint,
+        getComments,
+        ubdateCategory
       }}
     >
       {children}

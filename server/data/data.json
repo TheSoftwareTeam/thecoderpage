@@ -10,7 +10,7 @@
       "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
       "createDate": "2023-11-15T19:00:37.148Z",
-      "userToken": "Murat0.04569173952893313",
+      "userToken": "Murat0.9664879137671074",
       "userRol": "admin",
       "verify": true,
       "isActive": true
@@ -657,7 +657,7 @@
       "categoryId": 7,
       "problemHead": "Python ile veritabanı bağlantısı",
       "problemContent": "Python kullanarak bir veritabanına bağlanmaya çalışıyorum. Ancak bağlantıyı kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
-      "commentCount": 1,
+      "commentCount": 0,
       "likesUserId": [
         3,
         2
@@ -667,7 +667,8 @@
           "id": 0,
           "userId": 3,
           "commentContent": "Kullandığınız kütüphaneyi kontrol ettiniz mi?",
-          "createDate": "2023-11-01T18:00:37.148Z"
+          "createDate": "2023-11-01T18:00:37.148Z",
+          "isDeleted": true
         }
       ],
       "createDate": "2023-11-30T09:00:00.000Z",
@@ -813,6 +814,12 @@
       "categoryName": "PHYTON",
       "problemCount": 1,
       "isDeleted": false
+    },
+    {
+      "categoryName": "C#",
+      "problemCount": 0,
+      "isDeleted": true,
+      "id": 8
     }
   ],
   "complaints": [

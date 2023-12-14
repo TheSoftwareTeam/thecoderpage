@@ -3,19 +3,19 @@ import AdminContext from "../../context/AdminContext";
 import "./scss/filter-comment.scss";
 
 function FilterComment() {
-  const { state, dispatch, getProblem } = useContext(AdminContext);
+  const { state, dispatch, getComments } = useContext(AdminContext);
 
   useEffect(() => {
-    getProblem(false);
+    getComments(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.filterDate, state.filterSearch, state.filterIsdeleted]);
+  }, [state.fltrCommentDate, state.fltrCommentSearch, state.fltrCommentIsdeleted]);
 
   return (
     <form className="filterComment">
       <select
-        value={state.filterDate}
+        value={state.fltrCommentDate}
         onChange={(e) =>
-          dispatch({ type: "filterDate", payload: e.target.value })
+          dispatch({ type: "fltrCommentDate", payload: e.target.value })
         }
       >
         <option value="0">Tüm Zamanlar</option>
@@ -26,9 +26,9 @@ function FilterComment() {
         <option value="5">Son 1 Yıl</option>
       </select>
       <select
-        value={state.filterIsdeleted}
+        value={state.fltrCommentIsdeleted}
         onChange={(e) =>
-          dispatch({ type: "filterIsdeleted", payload: e.target.value })
+          dispatch({ type: "fltrCommentIsdeleted", payload: e.target.value })
         }
       >
         <option value="false">Silinmemiş</option>
@@ -37,20 +37,20 @@ function FilterComment() {
       </select>
       <input
         onChange={(e) =>
-          dispatch({ type: "filterSearch", payload: e.target.value })
+          dispatch({ type: "fltrCommentSearch", payload: e.target.value })
         }
-        value={state.filterSearch}
+        value={state.fltrCommentSearch}
         type="search"
         placeholder="Genel arama"
       />{" "}
       <button
         onClick={(e) => {
           e.preventDefault();
-          dispatch({ type: "filterIsdeleted", payload: "false" });
+          dispatch({ type: "fltrCommentIsdeleted", payload: "false" });
 
-          dispatch({ type: "filterSearch", payload: "" });
+          dispatch({ type: "fltrCommentSearch", payload: "" });
 
-          dispatch({ type: "filterDate", payload: "0" });
+          dispatch({ type: "fltrCommentDate", payload: "0" });
         }}
       >
         Temizle

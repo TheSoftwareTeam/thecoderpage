@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import './categories.scss'
 const CategoryDetail = () => {
   
-  const { state, dispatch, getCategoryDetail,  deleteCategory } = useContext(AdminContext);
+  const { state, dispatch, getCategoryDetail,  deleteCategory,ubdateCategory } = useContext(AdminContext);
 
   const { id } = useParams();
 
@@ -16,7 +16,7 @@ const CategoryDetail = () => {
  
   return (
     <div id="admin-categories-container">
-      <form onSubmit={""}>
+      <form onSubmit={ubdateCategory}>
         <input
           type="text"
           onChange={(e) =>
@@ -36,7 +36,7 @@ const CategoryDetail = () => {
           <hr/> 
           <br/>
           <div className="action">
-            <button onClick={() => deleteCategory(id)}>Sil</button>
+            <button onClick={() => deleteCategory(id)}>{state.categoryDetail.isDeleted===true?"Aktif":"Pasif"}</button>
      
           </div>
         </div>

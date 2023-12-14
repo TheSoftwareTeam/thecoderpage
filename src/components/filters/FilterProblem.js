@@ -51,7 +51,8 @@ function FilterProblem() {
             <div className={`${isOpen ? "menu" : "hidden-menu"}`}>
               {state.selectedCategory === null &&
                 state.categories.map((category) => (
-                  <label key={category.id}>
+                 category.isDeleted===false &&
+                 <label key={category.id}>
                     <input
                       type="checkbox"
                       value={category.id}

@@ -5,10 +5,10 @@ import AdminContext from "../../context/AdminContext";
 import Comment from "./Comment";
 import FilterComment from "../filters/FilterComment";
 const Comments = () => {
-  const { state, getProblem } = useContext(AdminContext);
+  const { state, getComments } = useContext(AdminContext);
 
   useEffect(() => {
-    getProblem(false);
+    getComments(false);
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -16,7 +16,7 @@ const Comments = () => {
     <div id="admin-comment-container">
       <div id="comment-list">
       <FilterComment />
-        {state.problems.map((problem) => {
+        {state.problemComments.map((problem) => {
           return (
             problem.isDeleted === false &&
             problem.comments.map(
@@ -30,7 +30,7 @@ const Comments = () => {
       </div>
       {state.loadMoreButton && (
         <button
-          onClick={async () => getProblem(true)}
+          onClick={async () => getComments(true)}
           className="list-load-more"
         >
           Daha Fazla
