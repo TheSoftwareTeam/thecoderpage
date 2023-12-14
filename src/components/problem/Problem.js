@@ -63,20 +63,24 @@ const Problem = ({ problem }) => {
         </h3>
         <span>{formatRelativeTime(problem.createDate)}</span>
       </div>
-      <div className={`problem-detail ${state.loadMoreButton ? 'open' : ''}`}>
+      <div className={`problem-detail ${state.loadMoreButton ? "open" : ""}`}>
         <div className="problem-head-text">
           <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>
           <h3> {problem.problemHead}</h3>
-          <p onClick={() => {
-            dispatch({ type: "selectedCategory", payload: null });
-            navigate(`/home/detailproblem/${problem.id}`);
-          }}>
+          <p
+            onClick={() => {
+              dispatch({ type: "selectedCategory", payload: null });
+              navigate(`/home/detailproblem/${problem.id}`);
+            }}
+          >
             {id ? (
               problem.problemContent
             ) : (
               <>
                 {problem.problemContent.slice(0, 150) + "..."}
-                <p className="click-to-detail" >Detayı görmek için tıklayınız.</p>
+                <p className="click-to-detail">
+                  Detayı görmek için tıklayınız.
+                </p>
               </>
             )}
           </p>
@@ -93,7 +97,7 @@ const Problem = ({ problem }) => {
           </button>
           <button>✉️{problem.comments.length}</button>
 
-          {userName &&
+          {(id || userName) &&
           state.activeUser &&
           state.activeProblemDetail.userId === state.activeUser.id &&
           state.activeUser !== null &&
