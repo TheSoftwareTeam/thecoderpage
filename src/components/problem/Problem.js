@@ -77,7 +77,7 @@ const Problem = ({ problem }) => {
               problem.problemContent
             ) : (
               <>
-                {problem.problemContent.slice(0, 150) + "..."}
+                {problem.problemContent.length>250?problem.problemContent.slice(0, 250)+"...":problem.problemContent}
                 <p className="click-to-detail">
                   Detayı görmek için tıklayınız.
                 </p>

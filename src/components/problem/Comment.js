@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import image from "../../images/avatar.png";
-
+import "./scss/comment.scss";
 const Comment = ({comment}) => {
     const {
         state,
@@ -43,7 +43,9 @@ const Comment = ({comment}) => {
       </h4>
       <span>{formatRelativeTime(comment.createDate)}</span>
     </div>
-    <p>{comment.commentContent}</p>
+
+    {comment.commentContent.length>200?<p>{comment.commentContent.slice(0,200)}...</p>:<p>{comment.commentContent}</p>}
+    
   </div>
   )
 }

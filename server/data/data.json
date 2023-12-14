@@ -755,7 +755,7 @@
       "categoryId": 6,
       "problemHead": "Java nerelerde kullanılır",
       "problemContent": "Unity olabilir.",
-      "commentCount": -2,
+      "commentCount": -1,
       "likesUserId": [],
       "comments": [
         {
@@ -764,6 +764,12 @@
           "commentContent": "Unity doğru.",
           "createDate": "2023-12-08T12:13:19.717Z",
           "isDeleted": true
+        },
+        {
+          "id": 1,
+          "userId": 1,
+          "commentContent": "bu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdirbu bir denemdir",
+          "createDate": "2023-12-14T16:53:29.051Z"
         }
       ],
       "isCompleted": false,
