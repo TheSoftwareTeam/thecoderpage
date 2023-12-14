@@ -753,7 +753,7 @@
       "categoryId": 6,
       "problemHead": "Java nerelerde kullanılır",
       "problemContent": "Unity olabilir.",
-      "commentCount": -1,
+      "commentCount": -2,
       "likesUserId": [],
       "comments": [
         {
@@ -761,7 +761,7 @@
           "userId": 2,
           "commentContent": "Unity doğru.",
           "createDate": "2023-12-08T12:13:19.717Z",
-          "isDeleted": false
+          "isDeleted": true
         }
       ],
       "isCompleted": false,

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import "./scss/filter-problem.scss";
-import { useParams } from "react-router-dom";
+
 
 function FilterProblem() {
   const { state, dispatch, getProblem } = useContext(AdminContext);
@@ -19,7 +19,7 @@ function FilterProblem() {
   ]);
 
   return (
-    <form className="FilterProblem">
+    <form className="filterProblem">
       <select
         value={state.filterDate}
         onChange={(e) =>

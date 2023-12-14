@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import "./scss/comments.scss";
 import AdminContext from "../../context/AdminContext";
 import Comment from "./Comment";
-import FilterProblem from "../filters/FilterProblem";
+import FilterComment from "../filters/FilterComment";
 const Comments = () => {
   const { state, getProblem } = useContext(AdminContext);
 
@@ -15,7 +15,7 @@ const Comments = () => {
   return (
     <div id="admin-comment-container">
       <div id="comment-list">
-      <FilterProblem />
+      <FilterComment />
         {state.problems.map((problem) => {
           return (
             problem.isDeleted === false &&
