@@ -12,7 +12,7 @@ export const initialState = {
   userEmail: "",
   userRol: "",
   userPicture: "",
-  userIsActive:"",
+  userIsActive: "",
   //user
   users: [],
   userDetail: {},
@@ -32,12 +32,12 @@ export const initialState = {
   pages: 2,
   loadMoreButton: true,
   //comment
-  problemComments:[],
+  problemComments: [],
   activeCommentDetail: {},
   //complaint
   complaints: [],
-  complaintDetail:{},
-  complaintStatus:"",
+  complaintDetail: {},
+  complaintStatus: "",
   //filterProblem
   fltProblemCategory: [],
   fltProblemDate: null,
@@ -54,6 +54,7 @@ export const initialState = {
   fltrComplaintDate: null,
   fltrComplaintSearch: "",
   fltrComplaintUserName: "",
+  fltrComplaintToUserName: "",
   fltrComplaintStatus: "",
 };
 
@@ -106,8 +107,8 @@ export const adminReducer = (state, action) => {
         ...state,
         userPicture: action.payload,
       };
-      case "userIsActive":
-       const aktif=action.payload==="true" ? true : false
+    case "userIsActive":
+      const aktif = action.payload === "true" ? true : false;
       return {
         ...state,
         userIsActive: aktif,
@@ -143,7 +144,6 @@ export const adminReducer = (state, action) => {
       };
     //comment
 
-    
     case "getCommentDetail":
       return {
         ...state,
@@ -181,7 +181,7 @@ export const adminReducer = (state, action) => {
         ...state,
         categories: [...state.categories, action.payload],
       };
-   
+
     //problem
     case "getProblems":
       return {
@@ -213,7 +213,7 @@ export const adminReducer = (state, action) => {
         ...state,
         loadMoreButton: action.payload,
       };
-  //comment
+    //comment
     case "getproblemComments":
       return {
         ...state,
@@ -235,7 +235,7 @@ export const adminReducer = (state, action) => {
         ...state,
         complaints: [...state.complaints, ...action.payload],
       };
-     case "getComplaintDetail":
+    case "getComplaintDetail":
       return {
         ...state,
         complaintDetail: action.payload,
@@ -266,7 +266,7 @@ export const adminReducer = (state, action) => {
         ...state,
         fltProblemSearch: action.payload,
       };
-    
+
     case "fltProblemIsdeleted":
       return {
         ...state,
@@ -323,6 +323,11 @@ export const adminReducer = (state, action) => {
       return {
         ...state,
         fltrComplaintUserName: action.payload,
+      };
+    case "fltrComplaintToUserName":
+      return {
+        ...state,
+        fltrComplaintToUserName: action.payload,
       };
     case "fltrComplaintStatus":
       return {

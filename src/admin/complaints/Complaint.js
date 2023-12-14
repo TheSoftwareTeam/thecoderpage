@@ -18,7 +18,50 @@ const Complaint = ({complaint}) => {
     className="complaint"
   >
     <div className="user-picture">
-      {state.users.find((user) => user.id === complaint.userId)?.userPicture ? (
+      {state.users.find((user) => user.id === complaint.toUserId)?.userPicture ? (
+        <img
+          src={
+            "http://localhost:3001/" +
+            state.users.find((user) => user.id === complaint.toUserId)
+              ?.userPicture
+          }
+          alt="res"
+        />
+      ) : (
+        <img src={image} alt="res" />
+      )}
+      <h5
+        onClick={() =>
+          navigate(
+            `/admin/userdetail/${state.users.find((user) => user.id === complaint.toUserId)?.userName}`
+          )
+        }
+      >
+        {state.users.find((user) => user.id === complaint.toUserId)?.userName}
+      </h5>
+      <button
+        className="to-ptoblem"
+        onClick={() =>
+          navigate(`/admin/problemdetail/${complaint.problemId}`)
+        }
+      >
+        Probleme Git
+      </button>
+    </div>
+
+    <div className="complaint-detail">
+    
+
+      <div  onClick={() => navigate(`/admin/complaintdetail/${complaint.id}`)} className="complaint-head-text">
+      <div className="to-user-complaint"
+        onClick={() =>
+          navigate(
+            `/admin/userdetail/${state.users.find((user) => user.id === complaint.userId)?.userName}`
+          )
+        }
+      >
+        
+        {state.users.find((user) => user.id === complaint.userId)?.userPicture ? (
         <img
           src={
             "http://localhost:3001/" +
@@ -39,12 +82,11 @@ const Complaint = ({complaint}) => {
       >
         {state.users.find((user) => user.id === complaint.userId)?.userName}
       </h5>
-    </div>
 
-    <div className="complaint-detail">
-      <div  onClick={() => navigate(`/admin/complaintdetail/${complaint.id}`)} className="complaint-head-text">
-        
-        <h6 onClick={() => navigate(`/complaintdetail/${complaint.id}`)}>{complaint.complaintContent.slice(0, 150)}</h6>
+
+      </div>
+        <p onClick={() => navigate(`/complaintdetail/${complaint.id}`)}>{complaint.complaintContent.slice(0, 150)}</p>
+       
       </div>
       <h4 className={complaint.status}>{complaint.status}</h4>
 

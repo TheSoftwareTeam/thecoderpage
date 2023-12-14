@@ -13,6 +13,7 @@ function FilterProblem() {
     state.fltrComplaintSearch,
     state.fltrComplaintStatus,
     state.fltrComplaintUserName,
+    state.fltrComplaintToUserName,
   ]);
 
   return (
@@ -48,17 +49,27 @@ function FilterProblem() {
         placeholder="Arama Kelimesi"
       />
        <input
+       value={state.fltrComplaintToUserName}
+       onChange={(e) =>
+         dispatch({ type: "fltrComplaintToUserName", payload: e.target.value })
+       }
+        type="search"
+        placeholder="Şikayet edilen kullanıcı adı"
+      />
+       <input
        value={state.fltrComplaintUserName}
        onChange={(e) =>
          dispatch({ type: "fltrComplaintUserName", payload: e.target.value })
        }
         type="search"
-        placeholder="Kullanıcı adı Arama"
+        placeholder="Şikayet eden kullanıcı adı"
       />
+     
          <button
       onClick={
         (e) => {
           e.preventDefault();
+          dispatch({ type: "fltrComplaintToUserName", payload: "" });
           dispatch({ type: "fltrComplaintUserName", payload: "" });
           dispatch({ type: "fltrComplaintStatus", payload: "" });
           dispatch({ type: "fltrComplaintSearch", payload: "" });

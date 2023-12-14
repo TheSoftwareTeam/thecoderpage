@@ -40,6 +40,9 @@ const Complaints = () => {
           </button>
         )
         }
+  <p className='pages-items-count'>
+ Sonuç sayısı :  {state.complaints.length}
+  </p>
   </div>
   )
 }

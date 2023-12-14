@@ -1,6 +1,6 @@
 .admin-problem {
     width: 24%;
-    height: 200px;
+    height: auto;
     min-width: 200px;
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@
     
     .problem-detail {
       width: 100%;
-      height: auto;
+      height:auto;
       display: flex;
       flex-direction: column;
       .problem-head-text {
@@ -73,13 +73,15 @@
 
       .problem-comment-view {
         width: 100%;
-        height: 32px;
+        height: 35px;
       
         display: flex;
         flex-direction: row;
         position: relative;
+        align-items: center;
+        justify-content: space-evenly;
         gap: 10px;
-        padding: 5px;
+        padding: 10px;
         border-radius: 0px 0px 10px 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
         button{

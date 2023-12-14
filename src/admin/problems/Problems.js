@@ -45,6 +45,9 @@ const Problems = () => {
           Daha Fazla
         </button>
       )}
+      <p className='pages-items-count'>
+ Sonuç sayısı :  {state.problems.length}
+  </p>
     </div>
   );
 };

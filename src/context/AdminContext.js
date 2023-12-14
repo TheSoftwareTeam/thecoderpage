@@ -406,12 +406,15 @@ export const AdminProvider = ({ children }) => {
           state.fltrComplaintStatus !== "" ? state.fltrComplaintStatus : null,
         createDate_gte: calculateDate(state.fltrComplaintDate),
         q: state.fltrComplaintSearch,
-        toUserId: state.users.map((user) =>
+        userId: state.users.map((user) =>
           user.userName === state.fltrComplaintUserName ? user.id : null
+        ),
+        toUserId: state.users.map((user) =>
+          user.userName === state.fltrComplaintToUserName ? user.id : null
         ),
       },
     });
-
+    
     response.data.length < 8 &&
       dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {

@@ -1,9 +1,10 @@
 .complaint {
   width: 24%;
-  height: 200px;
+  height: 220px;
   min-width: 200px;
   display: flex;
   flex-direction: column;
+  gap: 15px;
   padding: 20px;
   border-radius: 10px;
   background-color: #fff; /* Gri */
@@ -17,14 +18,15 @@
     align-items: center;
     gap: 10px;
     position: relative;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.335);
     img {
       width: 35px;
       height: 35px;
       border-radius: 25px;
     }
-    h4 {
-      color: rgb(64, 121, 171);
-    }
+    
     span {
       position: absolute;
       right: 5px;
@@ -33,21 +35,67 @@
       font-family: monospace;
       font-size: 11px;
     }
+    .to-ptoblem {
+      width: 100px;
+      height: 30px;
+      position: absolute;
+      right: 5px;
+      border-radius: 10px;
+      border: none;
+      background:none;
+      color: black;
+    box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.335);
+    font-size: 10px;
+      transition: 0.5s;
+      font-family: monospace;
+      padding: 1%;
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.1);
+        transition: 0.2s;
+      }
+    }
   }
   .complaint-detail {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
+
     .complaint-head-text {
-      padding: 15px;
+      padding: 10px;
       margin-top: 5px;
       min-height: 90px;
       background-color: #ddd;
       position: relative;
       border-radius: 10px 10px 0 0;
-      h6 {
+      .to-user-complaint {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        img {
+          width: 25px;
+          height: 25px;
+          border-radius: 25px;
+        }
+        h4 {
+          color: rgb(64, 121, 171);
+        }
+        span {
+          position: absolute;
+          right: 5px;
+          padding-bottom: 5px;
+          border-radius: 15px;
+          font-family: monospace;
+          font-size: 11px;
+        }
+      }
+      p {
         font-size: 12px;
+        padding: 10px;
         margin-bottom: 10px;
         font-weight: 600;
         font-family: monospace;

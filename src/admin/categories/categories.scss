@@ -56,14 +56,12 @@
 
   #category-list {
     width: 100%;
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
     border-top: 5px solid white;
     padding-top: 50px;
-    justify-content: center;
     .admin-categories {
       width: 30%;
       text-align: center;
