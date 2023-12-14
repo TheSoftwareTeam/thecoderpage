@@ -816,7 +816,7 @@
       "isDeleted": false
     },
     {
-      "categoryName": "C#",
+      "categoryName": "GO",
       "problemCount": 0,
       "isDeleted": true,
       "id": 8
@@ -825,7 +825,8 @@
   "complaints": [
     {
       "id": 1,
-      "userId": 4,
+      "toUserId": 2,
+      "userId": 5,
       "problemId": 8,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
@@ -834,6 +835,7 @@
     {
       "id": 2,
       "userId": 2,
+      "toUserId": 1,
       "problemId": 20,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
@@ -842,6 +844,7 @@
     {
       "id": 3,
       "userId": 4,
+      "toUserId": 4,
       "problemId": 13,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
@@ -850,6 +853,7 @@
     {
       "id": 4,
       "userId": 1,
+      "toUserId": 2,
       "problemId": 11,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
@@ -857,6 +861,7 @@
     },
     {
       "id": 5,
+      "toUserId": 5,
       "userId": 3,
       "problemId": 1,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
@@ -865,7 +870,8 @@
     },
     {
       "id": 6,
-      "userId": 4,
+      "toUserId": 3,
+      "userId": 1,
       "problemId": 7,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
@@ -874,6 +880,7 @@
     {
       "id": 7,
       "userId": 3,
+      "toUserId": 4,
       "problemId": 12,
       "complaintContent": "Bu problemdeki yorumlar spam içerikli.",
       "createDate": "2023-11-15T19:00:37.148Z",
@@ -884,6 +891,7 @@
       "complaintContent": "Php diline karşı uygunsuz kelimeler kullanılmış.",
       "status": "resolved",
       "createDate": "2023-12-08T22:20:19.315Z",
+      "toUserId": 4,
       "problemId": 12,
       "id": 8
     },
@@ -892,11 +900,13 @@
       "complaintContent": "Python bir yılan imiş gibi konuşmuş.",
       "status": "submitted",
       "createDate": "2023-12-08T22:39:28.980Z",
+      "toUserId": 4,
       "problemId": 12,
       "id": 9
     },
     {
       "userId": 2,
+      "toUserId": 2,
       "problemId": 3,
       "complaintContent": "asdfghjk",
       "status": "inProgress",
@@ -905,6 +915,7 @@
     },
     {
       "userId": 1,
+      "toUserId": 2,
       "problemId": 5,
       "complaintContent": "yılanları severim",
       "status": "resolved",
@@ -913,6 +924,7 @@
     },
     {
       "userId": 1,
+      "toUserId": 3,
       "problemId": 18,
       "complaintContent": "burada hakaret görüyorum",
       "status": "resolved",
@@ -921,11 +933,21 @@
     },
     {
       "userId": 1,
+      "toUserId": 5,
       "problemId": 24,
       "complaintContent": "Mahir'i Şikayet Ediyorumke",
       "status": "submitted",
       "createDate": "2023-12-13T13:56:52.593Z",
       "id": 13
+    },
+    {
+      "userId": 1,
+      "toUserId": 3,
+      "problemId": 24,
+      "complaintContent": "selam burada hatalı durum var",
+      "status": "submitted",
+      "createDate": "2023-12-14T14:09:07.725Z",
+      "id": 14
     }
   ]
 }

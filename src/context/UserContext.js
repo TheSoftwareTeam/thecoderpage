@@ -437,9 +437,10 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "ubdateActiveUserProblem", payload: problem });
     
   };
-const sendComplaint = async (problemId) => {
+const sendComplaint = async (problemId,userId) => {
     const newComplaint = {
       userId: state.activeUser.id,
+      toUserId:userId,
       problemId: problemId,
       complaintContent: state.complaintTextarea,
       status: "submitted",

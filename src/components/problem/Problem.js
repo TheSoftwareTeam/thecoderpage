@@ -31,7 +31,7 @@ const Problem = ({ problem }) => {
   }, [state.isComplaintPage]);
   return (
     <div key={problem.id} className="problem">
-      {state.isComplaintPage && <Complaint problemId={problem.id} />}
+      {state.isComplaintPage && <Complaint problemId={problem.id} userId={problem.userId} />}
 
       {id && problem.userId !== state.activeUser.id && (
         <a onClick={() => dispatch({ type: "isComplaintPage" })}>Şikayet et</a>

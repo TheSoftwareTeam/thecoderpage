@@ -362,7 +362,7 @@ export const AdminProvider = ({ children }) => {
       params: {
         _sort: "createDate",
         _order: "desc",
-        _limit: 12,
+        _limit: 10,
         _page: page,
         isDeleted:
           state.fltrCommentIsdeleted === "true"
@@ -375,7 +375,7 @@ export const AdminProvider = ({ children }) => {
       },
     });
 
-    response.data.length < 12 &&
+    response.data.length < 10 &&
       dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {
       dispatch({
@@ -406,7 +406,7 @@ export const AdminProvider = ({ children }) => {
           state.fltrComplaintStatus !== "" ? state.fltrComplaintStatus : null,
         createDate_gte: calculateDate(state.fltrComplaintDate),
         q: state.fltrComplaintSearch,
-        userId: state.users.map((user) =>
+        toUserId: state.users.map((user) =>
           user.userName === state.fltrComplaintUserName ? user.id : null
         ),
       },

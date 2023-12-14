@@ -54,6 +54,7 @@ const DetailComplaint = () => {
               <br />
               <p>{state.complaintDetail.complaintContent}</p>
             </div>
+          
           </div>
         </div>
         <div className="action">
@@ -82,6 +83,32 @@ const DetailComplaint = () => {
         }
       >
         Probleme Git
+      </button>
+      <button
+        className="to-user"
+        
+      >
+            {state.users
+              .filter((user) => user.id === state.complaintDetail.toUserId)
+              .map((user) => (
+                <>
+                  {user.userPicture ? (
+                    <img
+                      src={"http://localhost:3001/" + user.userPicture}
+                      alt="User"
+                    />
+                  ) : (
+                    <img src={image} alt="Admin" />
+                  )}
+                  <h3
+                    onClick={() =>
+                      navigate(`/admin/userdetail/${user.userName}`)
+                    }
+                  >
+                    {user.userName}
+                  </h3>
+                </>
+              ))}
       </button>
     </div>
   );

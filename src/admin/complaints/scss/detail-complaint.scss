@@ -120,7 +120,6 @@ position: relative;
     transition: 0.5s;
     font-family: monospace;
     padding: 1%;
-    margin-right:20px ;
     position: absolute;
     top: 1%;
     right: 4%;
@@ -131,6 +130,46 @@ position: relative;
     &:active {
       transform: scale(1.1);
       transition: 0.2s;
+    }
+
+
+  }
+  .to-user{
+    width: 150px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: orangered; /* Darker gray background */
+    transition: 0.5s;
+    padding: 1%;
+    position: absolute;
+    top: 1%;
+    right: 18%;
+    &:hover {
+      cursor: pointer;
+      
+    }
+    &:active {
+      transform: scale(1.1);
+      transition: 0.2s;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 25px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-family: monospace;
+      color: white;
+      font-weight: bold;
+
     }
 
 

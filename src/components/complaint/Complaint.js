@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import "./complaint.scss";
 import UserContext from "../../context/UserContext";
-const Complaint = ({problemId}) => {
+const Complaint = ({problemId,userId}) => {
   const {dispatch,sendComplaint } = useContext(UserContext);
 
   return (
     <div className="complaint-container">
-      <form onSubmit={()=>sendComplaint(problemId)}>
+      <form onSubmit={()=>sendComplaint(problemId,userId)}>
         <button
           className="exit"
           onClick={()=>dispatch({type:"isComplaintPage"})}
