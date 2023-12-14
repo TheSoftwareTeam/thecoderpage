@@ -5,7 +5,7 @@ import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import image from "../../images/avatar.png";
 const Sidebar = () => {
-  const { state,dispatch } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -27,13 +27,14 @@ const Sidebar = () => {
               <img src={image} alt="res" />
             )}
             <h3
-            onClick={() =>
-              navigate(
-                `/home/profile/${
-                  state.users.find((user) => user.id === problem.userId)?.userName
-                }/detail`
-              )
-            }
+              onClick={() =>
+                navigate(
+                  `/home/profile/${
+                    state.users.find((user) => user.id === problem.userId)
+                      ?.userName
+                  }/detail`
+                )
+              }
             >
               {state.users.find((user) => user.id === problem.userId)?.userName}
             </h3>
@@ -41,19 +42,19 @@ const Sidebar = () => {
           <div className="sidebar-problem-detail">
             <div className="sidebar-problem-head-text">
               {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
-              <hr/>
+              <hr />
               <h3>{problem.problemHead}</h3>
               <p>
-                {problem.problemContent.slice(0, 50)}
-                <a
+                {problem.problemContent.slice(0, 50) + "..."}
+                <p
                   onClick={() => {
                     dispatch({ type: "selectedCategory", payload: null });
                     navigate(`/home/detailproblem/${problem.id}`);
-             
                   }}
+                  className="click-to-detail"
                 >
-                  ...Daha fazlası
-                </a>
+                  Detayı görmek için tıklayınız.
+                </p>
               </p>
             </div>
 

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import "./scss/filter-problem.scss";
+import { useParams } from "react-router-dom";
 
 function FilterProblem() {
   const { state, dispatch, getProblem } = useContext(AdminContext);
@@ -20,7 +21,7 @@ function FilterProblem() {
   return (
     <form className="FilterProblem">
       <select
-      value={state.filterDate}
+        value={state.filterDate}
         onChange={(e) =>
           dispatch({ type: "filterDate", payload: e.target.value })
         }
@@ -33,7 +34,7 @@ function FilterProblem() {
         <option value="5">Son 1 Yıl</option>
       </select>
       <select
-      value={state.filterIsdeleted}
+        value={state.filterIsdeleted}
         onChange={(e) =>
           dispatch({ type: "filterIsdeleted", payload: e.target.value })
         }
@@ -43,7 +44,7 @@ function FilterProblem() {
         <option value="0">Tümü</option>
       </select>
       <select
-      value={state.filterIscompleted}
+        value={state.filterIscompleted}
         onChange={(e) =>
           dispatch({ type: "filterIscompleted", payload: e.target.value })
         }
@@ -53,7 +54,6 @@ function FilterProblem() {
         <option value="false">Çözülmemiş</option>
       </select>
       <input
-    
         onChange={(e) =>
           dispatch({ type: "filterSearch", payload: e.target.value })
         }
@@ -74,7 +74,10 @@ function FilterProblem() {
           <label key={category.id}>
             <input
               type="checkbox"
-              value={category.id}checked={state.filterCategory.find((id)=>Number(id)===category.id)}
+              value={category.id}
+              checked={state.filterCategory.find(
+                (id) => Number(id) === category.id
+              )}
               onChange={(e) => {
                 if (e.target.checked) {
                   dispatch({
@@ -96,19 +99,17 @@ function FilterProblem() {
         ))}
       </div>
       <button
-      onClick={
-        (e) => {
+        onClick={(e) => {
           e.preventDefault();
           dispatch({ type: "filterIsdeleted", payload: "false" });
-          dispatch({ type: "filterIscompleted", payload:  "0" });
+          dispatch({ type: "filterIscompleted", payload: "0" });
           dispatch({ type: "filterUserName", payload: "" });
           dispatch({ type: "filterSearch", payload: "" });
           dispatch({ type: "filterCategory", payload: [] });
           dispatch({ type: "filterDate", payload: "0" });
-
-        }
-      }>
-Temizle
+        }}
+      >
+        Temizle
       </button>
     </form>
   );
