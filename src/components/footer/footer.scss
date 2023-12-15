@@ -9,10 +9,15 @@
     justify-content: space-between;
     align-items: center;
     background-color: #333;
+    
     h3 {
         margin-left: 5vw;
         color: white;
         font-family: 'Monospace', sans-serif;
+        .navi-link {
+            text-decoration: none;
+            color: rgb(61, 58, 58);
+          } 
     }
     h5 {
         margin-right: 3vw;

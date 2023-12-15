@@ -8,7 +8,7 @@ import axios from "axios";
 
 const UserPicture = ({userId,createDate, isDisabled}) => {
   let url = "http://localhost:3005";
-  const { id,userName } = useParams();
+  const { id } = useParams();
   const [complaint,setComplaint]=useState(false)
   const [user,setUser]=useState({})
 const {
