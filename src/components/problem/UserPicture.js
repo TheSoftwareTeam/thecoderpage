@@ -10,7 +10,6 @@ const UserPicture = ({userId,createDate, isDisabled}) => {
   let url = "http://localhost:3005";
   const { id } = useParams();
   const [complaint,setComplaint]=useState(false)
-  const [user,setUser]=useState({})
 const {
     state,
     dispatch,
@@ -18,8 +17,12 @@ const {
   } = useContext(UserContext);
   const navigate = useNavigate();
   const getUser = async () => {
-    const response = await axios.get(`${url}/users/${userId}`);
-    setUser(await response.data);
+    try {
+      const response = await axios.get(`${url}/users/${userId}`);
+      dispatch({ type: "pictureUsers", payload: await response.data });
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => {
   getUser()
@@ -28,11 +31,11 @@ const {
   , []);
   return (
     <div  className="user-picture">
-    {user.userPicture ? (
+    {state.pictureUsers.userPicture ? (
       <img
         src={
           "http://localhost:3001/" +
-         user.userPicture
+          state.pictureUsers.userPicture
         }
         alt="res"
       />
@@ -43,12 +46,12 @@ const {
       onClick={() =>
         navigate(
           `/home/profile/${
-            user.userName
+            state.pictureUsers.userName
           }/detail`
         )
       }
     >
-      {user.userName}
+      {state.pictureUsers.userName}
     </h3>
 
   {createDate&& <div className="absolute-div">

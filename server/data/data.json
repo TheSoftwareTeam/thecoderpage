@@ -24,7 +24,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 3,
-      "userToken": "Mahir0.9973322830815101",
+      "userToken": "Mahir0.23458994381637832",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true,
@@ -660,7 +660,7 @@
       "categoryId": 7,
       "problemHead": "Python ile veritabanı bağlantısı",
       "problemContent": "Python kullanarak bir veritabanına bağlanmaya çalışıyorum. Ancak bağlantıyı kurarken hata alıyorum. Yardım edebilecek birisi var mı?",
-      "commentCount": 0,
+      "commentCount": 1,
       "likesUserId": [
         3,
         2
@@ -672,6 +672,12 @@
           "commentContent": "Kullandığınız kütüphaneyi kontrol ettiniz mi?",
           "createDate": "2023-11-01T18:00:37.148Z",
           "isDeleted": true
+        },
+        {
+          "id": 1,
+          "userId": 2,
+          "commentContent": "selam",
+          "createDate": "2023-12-15T14:38:20.033Z"
         }
       ],
       "createDate": "2023-11-30T09:00:00.000Z",

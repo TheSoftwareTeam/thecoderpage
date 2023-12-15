@@ -15,7 +15,7 @@ const initialState = {
   //user
   users: [],
   userDetail: {},
-
+  pictureUsers:{},
   //navi
   isDropdownOpen: false,
   isLoginPage: false,
@@ -45,8 +45,8 @@ const initialState = {
   loadMoreButton: true,
   //filterProblem
   filterCategory: [],
-  filterDate: null,
-  filterIscompleted: null,
+  filterDate: "0",
+  filterIscompleted: "0",
   filterSearch: "",
   naviFilterSearch: "",
   searchList: []
@@ -152,6 +152,11 @@ const userReducer = (state, action) => {
       return {
         ...state,
         userDetail: action.payload,
+      };
+    case "pictureUsers":
+      return {
+        ...state,
+        pictureUsers: action.payload,
       };
     //navi
     case "isDropdownOpen":
