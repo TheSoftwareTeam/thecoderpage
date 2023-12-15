@@ -11,6 +11,7 @@ import { FaMoon } from "react-icons/fa";
 import Login from "../login/Login";
 import SignUp from "../signup/SignUp";
 import Search from "../filters/Search";
+import Footer from "../footer/Footer";
 const Navi = () => {
   const { state, dispatch, toggleDropdown, handleLogout } =
     useContext(UserContext);
@@ -115,6 +116,7 @@ const Navi = () => {
       </div>
       <div className="navi-outlet" >
         <Outlet />
+        <Footer />
       </div>
     </>
   );

@@ -17,7 +17,7 @@ const Complaint = ({complaint}) => {
      
     className="complaint"
   >
-    <div className="user-picture">
+    <div className="user-complaint-picture">
       {state.users.find((user) => user.id === complaint.toUserId)?.userPicture ? (
         <img
           src={

@@ -26,13 +26,13 @@ const Problem = ({ problem }) => {
       : (document.body.style.overflow = "unset");
   }, [state.isComplaintPage]);
   return (
-    <div key={problem.id} className="problem">
-      {state.isComplaintPage && <Complaint problemId={problem.id} userId={problem.userId}/>}
+    <div className="problem">
+      {state.isComplaintPage && <Complaint key={problem.id} problemId={problem.id} userId={problem.userId}/>}
 
        
 
       
-      <UserPicture userId={problem.userId} createDate={problem.createDate}/>
+      <UserPicture key={problem.id} userId={problem.userId} createDate={problem.createDate}/>
 
       <div className={`problem-detail ${state.loadMoreButton ? "open" : ""}`}>
         <div className="problem-head-text"
@@ -56,7 +56,7 @@ const Problem = ({ problem }) => {
           </p>
         </div>
 
-      <LikeCommend problem={problem} />
+      <LikeCommend key={problem.id} problem={problem} />
         {id && (
           <div className="problem-write-comment">
             <textarea
@@ -86,7 +86,7 @@ const Problem = ({ problem }) => {
               return dateB - dateA;
             })
             .slice(0, 2)
-            .map((comment) => <Comment comment={comment} />)}
+            .map((comment) => <Comment key={comment.id} comment={comment} />)}
 
         {id &&
           problem.comments
@@ -95,7 +95,7 @@ const Problem = ({ problem }) => {
               const dateB = new Date(b.createDate);
               return dateB - dateA;
             })
-            .map((comment) => <Comment comment={comment} />)}
+            .map((comment) => <Comment key={comment.id} comment={comment} />)}
 
         {!id && problem.comments.length >= 3 ? (
           <p className="more-comments-p">

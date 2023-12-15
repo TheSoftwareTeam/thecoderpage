@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Navi from "./components/navi/Navi";
 import LoadingPage from "./components/loading/LoadingPage";
 import Main from "./components/main/Main";
-import Footer from "./components/footer/Footer";
 import Profile from "./components/profile/Profile";
 import CreateProblem from "./components/problem/CreateProblem";
 import ListProblem from "./components/problem/ListProblem";
@@ -84,9 +83,11 @@ function Layout() {
               <Route path="commentdetail/:problemId/:commentId" element={<CommentDetail />} />
               <Route path="problemdetail/:id" element={<ProblemDetail />} />
               <Route path="complaintdetail/:id" element={<DetailComplaint />} />
+              
             </Route>
+            
           </Routes>
-          <Footer />
+
         </AdminProvider>
       </UserProvider>
     </div>

@@ -110,7 +110,7 @@ function FilterProblem() {
         <button
           className="clear-filter"
           onClick={(e) => {
-            console.log(state.filterCategory);
+         
             e.preventDefault();
             dispatch({ type: "filterCategory", payload: [] });
             dispatch({ type: "filterDate", payload: "0" });

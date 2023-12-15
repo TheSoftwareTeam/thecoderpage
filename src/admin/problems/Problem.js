@@ -15,7 +15,7 @@ const Problem = ({ problem }) => {
 
   return (
     <div
-     
+      key={problem.id}
       className="admin-problem"
     >
       <div className="user-picture">

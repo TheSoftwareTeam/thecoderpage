@@ -27,7 +27,7 @@ const {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   , []);
   return (
-    <div className="user-picture">
+    <div  className="user-picture">
     {user.userPicture ? (
       <img
         src={
