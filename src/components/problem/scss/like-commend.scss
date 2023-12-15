@@ -1,0 +1,51 @@
+.problem-comment-view {
+  width: 100%;
+  height: 32px;
+  
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
+  button{
+    width: 45px;
+    font-size: 14px;
+    border: none;
+    background-color: transparent;
+    box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    &:hover{
+      cursor: pointer;
+
+    }
+    &:active{
+      transform: scale(1.2);
+      transition: 0.2s;
+    }
+  }
+  .completed-button {
+    border-radius: 12px;
+    box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    margin-right: 10px;
+    right: 0;
+    transition: 0.4s;
+    background: none;
+    padding: 3px 10px;
+   
+    
+    &:hover {
+      cursor: pointer;
+      background-color: #f4f0f0;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(1.1);
+      transition: 0.2s;
+    }
+
+  }
+}

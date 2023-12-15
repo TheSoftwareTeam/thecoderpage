@@ -41,6 +41,29 @@ export const UserProvider = ({ children }) => {
       return targetDate.toLocaleDateString("tr-TR", options);
     }
   }
+  function calculateDate(value) {
+    const now = new Date();
+    switch (value) {
+      case "1": // Son 24 Saat
+        now.setHours(now.getHours() - 24);
+        break;
+      case "2": // Son 7 Gün
+        now.setDate(now.getDate() - 7);
+        break;
+      case "3": // Son 30 Gün
+        now.setDate(now.getDate() - 30);
+        break;
+      case "4": // Son 90 Gün
+        now.setDate(now.getDate() - 90);
+        break;
+      case "5": // Son 1 Yıl
+        now.setFullYear(now.getFullYear() - 1);
+        break;
+      default: // Tüm Zamanlar
+        return null;
+    }
+    return now.toISOString();
+  }
   //login
   const login = async (e) => {
     e.preventDefault();
@@ -218,29 +241,7 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "getCategory", payload: await response.data });
   };
 
-  function calculateDate(value) {
-    const now = new Date();
-    switch (value) {
-      case "1": // Son 24 Saat
-        now.setHours(now.getHours() - 24);
-        break;
-      case "2": // Son 7 Gün
-        now.setDate(now.getDate() - 7);
-        break;
-      case "3": // Son 30 Gün
-        now.setDate(now.getDate() - 30);
-        break;
-      case "4": // Son 90 Gün
-        now.setDate(now.getDate() - 90);
-        break;
-      case "5": // Son 1 Yıl
-        now.setFullYear(now.getFullYear() - 1);
-        break;
-      default: // Tüm Zamanlar
-        return null;
-    }
-    return now.toISOString();
-  }
+ 
   //problem
   const getProblem = async (isMore) => {
     let page = 1;

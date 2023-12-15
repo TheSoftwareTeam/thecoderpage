@@ -1,21 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext";
-import image from "../../images/avatar.png";
 import Complaint from "../complaint/Complaint";
 import { useNavigate, useParams } from "react-router-dom";
 import "./scss/problem.scss";
 import Comment from "./Comment";
+import UserPicture from "./UserPicture";
+import LikeCommend from "./LikeCommend";
 const Problem = ({ problem }) => {
   const { userName } = useParams();
   const { id } = useParams();
-const [complaint,setComplaint]=useState(false)
   const {
     state,
     dispatch,
-    actionLike,
-    formatRelativeTime,
-    handleCompletedProblem,
     writeProblemComment,
   } = useContext(UserContext);
   const navigate = useNavigate();
@@ -35,42 +32,9 @@ const [complaint,setComplaint]=useState(false)
 
        
 
-      <div className="user-picture">
-        {state.users.find((user) => user.id === problem.userId)?.userPicture ? (
-          <img
-            src={
-              "http://localhost:3001/" +
-              state.users.find((user) => user.id === problem.userId)
-                ?.userPicture
-            }
-            alt="res"
-          />
-        ) : (
-          <img src={image} alt="res" />
-        )}
-        <h3
-          onClick={() =>
-            navigate(
-              `/home/profile/${
-                state.users.find((user) => user.id === problem.userId)?.userName
-              }/detail`
-            )
-          }
-        >
-          {state.users.find((user) => user.id === problem.userId)?.userName}
-        </h3>
-       <div className="absolute-div">
-        <span>{formatRelativeTime(problem.createDate)}</span>
-        {id && state.activeUser&& problem.userId !== state.activeUser.id && (
-        <a onClick={() => setComplaint(!complaint)}
-           onMouseLeave={() => setComplaint(false)}>...
-          <button className={complaint?"complaint-button":"hidden-complaint-button"} onClick={() => dispatch({ type: "isComplaintPage" })}>Şikayet et</button>
-          </a>
-      )}
-       </div>
-       
-      </div>
       
+      <UserPicture userId={problem.userId} createDate={problem.createDate}/>
+
       <div className={`problem-detail ${state.loadMoreButton ? "open" : ""}`}>
         <div className="problem-head-text">
           <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>
@@ -94,35 +58,7 @@ const [complaint,setComplaint]=useState(false)
           </p>
         </div>
 
-        <div className="problem-comment-view">
-          <button onClick={() => actionLike(problem.id)}>
-            {state.activeUser !== null
-              ? problem.likesUserId.find((id) => id === state.activeUser.id)
-                ? "❤️"
-                : "🤍"
-              : "🤍"}
-            {problem.likesUserId.length}
-          </button>
-          <button>✉️{problem.comments.length}</button>
-
-          {(id || userName) &&
-          state.activeUser &&
-          state.activeProblemDetail.userId === state.activeUser.id &&
-          state.activeUser !== null &&
-          state.activeUser.id === problem.userId ? (
-            <span
-              className="completed-button "
-              onClick={() => handleCompletedProblem(problem.id)}
-            >
-              {" "}
-              {problem.isCompleted === false
-                ? "✅ Çözüldü olarak işaretle"
-                : "❌ Çözülmedi olarak işaretle"}
-            </span>
-          ) : (
-            ""
-          )}
-        </div>
+      <LikeCommend problem={problem} id={id} userName={userName}/>
         {id && (
           <div className="problem-write-comment">
             <textarea

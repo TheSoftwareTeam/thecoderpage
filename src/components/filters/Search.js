@@ -9,13 +9,15 @@ const Search = () => {
    let blurTimeout;
   return (
     <div className='search-container'>
-            <input onChange={(e)=>{
+            <input 
+            onChange={(e)=>{
                 dispatch({type:"naviFilterSearch",payload:e.target.value});
                 getSearchList();
+                setIsOpen(true);
             }} 
             onFocus={()=>{
                 clearTimeout(blurTimeout);
-                setIsOpen(true);
+                state.searchList.length>0&&setIsOpen(true);
             }}
             onBlur={()=>{
                  
