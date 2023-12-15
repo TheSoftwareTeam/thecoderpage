@@ -6,9 +6,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./scss/user-picture.scss";
 import axios from "axios";
 
-const UserPicture = ({userId,createDate}) => {
+const UserPicture = ({userId,createDate, isDisabled}) => {
   let url = "http://localhost:3005";
-  const { id } = useParams();
+  const { id,userName } = useParams();
   const [complaint,setComplaint]=useState(false)
   const [user,setUser]=useState({})
 const {
@@ -19,7 +19,7 @@ const {
   const navigate = useNavigate();
   const getUser = async () => {
     const response = await axios.get(`${url}/users/${userId}`);
-    setUser(response.data);
+    setUser(await response.data);
   }
   useEffect(() => {
   getUser()
@@ -53,8 +53,8 @@ const {
 
   {createDate&& <div className="absolute-div">
     <span>{formatRelativeTime(createDate)}</span>
-    {id  && state.activeUser&& userId !== state.activeUser.id && (
-    <a onClick={() => setComplaint(!complaint)}
+    { id && state.activeUser&& userId !== state.activeUser.id && (
+     !isDisabled&&<a onClick={() => setComplaint(!complaint)}
        onMouseLeave={() => setComplaint(false)}>...
       <button className={complaint?"complaint-button":"hidden-complaint-button"} onClick={() => dispatch({ type: "isComplaintPage" })}>Şikayet et</button>
       </a>

@@ -10,7 +10,7 @@
       "userPicture": "uploaduserimages/murat.jpeg",
       "problemCount": 3,
       "createDate": "2023-11-15T19:00:37.148Z",
-      "userToken": "Murat0.32291498865461665",
+      "userToken": "",
       "userRol": "admin",
       "verify": true,
       "isActive": true
@@ -24,7 +24,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 3,
-      "userToken": "Mahir0.06163508968751441",
+      "userToken": "Mahir0.7508784098251785",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true,
@@ -184,7 +184,8 @@
       "likesUserId": [
         1,
         3,
-        6
+        6,
+        2
       ],
       "comments": [
         {
@@ -214,6 +215,7 @@
       "likesUserId": [
         4,
         6,
+        1,
         2
       ],
       "comments": [
@@ -315,7 +317,8 @@
       "likesUserId": [
         1,
         3,
-        7
+        7,
+        2
       ],
       "comments": [
         {
@@ -756,7 +759,9 @@
       "problemHead": "Java nerelerde kullanılır",
       "problemContent": "Unity olabilir.",
       "commentCount": -1,
-      "likesUserId": [],
+      "likesUserId": [
+        2
+      ],
       "comments": [
         {
           "id": 0,

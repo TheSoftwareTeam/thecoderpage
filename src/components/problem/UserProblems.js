@@ -5,9 +5,9 @@ import React, { useContext, useEffect } from "react";
 import "./scss/user-problems.scss";
 import {  useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
-import image from "../../images/avatar.png";
 import Problem from "./Problem";
 import FilterProblem from "../filters/FilterProblem";
+import EmptyItem from "./EmptyItem";
 
 const UserProblem = () => {
   const { userName } = useParams();
@@ -35,12 +35,7 @@ const UserProblem = () => {
             (problem.categoryId === state.selectedCategory ||
               state.selectedCategory === null)
         ) ? (
-          <div className="user-problem">
-            <div className="user-user-picture">
-              <img src={image} alt="res" />
-              <h3>Henüz problem paylaşmadınız</h3>
-            </div>
-          </div>
+          <EmptyItem />
         ) : (
           state.activeUserProblem.sort((a, b) => {
             const dateA = new Date(a.createDate);

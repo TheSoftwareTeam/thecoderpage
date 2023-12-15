@@ -8,7 +8,6 @@ import Comment from "./Comment";
 import UserPicture from "./UserPicture";
 import LikeCommend from "./LikeCommend";
 const Problem = ({ problem }) => {
-  const { userName } = useParams();
   const { id } = useParams();
   const {
     state,
@@ -28,7 +27,7 @@ const Problem = ({ problem }) => {
   }, [state.isComplaintPage]);
   return (
     <div key={problem.id} className="problem">
-      {state.isComplaintPage && <Complaint problemId={problem.id} userId={problem.userId} />}
+      {state.isComplaintPage && <Complaint problemId={problem.id} userId={problem.userId}/>}
 
        
 
@@ -36,15 +35,14 @@ const Problem = ({ problem }) => {
       <UserPicture userId={problem.userId} createDate={problem.createDate}/>
 
       <div className={`problem-detail ${state.loadMoreButton ? "open" : ""}`}>
-        <div className="problem-head-text">
+        <div className="problem-head-text"
+        onClick={() => {
+          dispatch({ type: "selectedCategory", payload: null });
+          navigate(`/home/detailproblem/${problem.id}`);
+        }}>
           <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>
           <h3> {problem.problemHead}</h3>
-          <p
-            onClick={() => {
-              dispatch({ type: "selectedCategory", payload: null });
-              navigate(`/home/detailproblem/${problem.id}`);
-            }}
-          >
+          <p >
             {id ? (
               problem.problemContent
             ) : (

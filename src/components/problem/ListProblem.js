@@ -6,6 +6,7 @@ import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import Problem from "./Problem";
 import FilterProblem from "../filters/FilterProblem";
+import EmptyItem from "./EmptyItem";
 const ListProblem = () => {
   const { state,getProblem ,dispatch} = useContext(UserContext);
 
@@ -63,12 +64,7 @@ const ListProblem = () => {
 
 
         {state.problems.length ===0 &&
-          <div className="no-problem">
-            <div className="list-user-picture">
-              <img src={image} alt="res" />
-              <h3>Bu kategoride henüz problem paylaşılmamış.</h3>
-            </div>
-          </div>
+         <EmptyItem />
           
           }
       </div>

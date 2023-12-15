@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div className="sidebar-container">
       {state.populerProblems.map((problem) => (
         <div key={problem.id} className="sidebar-list-problem">
-         <UserPicture userId={problem.userId}/>
+         <UserPicture userId={problem.userId} createDate={problem.createDate}  isDisabled={true}/>
           <div className="sidebar-problem-detail">
             <div className="sidebar-problem-head-text">
               {problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}
@@ -22,21 +22,11 @@ const Sidebar = () => {
                 dispatch({ type: "selectedCategory", payload: null });
                 navigate(`/home/detailproblem/${problem.id}`);
               }}>{problem.problemHead.slice(0, 100)}</h3>
-              {/* <p
-              onClick={() => {
-                dispatch({ type: "selectedCategory", payload: null });
-                navigate(`/home/detailproblem/${problem.id}`);
-              }}>
-                {problem.problemContent.slice(0, 100) + "..."}
-                <p
-                  
-                  className="click-to-detail"
-                >
+              <p className="click-to-detail">
                   Detayı görmek için tıklayınız.
                 </p>
-              </p> */}
             </div>
-          <LikeCommend problem={problem}/>
+          <LikeCommend problem={problem} isDisabled={true}/>
             
           </div>
         </div>
