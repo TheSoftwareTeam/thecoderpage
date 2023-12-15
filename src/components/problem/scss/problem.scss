@@ -12,16 +12,7 @@
       box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.2);
       border: 0.1px solid #919191;
     }
-    a {
-      position: absolute;
-      top:5px;
-      right: 40px;
-      padding: 5px 10px;
-      border-radius: 15px;
-      font-family: monospace;
-      font-size: 12px;
-      background-color:none;
-    }
+   
    
     &:nth-child(odd) {
       background-color: #fff; /* Gri */
@@ -47,13 +38,39 @@
           cursor: pointer;
         }
       }
-      span {
+      .absolute-div{
         position: absolute;
-        right: 20px;
+        right: 0;
+        top: 0;
         padding: 5px 10px;
-        font-family: monospace;
-        font-size: 12px;
+        span {
+          padding: 5px 10px;
+          font-family: monospace;
+          font-size: 12px;
+        }
+        a {
+          position: relative;
+            cursor:context-menu;
+            .complaint-button{
+            width: 100px;
+            height: 25px;
+            position: absolute;
+            top:100%;
+            right: 0;
+            background-color: rgba(177, 174, 174, 0.21);
+            border-radius: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            border: none;
+            z-index: 1;
+            cursor: pointer;
+          }
+          .hidden-complaint-button{
+            display: none;
+          }
+        }
       }
+     
       
     }
 

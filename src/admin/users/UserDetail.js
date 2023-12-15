@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./scss/user-detail.scss";
 import AdminContext from "../../context/AdminContext";
 import image from "../../images/avatar.png";
 import { useNavigate, useParams } from "react-router-dom";
 const UserDetail = () => {
   const { state, getUserDetail, dispatch, editUser,formatRelativeTime} = useContext(AdminContext);
-
+  const [actionDropdown, setActionDropdown] = useState(false);
   const { userName } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,32 +17,55 @@ const UserDetail = () => {
     <div className="user-profile-container">
       <h2>Kullanıcı Bilgileri</h2>
       <div className="button-container">
+     
+
+        <button 
+        onMouseEnter={()=>setActionDropdown(true)}
+        onMouseLeave={()=>setActionDropdown(false)}>
+          Kullanıcı Aksiyonlarını Gör
+         <div className={actionDropdown?"action-dropdown":"hidden-action-dropdown"}>
         <button
           onClick={(e) => {
             e.preventDefault();
 
             dispatch({
-              type: "filterUserName",
+              type: "fltProblemUserName",
               payload: state.userDetail.userName,
             });
             navigate("/admin/problems");
           }}
         >
-          Kullanıcı Problemlerini Gör
+          Paylaşılan Problemler
         </button>
         <button
           onClick={(e) => {
             e.preventDefault();
 
             dispatch({
-              type: "filterUserName",
+              type: "fltrComplaintUserName",
               payload: state.userDetail.userName,
             });
             navigate("/admin/complaints");
           }}
         >
-          Kullanıcı Şikayetlerini Gör
+          Ettiği Şikayetler
         </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+
+            dispatch({
+              type: "fltrComplaintToUserName",
+              payload: state.userDetail.userName,
+            });
+            navigate("/admin/complaints");
+          }}
+        >
+          Yapılan Şikayetler
+        </button>
+          </div>
+        </button>
+
       </div>
 
       <div className="user-profile-content">

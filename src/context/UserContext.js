@@ -54,7 +54,6 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "selectedCategory", payload: null });
       dispatch({ type: "isLoginPage" });
       if (response.data[0].verify === false) {
-        console.log(response.data[0].userName);
         navigate(`/home/profile/${response.data[0].userName}/edit`);
       } else {
         localStorage.setItem("userId", JSON.stringify(response.data[0].id));
@@ -65,7 +64,6 @@ export const UserProvider = ({ children }) => {
         await axios.patch(`${url}/users/${response.data[0].id}`, {
           userToken: JSON.parse(localStorage.getItem("userToken")),
         });
-        navigate(`/home/main`);
       }
     } else {
       alert("Kullanıcı adı veya şifre yanlış");
@@ -81,7 +79,7 @@ export const UserProvider = ({ children }) => {
     );
     dispatch({ type: "isSignUpPage" });
     dispatch({ type: "isLoginPage" });
-    
+
     const responseEmail = await axios.get(
       `${url}/users/?email=${state.signupEmail}`
     );
@@ -103,7 +101,7 @@ export const UserProvider = ({ children }) => {
         verify: false,
         userToken: "",
         createDate: date(),
-        isActive:true
+        isActive: true,
       };
       await axios.post(`${url}/users`, newUser);
       dispatch({ type: "createUser", payload: newUser });
@@ -138,8 +136,8 @@ export const UserProvider = ({ children }) => {
     //resim içinde düzenlenecek
     if (
       (state.profileName !== state.activeUser.name &&
-        state.profileSurname !== state.activeUser.surName)||
-        state.profilePicture !== state.activeUser.userPicture
+        state.profileSurname !== state.activeUser.surName) ||
+      state.profilePicture !== state.activeUser.userPicture
     ) {
       const newUser = {
         ...user,
@@ -167,9 +165,8 @@ export const UserProvider = ({ children }) => {
         });
       }
       navigate(`/home/listproblem/`);
-    }
-    else{
-      alert("Değişiklik yapılmadı!")
+    } else {
+      alert("Değişiklik yapılmadı!");
     }
   };
   const getProfilDetail = async (userName) => {
@@ -248,22 +245,32 @@ export const UserProvider = ({ children }) => {
   const getProblem = async (isMore) => {
     let page = 1;
     if (isMore) {
-      dispatch({ type: "loadMorePages", payload:await state.pages + 1 });
+      dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
       page = state.pages;
     }
     dispatch({ type: "hideLoadMoreButton", payload: true });
     const response = await axios.get(`${url}/problems`, {
       params: {
-        categoryId: state.selectedCategory ? state.selectedCategory:(state.filterCategory.length!==0?state.filterCategory:null),
+        categoryId: state.selectedCategory
+          ? state.selectedCategory
+          : state.filterCategory.length !== 0
+          ? state.filterCategory
+          : null,
         _sort: "createDate",
         _order: "desc",
         _limit: 4,
         _page: page,
-         isCompleted:state.filterIscompleted&&state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
-         createDate_gte:state.filterDate&&calculateDate(state.filterDate),
+        isCompleted:
+          state.filterIscompleted && state.filterIscompleted === "true"
+            ? true
+            : state.filterIscompleted === "false"
+            ? false
+            : null,
+        createDate_gte: state.filterDate && calculateDate(state.filterDate),
       },
     });
-    response.data.length < 4 &&  dispatch({ type: "hideLoadMoreButton", payload: false });
+    response.data.length < 4 &&
+      dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {
       dispatch({ type: "getMoreProblems", payload: await response.data });
     } else {
@@ -272,29 +279,36 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const activeUserProblem = async (isMore,userName) => {
+  const activeUserProblem = async (isMore, userName) => {
     const user = await axios.get(`${url}/users?userName=${userName}`);
 
     let page = 1;
     if (isMore) {
-      dispatch({ type: "loadMorePages", payload:await state.pages + 1 });
+      dispatch({ type: "loadMorePages", payload: (await state.pages) + 1 });
       page = state.pages;
     }
     dispatch({ type: "hideLoadMoreButton", payload: true });
     const response = await axios.get(`${url}/problems`, {
       params: {
         userId: user.data[0].id,
-        categoryId: state.filterCategory.length!==0?state.filterCategory:null,
+        categoryId:
+          state.filterCategory.length !== 0 ? state.filterCategory : null,
         _sort: "createDate",
         _order: "desc",
         _limit: 4,
         _page: page,
-         isCompleted:state.filterIscompleted&&state.filterIscompleted==="true"?true:state.filterIscompleted==="false"?false:null,
-         createDate_gte:state.filterDate&&calculateDate(state.filterDate),
-         q:state.filterSearch&&state.filterSearch,
+        isCompleted:
+          state.filterIscompleted && state.filterIscompleted === "true"
+            ? true
+            : state.filterIscompleted === "false"
+            ? false
+            : null,
+        createDate_gte: state.filterDate && calculateDate(state.filterDate),
+        q: state.filterSearch && state.filterSearch,
       },
     });
-    response.data.length < 4 &&  dispatch({ type: "hideLoadMoreButton", payload: false });
+    response.data.length < 4 &&
+      dispatch({ type: "hideLoadMoreButton", payload: false });
     if (isMore) {
       dispatch({ type: "moreActiveUserProblem", payload: await response.data });
     } else {
@@ -302,7 +316,6 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "loadMorePages", payload: 2 });
     }
   };
-
 
   const getPopularProblem = async () => {
     const response = await axios.get(`${url}/problems`, {
@@ -315,17 +328,17 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "getPopularProblems", payload: await response.data });
   };
 
- 
-
   const getProblemDetail = async (id) => {
     const response = await axios.get(`${url}/problems/${Number(id)}`);
     dispatch({ type: "activeProblemDetail", payload: await response.data });
   };
 
-  const getSearchList=async()=>{
-    const response = await axios.get(`${url}/problems`,{params:{q:state.naviFilterSearch,_limit:10}});
+  const getSearchList = async () => {
+    const response = await axios.get(`${url}/problems`, {
+      params: { q: state.naviFilterSearch, _limit: 10 },
+    });
     dispatch({ type: "searchList", payload: await response.data });
-  }
+  };
 
   const createProblem = async (e) => {
     e.preventDefault();
@@ -428,19 +441,18 @@ export const UserProvider = ({ children }) => {
 
   const handleCompletedProblem = async (problemId) => {
     const response = await axios.get(`${url}/problems/${problemId}`);
-    const problem= response.data;
+    const problem = response.data;
     problem.isCompleted = !problem.isCompleted;
     await axios.patch(`${url}/problems/${problemId}`, problem);
     dispatch({ type: "activeProblemDetail", payload: problem });
     dispatch({ type: "ubdatePopulerProblem", payload: problem });
-    
+
     dispatch({ type: "ubdateActiveUserProblem", payload: problem });
-    
   };
-const sendComplaint = async (problemId,userId) => {
+  const sendComplaint = async (problemId, userId) => {
     const newComplaint = {
       userId: state.activeUser.id,
-      toUserId:userId,
+      toUserId: userId,
       problemId: problemId,
       complaintContent: state.complaintTextarea,
       status: "submitted",
@@ -450,7 +462,7 @@ const sendComplaint = async (problemId,userId) => {
     dispatch({ type: "isComplaintPage" });
     await axios.post(`${url}/complaints`, newComplaint);
     alert("Şikayetiniz gönderildi. En kısa sürede incelenecektir.");
-  }
+  };
   //other
   const userCache = async () => {
     const userId = localStorage.getItem("userId");
@@ -472,8 +484,6 @@ const sendComplaint = async (problemId,userId) => {
     });
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
-
-    navigate(`/home/login`);
   };
 
   const handleFileUpload = async (e) => {
@@ -550,7 +560,7 @@ const sendComplaint = async (problemId,userId) => {
         handleFileUpload,
         formatRelativeTime,
         getProfilDetail,
-        getSearchList
+        getSearchList,
       }}
     >
       {children}

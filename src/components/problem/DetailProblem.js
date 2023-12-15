@@ -25,7 +25,6 @@ const DetailProblem = () => {
   return (
     <div id="detail-container">
       <div id="detail-content">
-      
         <div className="detail-aciklama">
           <div className="detail-text">
             Kod yazarken karşılaştığınız sorunları paylaşın, çözümleri birlikte
@@ -39,7 +38,7 @@ const DetailProblem = () => {
             </button>
           </div>
         </div>
-        <Problem problem={state.activeProblemDetail} id={id}/>
+        <Problem problem={state.activeProblemDetail}/>
       </div>
       <ToastContainer
         position="bottom-right"

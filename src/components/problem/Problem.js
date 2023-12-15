@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 import image from "../../images/avatar.png";
 import Complaint from "../complaint/Complaint";
@@ -9,7 +9,7 @@ import Comment from "./Comment";
 const Problem = ({ problem }) => {
   const { userName } = useParams();
   const { id } = useParams();
-
+const [complaint,setComplaint]=useState(false)
   const {
     state,
     dispatch,
@@ -33,9 +33,7 @@ const Problem = ({ problem }) => {
     <div key={problem.id} className="problem">
       {state.isComplaintPage && <Complaint problemId={problem.id} userId={problem.userId} />}
 
-      {id && problem.userId !== state.activeUser.id && (
-        <a onClick={() => dispatch({ type: "isComplaintPage" })}>Şikayet et</a>
-      )}
+       
 
       <div className="user-picture">
         {state.users.find((user) => user.id === problem.userId)?.userPicture ? (
@@ -61,8 +59,18 @@ const Problem = ({ problem }) => {
         >
           {state.users.find((user) => user.id === problem.userId)?.userName}
         </h3>
+       <div className="absolute-div">
         <span>{formatRelativeTime(problem.createDate)}</span>
+        {id && state.activeUser&& problem.userId !== state.activeUser.id && (
+        <a onClick={() => setComplaint(!complaint)}
+           onMouseLeave={() => setComplaint(false)}>...
+          <button className={complaint?"complaint-button":"hidden-complaint-button"} onClick={() => dispatch({ type: "isComplaintPage" })}>Şikayet et</button>
+          </a>
+      )}
+       </div>
+       
       </div>
+      
       <div className={`problem-detail ${state.loadMoreButton ? "open" : ""}`}>
         <div className="problem-head-text">
           <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>

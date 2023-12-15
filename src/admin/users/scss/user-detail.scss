@@ -8,7 +8,6 @@
     font-weight: bold;
     color: rgb(0, 0, 0);
     text-align: center;
-
     margin-bottom: 50px;
   }
   .button-container {
@@ -29,17 +28,34 @@
       text-align: center;
       font-size: 16px;
       font-family: monospace;
- 
       margin: 10px 5px;
       cursor: pointer;
       transition-duration: 0.4s;
+      position: relative;
       &:hover {
         background-color: #ddd;
       }
       &:active{
         transform: scale(1.08);
       }
+      .action-dropdown{
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        
+      }
+      .hidden-action-dropdown{
+        display: none;
+      }
     }
+    
   }
 
   .user-profile-content {
