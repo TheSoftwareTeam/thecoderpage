@@ -14,7 +14,7 @@ const Footer = () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         className="navi-link"
-        to="/home/main"
+        to="/"
       >
         <h3>TheCoderPage</h3>
       </NavLink>

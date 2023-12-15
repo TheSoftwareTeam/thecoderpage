@@ -77,7 +77,7 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "selectedCategory", payload: null });
       dispatch({ type: "isLoginPage" });
       if (response.data[0].verify === false) {
-        navigate(`/home/profile/${response.data[0].userName}/edit`);
+        navigate(`/profile/${response.data[0].userName}/edit`);
       } else {
         localStorage.setItem("userId", JSON.stringify(response.data[0].id));
         localStorage.setItem(
@@ -131,7 +131,7 @@ export const UserProvider = ({ children }) => {
       dispatch({ type: "signupUserName", payload: "" });
       dispatch({ type: "signupEmail", payload: "" });
       dispatch({ type: "signupPassword", payload: "" });
-      navigate(`/home/login`);
+      navigate(`/login`);
     } else {
       if (
         responseUserName.data.length !== 0 &&
@@ -187,7 +187,7 @@ export const UserProvider = ({ children }) => {
           userToken: JSON.parse(localStorage.getItem("userToken")),
         });
       }
-      navigate(`/home/listproblem/`);
+      navigate(`/listproblem/`);
     } else {
       alert("Değişiklik yapılmadı!");
     }
@@ -369,7 +369,7 @@ export const UserProvider = ({ children }) => {
       const response = await axios.post(`${url}/problems`, newProblem);
       dispatch({ type: "problemHead", payload: "" });
       dispatch({ type: "problemContent", payload: "" });
-      navigate(`/home/detailproblem/${response.data.id}`);
+      navigate(`/detailproblem/${response.data.id}`);
 
       toast.success("Problem eklendi.!", {
         position: "bottom-right",
@@ -529,7 +529,7 @@ export const UserProvider = ({ children }) => {
           localStorage.removeItem("userId");
           dispatch({ type: "login", payload: null });
           alert("Oturumunuz sonlandırıldı. Lütfen tekrar giriş yapınız.");
-          navigate("/home/login");
+          navigate("/login");
         }
       }
     }, 240000);

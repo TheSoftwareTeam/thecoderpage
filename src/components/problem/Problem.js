@@ -38,7 +38,7 @@ const Problem = ({ problem }) => {
         <div className="problem-head-text"
         onClick={() => {
           dispatch({ type: "selectedCategory", payload: null });
-          navigate(`/home/detailproblem/${problem.id}`);
+          navigate(`/detailproblem/${problem.id}`);
         }}>
           <h4>{problem.isCompleted ? "✅ Çözüldü" : "❌ Çözüm aranıyor"}</h4>
           <h3> {problem.problemHead}</h3>

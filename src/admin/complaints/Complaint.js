@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import image from "../../images/avatar.png";
 import "./scss/complaint.scss";
+import AdminContext from "../../context/AdminContext";
 const Complaint = ({complaint}) => {
     const { state,dispatch } =
-    useContext(UserContext);
+    useContext(AdminContext);
   const navigate = useNavigate();
   useEffect(()=>{
     dispatch({type:"complaintTextarea",payload:""})

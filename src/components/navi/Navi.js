@@ -31,7 +31,7 @@ const Navi = () => {
       <div className="navi-container">
         <div className="navi-header">
           <h3>
-            <NavLink onClick={()=>dispatch({ type: "selectedCategory", payload: null })} className="navi-link" to="/home/main">
+            <NavLink onClick={()=>dispatch({ type: "selectedCategory", payload: null })} className="navi-link" to="/">
               TheCoderPage
             </NavLink>
           </h3>
@@ -79,7 +79,7 @@ const Navi = () => {
                       onClick={() => {
                         dispatch({ type: "selectedCategory", payload: null });
                           toggleDropdown();
-                          navigate(`/home/profile/${state.activeUser.userName}/detail`);
+                          navigate(`/profile/${state.activeUser.userName}/detail`);
                       }}
                     >
                       Profilim
@@ -89,7 +89,7 @@ const Navi = () => {
                         dispatch({ type: "selectedCategory", payload: null });
                           toggleDropdown();
                           navigate(
-                          `/home/profile/${state.activeUser.userName}/problems`
+                          `/profile/${state.activeUser.userName}/problems`
                         );
                       }}
                     >
@@ -116,8 +116,8 @@ const Navi = () => {
       </div>
       <div className="navi-outlet" >
         <Outlet />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

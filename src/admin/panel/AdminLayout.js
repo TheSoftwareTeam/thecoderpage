@@ -3,7 +3,6 @@
 import React, { useContext, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./admin-layout.scss";
-import UserContext from "../../context/UserContext";
 import { FaHome, FaUsers, FaComments } from "react-icons/fa";
 import { MdReportProblem } from "react-icons/md";
 import { BiSolidCategoryAlt } from "react-icons/bi";
@@ -12,24 +11,26 @@ import image from "../../images/avatar.png";
 import AdminContext from "../../context/AdminContext";
 const AdminPanel = () => {
   const navigate = useNavigate();
-  const {
-    state: userState,
-    toggleDropdown,
-    handleLogout,
-  } = useContext(UserContext);
-  const { roleControl, getUsers, getCategory, getProblem } =
+  
+  const { state,roleControl,handleLogout, getUsers,getActiveUser, getCategory, getProblem,toggleDropdown } =
     useContext(AdminContext);
 
   useEffect(() => {
-   
+  if(localStorage.getItem("userToken")===null){
+    navigate("/");
+  }
+  else{
     roleControl();
+    getActiveUser()
     getUsers();
     getCategory();
     getProblem();
+  } 
+   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <>
+    localStorage.getItem("userToken")===null&& <>
       <div className="navi-header">
         <h3 onClick={() => navigate("/admin")}>
           TheCoderPage <h5>Administrator Panel</h5>
@@ -39,24 +40,24 @@ const AdminPanel = () => {
           onMouseEnter={toggleDropdown}
           onMouseLeave={toggleDropdown}
         >
-          {userState.activeUser && userState.activeUser.userPicture ? (
+          {state.activeUser && state.activeUser.userPicture ? (
             <img
-              src={"http://localhost:3001/" + userState.activeUser.userPicture}
+              src={"http://localhost:3001/" + state.activeUser.userPicture}
               alt="res"
             />
           ) : (
             <img src={image} alt="res" />
           )}
 
-          {userState.activeUser && userState.isDropdownOpen && (
+          {state.activeUser && state.isDropdownOpen && (
             <div className="dropdown-menu">
               <ul>
-                <h4>{userState.activeUser.userName}</h4>
+                <h4>{state.activeUser.userName}</h4>
                 <hr />
                 <li
                   onClick={() => {
                     toggleDropdown();
-                    navigate(`/admin/userdetail/${userState.activeUser.userName}`);
+                    navigate(`/admin/userdetail/${state.activeUser.userName}`);
                   }}
                 >
                   Profilim
@@ -124,7 +125,7 @@ const AdminPanel = () => {
             <NavLink
               className="navlink"
               activeClassName="active"
-              to="/home/main"
+              to="/"
             >
               <IoSettings />
               Siteyi Görüntüle

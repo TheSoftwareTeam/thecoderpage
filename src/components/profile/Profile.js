@@ -23,7 +23,7 @@ const Profile = () => {
   }, [state.activeUser]);
   const handleMenuClick = (tab) => {
     dispatch({ type: 'activeTab', payload: tab });
-    navigate(`/home/profile/${state.profileDetail.userName}/${tab}`);
+    navigate(`/profile/${state.profileDetail.userName}/${tab}`);
   };
   return (
     <div className="profile-container">

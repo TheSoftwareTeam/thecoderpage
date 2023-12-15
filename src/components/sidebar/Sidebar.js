@@ -21,7 +21,7 @@ const Sidebar = () => {
             <div
               onClick={() => {
                 dispatch({ type: "selectedCategory", payload: null });
-                navigate(`/home/detailproblem/${problem.id}`);
+                navigate(`/detailproblem/${problem.id}`);
               }}
               className="sidebar-problem-head-text"
             >

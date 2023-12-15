@@ -1,6 +1,8 @@
 export const initialState = {
   //login
-  activeUser: null,
+  loginUserName: "",
+  loginPassword: "",
+
   //signup
   createUserName: "",
   createEmail: "",
@@ -16,6 +18,7 @@ export const initialState = {
   //user
   users: [],
   userDetail: {},
+  activeUser:{},
   //navi
   isDropdownOpen: false,
 
@@ -76,11 +79,30 @@ export const adminReducer = (state, action) => {
         ...state,
         createPassword: action.payload,
       };
+
+    //Login
+   
+    case "loginUserName":
+      return {
+        ...state,
+        loginUserName: action.payload,
+      };
+    case "loginPassword":
+      return {
+        ...state,
+        loginPassword: action.payload,
+      };
+      
     //user
     case "userName":
       return {
         ...state,
         userName: action.payload,
+      };
+    case "activeUser":
+      return {
+        ...state,
+        activeUser: action.payload,
       };
     case "userSurname":
       return {

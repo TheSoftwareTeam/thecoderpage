@@ -30,7 +30,7 @@ const PopularProblems = () => {
             <hr />
           </h1>
           <div
-            onClick={() => navigate(`/home/detailproblem/${currentProblem.id}`)}
+            onClick={() => navigate(`/detailproblem/${currentProblem.id}`)}
           >
             <h2>{currentProblem.problemHead}</h2>
             <p>{currentProblem.problemContent}</p>

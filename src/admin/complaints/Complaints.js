@@ -5,8 +5,7 @@ import Complaint from './Complaint';
 import './scss/complaints.scss'
 
 const Complaints = () => {
-    const { state,getComplaints } =
-    useContext(AdminContext);
+    const { state,getComplaints } = useContext(AdminContext);
     useEffect(() => {
         document.title = 'Complaints | Admin'
         getComplaints(false);

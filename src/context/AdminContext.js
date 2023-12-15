@@ -10,6 +10,8 @@ export const AdminProvider = ({ children }) => {
   const [state, dispatch] = useReducer(adminReducer, initialState);
   const navigate = useNavigate();
   let url = "http://localhost:3005";
+
+
   //date
   const date = () => {
     return new Date().toISOString();
@@ -60,10 +62,46 @@ export const AdminProvider = ({ children }) => {
     }
     return now.toISOString();
   }
+  const handleLogout = async () => {
+    dispatch({ type: "activeUser", payload: null });
+    await axios.patch(`${url}/users/${localStorage.getItem("userId")}`, {
+      userToken: "",
+    });
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("userId");
+    navigate(`/`);
+  };
+  //login
+  const loginAdmin = async (e) => {
+    e.preventDefault();
+    const response = await axios.get(
+      `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
+    );
+    if (response.status === 200 && response.data.length !== 0) {
+      localStorage.setItem("userId", JSON.stringify(response.data[0].id));
+      localStorage.setItem(
+        "userToken",
+        JSON.stringify(`${response.data[0].name}${Math.random()}`)
+      );
+      
+      dispatch({ type: "activeUser", payload: await response.data[0] });
+      dispatch({ type: "loginUserName", payload: "" });
+      dispatch({ type: "loginPassword", payload: "" });
+     navigate(`/admin/`)
+    } else {
+      alert("Kullanıcı adı veya şifre yanlış");
+      return null;
+    }
+  };
   //user
   const getUsers = async () => {
     const response = await axios.get(`${url}/users`);
     dispatch({ type: "getUsers", payload: await response.data });
+  };
+
+  const getActiveUser = async () => {
+    const response = await axios.get(`${url}/users/${localStorage.getItem("userId")}`);
+    dispatch({ type: "activeUser", payload: await response.data });
   };
 
   const getUserDetail = async (userName) => {
@@ -468,12 +506,10 @@ export const AdminProvider = ({ children }) => {
       const response = await axios.get(`${url}/users/?id=${userId}`);
       const userRol = response.data[0].userRol;
       if (userRol !== "admin") {
-        navigate(`/home/main`);
-      } else {
-        // console.log("admin açık");
-      }
+        navigate(`/`);
+      } 
     } else {
-      navigate(`/home/main`);
+      navigate(`/`);
     }
   };
 
@@ -486,6 +522,7 @@ export const AdminProvider = ({ children }) => {
       value={{
         state,
         dispatch,
+        loginAdmin,
         deleteProblem,
         getProblemDetail,
         getUserDetail,
@@ -507,7 +544,9 @@ export const AdminProvider = ({ children }) => {
         getComplaintProblem,
         ubdateComplaint,
         getComments,
-        ubdateCategory
+        ubdateCategory,
+        getActiveUser,
+        handleLogout
       }}
     >
       {children}

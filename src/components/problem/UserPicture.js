@@ -45,7 +45,7 @@ const {
     <h3
       onClick={() =>
         navigate(
-          `/home/profile/${
+          `/profile/${
             state.pictureUsers.userName
           }/detail`
         )

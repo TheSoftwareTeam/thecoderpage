@@ -31,7 +31,7 @@ const ListProblem = () => {
           </div>
           <div className="list-share-button">
             <button>
-              <NavLink className="list-link" to="/home/createproblem">
+              <NavLink className="list-link" to="/createproblem">
                 Problem Paylaş
               </NavLink>
             </button>

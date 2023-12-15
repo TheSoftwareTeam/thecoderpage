@@ -28,7 +28,7 @@ const Search = () => {
         <div className={isOpen?"show-search-list":"hidden-search-list"}>
             {state.searchList.length>0&&state.searchList.map((problem) => (
                 <div key={problem.id}>
-                    <h2 onClick={()=>navigate(`/home/detailproblem/${problem.id}`)}>{problem.problemHead.slice(0,70)}..</h2>
+                    <h2 onClick={()=>navigate(`/detailproblem/${problem.id}`)}>{problem.problemHead.slice(0,70)}..</h2>
                     
                 </div>
             ))}

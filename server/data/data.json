@@ -24,7 +24,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 3,
-      "userToken": "Mahir0.23458994381637832",
+      "userToken": "",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true,
@@ -69,7 +69,7 @@
       "password": "123",
       "userPicture": "",
       "problemCount": 3,
-      "userToken": "",
+      "userToken": "Cem0.07220663348722234",
       "userRol": "user",
       "createDate": "2023-03-04T11:00:00.000Z",
       "verify": true,
@@ -764,7 +764,7 @@
       "categoryId": 6,
       "problemHead": "Java nerelerde kullanılır",
       "problemContent": "Unity olabilir.",
-      "commentCount": -1,
+      "commentCount": 1,
       "likesUserId": [
         2
       ],

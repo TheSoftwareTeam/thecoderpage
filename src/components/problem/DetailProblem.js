@@ -32,7 +32,7 @@ const DetailProblem = () => {
           </div>
           <div className="detail-share-button">
             <button>
-              <NavLink className="detail-link" to="/home/createproblem">
+              <NavLink className="detail-link" to="/createproblem">
                 Problem Paylaş
               </NavLink>
             </button>
