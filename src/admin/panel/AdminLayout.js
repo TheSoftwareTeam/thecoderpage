@@ -30,7 +30,7 @@ const AdminPanel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    localStorage.getItem("userToken")===null&& <>
+    localStorage.getItem("userToken")!==null&& state.activeUser&& <>
       <div className="navi-header">
         <h3 onClick={() => navigate("/admin")}>
           TheCoderPage <h5>Administrator Panel</h5>
