@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import UserContext from '../../context/UserContext';
 import "./scss/like-commend.scss"
-const LikeCommend = ({problem,id,userName}) => {
+const LikeCommend = ({problem}) => {
   const { state,handleCompletedProblem,actionLike } = useContext(UserContext);
     
   return (
@@ -16,10 +16,8 @@ const LikeCommend = ({problem,id,userName}) => {
     </button>
     <button>✉️{problem.comments.length}</button>
 
-    {(id || userName) &&
-    state.activeUser &&
-    state.activeProblemDetail.userId === state.activeUser.id &&
-    state.activeUser !== null &&
+    {
+    state.activeUser&&
     state.activeUser.id === problem.userId ? (
       <span
         className="completed-button "

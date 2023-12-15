@@ -58,7 +58,7 @@ const Problem = ({ problem }) => {
           </p>
         </div>
 
-      <LikeCommend problem={problem} id={id} userName={userName}/>
+      <LikeCommend problem={problem} />
         {id && (
           <div className="problem-write-comment">
             <textarea
