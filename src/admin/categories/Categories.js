@@ -4,10 +4,11 @@ import AdminContext from "../../context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import "./categories.scss";
 const Categories = () => {
-  const { state, dispatch, createCategory } = useContext(AdminContext);
+  const { state, dispatch, createCategory,getCategory} = useContext(AdminContext);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch({ type: "categoryName", payload: "" });
+    getCategory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

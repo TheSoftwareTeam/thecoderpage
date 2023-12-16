@@ -11,7 +11,6 @@ export const AdminProvider = ({ children }) => {
   const navigate = useNavigate();
   let url = "http://localhost:3005";
 
-
   //date
   const date = () => {
     return new Date().toISOString();
@@ -38,7 +37,7 @@ export const AdminProvider = ({ children }) => {
       const options = { year: "numeric", month: "numeric", day: "numeric" };
       return targetDate.toLocaleDateString("tr-TR", options);
     }
-  }
+  };
   function calculateDate(value) {
     const now = new Date();
     switch (value) {
@@ -61,7 +60,7 @@ export const AdminProvider = ({ children }) => {
         return null;
     }
     return now.toISOString();
-  }
+  };
   const handleLogout = async () => {
     dispatch({ type: "activeUser", payload: null });
     await axios.patch(`${url}/users/${localStorage.getItem("userId")}`, {
@@ -75,7 +74,7 @@ export const AdminProvider = ({ children }) => {
   const loginAdmin = async (e) => {
     e.preventDefault();
     const response = await axios.get(
-      `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
+      `${url}/users/?(userName=${state.loginUserName}Oremail=${state.loginUserName})&password=${state.loginPassword}`
     );
     if (response.status === 200 && response.data.length !== 0) {
       localStorage.setItem("userId", JSON.stringify(response.data[0].id));

@@ -12,7 +12,7 @@ import AdminContext from "../../context/AdminContext";
 const AdminPanel = () => {
   const navigate = useNavigate();
   
-  const { state,roleControl,handleLogout, getUsers,getActiveUser, getCategory, getProblem,toggleDropdown } =
+  const { state,roleControl,handleLogout,getActiveUser,getUsers, toggleDropdown } =
     useContext(AdminContext);
 
   useEffect(() => {
@@ -22,9 +22,7 @@ const AdminPanel = () => {
   else{
     roleControl();
     getActiveUser()
-    getUsers();
-    getCategory();
-    getProblem();
+    getUsers()
   } 
    
     // eslint-disable-next-line react-hooks/exhaustive-deps

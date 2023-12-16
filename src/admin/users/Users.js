@@ -1,13 +1,18 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AdminContext from "../../context/AdminContext";
 import "./scss/users.scss";
 import image from "../../images/avatar.png";
 import { useNavigate } from "react-router-dom";
 
 const Users = () => {
-  const { state, dispatch, createUser } = useContext(AdminContext);
+  const { state, dispatch, createUser,getUsers } = useContext(AdminContext);
   const navigate = useNavigate();
+  useEffect(()=>{
+    getUsers();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   return (
     <div id="users-container">
       <form onSubmit={createUser}>
