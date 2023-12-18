@@ -74,7 +74,7 @@ export const AdminProvider = ({ children }) => {
   const loginAdmin = async (e) => {
     e.preventDefault();
     const response = await axios.get(
-      `${url}/users/?(userName=${state.loginUserName}Oremail=${state.loginUserName})&password=${state.loginPassword}`
+      `${url}/users/?userName=${state.loginUserName}&password=${state.loginPassword}`
     );
     if (response.status === 200 && response.data.length !== 0) {
       localStorage.setItem("userId", JSON.stringify(response.data[0].id));

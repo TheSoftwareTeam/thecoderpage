@@ -562,6 +562,7 @@ export const UserProvider = ({ children }) => {
         formatRelativeTime,
         getProfilDetail,
         getSearchList,
+      
       }}
     >
       {children}

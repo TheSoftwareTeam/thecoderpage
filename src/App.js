@@ -29,7 +29,6 @@ import Complaints from "./admin/complaints/Complaints";
 import DetailComplaint from "./admin/complaints/DetailComplaint";
 import LoginAdmin from "./admin/login-admin/LoginAdmin";
 
-
 function UserRoutes() {
   return (
     <UserProvider>
@@ -72,7 +71,6 @@ function AdminRoutes() {
               </div>
             }
           />
-          
           <Route path="users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
           <Route path="problems" element={<Problems />} />
