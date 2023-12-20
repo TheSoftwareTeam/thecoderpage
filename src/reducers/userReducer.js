@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   //login
   activeUser: null,
   loginUserName: "",
@@ -52,7 +52,7 @@ const initialState = {
   searchList: []
 };
 
-const userReducer = (state, action) => {
+export const userReducer = (state, action) => {
   switch (action.type) {
     case "isComplaintPage":
       return {
@@ -360,4 +360,3 @@ case "searchList":
   }
 
 };
-module.exports = { initialState, userReducer };
