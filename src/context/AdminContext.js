@@ -9,7 +9,8 @@ const AdminContext = createContext();
 export const AdminProvider = ({ children }) => {
   const [state, dispatch] = useReducer(adminReducer, initialState);
   const navigate = useNavigate();
-  let url = "http://localhost:3005";
+  const url =process.env.REACT_APP_API_URL
+
 
   //date
   const date = () => {

@@ -3,9 +3,11 @@ import "./complaint.scss";
 import { FaRegWindowClose } from "react-icons/fa";
 import UserContext from "../../context/UserContext";
 import axios from "axios";
+
 const Complaint = ({ problemId, userId }) => {
+  
   const { dispatch, sendComplaint } = useContext(UserContext);
-  let url = "http://localhost:3005";
+  const url =process.env.REACT_APP_API_URL
 
   const [user, setUser] = useState({});
   const getUser = async () => {

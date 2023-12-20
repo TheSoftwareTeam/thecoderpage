@@ -7,7 +7,8 @@ import "./scss/user-picture.scss";
 import axios from "axios";
 
 const UserPicture = ({userId,createDate, isDisabled}) => {
-  let url = "http://localhost:3005";
+  const url =process.env.REACT_APP_API_URL
+
   const { id } = useParams();
   const [complaint,setComplaint]=useState(false)
   const [user,setUser]=useState({})

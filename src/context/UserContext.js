@@ -11,7 +11,8 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, initialState);
   const navigate = useNavigate();
-  let url = "http://localhost:3005";
+  const url =process.env.REACT_APP_API_URL
+
 
   //date
 
