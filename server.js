@@ -3,7 +3,16 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('./data/data.json'); // <== Will be created later
+const middlewares = jsonServer.defaults();
+const port1 = process.env.PORT || 3005; // <== You can change the port
 
+server.use(middlewares);
+server.use(router);
+
+server.listen(port1);
 
 const app = express();
 const port = 3001;
