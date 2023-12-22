@@ -50,7 +50,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 app.use('/uploaduserimages', express.static(path.join(__dirname, 'uploaduserimages')));
 
 // JSON Server'ı bir middleware olarak kullan
-const router = jsonServer.router('data.json'); 
+const router = jsonServer.router('./data.json'); 
 const middlewares = jsonServer.defaults();
 app.use(middlewares);
 app.use(router);
