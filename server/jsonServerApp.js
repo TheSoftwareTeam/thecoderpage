@@ -8,6 +8,6 @@ server.use(middlewares);
 server.use(router);
 
 server.listen(port, '0.0.0.0', () => {
-  console.log(router.db.__wrapped__);
+  console.log(router);
   console.log(`JSON Server is running on port ${port}`);
 });
