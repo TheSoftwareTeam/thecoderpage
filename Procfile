@@ -1,1 +1,2 @@
-web: node server/jsonServerApp.js
+web: node expressApp.js
+worker: node jsonServerApp.js
