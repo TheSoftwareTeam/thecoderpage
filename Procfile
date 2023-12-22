@@ -1,0 +1,1 @@
+web: node server/jsonServerApp.js
