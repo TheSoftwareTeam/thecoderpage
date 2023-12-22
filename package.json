@@ -1,5 +1,5 @@
 {
-  "homepage": "https://thecoderpage-46643b1bf0ef.herokuapp.com/",
+  "homepage": "https://thesoftwareteam.github.io/thecoderpage",
   "name": "thecoderpage",
   "version": "0.1.0",
   "private": true,
@@ -24,13 +24,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server/jsonServerApp.js",
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "npx json-server --watch ./server/data/data.json --port 3005"
+    "server": "json-server --watch ./server/data.json --port"
   },
   "eslintConfig": {
     "extends": [
