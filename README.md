@@ -83,26 +83,31 @@ Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları takip 
    - Projeyi GitHub üzerinden klonlayın veya ZIP olarak indirin.
    ```bash
    git clone <repo-link>
+   
 2. **Gerekli Paketleri Yükleme**
    - Terminal veya Komut İstemi'ni kullanarak proje dizinine gidin.
    ```bash
    cd thecoderpage
+   
 - Proje dizininde npm paketlerini yüklemek için aşağıdaki komutu kullanın:
    ```bash
    npm install
-1. **Verileri API ile Çekme**
+   
+3. **Verileri API ile Çekme**
    - Proje dizininde, verileri localhost API ile çekmek için şu komutu kullanın:
    ```bash
    npm run api
 Bu komut, projedeki data.json dosyasındaki verileri localhost üzerinde çalışan basit bir API ile sağlar.
-1. **Kullanıcı Resimlerini Getirme**
+
+4. **Kullanıcı Resimlerini Getirme**
    - Terminalde, server klasörüne gidin.
    ```bash
    cd server
 - Server klasörü içinde, aşağıdaki komutu kullanarak sunucuyu başlatın:
    ```bash
    node server.js
-1. **Projeyi Çalıştırma**
+   
+5. **Projeyi Çalıştırma**
    - Ana proje dizininde, aşağıdaki komutu kullanarak projeyi başlatın:
    ```bash
    npm start
