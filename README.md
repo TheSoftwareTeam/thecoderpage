@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# TheCoderPage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TheCoderPage, yazılım geliştiricilerin karşılaştıkları sorunları paylaşabilecekleri ve birlikte çözümler bulabilecekleri bir platformdur.
 
-## Available Scripts
+## Kullanıcı Sayfaları
 
-In the project directory, you can run:
+### User
 
-### `npm start`
+1. **Anasayfa**
+    - TheCoderPage'e giriş yaptıktan sonra kullanıcılar, karşılaştıkları sorunları ve çözümleri görmek için anasayfaya yönlendirilir.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Problem Listesi**
+    - Kullanıcılar, karşılaştıkları sorunları listeleyebilir ve bu sorunları diğer kullanıcılarla paylaşabilir.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    - **Problem Detay Sayfası**
+        - Her problem için ayrıntılı bir sayfa, problem açıklaması, çözümler ve kullanıcı yorumlarına sahiptir.
 
-### `npm test`
+3. **Problem Oluşturma**
+    - Kullanıcılar, karşılaştıkları sorunları oluşturdukları bir form aracılığıyla paylaşabilirler.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Profil**
+    - Kullanıcılar, kendi profillerini yönetebilirler.
 
-### `npm run build`
+    - **Profil Düzenle**
+        - Kullanıcılar, adlarını, profil resimlerini ve diğer bilgilerini düzenleyebilirler.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    - **Benim Problemlerim**
+        - Kullanıcılar, paylaştıkları sorunları ve bu sorunların durumlarını takip edebilirler.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    - **Hakkında**
+        - Kullanıcılar, kendi hakkında bilgi ekleyebilirler.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Admin Sayfaları
 
-### `npm run eject`
+### Admin
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Anasayfa (Grafik)**
+    - Admin, platformun genel istatistiklerini görebileceği bir anasayfaya sahiptir.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Problemler**
+    - Admin, kullanıcıların paylaştığı problemleri görüntüleyebilir, düzenleyebilir ve silebilir.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Yorumlar**
+    - Admin, kullanıcı yorumlarını gözden geçirebilir ve gerektiğinde işlem yapabilir.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Kullanıcılar**
+    - Admin, kullanıcıları görüntüleyebilir, profillerini düzenleyebilir ve gerektiğinde kullanıcıları engelleyebilir.
 
-## Learn More
+5. **Kategoriler**
+    - Admin, problemleri kategorilere ayırabilir ve kategori yönetimini gerçekleştirebilir.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. **Şikayetler**
+    - Admin, kullanıcıların yaptığı şikayetleri gözden geçirebilir ve gerektiğinde işlem yapabilir.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Genel Özellikler
 
-### Code Splitting
+1. Kullanıcılar, sorunlarına çözüm bulabilmek için diğer kullanıcılarla etkileşimde bulunabilirler.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Kullanıcılar, thecoderpage'e kaydolarak kişisel profillerini oluşturabilir ve profil resimleri ekleyebilirler.
 
-### Analyzing the Bundle Size
+3. Kullanıcılar, paylaşılan problemleri beğenebilir, yorum yapabilir ve şikayet edebilirler.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Kullanıcılar, kendi paylaştıkları problemlerin çözüm durumunu paylaşabilirler.
 
-### Making a Progressive Web App
+5. Kullanıcılar, filtreler veya kategori seçenekleri kullanarak ilgi alanlarına uygun problemlere ulaşabilirler.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+6. Admin paneli, rolü admin olan kullanıcılara problemleri, kullanıcıları, kategorileri, yorumları yönetme yetkisi verir. Şikayetleri inceleyebilir ve gereken işlemleri gerçekleştirebilir.
 
-### Advanced Configuration
+TheCoderPage, yazılım geliştiricileri için etkileşimli ve işlevsel bir platform oluşturarak sorunları birlikte çözme amacını taşımaktadır.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Projeyi Çalıştırmak İçin Adımlar
 
-### Deployment
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Proje Klasörünü İndirme**
+   - Projeyi GitHub üzerinden klonlayın veya ZIP olarak indirin.
+   ```bash
+   git clone <repo-link>
