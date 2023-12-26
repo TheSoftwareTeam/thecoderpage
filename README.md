@@ -4,7 +4,11 @@ TheCoderPage, yazılım geliştiricilerin karşılaştıkları sorunları payla�
 
 ## Kullanıcı Sayfaları
 
-### User
+### User Sayfası
+
+![User Gif](https://github.com/TheSoftwareTeam/thecoderpage/blob/master/gif/User.gif)
+
+Aşağıda, User sayfasının bazı özellikleri görülmektedir...
 
 1. **Anasayfa**
     - TheCoderPage'e giriş yaptıktan sonra kullanıcılar, karşılaştıkları sorunları ve çözümleri görmek için anasayfaya yönlendirilir.
@@ -30,9 +34,12 @@ TheCoderPage, yazılım geliştiricilerin karşılaştıkları sorunları payla�
     - **Hakkında**
         - Kullanıcılar, kendi hakkında bilgi ekleyebilirler.
 
-## Admin Sayfaları
+### Admin Sayfası
 
-### Admin
+![Admin Gif](https://github.com/TheSoftwareTeam/thecoderpage/blob/master/gif/Admin.gif)
+
+Aşağıda, Admin sayfasının bazı özellikleri görülmektedir...
+
 
 1. **Anasayfa (Grafik)**
     - Admin, platformun genel istatistiklerini görebileceği bir anasayfaya sahiptir.
