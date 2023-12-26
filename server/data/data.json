@@ -24,7 +24,7 @@
       "password": "123",
       "userPicture": "uploaduserimages/mahir.jpeg",
       "problemCount": 3,
-      "userToken": "Mahir0.5451695395461928",
+      "userToken": "Mahir0.6275681292355442",
       "userRol": "admin",
       "createDate": "2023-11-15T19:00:37.148Z",
       "verify": true,
@@ -601,12 +601,13 @@
       "categoryId": 1,
       "problemHead": "HTML ve CSS ile responsive tasarım yapmak",
       "problemContent": "Web sitemi mobil cihazlara uyumlu hale getirmeye çalışıyorum. HTML ve CSS ile responsive tasarım konusunda önerileriniz var mı?",
-      "commentCount": 2,
+      "commentCount": 3,
       "likesUserId": [
         4,
         6,
         7,
-        1
+        1,
+        2
       ],
       "comments": [
         {
@@ -620,6 +621,12 @@
           "userId": 6,
           "commentContent": "Flexbox ve Grid'i kullanabilirsiniz.",
           "createDate": "2023-11-22T09:00:37.148Z"
+        },
+        {
+          "id": 2,
+          "userId": 2,
+          "commentContent": "deneme",
+          "createDate": "2023-12-26T09:25:35.483Z"
         }
       ],
       "createDate": "2023-11-22T11:30:00.000Z",
